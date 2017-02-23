@@ -1,0 +1,778 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="UniSharp blog">
+    <title>rsync 是如何比較檔案差異的 - UniSharp blog</title>
+    <meta name="author" content="Mr.UniSharp">
+    
+    
+        <link rel="icon" href="http://i.imgur.com/0hUX6N5.png">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="rsync 是如何比較檔案差異的">
+<meta property="og:url" content="http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/index.html">
+<meta property="og:site_name" content="UniSharp blog">
+<meta property="og:description" content="rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。">
+<meta property="og:updated_time" content="2017-02-23T09:37:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rsync 是如何比較檔案差異的">
+<meta name="twitter:description" content="rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.unisharp.com/assets/images/logo-02.png"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-yrst5vo1nxaxbp2g3v9na2wg1lixlpr3ghbjdvskeixmu79deycecx3rh4bt.min.css">
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">UniSharp blog</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+                </a>
+                <h4 class="sidebar-profile-name">Mr.UniSharp</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>work smart, smart work</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">首頁</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">分類</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">標籤</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">所有文章</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">搜尋</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+                        <span class="sidebar-button-desc">關於</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">Atom</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            rsync 是如何比較檔案差異的
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-02-23T17:37:57+08:00">
+	
+		    2月 23, 2017
+    	
+    </time>
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br><a id="more"></a><br>如果自己想自製一個能夠比較兩份文件差異的程式，稍微想一下設計，大約還能以行爲單位來設計，找出差異。</p>
+<p>但是如果檔案並非純文字，而是像照片這般的二進位檔案，可能一整份檔案都沒有任何換行符號，一比較差異就是讓伺服器把整份檔案重新抓下來了。</p>
+<p>面對通用檔案的差異比較，其設計思路就會朝向將檔案切成一塊一塊的區塊來進行差異比較。但終究需要面對以下問題：</p>
+<ul>
+<li>不可能將每個區塊的內容下載下來讓客戶端進行比較，這樣等同下載整份檔案</li>
+<li>如果只是檔頭加了一點內容，切割區塊有機會造成每個區塊內容就不同，也等同要下載整份檔案</li>
+</ul>
+<p>面對以上問題，rsync 採用了一些不錯的解決對策</p>
+<h4 id="校驗和-Checksum"><a href="#校驗和-Checksum" class="headerlink" title="校驗和 (Checksum)"></a>校驗和 (Checksum)</h4><p>校驗和不是 rsync 獨有的東西，很早就有利用校驗和來檢查檔案是否完整的流程存在。而校驗和其原理就只是利用檔案內的資料產生一個獨特的值，讓下載方與供應方用同樣的方法生出該值，稍加比較就知道兩個檔案是否相同。</p>
+<p>舉個最簡單的校驗和的例子，假設檔案內容如下：</p>
+<pre><code>{5, 6, 7, 8}
+</code></pre><p>最簡單的校驗和可以直接全部內容相加，其校驗和爲 26 ，只要下載方的校驗和也是 26 ，檔案下載完整的 <strong>可能性</strong> 就越高。</p>
+<p>這裡的說明是用 <strong>可能性</strong> 是因為大家都知道直接相加的缺點。有太多可以產生相同校驗和的方法了。<br>例如以下內容皆有機會被視為相同檔案：</p>
+<pre><code>{3, 7, 8, 8}
+{9, 2, 5, 11}
+</code></pre><p>因此資訊界競相設計出各種校驗和的演算，例如 md4, md5 ，都宣稱高度可信，很難有不同的來源會產生相同的校驗和。但是越高度可信，所需要的計算時間越久，甚至需要產生一些質數出來輔助。</p>
+<p>總結校驗和帶來的幫助，就是無需將伺服器上的每個區塊的內容都下載下來比較，只需要比較其校驗和便能得知是否有相同內容。</p>
+<h4 id="rsync-策略概述"><a href="#rsync-策略概述" class="headerlink" title="rsync 策略概述"></a>rsync 策略概述</h4><p>rsync 接下來要面對的問題，就是如何避免檔案偏移，就造成下載整份檔案的狀況。其流程大概像下面的步驟：</p>
+<ol>
+<li>將伺服器上的檔案 B 切成不重疊的區塊。</li>
+<li>將檔案 B 的所有區塊分別算出一個<strong>弱校驗和</strong>(Rolling Checksum) 和 <strong>強校驗和</strong> (md4)</li>
+<li>客戶端將所有區塊的校驗和下載製表 (hash table)</li>
+<li>客戶端從檔案 A 的檔頭開始切區塊，先只快速算出 <strong>弱校驗和</strong>，用其查表，查看是否存在</li>
+<li>查表<ul>
+<li>若無法用弱校驗和查出檔案 B 有該區塊，則區塊往下偏移繼續切並重複步驟 4 直至檔尾。</li>
+<li>若能查表查到才用<strong>強校驗和</strong>計算並比較，若符合代表有該區塊，並紀錄該區塊存在。反之則重複步驟 4</li>
+</ul>
+</li>
+</ol>
+<p>這個策略流程很簡單，但是要突破的瓶頸就是速度。不斷地將區塊偏移並且查詢比較非常耗時，因此其核心是快速的產生校驗和，快速的得知沒有相符的區塊，以避免每個區塊都用速度較慢的強校驗和檢查。在此 rsync 設計的 Rolling Checksum 佔了非常重要的位置。</p>
+<p>而 Rolling Checksum 其速度跟前述的將所有資料相加的速度是一樣快的，但又沒有說弱到一下就產生碰撞 ，因此非常適合作初步檢驗。</p>
+<h4 id="Rolling-Checksum"><a href="#Rolling-Checksum" class="headerlink" title="Rolling Checksum"></a>Rolling Checksum</h4><p>為了說明方便， Rolling Checksum 簡化算式如下</p>
+<pre><code>i 是 block 的開始位置，j 爲結束位置
+bsize 則是一個 block 的大小
+
+A = block[i] + block[i+1] + ... + block[j] // 從頭加到尾的意思
+B = bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]
+
+rolling_checksum = A + B
+</code></pre><p>假設一個 block 的大小爲 4 個 byte ， 且 block 內容依然是</p>
+<pre><code>{5, 6, 7, 8}
+</code></pre><p>其 Rolling Checksum 爲</p>
+<pre><code>A = 5 + 6 + 7 + 8
+B = (4 * 5) + (3 * 6) + (2 * 7) + (1 * 8)
+</code></pre><p>那為什麼說其速度跟全部加起來一樣快呢？ 觀察 A 部分的全部相加，大概會這樣設計一個迴圈</p>
+<pre><code>A = 0;
+for (i = 0; i &lt; bsize; i++) {
+    A += block[i];
+}
+</code></pre><p>將迴圈的流程稍微拆解一下，觀察一下 A 的內容</p>
+<pre><code>1.) A = 5
+2.) A = 5 + 6
+3.) A = 5 + 6 + 7
+4.) A = 5 + 6 + 7 + 8
+</code></pre><p>可以發現當中的 5 出現了 4 次，6 出現了 3 次，竟然跟算式 B 的要求吻合（這當然是有設計過的呀）。<br>所以要計算 B 的值只需要在同一個迴圈累加一下 A 便能同時算出 B 的值。稍微改寫如下</p>
+<pre><code>A = 0, B = 0;
+for (i = 0; i &lt; bsize; i++) {
+    A += block[i]
+    B += A;
+}
+</code></pre><p>最後補正為了說明而簡化的部分，其實這部分就只是為了 hash table 查詢所需要的取餘數的部分</p>
+<p>完整定義：</p>
+<pre><code>A = (block[i] + block[i+1] + ... + block[j]) % M // 從頭加到尾的意思
+B = (bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]) % M
+
+rolling_checksum = A + (2^16) * B
+</code></pre>
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/14/PM在團隊中扮演協調與溝通的角色/"  data-tooltip="PM在團隊中扮演協調與溝通的角色">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/20/有效率會議的五大原則/" data-tooltip="有效率會議的五大原則">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Mr.UniSharp. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/14/PM在團隊中扮演協調與溝通的角色/"  data-tooltip="PM在團隊中扮演協調與溝通的角色">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/20/有效率會議的五大原則/" data-tooltip="有效率會議的五大原則">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+        
+            <h4 id="about-card-name">Mr.UniSharp</h4>
+        
+            <div id="about-card-bio"><p>work smart, smart work</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>客製網路產品</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Taipei
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">沒有找到文章</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/11/11/利用 JavaScript 的特性，寫出不易解讀的程式/">
+                            <img class="media-image" src="http://68.media.tumblr.com/d12f34ebe3721e1550cb0913eebc2205/tumblr_n2g4q2OnDu1tubinno1_1280.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/11/11/利用 JavaScript 的特性，寫出不易解讀的程式/">
+                            <h3 class="media-heading">利用 JavaScript 的特性，寫出不易解讀的程式</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年11月11日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>JavaScript 是個弱型別語言，因此我們可以這樣做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+<span class="literal">false</span>; <span class="comment">// 0</span></div><div class="line">+<span class="literal">true</span>; <span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<p>JavaScript 物件的屬性及方法有兩種取得方式：</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/02/UX 從新手開始/">
+                            <img class="media-image" src="http://pic.eslite.com/Upload/Product/201611/m/636136140444770000.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/02/UX 從新手開始/">
+                            <h3 class="media-heading">UX 從新手開始，使用者體驗的 100堂必修課</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月2日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>​    今天來為大家介紹的這本「UX 從新手開始，使用者體驗的 100堂必修課」，作者完整地將 UX 設計中較容易碰到的問題與設計方法介紹給讀者，所以本書並不會像 「UX 策略」那樣的專精詳述某種特定方法，而是概略地提及讓大家有基本概念。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/cover.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/">
+                            <h3 class="media-heading">閱讀體驗不好的程式碼</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月9日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。如果專案中重複的 code 一大堆<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/30/2016 Xsion 國際創新論壇/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/12/30/2016 Xsion 國際創新論壇/xsion.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/30/2016 Xsion 國際創新論壇/">
+                            <h3 class="media-heading">2016 Xsion 國際創新論壇</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月30日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Bebit 社長  遠藤 直紀<br><strong>如何測量顧客忠誠度的指標 ?</strong><br>NPS 凈推薦分數 (Net Promoter Score )<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/brain.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/">
+                            <h3 class="media-heading">溝通-活用本質力</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年1月6日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/增進資料庫效能-以mysql為例/">
+                            <img class="media-image" src="https://static.pexels.com/photos/239898/pexels-photo-239898.jpeg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/增進資料庫效能-以mysql為例/">
+                            <h3 class="media-heading">增進資料庫效能-以mysql為例</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月13日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Mysql經常是所有php工程師最常碰到的關聯式資料庫，然而每當碰到mysql效能瓶頸時，才發現資料庫跟自己完全不熟。<br>本文旨在提供一個入門磚，提供給大家幾個關鍵字以解決效能的問題。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/img_20170213_01.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/">
+                            <h3 class="media-heading">觀察實體世界中的「使用者體驗」</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月13日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
+                            <img class="media-image" src="https://static.pexels.com/photos/29678/pexels-photo.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
+                            <h3 class="media-heading">所有決議都必須留下紀錄 - 凡走過，必留下痕跡</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
+<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/">
+                            <img class="media-image" src="https://static.pexels.com/photos/260606/pexels-photo-260606.jpeg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/">
+                            <h3 class="media-heading">有效率會議的五大原則</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月20日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>每次跟師父開會，都會有一種很迅速就結束會議的錯覺，我心裡常會這樣想：『怎麼這麼快就會有結論了？』。</p>
+<p>本篇偷偷列了一下最近觀察到的秘訣（無論是面對面的會議或是電話會議，都適用）：<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="沒有找到文章"
+                data-message-one="找到 1 篇文章"
+                data-message-other="找到 {n} 篇文章">
+                找到 13 篇文章
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+
+    </body>
+</html>

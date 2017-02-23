@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="UniSharp blog">
+    <title>一套使用 jade (pug) 轉為 laravel blade 的前端工作流程 - UniSharp blog</title>
+    <meta name="author" content="Mr.UniSharp">
+    
+        <meta name="keywords" content="jade,pug,blade,laravel,前端工作流程">
+    
+    
+        <link rel="icon" href="http://i.imgur.com/0hUX6N5.png">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="一套使用 jade (pug) 轉為 laravel blade 的前端工作流程">
+<meta property="og:url" content="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/index.html">
+<meta property="og:site_name" content="UniSharp blog">
+<meta property="og:description" content="這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)">
+<meta property="og:image" content="http://blog.unisharp.com/frontend-flow.png">
+<meta property="og:image" content="http://blog.unisharp.com/pug-to-blade-flow.png">
+<meta property="og:updated_time" content="2017-02-23T09:37:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一套使用 jade (pug) 轉為 laravel blade 的前端工作流程">
+<meta name="twitter:description" content="這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)">
+<meta name="twitter:image" content="http://blog.unisharp.com/frontend-flow.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.unisharp.com/assets/images/logo-02.png"/>
+    
+    
+        <meta property="og:image" content="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" />
+    
+    
+        <meta property="og:image" content="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=640"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=640" />
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-yrst5vo1nxaxbp2g3v9na2wg1lixlpr3ghbjdvskeixmu79deycecx3rh4bt.min.css">
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">UniSharp blog</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+                </a>
+                <h4 class="sidebar-profile-name">Mr.UniSharp</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>work smart, smart work</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">首頁</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">分類</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">標籤</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">所有文章</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">搜尋</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+                        <span class="sidebar-button-desc">關於</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">Atom</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-center
+                    post-header-cover--partial"
+             style="background-image:url('https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=640');"
+             data-behavior="4">
+            
+        </div>
+
+            <div id="main" data-behavior="4"
+                 class="hasCover
+                        hasCoverMetaOut
+                        hasCoverCaption">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+        <span class="post-header-cover-caption caption">圖片來源：unsplash.com</span>
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title" itemprop="headline">
+            一套使用 jade (pug) 轉為 laravel blade 的前端工作流程
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-02-14T00:00:00+08:00">
+	
+		    2月 14, 2017
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/laravel/">laravel</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p>
+<a id="more"></a>
+<h2 id="傳統的設計師-gt-工程師的合作流程"><a href="#傳統的設計師-gt-工程師的合作流程" class="headerlink" title="傳統的設計師 =&gt; 工程師的合作流程"></a>傳統的設計師 =&gt; 工程師的合作流程</h2><p>傳統上，設計師在製作完網頁設計圖後，會由切版人員（這個人員可能是設計師自己，也有可能是前端工程師）將設計圖製作成靜態的 HTML 及 CSS，接下來再交給工程師套程式。</p>
+<p><img src="/frontend-flow.png" alt="Frontend Flow"></p>
+<h2 id="Laravel-blade"><a href="#Laravel-blade" class="headerlink" title="Laravel blade"></a>Laravel blade</h2><p>Laravel 預設是使用 blade 作為樣板引擎作為動態網頁的樣板，它具有良好的 extend 及 include 設計，以下例子說明了 include 的用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        @include(&apos;share.head&apos;)</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        @include(&apos;share.header&apos;)</div><div class="line"></div><div class="line">        &lt;div class=&quot;container&quot;&gt;</div><div class="line">            @yield(&apos;content&apos;)</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        @include(&apos;share.footer&apos;)</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p> layout - view 結構中的 layout。</p>
+<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>對 laravel 工程師來說，製作畫面的方法是寫 blade，並且使用 blade 的 layout 與 view 使得我們在修改共用的畫面時只需要修改一次（因為共用的畫面皆有專屬的 blade 代表）。</p>
+<p>但真正實行時，才發現此處還隱藏了一個大部分的人習以為常的重工 — 通常 html 及 css 是由<strong>設計師</strong>提供的，如果頁面已經套完 blade 了，設計師再次修改 html 與 css 會怎麼樣呢？工程師需要將設計師修改的 html、css 與 blade 作比對，將兩著差異更新到 blade 的 layout - view 結構，而且這樣的修改會一再發生。</p>
+<p>要怎麼解決這樣的重工呢？我們想到的解法是</p>
+<p>「讓設計師學會基本的 laravel 及 blade，與工程師一同修改 blade」</p>
+<p>那麽如果設計師喜歡使用 jade (pug) 呢？使用 blade 就沒有 jade (pug) 優美的語法及方便的 mixin 了（註: Laravel 5.4 有 view component 可以使用）。而且使用 blade 必須要有 php 執行環境，如果設計師只想快速驗證畫面，不想要跑起 php server 呢？</p>
+<p>於是我們製作了一套將 jade 轉換爲 blade 的工作流程：</p>
+<h2 id="改善的流程-使用-jade-pug-產生-blade"><a href="#改善的流程-使用-jade-pug-產生-blade" class="headerlink" title="改善的流程 - 使用 jade (pug) 產生 blade"></a>改善的流程 - 使用 jade (pug) 產生 blade</h2><p><img src="/pug-to-blade-flow.png" alt="pug to blade flow"><br>見上圖</p>
+<p>設計師與工程師寫 jade 及 less ，放在 fe-src ( FrontEnd Source) 目錄中，經過編譯 （compile, 或更貼切地應稱為 transpile) 轉為 html 及 css 至 fe-dest (frontend destination) 目錄，我們也將 javascript 及 image 放到此目錄，於是 fe-dest 目錄就是一個可以直接用瀏覽器預覽的靜態網站了。</p>
+<p>在流程的最後，我們也同時自動將這些生成的 html 複製並命名為 .blade.php 到 laravel 的 view 路徑下，同時將靜態資源複製到 public 中，即完成了這套流程。</p>
+<h2 id="要如何使用這套流程？"><a href="#要如何使用這套流程？" class="headerlink" title="要如何使用這套流程？"></a>要如何使用這套流程？</h2><h3 id="目錄結構"><a href="#目錄結構" class="headerlink" title="目錄結構"></a>目錄結構</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fe-src</div><div class="line">├── less</div><div class="line">│   ├── _variables.less</div><div class="line">│   └── app.less</div><div class="line">└── pug</div><div class="line">    ├── _layout</div><div class="line">    │   └── app.pug</div><div class="line">    └── index.pug</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fe-dest</div><div class="line">├── css</div><div class="line">│   └── app.css</div><div class="line">└── pug</div><div class="line">    └── index.html</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public</div><div class="line">└── css</div><div class="line">    └── app.css</div><div class="line"></div><div class="line">resources</div><div class="line">└── views</div><div class="line">    └── index.blade.php</div></pre></td></tr></table></figure>
+<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">init:</div><div class="line">    yarn add gulp gulp-pug gulp-less gulp-filter gulp-notify gulp-sourcemaps gulp-autoprefixer browser-sync @unisharp/gulp-pug-inheritance</div><div class="line"></div><div class="line">fe-build:</div><div class="line">    ./node_modules/.bin/gulp</div><div class="line"></div><div class="line">watch:</div><div class="line">    ./node_modules/.bin/gulp watch</div></pre></td></tr></table></figure>
+<h3 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">const gulp = require(&apos;gulp&apos;);</div><div class="line">const pug = require(&apos;gulp-pug&apos;);</div><div class="line">const less = require(&apos;gulp-less&apos;);</div><div class="line">const filter = require(&apos;gulp-filter&apos;);</div><div class="line">const notify = require(&apos;gulp-notify&apos;);</div><div class="line">const sourcemaps = require(&apos;gulp-sourcemaps&apos;);</div><div class="line">const autoprefixer = require(&apos;gulp-autoprefixer&apos;);</div><div class="line">const browserSync = require(&apos;browser-sync&apos;).create();</div><div class="line">const pugInheritance = require(&apos;@unisharp/gulp-pug-inheritance&apos;);</div><div class="line"></div><div class="line">gulp.task(&apos;pug&apos;, () =&gt;</div><div class="line">  gulp.src(&apos;fe-src/pug/**/*.pug&apos;)</div><div class="line">      .pipe(filter(file =&gt; !/\/fe-src\/pug\/_/.test(file.path)))</div><div class="line">      .pipe(pug(&#123; pretty: true &#125;))</div><div class="line">      .on(&apos;error&apos;, notify.onError(&apos;Error: &lt;%= error.message %&gt;&apos;))</div><div class="line">      .pipe(gulp.dest(&apos;fe-dest&apos;))</div><div class="line">      .pipe(notify(&apos;File: fe-dest/&lt;%= file.relative %&gt; Compiled!&apos;))</div><div class="line">      .pipe(rename(&#123; extname: &apos;.blade.php&apos; &#125;))</div><div class="line">      .pipe(gulp.dest(&apos;resources/views&apos;))</div><div class="line">      .pipe(notify(&apos;File: resources/views/&lt;%= file.relative %&gt; Compiled!&apos;))</div><div class="line">);</div><div class="line"></div><div class="line">gulp.task(&apos;less&apos;, () =&gt;</div><div class="line">  gulp.src(&apos;fe-src/less/app.less&apos;)</div><div class="line">      .pipe(sourcemaps.init())</div><div class="line">      .pipe(sass())</div><div class="line">      .on(&apos;error&apos;, notify.onError(&apos;Error: &lt;%= error.message %&gt;&apos;))</div><div class="line">      .pipe(autoprefixer(&#123; browsers: [&apos;last 2 versions&apos;] &#125;))</div><div class="line">      .pipe(sourcemaps.write(&apos;.&apos;))</div><div class="line">      .pipe(gulp.dest(&apos;fe-dest/css&apos;))</div><div class="line">      .pipe(notify(&apos;File: fe-dest/css/&lt;%= file.relative %&gt; Compiled!&apos;))</div><div class="line">      .pipe(browserSync.stream(&#123; match: &apos;**/*.css&apos; &#125;))</div><div class="line">      .pipe(gulp.dest(&apos;public/css&apos;))</div><div class="line">      .pipe(notify(&apos;File: public/css/&lt;%= file.relative %&gt; Compiled!&apos;))</div><div class="line">);</div><div class="line"></div><div class="line">gulp.task(&apos;watch&apos;, () =&gt; &#123;</div><div class="line">  browserSync.init(&#123;</div><div class="line">    host: &apos;0.0.0.0&apos;,</div><div class="line">    server: &apos;fe-dest&apos;,</div><div class="line">    open: false</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  gulp.watch(&apos;fe-src/pug/**/*.pug&apos;, e =&gt;</div><div class="line">    gulp.src(e.path, &#123; base: &apos;fe-src/pug&apos; &#125;)</div><div class="line">        .pipe(pugInheritance(&apos;fe-src/pug/**/*.pug&apos;))</div><div class="line">        .pipe(filter(file =&gt; !/\/fe-src\/pug\/_/.test(file.path)))</div><div class="line">        .pipe(pug(&#123; pretty: true &#125;))</div><div class="line">        .on(&apos;error&apos;, notify.onError(&apos;Error: &lt;%= error.message %&gt;&apos;))</div><div class="line">        .pipe(notify(&apos;File: fe-dest/&lt;%= file.relative %&gt; Compiled!&apos;))</div><div class="line">        .pipe(rename(&#123; extname: &apos;.blade.php&apos; &#125;))</div><div class="line">        .pipe(gulp.dest(&apos;resources/views&apos;))</div><div class="line">        .pipe(notify(&apos;File: resources/views/&lt;%= file.relative %&gt; Compiled!&apos;))</div><div class="line">        .pipe(browserSync.reload(&#123; stream: true &#125;))</div><div class="line">  );</div><div class="line">  gulp.watch(&apos;./fe-src/less/**/*.less&apos;, [&apos;less&apos;]);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(&apos;default&apos;, [&apos;pug&apos;, &apos;less&apos;]);</div></pre></td></tr></table></figure>
+<h3 id="第一次執行"><a href="#第一次執行" class="headerlink" title="第一次執行"></a>第一次執行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make init</div></pre></td></tr></table></figure>
+<h3 id="編譯"><a href="#編譯" class="headerlink" title="編譯"></a>編譯</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make fe-build</div></pre></td></tr></table></figure>
+<h3 id="LiveReload"><a href="#LiveReload" class="headerlink" title="LiveReload"></a>LiveReload</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make watch</div></pre></td></tr></table></figure>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">標籤</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/jade/">jade</a> <a class="tag tag--primary tag--small t-link" href="/tags/laravel/">laravel</a> <a class="tag tag--primary tag--small t-link" href="/tags/pug/">pug</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/20/有效率會議的五大原則/"  data-tooltip="有效率會議的五大原則">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/" data-tooltip="所有決議都必須留下紀錄 - 凡走過，必留下痕跡">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Mr.UniSharp. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/20/有效率會議的五大原則/"  data-tooltip="有效率會議的五大原則">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/" data-tooltip="所有決議都必須留下紀錄 - 凡走過，必留下痕跡">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+        
+            <h4 id="about-card-name">Mr.UniSharp</h4>
+        
+            <div id="about-card-bio"><p>work smart, smart work</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>客製網路產品</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Taipei
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">沒有找到文章</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/11/11/利用 JavaScript 的特性，寫出不易解讀的程式/">
+                            <img class="media-image" src="http://68.media.tumblr.com/d12f34ebe3721e1550cb0913eebc2205/tumblr_n2g4q2OnDu1tubinno1_1280.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/11/11/利用 JavaScript 的特性，寫出不易解讀的程式/">
+                            <h3 class="media-heading">利用 JavaScript 的特性，寫出不易解讀的程式</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年11月11日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>JavaScript 是個弱型別語言，因此我們可以這樣做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+<span class="literal">false</span>; <span class="comment">// 0</span></div><div class="line">+<span class="literal">true</span>; <span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<p>JavaScript 物件的屬性及方法有兩種取得方式：</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/02/UX 從新手開始/">
+                            <img class="media-image" src="http://pic.eslite.com/Upload/Product/201611/m/636136140444770000.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/02/UX 從新手開始/">
+                            <h3 class="media-heading">UX 從新手開始，使用者體驗的 100堂必修課</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月2日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>​    今天來為大家介紹的這本「UX 從新手開始，使用者體驗的 100堂必修課」，作者完整地將 UX 設計中較容易碰到的問題與設計方法介紹給讀者，所以本書並不會像 「UX 策略」那樣的專精詳述某種特定方法，而是概略地提及讓大家有基本概念。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/cover.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/">
+                            <h3 class="media-heading">閱讀體驗不好的程式碼</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月9日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。如果專案中重複的 code 一大堆<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/30/2016 Xsion 國際創新論壇/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/12/30/2016 Xsion 國際創新論壇/xsion.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/30/2016 Xsion 國際創新論壇/">
+                            <h3 class="media-heading">2016 Xsion 國際創新論壇</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月30日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Bebit 社長  遠藤 直紀<br><strong>如何測量顧客忠誠度的指標 ?</strong><br>NPS 凈推薦分數 (Net Promoter Score )<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/brain.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/">
+                            <h3 class="media-heading">溝通-活用本質力</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年1月6日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/增進資料庫效能-以mysql為例/">
+                            <img class="media-image" src="https://static.pexels.com/photos/239898/pexels-photo-239898.jpeg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/增進資料庫效能-以mysql為例/">
+                            <h3 class="media-heading">增進資料庫效能-以mysql為例</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月13日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Mysql經常是所有php工程師最常碰到的關聯式資料庫，然而每當碰到mysql效能瓶頸時，才發現資料庫跟自己完全不熟。<br>本文旨在提供一個入門磚，提供給大家幾個關鍵字以解決效能的問題。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/img_20170213_01.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/">
+                            <h3 class="media-heading">觀察實體世界中的「使用者體驗」</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月13日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
+                            <img class="media-image" src="https://static.pexels.com/photos/29678/pexels-photo.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
+                            <h3 class="media-heading">所有決議都必須留下紀錄 - 凡走過，必留下痕跡</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
+<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/">
+                            <img class="media-image" src="https://static.pexels.com/photos/260606/pexels-photo-260606.jpeg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/">
+                            <h3 class="media-heading">有效率會議的五大原則</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月20日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>每次跟師父開會，都會有一種很迅速就結束會議的錯覺，我心裡常會這樣想：『怎麼這麼快就會有結論了？』。</p>
+<p>本篇偷偷列了一下最近觀察到的秘訣（無論是面對面的會議或是電話會議，都適用）：<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="沒有找到文章"
+                data-message-one="找到 1 篇文章"
+                data-message-other="找到 {n} 篇文章">
+                找到 13 篇文章
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+
+    </body>
+</html>
