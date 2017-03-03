@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.unisharp.com/"/>
-  <updated>2017-02-23T09:37:57.000Z</updated>
+  <updated>2017-03-03T08:26:41.000Z</updated>
   <id>http://blog.unisharp.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.unisharp.com/2017/04/14/%E5%87%B1%E7%89%B9%E7%9A%84%E8%8A%B1%E8%93%AE%E8%A7%80%E9%81%8A%E9%9B%86%E9%8C%A6/"/>
     <id>http://blog.unisharp.com/2017/04/14/凱特的花蓮觀遊集錦/</id>
     <published>2017-04-13T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
+    <updated>2017-03-03T08:26:41.000Z</updated>
     
     <content type="html"><![CDATA[<p>自從蘇花開通後，東部像是多了一道門，越來越多親朋好友你鄰居不遠千里來到東部踏踏青，離門口最近的宜蘭被開發地早，後來花蓮也相繼有蓬勃的發展。<br>小編當年看著一個學校簡介，被迷惑地不要不要的，就這麼來到了花蓮<br><a id="more"></a><br>，一待就是五年，從原始（ㄏ ㄨ ㄤ ㄌ ㄧ ㄤˊ）的景色到改建後的繁華景象，<br>真心覺得這一趟旅程像是在時空中穿梭般令我難忘，是一個此生必遊一次的好地方，所以小編特別整理出小部分（跋山涉水就不收錄了）的景點，也都是小編直到現在仍然一訪再訪的景點。</p>
 <h1 id="花蓮景點"><a href="#花蓮景點" class="headerlink" title="花蓮景點"></a>花蓮景點</h1><h4 id="知卡宣公園"><a href="#知卡宣公園" class="headerlink" title="知卡宣公園"></a>知卡宣公園</h4><ul>
@@ -422,48 +422,11 @@ rolling_checksum = A + (2^16) * B
   </entry>
   
   <entry>
-    <title>觀察實體世界中的「使用者體驗」</title>
-    <link href="http://blog.unisharp.com/2017/02/13/%E8%A7%80%E5%AF%9F%E5%AF%A6%E9%AB%94%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E3%80%8D/"/>
-    <id>http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/</id>
-    <published>2017-02-12T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br><a id="more"></a><br>也不斷的推陳出新。而這些研究和分析最終的核心精神，都是希望能夠全方位的了解使用者，並盡可能的讓使用者與產品接觸時有良好的使用體驗。</p>
-<p>雖然這些名詞近幾年才出現，但我一直認為，為使用者提供良好體驗這件事，其實一直都存在於實體世界中，甚至是被譽為經營之神的王永慶，也早在好幾十年前就已經開始做這些事情了。</p>
-<blockquote>
-<p>王永慶15歲小學畢業後，到一家小米店做學徒。第二年，他用父親借來的200元錢做本金自己開了一家小米店。為了和隔壁那家日本米店競爭，王永慶頗費了一番心思。</p>
-<p>當時大米加工技術比較落後，出售的大米里混雜著米糠、沙粒、小石頭等，買賣雙方都是見怪不怪。王永慶則多了一個心眼，每次賣米前都把米中的雜物揀乾淨，這一額外的服務深受顧客歡迎。</p>
-<p>王永慶賣米多是送米上門，他在一個本子上詳細記錄了顧客家有多少人、一個月吃多少米、何時發薪等。算算顧客的米該吃完了，就送米上門；等到顧客發薪的日子，再上門收取米款。</p>
-<p>他給顧客送米時，並非送到就算。他先幫人家將米倒進米缸里。如果米缸里還有米，他就將舊米倒出來，將米缸刷乾淨，然後將新米倒進去，將舊米放在上層。這樣，米就不至於因陳放過久而變質。他這個小小的舉動令不少顧客深受感動，鐵了心專買他的米。</p>
-<p>就這樣，他的生意越來越好。從這家小米店起步，王永慶最終成為今日台灣工業界的「龍頭老大」。</p>
-</blockquote>
-<p>是不是覺得有點熟悉？王永慶當年在筆記本上紀錄顧客的消費資訊，並依此優化顧客的消費體驗，不就跟現在UX和Big Data的在做的事情相同嗎。只是隨著時代和科技的改變，紀錄的方式從手寫的筆記本變成了網路上的程式，但提供良好體驗的核心精神並沒有不同。</p>
-<p><img src="img_20170213_02.jpg" alt="使用者體驗"></p>
-<p>這樣的核心精神也存在於實體世界的各行各業中。回想一下自己在餐廳用餐時的經驗，服務人員觀察顧客們的用餐情況，餐點有沒有打翻，水是不是已經喝完，然後即時的提供服務。這跟我們透過熱點分析、點擊率等方式了解使用者如何使用網站和APP，本質上並沒有不同，都是去了解使用者使用產品時的情形，然後將不符預期或造成使用者困擾的部分修正掉。</p>
-<p>未來在幫任何產品做UX優化時都要提醒自己，不管「使用者體驗」這個名詞如何變更，測試和紀錄數據的工具如何推陳出新，都不要迷失在這些名詞或工具的絢麗技術裡。將目光放遠停留在真正的使用者身上，讓使用者有更加良好的使用體驗，才是我們的最終目的！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具&lt;br&gt;
-    
-    </summary>
-    
-      <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
-    
-    
-      <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
-    
-      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
-    
-  </entry>
-  
-  <entry>
     <title>增進資料庫效能-以mysql為例</title>
     <link href="http://blog.unisharp.com/2017/02/13/%E5%A2%9E%E9%80%B2%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%88%E8%83%BD-%E4%BB%A5mysql%E7%82%BA%E4%BE%8B/"/>
     <id>http://blog.unisharp.com/2017/02/13/增進資料庫效能-以mysql為例/</id>
     <published>2017-02-12T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
+    <updated>2017-03-03T08:21:44.000Z</updated>
     
     <content type="html"><![CDATA[<p>Mysql經常是所有php工程師最常碰到的關聯式資料庫，然而每當碰到mysql效能瓶頸時，才發現資料庫跟自己完全不熟。<br>本文旨在提供一個入門磚，提供給大家幾個關鍵字以解決效能的問題。<br><a id="more"></a></p>
 <h4 id="使用InnoDB取代MyISAM"><a href="#使用InnoDB取代MyISAM" class="headerlink" title="使用InnoDB取代MyISAM"></a>使用InnoDB取代MyISAM</h4><p>除非你的table完全不需要insert update delete，不然InnoDB在sql語法上表現幾乎是優於MyISAM，而且在Transactions時InnoDB支援row lock，而MyISAM卻只支援table lock。</p>
@@ -495,11 +458,48 @@ rolling_checksum = A + (2^16) * B
   </entry>
   
   <entry>
+    <title>觀察實體世界中的「使用者體驗」</title>
+    <link href="http://blog.unisharp.com/2017/02/13/%E8%A7%80%E5%AF%9F%E5%AF%A6%E9%AB%94%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E3%80%8D/"/>
+    <id>http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/</id>
+    <published>2017-02-12T16:00:00.000Z</published>
+    <updated>2017-02-23T09:37:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br><a id="more"></a><br>也不斷的推陳出新。而這些研究和分析最終的核心精神，都是希望能夠全方位的了解使用者，並盡可能的讓使用者與產品接觸時有良好的使用體驗。</p>
+<p>雖然這些名詞近幾年才出現，但我一直認為，為使用者提供良好體驗這件事，其實一直都存在於實體世界中，甚至是被譽為經營之神的王永慶，也早在好幾十年前就已經開始做這些事情了。</p>
+<blockquote>
+<p>王永慶15歲小學畢業後，到一家小米店做學徒。第二年，他用父親借來的200元錢做本金自己開了一家小米店。為了和隔壁那家日本米店競爭，王永慶頗費了一番心思。</p>
+<p>當時大米加工技術比較落後，出售的大米里混雜著米糠、沙粒、小石頭等，買賣雙方都是見怪不怪。王永慶則多了一個心眼，每次賣米前都把米中的雜物揀乾淨，這一額外的服務深受顧客歡迎。</p>
+<p>王永慶賣米多是送米上門，他在一個本子上詳細記錄了顧客家有多少人、一個月吃多少米、何時發薪等。算算顧客的米該吃完了，就送米上門；等到顧客發薪的日子，再上門收取米款。</p>
+<p>他給顧客送米時，並非送到就算。他先幫人家將米倒進米缸里。如果米缸里還有米，他就將舊米倒出來，將米缸刷乾淨，然後將新米倒進去，將舊米放在上層。這樣，米就不至於因陳放過久而變質。他這個小小的舉動令不少顧客深受感動，鐵了心專買他的米。</p>
+<p>就這樣，他的生意越來越好。從這家小米店起步，王永慶最終成為今日台灣工業界的「龍頭老大」。</p>
+</blockquote>
+<p>是不是覺得有點熟悉？王永慶當年在筆記本上紀錄顧客的消費資訊，並依此優化顧客的消費體驗，不就跟現在UX和Big Data的在做的事情相同嗎。只是隨著時代和科技的改變，紀錄的方式從手寫的筆記本變成了網路上的程式，但提供良好體驗的核心精神並沒有不同。</p>
+<p><img src="img_20170213_02.jpg" alt="使用者體驗"></p>
+<p>這樣的核心精神也存在於實體世界的各行各業中。回想一下自己在餐廳用餐時的經驗，服務人員觀察顧客們的用餐情況，餐點有沒有打翻，水是不是已經喝完，然後即時的提供服務。這跟我們透過熱點分析、點擊率等方式了解使用者如何使用網站和APP，本質上並沒有不同，都是去了解使用者使用產品時的情形，然後將不符預期或造成使用者困擾的部分修正掉。</p>
+<p>未來在幫任何產品做UX優化時都要提醒自己，不管「使用者體驗」這個名詞如何變更，測試和紀錄數據的工具如何推陳出新，都不要迷失在這些名詞或工具的絢麗技術裡。將目光放遠停留在真正的使用者身上，讓使用者有更加良好的使用體驗，才是我們的最終目的！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具&lt;br&gt;
+    
+    </summary>
+    
+      <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
+    
+    
+      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
+    
+      <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
+    
+  </entry>
+  
+  <entry>
     <title>溝通-活用本質力</title>
     <link href="http://blog.unisharp.com/2017/01/06/%E6%BA%9D%E9%80%9A-%E6%B4%BB%E7%94%A8%E6%9C%AC%E8%B3%AA%E5%8A%9B/"/>
     <id>http://blog.unisharp.com/2017/01/06/溝通-活用本質力/</id>
     <published>2017-01-05T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
+    <updated>2017-03-03T08:28:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br><a id="more"></a></p>
 <p>在與業主打交道很常遇見！</p>
@@ -1012,7 +1012,7 @@ rolling_checksum = A + (2^16) * B
     <link href="http://blog.unisharp.com/2016/12/09/%E9%96%B1%E8%AE%80%E9%AB%94%E9%A9%97%E4%B8%8D%E5%A5%BD%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC/"/>
     <id>http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/</id>
     <published>2016-12-08T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
+    <updated>2017-03-03T08:10:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。如果專案中重複的 code 一大堆<br><a id="more"></a><br>，又或者 function 命名模稜兩可，又看不到任何的註解，想必會讓日後接著維護的人（99% 都是幾個禮拜後的自己）難以下手，為了修改一個小小的功能卻花的很多不必要的時間。</p>
 <h2 id="發生閱讀問題的情境"><a href="#發生閱讀問題的情境" class="headerlink" title="發生閱讀問題的情境"></a>發生閱讀問題的情境</h2><p>以下是可能發生在開發中的一些現象或是操作行為，逐項列出了造成閱讀體驗不好的原因：</p>
@@ -1112,11 +1112,11 @@ rolling_checksum = A + (2^16) * B
       <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
     
     
+      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
+    
       <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
     
       <category term="使用者體驗" scheme="http://blog.unisharp.com/tags/%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97/"/>
-    
-      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
     
   </entry>
   
