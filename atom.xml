@@ -217,8 +217,6 @@
     
       <category term="小PM備忘錄" scheme="http://blog.unisharp.com/tags/%E5%B0%8FPM%E5%82%99%E5%BF%98%E9%8C%84/"/>
     
-      <category term="有效的會議" scheme="http://blog.unisharp.com/tags/%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%83%E8%AD%B0/"/>
-    
       <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
     
       <category term="電話會議" scheme="http://blog.unisharp.com/tags/%E9%9B%BB%E8%A9%B1%E6%9C%83%E8%AD%B0/"/>
@@ -226,6 +224,8 @@
       <category term="開會" scheme="http://blog.unisharp.com/tags/%E9%96%8B%E6%9C%83/"/>
     
       <category term="小技巧" scheme="http://blog.unisharp.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+      <category term="有效的會議" scheme="http://blog.unisharp.com/tags/%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%83%E8%AD%B0/"/>
     
   </entry>
   
@@ -325,52 +325,15 @@
     
       <category term="電話會議" scheme="http://blog.unisharp.com/tags/%E9%9B%BB%E8%A9%B1%E6%9C%83%E8%AD%B0/"/>
     
+      <category term="會議記錄" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0%E8%A8%98%E9%8C%84/"/>
+    
       <category term="開會" scheme="http://blog.unisharp.com/tags/%E9%96%8B%E6%9C%83/"/>
     
       <category term="小技巧" scheme="http://blog.unisharp.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
-      <category term="會議記錄" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0%E8%A8%98%E9%8C%84/"/>
-    
       <category term="通訊軟體" scheme="http://blog.unisharp.com/tags/%E9%80%9A%E8%A8%8A%E8%BB%9F%E9%AB%94/"/>
     
       <category term="凡事都要留紀錄" scheme="http://blog.unisharp.com/tags/%E5%87%A1%E4%BA%8B%E9%83%BD%E8%A6%81%E7%95%99%E7%B4%80%E9%8C%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>觀察實體世界中的「使用者體驗」</title>
-    <link href="http://blog.unisharp.com/2017/02/13/%E8%A7%80%E5%AF%9F%E5%AF%A6%E9%AB%94%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E3%80%8D/"/>
-    <id>http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/</id>
-    <published>2017-02-12T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br><a id="more"></a><br>也不斷的推陳出新。而這些研究和分析最終的核心精神，都是希望能夠全方位的了解使用者，並盡可能的讓使用者與產品接觸時有良好的使用體驗。</p>
-<p>雖然這些名詞近幾年才出現，但我一直認為，為使用者提供良好體驗這件事，其實一直都存在於實體世界中，甚至是被譽為經營之神的王永慶，也早在好幾十年前就已經開始做這些事情了。</p>
-<blockquote>
-<p>王永慶15歲小學畢業後，到一家小米店做學徒。第二年，他用父親借來的200元錢做本金自己開了一家小米店。為了和隔壁那家日本米店競爭，王永慶頗費了一番心思。</p>
-<p>當時大米加工技術比較落後，出售的大米里混雜著米糠、沙粒、小石頭等，買賣雙方都是見怪不怪。王永慶則多了一個心眼，每次賣米前都把米中的雜物揀乾淨，這一額外的服務深受顧客歡迎。</p>
-<p>王永慶賣米多是送米上門，他在一個本子上詳細記錄了顧客家有多少人、一個月吃多少米、何時發薪等。算算顧客的米該吃完了，就送米上門；等到顧客發薪的日子，再上門收取米款。</p>
-<p>他給顧客送米時，並非送到就算。他先幫人家將米倒進米缸里。如果米缸里還有米，他就將舊米倒出來，將米缸刷乾淨，然後將新米倒進去，將舊米放在上層。這樣，米就不至於因陳放過久而變質。他這個小小的舉動令不少顧客深受感動，鐵了心專買他的米。</p>
-<p>就這樣，他的生意越來越好。從這家小米店起步，王永慶最終成為今日台灣工業界的「龍頭老大」。</p>
-</blockquote>
-<p>是不是覺得有點熟悉？王永慶當年在筆記本上紀錄顧客的消費資訊，並依此優化顧客的消費體驗，不就跟現在UX和Big Data的在做的事情相同嗎。只是隨著時代和科技的改變，紀錄的方式從手寫的筆記本變成了網路上的程式，但提供良好體驗的核心精神並沒有不同。</p>
-<p><img src="img_20170213_02.jpg" alt="使用者體驗"></p>
-<p>這樣的核心精神也存在於實體世界的各行各業中。回想一下自己在餐廳用餐時的經驗，服務人員觀察顧客們的用餐情況，餐點有沒有打翻，水是不是已經喝完，然後即時的提供服務。這跟我們透過熱點分析、點擊率等方式了解使用者如何使用網站和APP，本質上並沒有不同，都是去了解使用者使用產品時的情形，然後將不符預期或造成使用者困擾的部分修正掉。</p>
-<p>未來在幫任何產品做UX優化時都要提醒自己，不管「使用者體驗」這個名詞如何變更，測試和紀錄數據的工具如何推陳出新，都不要迷失在這些名詞或工具的絢麗技術裡。將目光放遠停留在真正的使用者身上，讓使用者有更加良好的使用體驗，才是我們的最終目的！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具&lt;br&gt;
-    
-    </summary>
-    
-      <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
-    
-    
-      <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
-    
-      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
     
   </entry>
   
@@ -407,6 +370,43 @@
       <category term="mysql" scheme="http://blog.unisharp.com/tags/mysql/"/>
     
       <category term="Database" scheme="http://blog.unisharp.com/tags/Database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>觀察實體世界中的「使用者體驗」</title>
+    <link href="http://blog.unisharp.com/2017/02/13/%E8%A7%80%E5%AF%9F%E5%AF%A6%E9%AB%94%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E3%80%8D/"/>
+    <id>http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/</id>
+    <published>2017-02-12T16:00:00.000Z</published>
+    <updated>2017-02-23T09:37:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br><a id="more"></a><br>也不斷的推陳出新。而這些研究和分析最終的核心精神，都是希望能夠全方位的了解使用者，並盡可能的讓使用者與產品接觸時有良好的使用體驗。</p>
+<p>雖然這些名詞近幾年才出現，但我一直認為，為使用者提供良好體驗這件事，其實一直都存在於實體世界中，甚至是被譽為經營之神的王永慶，也早在好幾十年前就已經開始做這些事情了。</p>
+<blockquote>
+<p>王永慶15歲小學畢業後，到一家小米店做學徒。第二年，他用父親借來的200元錢做本金自己開了一家小米店。為了和隔壁那家日本米店競爭，王永慶頗費了一番心思。</p>
+<p>當時大米加工技術比較落後，出售的大米里混雜著米糠、沙粒、小石頭等，買賣雙方都是見怪不怪。王永慶則多了一個心眼，每次賣米前都把米中的雜物揀乾淨，這一額外的服務深受顧客歡迎。</p>
+<p>王永慶賣米多是送米上門，他在一個本子上詳細記錄了顧客家有多少人、一個月吃多少米、何時發薪等。算算顧客的米該吃完了，就送米上門；等到顧客發薪的日子，再上門收取米款。</p>
+<p>他給顧客送米時，並非送到就算。他先幫人家將米倒進米缸里。如果米缸里還有米，他就將舊米倒出來，將米缸刷乾淨，然後將新米倒進去，將舊米放在上層。這樣，米就不至於因陳放過久而變質。他這個小小的舉動令不少顧客深受感動，鐵了心專買他的米。</p>
+<p>就這樣，他的生意越來越好。從這家小米店起步，王永慶最終成為今日台灣工業界的「龍頭老大」。</p>
+</blockquote>
+<p>是不是覺得有點熟悉？王永慶當年在筆記本上紀錄顧客的消費資訊，並依此優化顧客的消費體驗，不就跟現在UX和Big Data的在做的事情相同嗎。只是隨著時代和科技的改變，紀錄的方式從手寫的筆記本變成了網路上的程式，但提供良好體驗的核心精神並沒有不同。</p>
+<p><img src="img_20170213_02.jpg" alt="使用者體驗"></p>
+<p>這樣的核心精神也存在於實體世界的各行各業中。回想一下自己在餐廳用餐時的經驗，服務人員觀察顧客們的用餐情況，餐點有沒有打翻，水是不是已經喝完，然後即時的提供服務。這跟我們透過熱點分析、點擊率等方式了解使用者如何使用網站和APP，本質上並沒有不同，都是去了解使用者使用產品時的情形，然後將不符預期或造成使用者困擾的部分修正掉。</p>
+<p>未來在幫任何產品做UX優化時都要提醒自己，不管「使用者體驗」這個名詞如何變更，測試和紀錄數據的工具如何推陳出新，都不要迷失在這些名詞或工具的絢麗技術裡。將目光放遠停留在真正的使用者身上，讓使用者有更加良好的使用體驗，才是我們的最終目的！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具&lt;br&gt;
+    
+    </summary>
+    
+      <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
+    
+    
+      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
+    
+      <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
     
   </entry>
   
@@ -1028,11 +1028,11 @@
       <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
     
     
+      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
+    
       <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
     
       <category term="使用者體驗" scheme="http://blog.unisharp.com/tags/%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97/"/>
-    
-      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
     
   </entry>
   
@@ -1041,7 +1041,7 @@
     <link href="http://blog.unisharp.com/2016/11/30/rsync%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%AF%94%E8%BC%83%E6%AA%94%E6%A1%88%E5%B7%AE%E7%95%B0%E7%9A%84%EF%BC%9F/"/>
     <id>http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/</id>
     <published>2016-11-29T16:00:00.000Z</published>
-    <updated>2017-03-06T00:57:35.000Z</updated>
+    <updated>2017-03-06T02:51:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br><a id="more"></a><br>如果自己想自製一個能夠比較兩份文件差異的程式，稍微想一下設計，大約還能以行爲單位來設計，找出差異。</p>
 <p>但是如果檔案並非純文字，而是像照片這般的二進位檔案，可能一整份檔案都沒有任何換行符號，一比較差異就是讓伺服器把整份檔案重新抓下來了。</p>
