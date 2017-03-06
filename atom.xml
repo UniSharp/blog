@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.unisharp.com/"/>
-  <updated>2017-03-03T08:26:41.000Z</updated>
+  <updated>2017-02-23T09:37:57.000Z</updated>
   <id>http://blog.unisharp.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PM在團隊中扮演協調與溝通的角色</title>
+    <link href="http://blog.unisharp.com/2017/04/14/PM%E5%9C%A8%E5%9C%98%E9%9A%8A%E4%B8%AD%E6%89%AE%E6%BC%94%E5%8D%94%E8%AA%BF%E8%88%87%E6%BA%9D%E9%80%9A%E7%9A%84%E8%A7%92%E8%89%B2/"/>
+    <id>http://blog.unisharp.com/2017/04/14/PM在團隊中扮演協調與溝通的角色/</id>
+    <published>2017-04-13T16:00:00.000Z</published>
+    <updated>2017-02-23T09:37:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。<br>怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指<br><a id="more"></a><br>「在溝通過程中，清楚地傳達了你的意思，也達到了你的目的」。</p>
+<h2 id="PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續"><a href="#PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續" class="headerlink" title="PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續"></a>PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續</h2><p>PM要像枕頭一樣，同時面對客戶以及不同部門專案成員時，作為一個緩衝的角色，吸收來自一方意見的衝擊，消化整理後再反彈到另一方，保持平穩的溝通方式。</p>
+<p>PM要當客戶與執行團隊之間堅固的橋樑，PM不應單方面的告知，告知客戶執行專案的企劃怎麼想，行銷怎麼說，若是客戶不滿意，在這情況下，又原封不動地告知團隊「客戶不滿意」，反而讓雙方的情緒影響專案。</p>
+<h2 id="隨時能夠轉換角色，同時具備同理心以及鞭策力"><a href="#隨時能夠轉換角色，同時具備同理心以及鞭策力" class="headerlink" title="隨時能夠轉換角色，同時具備同理心以及鞭策力"></a>隨時能夠轉換角色，同時具備同理心以及鞭策力</h2><p>PM 通常要能轉換角色，和客戶溝通時，要能站在客戶的立場，讓客戶知道我們是和他站在同一陣線；有時候也必須轉站公司的立場，清楚地堅守底線，以維護公司的權益；對公司內部也是如此，和跨部門成員溝通專案細節，要能站在執行面的立場，傾聽成員時而抱怨、時而置疑的聲音，假做朋友一場XD。<br>正因為PM身負「資源協調者」和「進度監督者」兩項重任，更要能夠讓每個團隊成員都了解專案進度、認同並心服地執行專案，不能有「將工作分配出去之後，都是其他人的事情」的想法，與成員和部門維持良好的互動，提供清楚的訊息，才能讓團隊效率越來越高。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。&lt;br&gt;怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Communication" scheme="http://blog.unisharp.com/categories/Communication/"/>
+    
+    
+      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
+    
+  </entry>
   
   <entry>
     <title>凱特的花蓮觀遊集錦</title>
@@ -147,121 +173,11 @@
   </entry>
   
   <entry>
-    <title>PM在團隊中扮演協調與溝通的角色</title>
-    <link href="http://blog.unisharp.com/2017/04/14/PM%E5%9C%A8%E5%9C%98%E9%9A%8A%E4%B8%AD%E6%89%AE%E6%BC%94%E5%8D%94%E8%AA%BF%E8%88%87%E6%BA%9D%E9%80%9A%E7%9A%84%E8%A7%92%E8%89%B2/"/>
-    <id>http://blog.unisharp.com/2017/04/14/PM在團隊中扮演協調與溝通的角色/</id>
-    <published>2017-04-13T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。<br>怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指<br><a id="more"></a><br>「在溝通過程中，清楚地傳達了你的意思，也達到了你的目的」。</p>
-<h2 id="PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續"><a href="#PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續" class="headerlink" title="PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續"></a>PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續</h2><p>PM要像枕頭一樣，同時面對客戶以及不同部門專案成員時，作為一個緩衝的角色，吸收來自一方意見的衝擊，消化整理後再反彈到另一方，保持平穩的溝通方式。</p>
-<p>PM要當客戶與執行團隊之間堅固的橋樑，PM不應單方面的告知，告知客戶執行專案的企劃怎麼想，行銷怎麼說，若是客戶不滿意，在這情況下，又原封不動地告知團隊「客戶不滿意」，反而讓雙方的情緒影響專案。</p>
-<h2 id="隨時能夠轉換角色，同時具備同理心以及鞭策力"><a href="#隨時能夠轉換角色，同時具備同理心以及鞭策力" class="headerlink" title="隨時能夠轉換角色，同時具備同理心以及鞭策力"></a>隨時能夠轉換角色，同時具備同理心以及鞭策力</h2><p>PM 通常要能轉換角色，和客戶溝通時，要能站在客戶的立場，讓客戶知道我們是和他站在同一陣線；有時候也必須轉站公司的立場，清楚地堅守底線，以維護公司的權益；對公司內部也是如此，和跨部門成員溝通專案細節，要能站在執行面的立場，傾聽成員時而抱怨、時而置疑的聲音，假做朋友一場XD。<br>正因為PM身負「資源協調者」和「進度監督者」兩項重任，更要能夠讓每個團隊成員都了解專案進度、認同並心服地執行專案，不能有「將工作分配出去之後，都是其他人的事情」的想法，與成員和部門維持良好的互動，提供清楚的訊息，才能讓團隊效率越來越高。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。&lt;br&gt;怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Communication" scheme="http://blog.unisharp.com/categories/Communication/"/>
-    
-    
-      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rsync 是如何比較檔案差異的</title>
-    <link href="http://blog.unisharp.com/2017/02/23/rsync%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%AF%94%E8%BC%83%E6%AA%94%E6%A1%88%E5%B7%AE%E7%95%B0%E7%9A%84%EF%BC%9F/"/>
-    <id>http://blog.unisharp.com/2017/02/23/rsync 是如何比較檔案差異的？/</id>
-    <published>2017-02-23T09:37:57.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br><a id="more"></a><br>如果自己想自製一個能夠比較兩份文件差異的程式，稍微想一下設計，大約還能以行爲單位來設計，找出差異。</p>
-<p>但是如果檔案並非純文字，而是像照片這般的二進位檔案，可能一整份檔案都沒有任何換行符號，一比較差異就是讓伺服器把整份檔案重新抓下來了。</p>
-<p>面對通用檔案的差異比較，其設計思路就會朝向將檔案切成一塊一塊的區塊來進行差異比較。但終究需要面對以下問題：</p>
-<ul>
-<li>不可能將每個區塊的內容下載下來讓客戶端進行比較，這樣等同下載整份檔案</li>
-<li>如果只是檔頭加了一點內容，切割區塊有機會造成每個區塊內容就不同，也等同要下載整份檔案</li>
-</ul>
-<p>面對以上問題，rsync 採用了一些不錯的解決對策</p>
-<h4 id="校驗和-Checksum"><a href="#校驗和-Checksum" class="headerlink" title="校驗和 (Checksum)"></a>校驗和 (Checksum)</h4><p>校驗和不是 rsync 獨有的東西，很早就有利用校驗和來檢查檔案是否完整的流程存在。而校驗和其原理就只是利用檔案內的資料產生一個獨特的值，讓下載方與供應方用同樣的方法生出該值，稍加比較就知道兩個檔案是否相同。</p>
-<p>舉個最簡單的校驗和的例子，假設檔案內容如下：</p>
-<pre><code>{5, 6, 7, 8}
-</code></pre><p>最簡單的校驗和可以直接全部內容相加，其校驗和爲 26 ，只要下載方的校驗和也是 26 ，檔案下載完整的 <strong>可能性</strong> 就越高。</p>
-<p>這裡的說明是用 <strong>可能性</strong> 是因為大家都知道直接相加的缺點。有太多可以產生相同校驗和的方法了。<br>例如以下內容皆有機會被視為相同檔案：</p>
-<pre><code>{3, 7, 8, 8}
-{9, 2, 5, 11}
-</code></pre><p>因此資訊界競相設計出各種校驗和的演算，例如 md4, md5 ，都宣稱高度可信，很難有不同的來源會產生相同的校驗和。但是越高度可信，所需要的計算時間越久，甚至需要產生一些質數出來輔助。</p>
-<p>總結校驗和帶來的幫助，就是無需將伺服器上的每個區塊的內容都下載下來比較，只需要比較其校驗和便能得知是否有相同內容。</p>
-<h4 id="rsync-策略概述"><a href="#rsync-策略概述" class="headerlink" title="rsync 策略概述"></a>rsync 策略概述</h4><p>rsync 接下來要面對的問題，就是如何避免檔案偏移，就造成下載整份檔案的狀況。其流程大概像下面的步驟：</p>
-<ol>
-<li>將伺服器上的檔案 B 切成不重疊的區塊。</li>
-<li>將檔案 B 的所有區塊分別算出一個<strong>弱校驗和</strong>(Rolling Checksum) 和 <strong>強校驗和</strong> (md4)</li>
-<li>客戶端將所有區塊的校驗和下載製表 (hash table)</li>
-<li>客戶端從檔案 A 的檔頭開始切區塊，先只快速算出 <strong>弱校驗和</strong>，用其查表，查看是否存在</li>
-<li>查表<ul>
-<li>若無法用弱校驗和查出檔案 B 有該區塊，則區塊往下偏移繼續切並重複步驟 4 直至檔尾。</li>
-<li>若能查表查到才用<strong>強校驗和</strong>計算並比較，若符合代表有該區塊，並紀錄該區塊存在。反之則重複步驟 4</li>
-</ul>
-</li>
-</ol>
-<p>這個策略流程很簡單，但是要突破的瓶頸就是速度。不斷地將區塊偏移並且查詢比較非常耗時，因此其核心是快速的產生校驗和，快速的得知沒有相符的區塊，以避免每個區塊都用速度較慢的強校驗和檢查。在此 rsync 設計的 Rolling Checksum 佔了非常重要的位置。</p>
-<p>而 Rolling Checksum 其速度跟前述的將所有資料相加的速度是一樣快的，但又沒有說弱到一下就產生碰撞 ，因此非常適合作初步檢驗。</p>
-<h4 id="Rolling-Checksum"><a href="#Rolling-Checksum" class="headerlink" title="Rolling Checksum"></a>Rolling Checksum</h4><p>為了說明方便， Rolling Checksum 簡化算式如下</p>
-<pre><code>i 是 block 的開始位置，j 爲結束位置
-bsize 則是一個 block 的大小
-
-A = block[i] + block[i+1] + ... + block[j] // 從頭加到尾的意思
-B = bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]
-
-rolling_checksum = A + B
-</code></pre><p>假設一個 block 的大小爲 4 個 byte ， 且 block 內容依然是</p>
-<pre><code>{5, 6, 7, 8}
-</code></pre><p>其 Rolling Checksum 爲</p>
-<pre><code>A = 5 + 6 + 7 + 8
-B = (4 * 5) + (3 * 6) + (2 * 7) + (1 * 8)
-</code></pre><p>那為什麼說其速度跟全部加起來一樣快呢？ 觀察 A 部分的全部相加，大概會這樣設計一個迴圈</p>
-<pre><code>A = 0;
-for (i = 0; i &lt; bsize; i++) {
-    A += block[i];
-}
-</code></pre><p>將迴圈的流程稍微拆解一下，觀察一下 A 的內容</p>
-<pre><code>1.) A = 5
-2.) A = 5 + 6
-3.) A = 5 + 6 + 7
-4.) A = 5 + 6 + 7 + 8
-</code></pre><p>可以發現當中的 5 出現了 4 次，6 出現了 3 次，竟然跟算式 B 的要求吻合（這當然是有設計過的呀）。<br>所以要計算 B 的值只需要在同一個迴圈累加一下 A 便能同時算出 B 的值。稍微改寫如下</p>
-<pre><code>A = 0, B = 0;
-for (i = 0; i &lt; bsize; i++) {
-    A += block[i]
-    B += A;
-}
-</code></pre><p>最後補正為了說明而簡化的部分，其實這部分就只是為了 hash table 查詢所需要的取餘數的部分</p>
-<p>完整定義：</p>
-<pre><code>A = (block[i] + block[i+1] + ... + block[j]) % M // 從頭加到尾的意思
-B = (bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]) % M
-
-rolling_checksum = A + (2^16) * B
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>有效率會議的五大原則</title>
     <link href="http://blog.unisharp.com/2017/02/20/%E6%9C%89%E6%95%88%E7%8E%87%E6%9C%83%E8%AD%B0%E7%9A%84%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%89%87/"/>
     <id>http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/</id>
     <published>2017-02-19T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
+    <updated>2017-03-06T01:20:49.000Z</updated>
     
     <content type="html"><![CDATA[<p>每次跟師父開會，都會有一種很迅速就結束會議的錯覺，我心裡常會這樣想：『怎麼這麼快就會有結論了？』。</p>
 <p>本篇偷偷列了一下最近觀察到的秘訣（無論是面對面的會議或是電話會議，都適用）：<br><a id="more"></a></p>
@@ -301,6 +217,8 @@ rolling_checksum = A + (2^16) * B
     
       <category term="小PM備忘錄" scheme="http://blog.unisharp.com/tags/%E5%B0%8FPM%E5%82%99%E5%BF%98%E9%8C%84/"/>
     
+      <category term="有效的會議" scheme="http://blog.unisharp.com/tags/%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%83%E8%AD%B0/"/>
+    
       <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
     
       <category term="電話會議" scheme="http://blog.unisharp.com/tags/%E9%9B%BB%E8%A9%B1%E6%9C%83%E8%AD%B0/"/>
@@ -308,8 +226,6 @@ rolling_checksum = A + (2^16) * B
       <category term="開會" scheme="http://blog.unisharp.com/tags/%E9%96%8B%E6%9C%83/"/>
     
       <category term="小技巧" scheme="http://blog.unisharp.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    
-      <category term="有效的會議" scheme="http://blog.unisharp.com/tags/%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%83%E8%AD%B0/"/>
     
   </entry>
   
@@ -368,7 +284,7 @@ rolling_checksum = A + (2^16) * B
     <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
     <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
     <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
+    <updated>2017-03-06T00:57:35.000Z</updated>
     
     <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
 <p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
@@ -409,15 +325,52 @@ rolling_checksum = A + (2^16) * B
     
       <category term="電話會議" scheme="http://blog.unisharp.com/tags/%E9%9B%BB%E8%A9%B1%E6%9C%83%E8%AD%B0/"/>
     
-      <category term="會議記錄" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0%E8%A8%98%E9%8C%84/"/>
-    
       <category term="開會" scheme="http://blog.unisharp.com/tags/%E9%96%8B%E6%9C%83/"/>
     
       <category term="小技巧" scheme="http://blog.unisharp.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
+      <category term="會議記錄" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0%E8%A8%98%E9%8C%84/"/>
+    
       <category term="通訊軟體" scheme="http://blog.unisharp.com/tags/%E9%80%9A%E8%A8%8A%E8%BB%9F%E9%AB%94/"/>
     
       <category term="凡事都要留紀錄" scheme="http://blog.unisharp.com/tags/%E5%87%A1%E4%BA%8B%E9%83%BD%E8%A6%81%E7%95%99%E7%B4%80%E9%8C%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>觀察實體世界中的「使用者體驗」</title>
+    <link href="http://blog.unisharp.com/2017/02/13/%E8%A7%80%E5%AF%9F%E5%AF%A6%E9%AB%94%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E3%80%8D/"/>
+    <id>http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/</id>
+    <published>2017-02-12T16:00:00.000Z</published>
+    <updated>2017-02-23T09:37:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br><a id="more"></a><br>也不斷的推陳出新。而這些研究和分析最終的核心精神，都是希望能夠全方位的了解使用者，並盡可能的讓使用者與產品接觸時有良好的使用體驗。</p>
+<p>雖然這些名詞近幾年才出現，但我一直認為，為使用者提供良好體驗這件事，其實一直都存在於實體世界中，甚至是被譽為經營之神的王永慶，也早在好幾十年前就已經開始做這些事情了。</p>
+<blockquote>
+<p>王永慶15歲小學畢業後，到一家小米店做學徒。第二年，他用父親借來的200元錢做本金自己開了一家小米店。為了和隔壁那家日本米店競爭，王永慶頗費了一番心思。</p>
+<p>當時大米加工技術比較落後，出售的大米里混雜著米糠、沙粒、小石頭等，買賣雙方都是見怪不怪。王永慶則多了一個心眼，每次賣米前都把米中的雜物揀乾淨，這一額外的服務深受顧客歡迎。</p>
+<p>王永慶賣米多是送米上門，他在一個本子上詳細記錄了顧客家有多少人、一個月吃多少米、何時發薪等。算算顧客的米該吃完了，就送米上門；等到顧客發薪的日子，再上門收取米款。</p>
+<p>他給顧客送米時，並非送到就算。他先幫人家將米倒進米缸里。如果米缸里還有米，他就將舊米倒出來，將米缸刷乾淨，然後將新米倒進去，將舊米放在上層。這樣，米就不至於因陳放過久而變質。他這個小小的舉動令不少顧客深受感動，鐵了心專買他的米。</p>
+<p>就這樣，他的生意越來越好。從這家小米店起步，王永慶最終成為今日台灣工業界的「龍頭老大」。</p>
+</blockquote>
+<p>是不是覺得有點熟悉？王永慶當年在筆記本上紀錄顧客的消費資訊，並依此優化顧客的消費體驗，不就跟現在UX和Big Data的在做的事情相同嗎。只是隨著時代和科技的改變，紀錄的方式從手寫的筆記本變成了網路上的程式，但提供良好體驗的核心精神並沒有不同。</p>
+<p><img src="img_20170213_02.jpg" alt="使用者體驗"></p>
+<p>這樣的核心精神也存在於實體世界的各行各業中。回想一下自己在餐廳用餐時的經驗，服務人員觀察顧客們的用餐情況，餐點有沒有打翻，水是不是已經喝完，然後即時的提供服務。這跟我們透過熱點分析、點擊率等方式了解使用者如何使用網站和APP，本質上並沒有不同，都是去了解使用者使用產品時的情形，然後將不符預期或造成使用者困擾的部分修正掉。</p>
+<p>未來在幫任何產品做UX優化時都要提醒自己，不管「使用者體驗」這個名詞如何變更，測試和紀錄數據的工具如何推陳出新，都不要迷失在這些名詞或工具的絢麗技術裡。將目光放遠停留在真正的使用者身上，讓使用者有更加良好的使用體驗，才是我們的最終目的！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具&lt;br&gt;
+    
+    </summary>
+    
+      <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
+    
+    
+      <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
+    
+      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
     
   </entry>
   
@@ -454,43 +407,6 @@ rolling_checksum = A + (2^16) * B
       <category term="mysql" scheme="http://blog.unisharp.com/tags/mysql/"/>
     
       <category term="Database" scheme="http://blog.unisharp.com/tags/Database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>觀察實體世界中的「使用者體驗」</title>
-    <link href="http://blog.unisharp.com/2017/02/13/%E8%A7%80%E5%AF%9F%E5%AF%A6%E9%AB%94%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E3%80%8D/"/>
-    <id>http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/</id>
-    <published>2017-02-12T16:00:00.000Z</published>
-    <updated>2017-02-23T09:37:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br><a id="more"></a><br>也不斷的推陳出新。而這些研究和分析最終的核心精神，都是希望能夠全方位的了解使用者，並盡可能的讓使用者與產品接觸時有良好的使用體驗。</p>
-<p>雖然這些名詞近幾年才出現，但我一直認為，為使用者提供良好體驗這件事，其實一直都存在於實體世界中，甚至是被譽為經營之神的王永慶，也早在好幾十年前就已經開始做這些事情了。</p>
-<blockquote>
-<p>王永慶15歲小學畢業後，到一家小米店做學徒。第二年，他用父親借來的200元錢做本金自己開了一家小米店。為了和隔壁那家日本米店競爭，王永慶頗費了一番心思。</p>
-<p>當時大米加工技術比較落後，出售的大米里混雜著米糠、沙粒、小石頭等，買賣雙方都是見怪不怪。王永慶則多了一個心眼，每次賣米前都把米中的雜物揀乾淨，這一額外的服務深受顧客歡迎。</p>
-<p>王永慶賣米多是送米上門，他在一個本子上詳細記錄了顧客家有多少人、一個月吃多少米、何時發薪等。算算顧客的米該吃完了，就送米上門；等到顧客發薪的日子，再上門收取米款。</p>
-<p>他給顧客送米時，並非送到就算。他先幫人家將米倒進米缸里。如果米缸里還有米，他就將舊米倒出來，將米缸刷乾淨，然後將新米倒進去，將舊米放在上層。這樣，米就不至於因陳放過久而變質。他這個小小的舉動令不少顧客深受感動，鐵了心專買他的米。</p>
-<p>就這樣，他的生意越來越好。從這家小米店起步，王永慶最終成為今日台灣工業界的「龍頭老大」。</p>
-</blockquote>
-<p>是不是覺得有點熟悉？王永慶當年在筆記本上紀錄顧客的消費資訊，並依此優化顧客的消費體驗，不就跟現在UX和Big Data的在做的事情相同嗎。只是隨著時代和科技的改變，紀錄的方式從手寫的筆記本變成了網路上的程式，但提供良好體驗的核心精神並沒有不同。</p>
-<p><img src="img_20170213_02.jpg" alt="使用者體驗"></p>
-<p>這樣的核心精神也存在於實體世界的各行各業中。回想一下自己在餐廳用餐時的經驗，服務人員觀察顧客們的用餐情況，餐點有沒有打翻，水是不是已經喝完，然後即時的提供服務。這跟我們透過熱點分析、點擊率等方式了解使用者如何使用網站和APP，本質上並沒有不同，都是去了解使用者使用產品時的情形，然後將不符預期或造成使用者困擾的部分修正掉。</p>
-<p>未來在幫任何產品做UX優化時都要提醒自己，不管「使用者體驗」這個名詞如何變更，測試和紀錄數據的工具如何推陳出新，都不要迷失在這些名詞或工具的絢麗技術裡。將目光放遠停留在真正的使用者身上，讓使用者有更加良好的使用體驗，才是我們的最終目的！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具&lt;br&gt;
-    
-    </summary>
-    
-      <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
-    
-    
-      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
-    
-      <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
     
   </entry>
   
@@ -1112,11 +1028,99 @@ rolling_checksum = A + (2^16) * B
       <category term="UX" scheme="http://blog.unisharp.com/categories/UX/"/>
     
     
-      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
-    
       <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
     
       <category term="使用者體驗" scheme="http://blog.unisharp.com/tags/%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97/"/>
+    
+      <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rsync 是如何比較檔案差異的</title>
+    <link href="http://blog.unisharp.com/2016/11/30/rsync%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%AF%94%E8%BC%83%E6%AA%94%E6%A1%88%E5%B7%AE%E7%95%B0%E7%9A%84%EF%BC%9F/"/>
+    <id>http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/</id>
+    <published>2016-11-29T16:00:00.000Z</published>
+    <updated>2017-03-06T00:57:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br><a id="more"></a><br>如果自己想自製一個能夠比較兩份文件差異的程式，稍微想一下設計，大約還能以行爲單位來設計，找出差異。</p>
+<p>但是如果檔案並非純文字，而是像照片這般的二進位檔案，可能一整份檔案都沒有任何換行符號，一比較差異就是讓伺服器把整份檔案重新抓下來了。</p>
+<p>面對通用檔案的差異比較，其設計思路就會朝向將檔案切成一塊一塊的區塊來進行差異比較。但終究需要面對以下問題：</p>
+<ul>
+<li>不可能將每個區塊的內容下載下來讓客戶端進行比較，這樣等同下載整份檔案</li>
+<li>如果只是檔頭加了一點內容，切割區塊有機會造成每個區塊內容就不同，也等同要下載整份檔案</li>
+</ul>
+<p>面對以上問題，rsync 採用了一些不錯的解決對策</p>
+<h4 id="校驗和-Checksum"><a href="#校驗和-Checksum" class="headerlink" title="校驗和 (Checksum)"></a>校驗和 (Checksum)</h4><p>校驗和不是 rsync 獨有的東西，很早就有利用校驗和來檢查檔案是否完整的流程存在。而校驗和其原理就只是利用檔案內的資料產生一個獨特的值，讓下載方與供應方用同樣的方法生出該值，稍加比較就知道兩個檔案是否相同。</p>
+<p>舉個最簡單的校驗和的例子，假設檔案內容如下：</p>
+<pre><code>{5, 6, 7, 8}
+</code></pre><p>最簡單的校驗和可以直接全部內容相加，其校驗和爲 26 ，只要下載方的校驗和也是 26 ，檔案下載完整的 <strong>可能性</strong> 就越高。</p>
+<p>這裡的說明是用 <strong>可能性</strong> 是因為大家都知道直接相加的缺點。有太多可以產生相同校驗和的方法了。<br>例如以下內容皆有機會被視為相同檔案：</p>
+<pre><code>{3, 7, 8, 8}
+{9, 2, 5, 11}
+</code></pre><p>因此資訊界競相設計出各種校驗和的演算，例如 md4, md5 ，都宣稱高度可信，很難有不同的來源會產生相同的校驗和。但是越高度可信，所需要的計算時間越久，甚至需要產生一些質數出來輔助。</p>
+<p>總結校驗和帶來的幫助，就是無需將伺服器上的每個區塊的內容都下載下來比較，只需要比較其校驗和便能得知是否有相同內容。</p>
+<h4 id="rsync-策略概述"><a href="#rsync-策略概述" class="headerlink" title="rsync 策略概述"></a>rsync 策略概述</h4><p>rsync 接下來要面對的問題，就是如何避免檔案偏移，就造成下載整份檔案的狀況。其流程大概像下面的步驟：</p>
+<ol>
+<li>將伺服器上的檔案 B 切成不重疊的區塊。</li>
+<li>將檔案 B 的所有區塊分別算出一個<strong>弱校驗和</strong>(Rolling Checksum) 和 <strong>強校驗和</strong> (md4)</li>
+<li>客戶端將所有區塊的校驗和下載製表 (hash table)</li>
+<li>客戶端從檔案 A 的檔頭開始切區塊，先只快速算出 <strong>弱校驗和</strong>，用其查表，查看是否存在</li>
+<li>查表<ul>
+<li>若無法用弱校驗和查出檔案 B 有該區塊，則區塊往下偏移繼續切並重複步驟 4 直至檔尾。</li>
+<li>若能查表查到才用<strong>強校驗和</strong>計算並比較，若符合代表有該區塊，並紀錄該區塊存在。反之則重複步驟 4</li>
+</ul>
+</li>
+</ol>
+<p>這個策略流程很簡單，但是要突破的瓶頸就是速度。不斷地將區塊偏移並且查詢比較非常耗時，因此其核心是快速的產生校驗和，快速的得知沒有相符的區塊，以避免每個區塊都用速度較慢的強校驗和檢查。在此 rsync 設計的 Rolling Checksum 佔了非常重要的位置。</p>
+<p>而 Rolling Checksum 其速度跟前述的將所有資料相加的速度是一樣快的，但又沒有說弱到一下就產生碰撞 ，因此非常適合作初步檢驗。</p>
+<h4 id="Rolling-Checksum"><a href="#Rolling-Checksum" class="headerlink" title="Rolling Checksum"></a>Rolling Checksum</h4><p>為了說明方便， Rolling Checksum 簡化算式如下</p>
+<pre><code>i 是 block 的開始位置，j 爲結束位置
+bsize 則是一個 block 的大小
+
+A = block[i] + block[i+1] + ... + block[j] // 從頭加到尾的意思
+B = bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]
+
+rolling_checksum = A + B
+</code></pre><p>假設一個 block 的大小爲 4 個 byte ， 且 block 內容依然是</p>
+<pre><code>{5, 6, 7, 8}
+</code></pre><p>其 Rolling Checksum 爲</p>
+<pre><code>A = 5 + 6 + 7 + 8
+B = (4 * 5) + (3 * 6) + (2 * 7) + (1 * 8)
+</code></pre><p>那為什麼說其速度跟全部加起來一樣快呢？ 觀察 A 部分的全部相加，大概會這樣設計一個迴圈</p>
+<pre><code>A = 0;
+for (i = 0; i &lt; bsize; i++) {
+    A += block[i];
+}
+</code></pre><p>將迴圈的流程稍微拆解一下，觀察一下 A 的內容</p>
+<pre><code>1.) A = 5
+2.) A = 5 + 6
+3.) A = 5 + 6 + 7
+4.) A = 5 + 6 + 7 + 8
+</code></pre><p>可以發現當中的 5 出現了 4 次，6 出現了 3 次，竟然跟算式 B 的要求吻合（這當然是有設計過的呀）。<br>所以要計算 B 的值只需要在同一個迴圈累加一下 A 便能同時算出 B 的值。稍微改寫如下</p>
+<pre><code>A = 0, B = 0;
+for (i = 0; i &lt; bsize; i++) {
+    A += block[i]
+    B += A;
+}
+</code></pre><p>最後補正為了說明而簡化的部分，其實這部分就只是為了 hash table 查詢所需要的取餘數的部分</p>
+<p>完整定義：</p>
+<pre><code>A = (block[i] + block[i+1] + ... + block[j]) % M // 從頭加到尾的意思
+B = (bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]) % M
+
+rolling_checksum = A + (2^16) * B
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="rsync" scheme="http://blog.unisharp.com/categories/rsync/"/>
+    
+    
+      <category term="rsync" scheme="http://blog.unisharp.com/tags/rsync/"/>
     
   </entry>
   
