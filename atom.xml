@@ -380,42 +380,6 @@
   </entry>
   
   <entry>
-    <title>增進資料庫效能-以mysql為例</title>
-    <link href="http://blog.unisharp.com/2017/02/13/%E5%A2%9E%E9%80%B2%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%88%E8%83%BD-%E4%BB%A5mysql%E7%82%BA%E4%BE%8B/"/>
-    <id>http://blog.unisharp.com/2017/02/13/增進資料庫效能-以mysql為例/</id>
-    <published>2017-02-12T16:00:00.000Z</published>
-    <updated>2017-03-03T08:21:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Mysql經常是所有php工程師最常碰到的關聯式資料庫，然而每當碰到mysql效能瓶頸時，才發現資料庫跟自己完全不熟。<br>本文旨在提供一個入門磚，提供給大家幾個關鍵字以解決效能的問題。<br><a id="more"></a></p>
-<h4 id="使用InnoDB取代MyISAM"><a href="#使用InnoDB取代MyISAM" class="headerlink" title="使用InnoDB取代MyISAM"></a>使用InnoDB取代MyISAM</h4><p>除非你的table完全不需要insert update delete，不然InnoDB在sql語法上表現幾乎是優於MyISAM，而且在Transactions時InnoDB支援row lock，而MyISAM卻只支援table lock。</p>
-<h4 id="建立index並刪除不必要的index"><a href="#建立index並刪除不必要的index" class="headerlink" title="建立index並刪除不必要的index"></a>建立index並刪除不必要的index</h4><p>如果你的sql語法完全用不到index，就應該把那個index刪除以減少index配對時間。<br>在建立index時應該盡量選擇常用的且是unique的。</p>
-<p>sql語法範例:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table`</span> <span class="keyword">ADD</span> <span class="keyword">INDEX</span> <span class="string">`product_id`</span> (<span class="string">`product_id`</span>)</div></pre></td></tr></table></figure>
-<h4 id="使用Partition"><a href="#使用Partition" class="headerlink" title="使用Partition"></a>使用Partition</h4><p>Partition建立有很多方法，不過一般來講都是以id或者日期來分割是最好的，你應該把你最常用的查詢欄位作為Partition的依據<br>要注意Partition是不能有foreign key的</p>
-<p>另外要注意的是Partition使用key作為依據時，必須要是primary key</p>
-<p>sql語法範例:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> schedules <span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">key</span>(<span class="built_in">date</span>)</div></pre></td></tr></table></figure>
-<h4 id="primary-key-使用-int"><a href="#primary-key-使用-int" class="headerlink" title="primary key 使用 int"></a>primary key 使用 int</h4><p>使用int會比GUID更快配對成功</p>
-<h4 id="升級硬體"><a href="#升級硬體" class="headerlink" title="升級硬體"></a>升級硬體</h4><p>使用SSD跟加大記憶體都是有效的。</p>
-<h4 id="改進sql"><a href="#改進sql" class="headerlink" title="改進sql"></a>改進sql</h4><p>減少子查詢，join，使用原生sql。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Mysql經常是所有php工程師最常碰到的關聯式資料庫，然而每當碰到mysql效能瓶頸時，才發現資料庫跟自己完全不熟。&lt;br&gt;本文旨在提供一個入門磚，提供給大家幾個關鍵字以解決效能的問題。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Database" scheme="http://blog.unisharp.com/categories/Database/"/>
-    
-    
-      <category term="mysql" scheme="http://blog.unisharp.com/tags/mysql/"/>
-    
-      <category term="Database" scheme="http://blog.unisharp.com/tags/Database/"/>
-    
-  </entry>
-  
-  <entry>
     <title>觀察實體世界中的「使用者體驗」</title>
     <link href="http://blog.unisharp.com/2017/02/13/%E8%A7%80%E5%AF%9F%E5%AF%A6%E9%AB%94%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E3%80%8D/"/>
     <id>http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/</id>
@@ -449,6 +413,42 @@
       <category term="PM" scheme="http://blog.unisharp.com/tags/PM/"/>
     
       <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>增進資料庫效能-以mysql為例</title>
+    <link href="http://blog.unisharp.com/2017/02/13/%E5%A2%9E%E9%80%B2%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%88%E8%83%BD-%E4%BB%A5mysql%E7%82%BA%E4%BE%8B/"/>
+    <id>http://blog.unisharp.com/2017/02/13/增進資料庫效能-以mysql為例/</id>
+    <published>2017-02-12T16:00:00.000Z</published>
+    <updated>2017-03-03T08:21:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mysql經常是所有php工程師最常碰到的關聯式資料庫，然而每當碰到mysql效能瓶頸時，才發現資料庫跟自己完全不熟。<br>本文旨在提供一個入門磚，提供給大家幾個關鍵字以解決效能的問題。<br><a id="more"></a></p>
+<h4 id="使用InnoDB取代MyISAM"><a href="#使用InnoDB取代MyISAM" class="headerlink" title="使用InnoDB取代MyISAM"></a>使用InnoDB取代MyISAM</h4><p>除非你的table完全不需要insert update delete，不然InnoDB在sql語法上表現幾乎是優於MyISAM，而且在Transactions時InnoDB支援row lock，而MyISAM卻只支援table lock。</p>
+<h4 id="建立index並刪除不必要的index"><a href="#建立index並刪除不必要的index" class="headerlink" title="建立index並刪除不必要的index"></a>建立index並刪除不必要的index</h4><p>如果你的sql語法完全用不到index，就應該把那個index刪除以減少index配對時間。<br>在建立index時應該盡量選擇常用的且是unique的。</p>
+<p>sql語法範例:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table`</span> <span class="keyword">ADD</span> <span class="keyword">INDEX</span> <span class="string">`product_id`</span> (<span class="string">`product_id`</span>)</div></pre></td></tr></table></figure>
+<h4 id="使用Partition"><a href="#使用Partition" class="headerlink" title="使用Partition"></a>使用Partition</h4><p>Partition建立有很多方法，不過一般來講都是以id或者日期來分割是最好的，你應該把你最常用的查詢欄位作為Partition的依據<br>要注意Partition是不能有foreign key的</p>
+<p>另外要注意的是Partition使用key作為依據時，必須要是primary key</p>
+<p>sql語法範例:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> schedules <span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">key</span>(<span class="built_in">date</span>)</div></pre></td></tr></table></figure>
+<h4 id="primary-key-使用-int"><a href="#primary-key-使用-int" class="headerlink" title="primary key 使用 int"></a>primary key 使用 int</h4><p>使用int會比GUID更快配對成功</p>
+<h4 id="升級硬體"><a href="#升級硬體" class="headerlink" title="升級硬體"></a>升級硬體</h4><p>使用SSD跟加大記憶體都是有效的。</p>
+<h4 id="改進sql"><a href="#改進sql" class="headerlink" title="改進sql"></a>改進sql</h4><p>減少子查詢，join，使用原生sql。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Mysql經常是所有php工程師最常碰到的關聯式資料庫，然而每當碰到mysql效能瓶頸時，才發現資料庫跟自己完全不熟。&lt;br&gt;本文旨在提供一個入門磚，提供給大家幾個關鍵字以解決效能的問題。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Database" scheme="http://blog.unisharp.com/categories/Database/"/>
+    
+    
+      <category term="mysql" scheme="http://blog.unisharp.com/tags/mysql/"/>
+    
+      <category term="Database" scheme="http://blog.unisharp.com/tags/Database/"/>
     
   </entry>
   
