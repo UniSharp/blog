@@ -6,10 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="UniSharp blog">
-    <title>rsync 是如何比較檔案差異的 - UniSharp blog</title>
+    <title>標籤: 團隊合作 - UniSharp blog</title>
     <meta name="author" content="Mr.UniSharp">
-    
-        <meta name="keywords" content="rsync,diff">
     
     
         <link rel="icon" href="http://i.imgur.com/0hUX6N5.png">
@@ -17,19 +15,15 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。">
-<meta name="keywords" content="rsync,工具小教室">
+    <meta name="description" content="紀錄悠夏爾科技在工作上面臨技術及管理上的挑戰時，因應的對策及解決問題的方法，大家如果有共鳴或是任何想法都可以留言跟我們討論喔！">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="rsync 是如何比較檔案差異的">
-<meta property="og:url" content="http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/index.html">
+<meta property="og:title" content="UniSharp blog">
+<meta property="og:url" content="http://blog.unisharp.com/tags/團隊合作/index.html">
 <meta property="og:site_name" content="UniSharp blog">
-<meta property="og:description" content="rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。">
-<meta property="og:image" content="http://blog.unisharp.com/2016/11/30/rsync%20是如何比較檔案差異的？/terminal.jpg">
-<meta property="og:updated_time" content="2017-04-21T06:30:16.000Z">
+<meta property="og:description" content="紀錄悠夏爾科技在工作上面臨技術及管理上的挑戰時，因應的對策及解決問題的方法，大家如果有共鳴或是任何想法都可以留言跟我們討論喔！">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rsync 是如何比較檔案差異的">
-<meta name="twitter:description" content="rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。">
-<meta name="twitter:image" content="http://blog.unisharp.com/2016/11/30/rsync%20是如何比較檔案差異的？/terminal.jpg">
+<meta name="twitter:title" content="UniSharp blog">
+<meta name="twitter:description" content="紀錄悠夏爾科技在工作上面臨技術及管理上的挑戰時，因應的對策及解決問題的方法，大家如果有共鳴或是任何想法都可以留言跟我們討論喔！">
     
     
         
@@ -38,12 +32,6 @@
         <meta property="og:image" content="http://blog.unisharp.com/assets/images/logo-02.png"/>
     
     
-        <meta property="og:image" content="http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/terminal.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/terminal.jpg" />
-    
-    
-        <meta property="og:image" content="http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/terminal.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/terminal.jpg" />
     
     
     <!--STYLES-->
@@ -58,7 +46,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="4">
+<header id="header" data-behavior="1">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">UniSharp blog</a>
@@ -82,7 +70,7 @@
         
     
 
-<nav id="sidebar" data-behavior="4">
+<nav id="sidebar" data-behavior="1">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -197,188 +185,72 @@
 </nav>
 
             
-        <div class="post-header-cover
-                    text-center
-                    post-header-cover--partial"
-             style="background-image:url('/2016/11/30/rsync 是如何比較檔案差異的？/terminal.jpg');"
-             data-behavior="4">
-            
-        </div>
-
-            <div id="main" data-behavior="4"
-                 class="hasCover
-                        hasCoverMetaOut
-                        hasCoverCaption">
+            <div id="main" data-behavior="1"
+                 class="
+                        hasCoverMetaIn
+                        ">
                 
-<article class="post" itemscope itemType="http://schema.org/BlogPosting">
-    
-        <span class="post-header-cover-caption caption">圖片源自 pexel</span>
+    <section class="postShorten-group main-content-wrap">
     
     
-        <div class="post-header main-content-wrap text-center">
-    
-        <h1 class="post-title" itemprop="headline">
-            rsync 是如何比較檔案差異的
-        </h1>
-    
-    <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-11-30T00:00:00+08:00">
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2016/11/18/PM在團隊中扮演協調與溝通的角色/">
+                            PM在團隊中扮演協調與溝通的角色
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2016-11-18T00:00:00+08:00">
 	
-		    11月 30, 2016
+		    11月 18, 2016
     	
     </time>
     
         <span>分類 </span>
         
-    <a class="category-link" href="/categories/後端技術/">後端技術</a>
+    <a class="category-link" href="/categories/專案管理/">專案管理</a>
 
 
     
 </div>
-
-</div>
-    
-    <div class="post-content markdown" itemprop="articleBody">
-        <div class="main-content-wrap">
-            <p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br><a id="more"></a><br>如果自己想自製一個能夠比較兩份文件差異的程式，稍微想一下設計，大約還能以行爲單位來設計，找出差異。</p>
-<p>但是如果檔案並非純文字，而是像照片這般的二進位檔案，可能一整份檔案都沒有任何換行符號，一比較差異就是讓伺服器把整份檔案重新抓下來了。</p>
-<p>面對通用檔案的差異比較，其設計思路就會朝向將檔案切成一塊一塊的區塊來進行差異比較。但終究需要面對以下問題：</p>
-<ul>
-<li>不可能將每個區塊的內容下載下來讓客戶端進行比較，這樣等同下載整份檔案</li>
-<li>如果只是檔頭加了一點內容，切割區塊有機會造成每個區塊內容就不同，也等同要下載整份檔案</li>
-</ul>
-<p>面對以上問題，rsync 採用了一些不錯的解決對策</p>
-<h4 id="校驗和-Checksum"><a href="#校驗和-Checksum" class="headerlink" title="校驗和 (Checksum)"></a>校驗和 (Checksum)</h4><p>校驗和不是 rsync 獨有的東西，很早就有利用校驗和來檢查檔案是否完整的流程存在。而校驗和其原理就只是利用檔案內的資料產生一個獨特的值，讓下載方與供應方用同樣的方法生出該值，稍加比較就知道兩個檔案是否相同。</p>
-<p>舉個最簡單的校驗和的例子，假設檔案內容如下：</p>
-<pre><code>{5, 6, 7, 8}
-</code></pre><p>最簡單的校驗和可以直接全部內容相加，其校驗和爲 26 ，只要下載方的校驗和也是 26 ，檔案下載完整的 <strong>可能性</strong> 就越高。</p>
-<p>這裡的說明是用 <strong>可能性</strong> 是因為大家都知道直接相加的缺點。有太多可以產生相同校驗和的方法了。<br>例如以下內容皆有機會被視為相同檔案：</p>
-<pre><code>{3, 7, 8, 8}
-{9, 2, 5, 11}
-</code></pre><p>因此資訊界競相設計出各種校驗和的演算，例如 md4, md5 ，都宣稱高度可信，很難有不同的來源會產生相同的校驗和。但是越高度可信，所需要的計算時間越久，甚至需要產生一些質數出來輔助。</p>
-<p>總結校驗和帶來的幫助，就是無需將伺服器上的每個區塊的內容都下載下來比較，只需要比較其校驗和便能得知是否有相同內容。</p>
-<h4 id="rsync-策略概述"><a href="#rsync-策略概述" class="headerlink" title="rsync 策略概述"></a>rsync 策略概述</h4><p>rsync 接下來要面對的問題，就是如何避免檔案偏移，就造成下載整份檔案的狀況。其流程大概像下面的步驟：</p>
-<ol>
-<li>將伺服器上的檔案 B 切成不重疊的區塊。</li>
-<li>將檔案 B 的所有區塊分別算出一個<strong>弱校驗和</strong>(Rolling Checksum) 和 <strong>強校驗和</strong> (md4)</li>
-<li>客戶端將所有區塊的校驗和下載製表 (hash table)</li>
-<li>客戶端從檔案 A 的檔頭開始切區塊，先只快速算出 <strong>弱校驗和</strong>，用其查表，查看是否存在</li>
-<li>查表<ul>
-<li>若無法用弱校驗和查出檔案 B 有該區塊，則區塊往下偏移繼續切並重複步驟 4 直至檔尾。</li>
-<li>若能查表查到才用<strong>強校驗和</strong>計算並比較，若符合代表有該區塊，並紀錄該區塊存在。反之則重複步驟 4</li>
-</ul>
-</li>
-</ol>
-<p>這個策略流程很簡單，但是要突破的瓶頸就是速度。不斷地將區塊偏移並且查詢比較非常耗時，因此其核心是快速的產生校驗和，快速的得知沒有相符的區塊，以避免每個區塊都用速度較慢的強校驗和檢查。在此 rsync 設計的 Rolling Checksum 佔了非常重要的位置。</p>
-<p>而 Rolling Checksum 其速度跟前述的將所有資料相加的速度是一樣快的，但又沒有說弱到一下就產生碰撞 ，因此非常適合作初步檢驗。</p>
-<h4 id="Rolling-Checksum"><a href="#Rolling-Checksum" class="headerlink" title="Rolling Checksum"></a>Rolling Checksum</h4><p>為了說明方便， Rolling Checksum 簡化算式如下</p>
-<pre><code>i 是 block 的開始位置，j 爲結束位置
-bsize 則是一個 block 的大小
-
-A = block[i] + block[i+1] + ... + block[j] // 從頭加到尾的意思
-B = bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]
-
-rolling_checksum = A + B
-</code></pre><p>假設一個 block 的大小爲 4 個 byte ， 且 block 內容依然是</p>
-<pre><code>{5, 6, 7, 8}
-</code></pre><p>其 Rolling Checksum 爲</p>
-<pre><code>A = 5 + 6 + 7 + 8
-B = (4 * 5) + (3 * 6) + (2 * 7) + (1 * 8)
-</code></pre><p>那為什麼說其速度跟全部加起來一樣快呢？ 觀察 A 部分的全部相加，大概會這樣設計一個迴圈</p>
-<pre><code>A = 0;
-for (i = 0; i &lt; bsize; i++) {
-    A += block[i];
-}
-</code></pre><p>將迴圈的流程稍微拆解一下，觀察一下 A 的內容</p>
-<pre><code>1.) A = 5
-2.) A = 5 + 6
-3.) A = 5 + 6 + 7
-4.) A = 5 + 6 + 7 + 8
-</code></pre><p>可以發現當中的 5 出現了 4 次，6 出現了 3 次，竟然跟算式 B 的要求吻合（這當然是有設計過的呀）。<br>所以要計算 B 的值只需要在同一個迴圈累加一下 A 便能同時算出 B 的值。稍微改寫如下</p>
-<pre><code>A = 0, B = 0;
-for (i = 0; i &lt; bsize; i++) {
-    A += block[i]
-    B += A;
-}
-</code></pre><p>最後補正為了說明而簡化的部分，其實這部分就只是為了 hash table 查詢所需要的取餘數的部分</p>
-<p>完整定義：</p>
-<pre><code>A = (block[i] + block[i+1] + ... + block[j]) % M // 從頭加到尾的意思
-B = (bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]) % M
-
-rolling_checksum = A + (2^16) * B
-</code></pre>
-            
-        </div>
-    </div>
-    <div id="post-footer" class="post-footer main-content-wrap">
-        
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">標籤</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/rsync/">rsync</a> <a class="tag tag--primary tag--small t-link" href="/tags/工具小教室/">工具小教室</a>
 
             </div>
-        
-        <div class="post-actions-wrap">
-    <nav>
-        <ul class="post-actions post-action-nav">
-            <li class="post-action">
-                
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/11/18/PM在團隊中扮演協調與溝通的角色/"  data-tooltip="PM在團隊中扮演協調與溝通的角色">
-                
-                    <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
-                </a>
-            </li>
-            <li class="post-action">
-                
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/12/02/UX 從新手開始/" data-tooltip="UX 從新手開始，使用者體驗的 100堂必修課">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="post-actions post-action-share">
-        <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
-                <i class="fa fa-share-alt"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-google-plus"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-facebook-official"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-twitter"></i>
-            </a>
-        </li>
-        
-        <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#">
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <p>執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。<br>怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指<br>
+                    
+                        <a href="/2016/11/18/PM在團隊中扮演協調與溝通的角色/" class="postShorten-excerpt_link link">
+                            繼續閱讀
+                        </a>
+                        
+                    
+                </div>
             
-                <i class="fa fa-list"></i>
+        </div>
+        
+            <a href="/2016/11/18/PM在團隊中扮演協調與溝通的角色/">
+                <div class="postShorten-thumbnailimg">
+                    <img alt="" itemprop="image" src="http://blog.unisharp.com/2016/11/18/PM在團隊中扮演協調與溝通的角色/snail.png"/>
+                </div>
             </a>
-        </li>
+            
+        
+    </article>
+    
+    <div class="pagination-bar">
+    <ul class="pagination">
+        
+        
+        <li class="pagination-number">第 1 頁 共 1 頁</li>
     </ul>
 </div>
 
-
-        
-            
-        
-    </div>
-</article>
-
+</section>
 
 
                 <footer id="footer" class="main-content-wrap">
@@ -388,84 +260,6 @@ rolling_checksum = A + (2^16) * B
 </footer>
 
             </div>
-            
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-                    <div class="post-actions-wrap">
-    <nav>
-        <ul class="post-actions post-action-nav">
-            <li class="post-action">
-                
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/11/18/PM在團隊中扮演協調與溝通的角色/"  data-tooltip="PM在團隊中扮演協調與溝通的角色">
-                
-                    <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
-                </a>
-            </li>
-            <li class="post-action">
-                
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/12/02/UX 從新手開始/" data-tooltip="UX 從新手開始，使用者體驗的 100堂必修課">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="post-actions post-action-share">
-        <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
-                <i class="fa fa-share-alt"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-google-plus"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-facebook-official"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-twitter"></i>
-            </a>
-        </li>
-        
-        <li class="post-action">
-            
-                <a class="post-action-btn btn btn--default" href="#">
-            
-                <i class="fa fa-list"></i>
-            </a>
-        </li>
-    </ul>
-</div>
-
-
-                </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
-    <ul class="share-options">
-        <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
-            </a>
-        </li>
-        <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-            </a>
-        </li>
-        <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2016/11/30/rsync 是如何比較檔案差異的？/">
-                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<div id="share-options-mask" class="share-options-mask"></div>
-
             
         </div>
         
@@ -793,8 +587,6 @@ rolling_checksum = A + (2^16) * B
         <!--SCRIPTS-->
 <script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
 <!--SCRIPTS END-->
-
-    
 
 
 
