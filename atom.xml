@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.unisharp.com/"/>
-  <updated>2017-04-24T06:14:41.000Z</updated>
+  <updated>2017-04-24T10:02:31.000Z</updated>
   <id>http://blog.unisharp.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.unisharp.com/2017/04/06/%E4%B8%8A%E7%8F%AD%E5%8E%9F%E4%BE%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%83%8F%E6%98%AF%E5%9B%9E%E5%88%B0%E5%AE%B6/"/>
     <id>http://blog.unisharp.com/2017/04/06/上班原來也可以像是回到家/</id>
     <published>2017-04-05T16:00:00.000Z</published>
-    <updated>2017-04-24T06:14:41.000Z</updated>
+    <updated>2017-04-24T10:02:31.000Z</updated>
     
     <content type="html"><![CDATA[<p>好的工作環境，能激發無限創意、能刺激分享、能夠孕育出一群同甘共苦的夥伴，我們共享、共創、共樂，把這樣的理念在辦公室每一隅都堅持實現。</p>
 <a id="more"></a>
@@ -41,9 +41,9 @@
 <p>一處可以轉換心情、療癒身心的沙發區，是設計團隊特別為緊繃、糾結、卡關的工作者，安排的靈感溫室，也特別選用藍色，一種沈鬱卻能讓人靜下心的色調，就像回家一樣，陷在舒適的沙發上，許多不解都有解了！</p>
 <p><img src="sofa_area.png" alt="悠夏爾科技沙發區"></p>
 <p>讓我們來看看設計團隊到底施了什麼魔法，讓施工前後造成超強大的落差<br><img src="before.png" alt="悠夏爾科技施工照"><br><img src="before1.png" alt="悠夏爾科技施工照"><br>還有更多巧思藏在辦公室的小地方，例如會議室與主辦公室都採取 Apple TV 無線投影的方式，每一個人在辦公室任何一處，都能發送投影訊號，通知大家”我想分享喔”，讓共享無分界、無阻礙、無限延伸！</p>
-<p><img src="quality.png" alt="悠夏爾科技沙發區"></p>
 <p><img src="family.png" alt="悠夏爾科技人員"></p>
-<p>We work smart. We bulid great websites.<br>我們是悠夏爾科技。</p>
+<p>We work smart.<br>We bulid great websites.<br>我們是 悠夏爾科技</p>
+<p><img src="quality.png" alt="悠夏爾科技沙發區"></p>
 ]]></content>
     
     <summary type="html">
@@ -113,12 +113,13 @@
     <link href="http://blog.unisharp.com/2017/02/14/%E4%B8%80%E5%A5%97%E4%BD%BF%E7%94%A8%20jade%20(pug)%20%E8%BD%89%E7%82%BA%20laravel%20blade%20%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/"/>
     <id>http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/</id>
     <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-04-21T06:30:16.000Z</updated>
+    <updated>2017-04-24T10:04:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p>
 <a id="more"></a>
 <h2 id="傳統的設計師-gt-工程師的合作流程"><a href="#傳統的設計師-gt-工程師的合作流程" class="headerlink" title="傳統的設計師 =&gt; 工程師的合作流程"></a>傳統的設計師 =&gt; 工程師的合作流程</h2><p>傳統上，設計師在製作完網頁設計圖後，會由切版人員（這個人員可能是設計師自己，也有可能是前端工程師）將設計圖製作成靜態的 HTML 及 CSS，接下來再交給工程師套程式。</p>
-<p><img src="/frontend-flow.png" alt="Frontend Flow"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">設計 (圖片) -&gt; 切版 （HTML/CSS）-&gt; 套版（程式）</div></pre></td></tr></table></figure>
+<p><img src="frontend-flow.png" alt="Frontend Flow"></p>
 <h2 id="Laravel-blade"><a href="#Laravel-blade" class="headerlink" title="Laravel blade"></a>Laravel blade</h2><p>Laravel 預設是使用 blade 作為樣板引擎作為動態網頁的樣板，它具有良好的 extend 及 include 設計，以下例子說明了 include 的用法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        @include(&apos;share.head&apos;)</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        @include(&apos;share.header&apos;)</div><div class="line"></div><div class="line">        &lt;div class=&quot;container&quot;&gt;</div><div class="line">            @yield(&apos;content&apos;)</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        @include(&apos;share.footer&apos;)</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <p> layout - view 結構中的 layout。</p>
@@ -128,7 +129,7 @@
 <p>「讓設計師學會基本的 laravel 及 blade，與工程師一同修改 blade」</p>
 <p>那麽如果設計師喜歡使用 jade (pug) 呢？使用 blade 就沒有 jade (pug) 優美的語法及方便的 mixin 了（註: Laravel 5.4 有 view component 可以使用）。而且使用 blade 必須要有 php 執行環境，如果設計師只想快速驗證畫面，不想要跑起 php server 呢？</p>
 <p>於是我們製作了一套將 jade 轉換爲 blade 的工作流程：</p>
-<h2 id="改善的流程-使用-jade-pug-產生-blade"><a href="#改善的流程-使用-jade-pug-產生-blade" class="headerlink" title="改善的流程 - 使用 jade (pug) 產生 blade"></a>改善的流程 - 使用 jade (pug) 產生 blade</h2><p><img src="/pug-to-blade-flow.png" alt="pug to blade flow"><br>見上圖</p>
+<h2 id="改善的流程-使用-jade-pug-產生-blade"><a href="#改善的流程-使用-jade-pug-產生-blade" class="headerlink" title="改善的流程 - 使用 jade (pug) 產生 blade"></a>改善的流程 - 使用 jade (pug) 產生 blade</h2><p><img src="pug-to-blade-flow.png" alt="pug to blade flow"><br>見上圖</p>
 <p>設計師與工程師寫 jade 及 less ，放在 fe-src ( FrontEnd Source) 目錄中，經過編譯 （compile, 或更貼切地應稱為 transpile) 轉為 html 及 css 至 fe-dest (frontend destination) 目錄，我們也將 javascript 及 image 放到此目錄，於是 fe-dest 目錄就是一個可以直接用瀏覽器預覽的靜態網站了。</p>
 <p>在流程的最後，我們也同時自動將這些生成的 html 複製並命名為 .blade.php 到 laravel 的 view 路徑下，同時將靜態資源複製到 public 中，即完成了這套流程。</p>
 <h2 id="要如何使用這套流程？"><a href="#要如何使用這套流程？" class="headerlink" title="要如何使用這套流程？"></a>要如何使用這套流程？</h2><h3 id="目錄結構"><a href="#目錄結構" class="headerlink" title="目錄結構"></a>目錄結構</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fe-src</div><div class="line">├── less</div><div class="line">│   ├── _variables.less</div><div class="line">│   └── app.less</div><div class="line">└── pug</div><div class="line">    ├── _layout</div><div class="line">    │   └── app.pug</div><div class="line">    └── index.pug</div></pre></td></tr></table></figure>
@@ -232,6 +233,87 @@
     
     
       <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>溝通-活用本質力</title>
+    <link href="http://blog.unisharp.com/2017/01/06/%E6%BA%9D%E9%80%9A-%E6%B4%BB%E7%94%A8%E6%9C%AC%E8%B3%AA%E5%8A%9B/"/>
+    <id>http://blog.unisharp.com/2017/01/06/溝通-活用本質力/</id>
+    <published>2017-01-05T16:00:00.000Z</published>
+    <updated>2017-04-21T06:30:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br><a id="more"></a></p>
+<p>在與業主打交道很常遇見！</p>
+<blockquote>
+<p>『啊！這個操作模式我不習慣耶！』</p>
+<p>『這個畫面怎麼跟我想的不一樣？』</p>
+<p>『新增為什麼要開新視窗？我想在原來畫面進行就夠了！』</p>
+</blockquote>
+<p>業主會埋怨：這不是應該是設計師的 common sense 嘛？哪有人這樣設計的？</p>
+<p>是，常常認知落差最後的一根稻草，正是所謂的 common sense。</p>
+<p>到底要怎麼「溝通」？到達什麼標準才算是真正的有 sense？</p>
+<p>到這邊！先跳脫一下，以生物學來看看甚麼是溝通</p>
+<p>溝通來自於意識，意識來自於人腦對刺激的反應，當感官接受刺激時，這些刺激轉化為電或化學信號，通過神經纖維傳導到大腦，在大腦中沿著相連的神經網路通道進行傳導。直到對外界刺激形成有效反應時輸入終止。傳導的過程，即意識的過程。</p>
+<p>每個人對外界刺激會因天生的構造與後天的記憶，最終產生不一樣的，回應！</p>
+<p>在演化過程中，為了節省能量消耗，大腦會出現一種稱之神經走道（記憶走道），的快速處理方式，可稱之為思維偏好。</p>
+<p>所以，能了解自己的思維偏好與溝通對象的思維偏好，更能快速與有效地完成目的。</p>
+<p>全腦思維科學分析 (Emergenetics Science) 的核心概念。每個人其實都有與生俱來的「本質天賦」，只是許多人都不清楚，透過全腦思維分析獨創的本質個性測驗與解說，就能找出每個人潛藏的「本質天賦」。此外，當你學會如何了舉別人的性格特質後，也就知道該怎麼和他溝通，彼此的互動自然順暢無礙。（如果有興趣，可以找〈活用你的本質力〉這本書對於全腦思維科學分析有更深入的介紹）。</p>
+<p>在全腦思維科學分析中，會將思考偏好分成四大類概念型，社交型，分析型，結構型。</p>
+<ul>
+<li>概念型<ul>
+<li>重視創造性</li>
+<li>想像力豐富</li>
+<li>喜歡挑戰新事物</li>
+</ul>
+</li>
+<li>社交型<ul>
+<li>重視他人的評價</li>
+<li>重視與他人的關係</li>
+<li>依靠直覺評斷他人</li>
+</ul>
+</li>
+<li>分析型<ul>
+<li>理論性思考</li>
+<li>重視目的，原因</li>
+<li>理性</li>
+</ul>
+</li>
+<li>結構型<ul>
+<li>重視可行性</li>
+<li>務實</li>
+<li>對新事物較謹慎</li>
+</ul>
+</li>
+</ul>
+<p>一般來說，每個人都有這四種偏好，只不過優先順序不一樣，<br>舉個例子來說向某人問: 我們週六出去玩好不好！<br>不同類型的人，考慮去不去的優先順序會不一樣</p>
+<ul>
+<li>概念型：玩什麼，好不好玩？</li>
+<li>社交型：跟誰去，還有誰啊？</li>
+<li>分析型：為什麼要去玩，為什麼找我啊？</li>
+<li>結構型：我先想想週六有沒有空？我可以去嗎？</li>
+</ul>
+<p>每個人都有自己的本質，若不能了解每個人都有不同的特質於思考偏好，那麼就容易引起生活中的溝通不良。</p>
+<p>比方說，概念型偏好約結構型的朋友要出去玩，結構型朋友的週六有事情不能去，概念型的朋友一直在跟他說那裡真得很好玩！<br>就會變成：</p>
+<blockquote>
+<p>「為什麼那個人聽不懂我說的話？」</p>
+<p>「他怎能老是愛跟我唱反調？」</p>
+</blockquote>
+<p>這些都起因於我們忘了或是忽略每個人的不同，無法採取適合對方本質的溝通方法才會如此。</p>
+<p>因此，唯有理解自己與對方各自擁有的特性，才有機會建立彼此良好的溝通模式。</p>
+<p>也就是用雙方都感到舒服的方式讓溝通更順暢無礙。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。&lt;br&gt;我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
     
   </entry>
   
@@ -361,87 +443,6 @@
     
     
       <category term="旅遊" scheme="http://blog.unisharp.com/tags/%E6%97%85%E9%81%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>溝通-活用本質力</title>
-    <link href="http://blog.unisharp.com/2017/01/06/%E6%BA%9D%E9%80%9A-%E6%B4%BB%E7%94%A8%E6%9C%AC%E8%B3%AA%E5%8A%9B/"/>
-    <id>http://blog.unisharp.com/2017/01/06/溝通-活用本質力/</id>
-    <published>2017-01-05T16:00:00.000Z</published>
-    <updated>2017-04-21T06:30:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br><a id="more"></a></p>
-<p>在與業主打交道很常遇見！</p>
-<blockquote>
-<p>『啊！這個操作模式我不習慣耶！』</p>
-<p>『這個畫面怎麼跟我想的不一樣？』</p>
-<p>『新增為什麼要開新視窗？我想在原來畫面進行就夠了！』</p>
-</blockquote>
-<p>業主會埋怨：這不是應該是設計師的 common sense 嘛？哪有人這樣設計的？</p>
-<p>是，常常認知落差最後的一根稻草，正是所謂的 common sense。</p>
-<p>到底要怎麼「溝通」？到達什麼標準才算是真正的有 sense？</p>
-<p>到這邊！先跳脫一下，以生物學來看看甚麼是溝通</p>
-<p>溝通來自於意識，意識來自於人腦對刺激的反應，當感官接受刺激時，這些刺激轉化為電或化學信號，通過神經纖維傳導到大腦，在大腦中沿著相連的神經網路通道進行傳導。直到對外界刺激形成有效反應時輸入終止。傳導的過程，即意識的過程。</p>
-<p>每個人對外界刺激會因天生的構造與後天的記憶，最終產生不一樣的，回應！</p>
-<p>在演化過程中，為了節省能量消耗，大腦會出現一種稱之神經走道（記憶走道），的快速處理方式，可稱之為思維偏好。</p>
-<p>所以，能了解自己的思維偏好與溝通對象的思維偏好，更能快速與有效地完成目的。</p>
-<p>全腦思維科學分析 (Emergenetics Science) 的核心概念。每個人其實都有與生俱來的「本質天賦」，只是許多人都不清楚，透過全腦思維分析獨創的本質個性測驗與解說，就能找出每個人潛藏的「本質天賦」。此外，當你學會如何了舉別人的性格特質後，也就知道該怎麼和他溝通，彼此的互動自然順暢無礙。（如果有興趣，可以找〈活用你的本質力〉這本書對於全腦思維科學分析有更深入的介紹）。</p>
-<p>在全腦思維科學分析中，會將思考偏好分成四大類概念型，社交型，分析型，結構型。</p>
-<ul>
-<li>概念型<ul>
-<li>重視創造性</li>
-<li>想像力豐富</li>
-<li>喜歡挑戰新事物</li>
-</ul>
-</li>
-<li>社交型<ul>
-<li>重視他人的評價</li>
-<li>重視與他人的關係</li>
-<li>依靠直覺評斷他人</li>
-</ul>
-</li>
-<li>分析型<ul>
-<li>理論性思考</li>
-<li>重視目的，原因</li>
-<li>理性</li>
-</ul>
-</li>
-<li>結構型<ul>
-<li>重視可行性</li>
-<li>務實</li>
-<li>對新事物較謹慎</li>
-</ul>
-</li>
-</ul>
-<p>一般來說，每個人都有這四種偏好，只不過優先順序不一樣，<br>舉個例子來說向某人問: 我們週六出去玩好不好！<br>不同類型的人，考慮去不去的優先順序會不一樣</p>
-<ul>
-<li>概念型：玩什麼，好不好玩？</li>
-<li>社交型：跟誰去，還有誰啊？</li>
-<li>分析型：為什麼要去玩，為什麼找我啊？</li>
-<li>結構型：我先想想週六有沒有空？我可以去嗎？</li>
-</ul>
-<p>每個人都有自己的本質，若不能了解每個人都有不同的特質於思考偏好，那麼就容易引起生活中的溝通不良。</p>
-<p>比方說，概念型偏好約結構型的朋友要出去玩，結構型朋友的週六有事情不能去，概念型的朋友一直在跟他說那裡真得很好玩！<br>就會變成：</p>
-<blockquote>
-<p>「為什麼那個人聽不懂我說的話？」</p>
-<p>「他怎能老是愛跟我唱反調？」</p>
-</blockquote>
-<p>這些都起因於我們忘了或是忽略每個人的不同，無法採取適合對方本質的溝通方法才會如此。</p>
-<p>因此，唯有理解自己與對方各自擁有的特性，才有機會建立彼此良好的溝通模式。</p>
-<p>也就是用雙方都感到舒服的方式讓溝通更順暢無礙。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。&lt;br&gt;我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
     
   </entry>
   
