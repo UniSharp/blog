@@ -1873,11 +1873,11 @@ a.fancybox {
       color: #9eabb3; }
   .post .post-content {
     text-rendering: optimizelegibility;
-    letter-spacing: -0.3px;
-    font-family: "Merriweather", serif;
+    letter-spacing: 1px;
+    font-family: "Open Sans";
     color: #5d686f;
     margin-top: 20px;
-    font-weight: 400;
+    font-weight: 300;
     overflow: hidden;
     -webkit-hypens: auto;
     -moz-hypens: auto;
@@ -2153,10 +2153,9 @@ a.fancybox {
   .postShorten .postShorten-excerpt,
   .postShorten .postShorten-content {
     text-rendering: optimizelegibility;
-    letter-spacing: -0.3px;
-    font-family: "Merriweather", serif;
+    font-family: "Open Sans";
     color: #5d686f;
-    font-weight: 400;
+    font-weight: 300;
     overflow: hidden;
     -webkit-hypens: auto;
     -moz-hypens: auto;
