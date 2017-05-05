@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.unisharp.com/"/>
-  <updated>2017-05-05T03:32:00.000Z</updated>
+  <updated>2017-05-04T09:24:57.000Z</updated>
   <id>http://blog.unisharp.com/</id>
   
   <author>
@@ -14,70 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>設計小學堂-UI色彩實務應用篇</title>
-    <link href="http://blog.unisharp.com/2017/04/28/%E8%A8%AD%E8%A8%88%E5%B0%8F%E5%AD%B8%E5%A0%82-UI%E8%89%B2%E5%BD%A9%E5%AF%A6%E5%8B%99%E9%81%8B%E7%94%A8%E7%AF%87/"/>
-    <id>http://blog.unisharp.com/2017/04/28/設計小學堂-UI色彩實務運用篇/</id>
-    <published>2017-04-27T16:00:00.000Z</published>
-    <updated>2017-05-05T03:32:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>配色，看起來似乎是每個人都會的一件事，在很多人的心裡「不過就是把幾個顏色湊在一起而已，好像沒什麼難度吧～」不不不，這誤會可大了！</p>
-<a id="more"></a>
-<p>配色這回事，可真是入門簡單，但是精通很難的啊！！尤其，如果不是科班出身，或是具有美感相關經驗的話，當自己親身嘗試配色的時候，有很高的機率會發現，誒？怎麼配怎麼怪！於是乎，就會走進一個一直拉、一直拉、一直拉繪圖軟體調色盤，拉…超…久…的狀態。</p>
-<p>不過不用太擔心，今天不藏私，用淺顯易懂的方法跟大家分享 1 個重點、3 個原則、2 個小技巧。降低做出不忍直視的 UI 的機率。在追求顏色美美的 UI 之前，先達零失誤選色啊～</p>
-<h2 id="重點-1：了解色彩的強度"><a href="#重點-1：了解色彩的強度" class="headerlink" title="重點 1：了解色彩的強度"></a>重點 1：了解色彩的強度</h2><p><img src="color_wheel.png" alt="伊登 12 色相環"></p>
-<h6 id="伊登-12-色相環"><a href="#伊登-12-色相環" class="headerlink" title="伊登 12 色相環"></a><em>伊登 12 色相環</em></h6><p>色彩本身是有視覺強弱之分的，整體來說由強至弱依序為：<br>暖色系(前進色) &gt; 冷色系(後退色) &gt; 灰階</p>
-<p>而同類色系互比則是：<br>深色 &gt; 淺色<br><img src="color_demo.png" alt="同類色強弱順序"></p>
-<p>相同顏色則是：<br>高彩度(飽和度) &gt; 低彩度(飽和度)<br>高明度 &lt; 低明度<br><img src="color_demo_2.png" alt="相同色強弱順序"></p>
-<p>在知道怎麼區分色彩的視覺強弱程度後，實務上在配色時，就可以依循三個原則</p>
-<h2 id="原則-1：淺底深字，深底淺字"><a href="#原則-1：淺底深字，深底淺字" class="headerlink" title="原則 1：淺底深字，深底淺字"></a>原則 1：淺底深字，深底淺字</h2><p>網頁 Layout、UI 按鈕，或是簡報設計…等，任何需要使用色彩與文字搭配的地方，都可以依循這個原則。當底色使用的顏色偏淺色時，上方的文字就使用深色；反之若底色為深色時，文字就使用淺色。</p>
-<p>這個原則可以確保文字和底色之間有清晰的辨識度，不會因為兩者之間的視覺強度太接近，而造成文字看不清楚的情形。</p>
-<p><img src="UI_demo_1.png" alt="按鈕 UI 錯誤範例"><br><img src="UI_demo_2.png" alt="按鈕 UI 正確範例"><br><img src="UI_demo_3.png" alt="圖文編排設計正確範例"></p>
-<h2 id="原則-2：強化重點，減弱其他"><a href="#原則-2：強化重點，減弱其他" class="headerlink" title="原則 2：強化重點，減弱其他"></a>原則 2：強化重點，減弱其他</h2><p>當較多的內容或物件排放在一起，但沒有妥善處理的時候，就很有可能會發生畫面變得雜亂，東西太多不知道要先看哪的情形，瀏覽的流暢度和 UI 的使用體驗會變得較差</p>
-<p><img src="color_demo_4.png" alt="相同色強弱順序"><br><img src="color_demo_5.png" alt="相同色強弱順序"></p>
-<p>這時，就必須找出畫面上最重要的內容，透過「強化重點，減弱其他」的作法將重點內容區隔出來</p>
-<h4 id="變更色彩"><a href="#變更色彩" class="headerlink" title="變更色彩"></a>變更色彩</h4><p>直接給予畫面上的重要內容，一個視覺強度較高（暖色系 or 高彩度 or 低明度）的顏色，並降低其他內容的強度</p>
-<p><img src="color_demo_6.png" alt="改變色彩"></p>
-<h4 id="加上底色"><a href="#加上底色" class="headerlink" title="加上底色"></a>加上底色</h4><p>或是透過不同底色的差異，來加強重點內容</p>
-<p><img src="color_demo_7.png" alt="底色範例"></p>
-<h4 id="改變字級"><a href="#改變字級" class="headerlink" title="改變字級"></a>改變字級</h4><p>在顏色不變的情況下，調整文字大小和粗細也是一種不錯的方法</p>
-<p><img src="color_demo_8.png" alt="字級範例"></p>
-<p>不論是哪種作法，關鍵都在於拉大重點，形成在視覺上與其他內容的對比度～（擴大貧富差距 XD），讓重要的內容能成為視覺焦點</p>
-<h2 id="原則-3：越鮮豔，越謹慎"><a href="#原則-3：越鮮豔，越謹慎" class="headerlink" title="原則 3：越鮮豔，越謹慎"></a>原則 3：越鮮豔，越謹慎</h2><p>色彩跟節日的關係非常密切，我們會看到某些顏色很常出現在一些節日裡，像是聖誕節的紅綠，中秋節的黃藍，情人節的粉紅等等</p>
-<p>而配色是有流行性的，不同年代的配色趨勢也不太一樣，近幾年從 Flat Design 開始，到 Google 的 Material Design，都能觀察出 UI 配色有越來越鮮豔的趨勢</p>
-<p><img src="color_demo_9.png" alt="2017 色彩趨勢"><br><img src="color_demo_10.png" alt="2017 色彩趨勢"></p>
-<p>但越鮮豔的顏色其實是越難掌握的，尤其是當多種高彩度的顏色要互相搭配的話，更需要對色彩有比較高的敏銳度，才不會讓畫面變霓虹燈，或看上去太刺眼</p>
-<p>所以若不是很有把握的話，盡量不要選擇彩度太高的顏色</p>
-<p>接下來分享 2 個相當基礎，但很實用的 UI 配色小技巧</p>
-<h2 id="小技巧-1：灰階-1-個主色"><a href="#小技巧-1：灰階-1-個主色" class="headerlink" title="小技巧 1：灰階 + 1 個主色"></a>小技巧 1：灰階 + 1 個主色</h2><p>使用灰階加上一個主色，是在打造新產品的 UI 時很常使用的一個技巧</p>
-<p>將主色作為 Call to Action 或是強調重點時，所用的重要顏色，例如：產品 LOGO、Call to Action 的按鈕、重要的標題文字…等等，而其他次要的內容則可用不同深淺的灰階來呈現</p>
-<p><img src="color_demo_11.png" alt="Airbnb 首頁"></p>
-<p>由於灰階的視覺強度較低，跟主色相較之下，目光焦點會很容易的停留在有主色的元素上。</p>
-<h2 id="小技巧-2：灰階-1-個主色-1-個輔助色"><a href="#小技巧-2：灰階-1-個主色-1-個輔助色" class="headerlink" title="小技巧 2：灰階 + 1 個主色 + 1 個輔助色"></a>小技巧 2：灰階 + 1 個主色 + 1 個輔助色</h2><p>除了灰階與主色之外，再加上一個輔助色</p>
-<p>輔助色的視覺強度不能高於主色，才能維持主色是畫面焦點的作用。而輔助色可以運用在次要內容上，例如與 Call to Action 不同目的的按鈕，或是畫面上非最重要，但也希望使用者留意的元素上。</p>
-<p><img src="color_demo_12.png" alt="Invision 註冊頁"></p>
-<p>上面分享的這些內容，是依據我自己的設計經驗所歸納出的幾個心得，希望能稍稍幫助大家在如何用色上的煩惱！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;配色，看起來似乎是每個人都會的一件事，在很多人的心裡「不過就是把幾個顏色湊在一起而已，好像沒什麼難度吧～」不不不，這誤會可大了！&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端設計" scheme="http://blog.unisharp.com/categories/%E5%89%8D%E7%AB%AF%E8%A8%AD%E8%A8%88/"/>
-    
-    
-      <category term="UI" scheme="http://blog.unisharp.com/tags/UI/"/>
-    
-      <category term="色彩" scheme="http://blog.unisharp.com/tags/%E8%89%B2%E5%BD%A9/"/>
-    
-      <category term="設計" scheme="http://blog.unisharp.com/tags/%E8%A8%AD%E8%A8%88/"/>
-    
-      <category term="設計小學堂" scheme="http://blog.unisharp.com/tags/%E8%A8%AD%E8%A8%88%E5%B0%8F%E5%AD%B8%E5%A0%82/"/>
-    
-  </entry>
   
   <entry>
     <title>上班原來也可以像是回到家</title>
@@ -173,6 +109,52 @@
   </entry>
   
   <entry>
+    <title>所有決議都必須留下紀錄 - 凡走過，必留下痕跡</title>
+    <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
+    <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
+    <published>2017-02-13T16:00:00.000Z</published>
+    <updated>2017-04-25T08:05:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
+<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
+<h2 id="會議討論-電話溝通"><a href="#會議討論-電話溝通" class="headerlink" title="會議討論/電話溝通"></a>會議討論/電話溝通</h2><p>開完會或講完電話有共識後，一定要發一封信，說明剛剛的決議（會議記錄）。</p>
+<p>師父不喜歡很死板的會議記錄，所以他通常要我發出決議內容就好，大概可以這麼寫：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Hi Jason,</div><div class="line"></div><div class="line">根據中秋節烤肉專案的流程議題，剛剛已經在電話內跟您討論過，以下為最終的結論：</div><div class="line">1. 採買人員每次出發前往採買前，必須填寫『採購清單』，並且經由總務部主管審核通過，才可出發採買。</div><div class="line">2. 生火人員必須遵照『木炭排列SOP』之流程，排列木炭；生火場所必須在空氣流通的地方。</div><div class="line">3. .....</div><div class="line">4. .....</div><div class="line">5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line"></div><div class="line">以上五點需請相關人員遵守，若因違反上述規定，而造成食物美味不如預期，我司將不負責處理。</div><div class="line">上述之決議將於 12/04 開始實施，若您有任何疑慮，請在明天(12/03)之前跟我聯絡。</div><div class="line"></div><div class="line">謝謝您，祝您順心。</div><div class="line"></div><div class="line">Peggy 2016/12/02</div></pre></td></tr></table></figure>
+<p>記得，這封信除了寄給客戶之外，也一定要 CC 給對方的相關人員，還有自己的職務代理人（或相關人員），未來若真的需要查這個議題時，也比較好追查。</p>
+<h2 id="使用通訊軟體溝通"><a href="#使用通訊軟體溝通" class="headerlink" title="使用通訊軟體溝通"></a>使用通訊軟體溝通</h2><p>在專案執行過程中，難免會用通訊軟體（Line/Skype/Slack/ etc）跟客戶討論事情，有時候整個對話過程經過了一個小時，才有結論。</p>
+<p>若是有結論後，就直接結束了這個話題，會被師父罵。</p>
+<p>那應該怎麼作呢？我們來看一下這個情境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Peggy：採買人員填寫完採購清單就可以去採買了嗎？</div><div class="line">Jason：是啊</div><div class="line">Peggy：但是之前你不是有說這樣子沒有人把關，怕採買人員亂買。</div><div class="line">Jason：對齁！！！</div><div class="line">Jason：不然必須讓總務部主管審核通過才可以採買</div><div class="line">Peggy：好，沒問題。</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：好的，我知道了，那先這樣囉，謝謝。</div><div class="line">Jason：881</div></pre></td></tr></table></figure>
+<p>感覺上面的對話已經有結論了，害我被師父罵的原因是什麼呢？</p>
+<blockquote>
+<p>你的結論，不一定是客戶心中的那個畫面</p>
+</blockquote>
+<p>正確的作法是這樣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：根據我們前面說的，大致可以歸納成五點：</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Peggy：上面這樣對嗎？</div><div class="line">Jason：啊！！不是！我說錯了，應該是讓大門警衛品嚐啦，我剛頭暈講錯了</div><div class="line">Peggy：好，那我改一下：</div><div class="line">Peggy：============(這是分隔線)==============</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line">Peggy：以上五點</div><div class="line">Jason：是的，完全正確。</div><div class="line">Peggy：好的，那我會一併把上面這五點結論發一封信出來。</div><div class="line">Jason：好，辛苦你了，881</div></pre></td></tr></table></figure>
+<p>看到了嗎？連這裡都要下結論，我真的好累～你要的我都學不會～</p>
+<p>不只是這樣，最後還要發一封信給客戶，把剛剛的結論再說一次（內容就跟會議討論/電話溝通那封信一樣就好），還要把通訊軟體最後的決議畫面截圖下來，放在這封信件當附件。</p>
+<p>這張截圖一定要有這五點決議內容，與客戶回覆說『沒問題』的會談過程（大概就是從『分隔線』一直到最後的『辛苦你了，881』）。</p>
+<p>雖然上面這些步驟比較花功夫，但不可否認的，這些真的很有效。</p>
+<p>師父用這些招式，狠狠的打了許多澳洲客人的臉，讓我崇拜不已（不過，師父他到底怎麼從信件大海裡面撈出他要的這些證據啊….）。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。&lt;/p&gt;
+&lt;p&gt;因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
+    
+      <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</title>
     <link href="http://blog.unisharp.com/2017/02/14/%E4%B8%80%E5%A5%97%E4%BD%BF%E7%94%A8%20jade%20(pug)%20%E8%BD%89%E7%82%BA%20laravel%20blade%20%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/"/>
     <id>http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/</id>
@@ -220,52 +202,6 @@
   </entry>
   
   <entry>
-    <title>所有決議都必須留下紀錄 - 凡走過，必留下痕跡</title>
-    <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
-    <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
-    <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-04-25T08:05:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
-<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
-<h2 id="會議討論-電話溝通"><a href="#會議討論-電話溝通" class="headerlink" title="會議討論/電話溝通"></a>會議討論/電話溝通</h2><p>開完會或講完電話有共識後，一定要發一封信，說明剛剛的決議（會議記錄）。</p>
-<p>師父不喜歡很死板的會議記錄，所以他通常要我發出決議內容就好，大概可以這麼寫：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Hi Jason,</div><div class="line"></div><div class="line">根據中秋節烤肉專案的流程議題，剛剛已經在電話內跟您討論過，以下為最終的結論：</div><div class="line">1. 採買人員每次出發前往採買前，必須填寫『採購清單』，並且經由總務部主管審核通過，才可出發採買。</div><div class="line">2. 生火人員必須遵照『木炭排列SOP』之流程，排列木炭；生火場所必須在空氣流通的地方。</div><div class="line">3. .....</div><div class="line">4. .....</div><div class="line">5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line"></div><div class="line">以上五點需請相關人員遵守，若因違反上述規定，而造成食物美味不如預期，我司將不負責處理。</div><div class="line">上述之決議將於 12/04 開始實施，若您有任何疑慮，請在明天(12/03)之前跟我聯絡。</div><div class="line"></div><div class="line">謝謝您，祝您順心。</div><div class="line"></div><div class="line">Peggy 2016/12/02</div></pre></td></tr></table></figure>
-<p>記得，這封信除了寄給客戶之外，也一定要 CC 給對方的相關人員，還有自己的職務代理人（或相關人員），未來若真的需要查這個議題時，也比較好追查。</p>
-<h2 id="使用通訊軟體溝通"><a href="#使用通訊軟體溝通" class="headerlink" title="使用通訊軟體溝通"></a>使用通訊軟體溝通</h2><p>在專案執行過程中，難免會用通訊軟體（Line/Skype/Slack/ etc）跟客戶討論事情，有時候整個對話過程經過了一個小時，才有結論。</p>
-<p>若是有結論後，就直接結束了這個話題，會被師父罵。</p>
-<p>那應該怎麼作呢？我們來看一下這個情境：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Peggy：採買人員填寫完採購清單就可以去採買了嗎？</div><div class="line">Jason：是啊</div><div class="line">Peggy：但是之前你不是有說這樣子沒有人把關，怕採買人員亂買。</div><div class="line">Jason：對齁！！！</div><div class="line">Jason：不然必須讓總務部主管審核通過才可以採買</div><div class="line">Peggy：好，沒問題。</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：好的，我知道了，那先這樣囉，謝謝。</div><div class="line">Jason：881</div></pre></td></tr></table></figure>
-<p>感覺上面的對話已經有結論了，害我被師父罵的原因是什麼呢？</p>
-<blockquote>
-<p>你的結論，不一定是客戶心中的那個畫面</p>
-</blockquote>
-<p>正確的作法是這樣：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：根據我們前面說的，大致可以歸納成五點：</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Peggy：上面這樣對嗎？</div><div class="line">Jason：啊！！不是！我說錯了，應該是讓大門警衛品嚐啦，我剛頭暈講錯了</div><div class="line">Peggy：好，那我改一下：</div><div class="line">Peggy：============(這是分隔線)==============</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line">Peggy：以上五點</div><div class="line">Jason：是的，完全正確。</div><div class="line">Peggy：好的，那我會一併把上面這五點結論發一封信出來。</div><div class="line">Jason：好，辛苦你了，881</div></pre></td></tr></table></figure>
-<p>看到了嗎？連這裡都要下結論，我真的好累～你要的我都學不會～</p>
-<p>不只是這樣，最後還要發一封信給客戶，把剛剛的結論再說一次（內容就跟會議討論/電話溝通那封信一樣就好），還要把通訊軟體最後的決議畫面截圖下來，放在這封信件當附件。</p>
-<p>這張截圖一定要有這五點決議內容，與客戶回覆說『沒問題』的會談過程（大概就是從『分隔線』一直到最後的『辛苦你了，881』）。</p>
-<p>雖然上面這些步驟比較花功夫，但不可否認的，這些真的很有效。</p>
-<p>師父用這些招式，狠狠的打了許多澳洲客人的臉，讓我崇拜不已（不過，師父他到底怎麼從信件大海裡面撈出他要的這些證據啊….）。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。&lt;/p&gt;
-&lt;p&gt;因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
-    
-      <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>觀察實體世界中的「使用者體驗」</title>
     <link href="http://blog.unisharp.com/2017/02/13/%E8%A7%80%E5%AF%9F%E5%AF%A6%E9%AB%94%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E3%80%8D/"/>
     <id>http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/</id>
@@ -297,6 +233,87 @@
     
     
       <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>溝通-活用本質力</title>
+    <link href="http://blog.unisharp.com/2017/01/06/%E6%BA%9D%E9%80%9A-%E6%B4%BB%E7%94%A8%E6%9C%AC%E8%B3%AA%E5%8A%9B/"/>
+    <id>http://blog.unisharp.com/2017/01/06/溝通-活用本質力/</id>
+    <published>2017-01-05T16:00:00.000Z</published>
+    <updated>2017-04-25T08:05:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br><a id="more"></a></p>
+<p>在與業主打交道很常遇見！</p>
+<blockquote>
+<p>『啊！這個操作模式我不習慣耶！』</p>
+<p>『這個畫面怎麼跟我想的不一樣？』</p>
+<p>『新增為什麼要開新視窗？我想在原來畫面進行就夠了！』</p>
+</blockquote>
+<p>業主會埋怨：這不是應該是設計師的 common sense 嘛？哪有人這樣設計的？</p>
+<p>是，常常認知落差最後的一根稻草，正是所謂的 common sense。</p>
+<p>到底要怎麼「溝通」？到達什麼標準才算是真正的有 sense？</p>
+<p>到這邊！先跳脫一下，以生物學來看看甚麼是溝通</p>
+<p>溝通來自於意識，意識來自於人腦對刺激的反應，當感官接受刺激時，這些刺激轉化為電或化學信號，通過神經纖維傳導到大腦，在大腦中沿著相連的神經網路通道進行傳導。直到對外界刺激形成有效反應時輸入終止。傳導的過程，即意識的過程。</p>
+<p>每個人對外界刺激會因天生的構造與後天的記憶，最終產生不一樣的，回應！</p>
+<p>在演化過程中，為了節省能量消耗，大腦會出現一種稱之神經走道（記憶走道），的快速處理方式，可稱之為思維偏好。</p>
+<p>所以，能了解自己的思維偏好與溝通對象的思維偏好，更能快速與有效地完成目的。</p>
+<p>全腦思維科學分析 (Emergenetics Science) 的核心概念。每個人其實都有與生俱來的「本質天賦」，只是許多人都不清楚，透過全腦思維分析獨創的本質個性測驗與解說，就能找出每個人潛藏的「本質天賦」。此外，當你學會如何了舉別人的性格特質後，也就知道該怎麼和他溝通，彼此的互動自然順暢無礙。（如果有興趣，可以找〈活用你的本質力〉這本書對於全腦思維科學分析有更深入的介紹）。</p>
+<p>在全腦思維科學分析中，會將思考偏好分成四大類概念型，社交型，分析型，結構型。</p>
+<ul>
+<li>概念型<ul>
+<li>重視創造性</li>
+<li>想像力豐富</li>
+<li>喜歡挑戰新事物</li>
+</ul>
+</li>
+<li>社交型<ul>
+<li>重視他人的評價</li>
+<li>重視與他人的關係</li>
+<li>依靠直覺評斷他人</li>
+</ul>
+</li>
+<li>分析型<ul>
+<li>理論性思考</li>
+<li>重視目的，原因</li>
+<li>理性</li>
+</ul>
+</li>
+<li>結構型<ul>
+<li>重視可行性</li>
+<li>務實</li>
+<li>對新事物較謹慎</li>
+</ul>
+</li>
+</ul>
+<p>一般來說，每個人都有這四種偏好，只不過優先順序不一樣，<br>舉個例子來說向某人問: 我們週六出去玩好不好！<br>不同類型的人，考慮去不去的優先順序會不一樣</p>
+<ul>
+<li>概念型：玩什麼，好不好玩？</li>
+<li>社交型：跟誰去，還有誰啊？</li>
+<li>分析型：為什麼要去玩，為什麼找我啊？</li>
+<li>結構型：我先想想週六有沒有空？我可以去嗎？</li>
+</ul>
+<p>每個人都有自己的本質，若不能了解每個人都有不同的特質於思考偏好，那麼就容易引起生活中的溝通不良。</p>
+<p>比方說，概念型偏好約結構型的朋友要出去玩，結構型朋友的週六有事情不能去，概念型的朋友一直在跟他說那裡真得很好玩！<br>就會變成：</p>
+<blockquote>
+<p>「為什麼那個人聽不懂我說的話？」</p>
+<p>「他怎能老是愛跟我唱反調？」</p>
+</blockquote>
+<p>這些都起因於我們忘了或是忽略每個人的不同，無法採取適合對方本質的溝通方法才會如此。</p>
+<p>因此，唯有理解自己與對方各自擁有的特性，才有機會建立彼此良好的溝通模式。</p>
+<p>也就是用雙方都感到舒服的方式讓溝通更順暢無礙。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。&lt;br&gt;我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
     
   </entry>
   
@@ -426,87 +443,6 @@
     
     
       <category term="旅遊" scheme="http://blog.unisharp.com/tags/%E6%97%85%E9%81%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>溝通-活用本質力</title>
-    <link href="http://blog.unisharp.com/2017/01/06/%E6%BA%9D%E9%80%9A-%E6%B4%BB%E7%94%A8%E6%9C%AC%E8%B3%AA%E5%8A%9B/"/>
-    <id>http://blog.unisharp.com/2017/01/06/溝通-活用本質力/</id>
-    <published>2017-01-05T16:00:00.000Z</published>
-    <updated>2017-04-25T08:05:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br><a id="more"></a></p>
-<p>在與業主打交道很常遇見！</p>
-<blockquote>
-<p>『啊！這個操作模式我不習慣耶！』</p>
-<p>『這個畫面怎麼跟我想的不一樣？』</p>
-<p>『新增為什麼要開新視窗？我想在原來畫面進行就夠了！』</p>
-</blockquote>
-<p>業主會埋怨：這不是應該是設計師的 common sense 嘛？哪有人這樣設計的？</p>
-<p>是，常常認知落差最後的一根稻草，正是所謂的 common sense。</p>
-<p>到底要怎麼「溝通」？到達什麼標準才算是真正的有 sense？</p>
-<p>到這邊！先跳脫一下，以生物學來看看甚麼是溝通</p>
-<p>溝通來自於意識，意識來自於人腦對刺激的反應，當感官接受刺激時，這些刺激轉化為電或化學信號，通過神經纖維傳導到大腦，在大腦中沿著相連的神經網路通道進行傳導。直到對外界刺激形成有效反應時輸入終止。傳導的過程，即意識的過程。</p>
-<p>每個人對外界刺激會因天生的構造與後天的記憶，最終產生不一樣的，回應！</p>
-<p>在演化過程中，為了節省能量消耗，大腦會出現一種稱之神經走道（記憶走道），的快速處理方式，可稱之為思維偏好。</p>
-<p>所以，能了解自己的思維偏好與溝通對象的思維偏好，更能快速與有效地完成目的。</p>
-<p>全腦思維科學分析 (Emergenetics Science) 的核心概念。每個人其實都有與生俱來的「本質天賦」，只是許多人都不清楚，透過全腦思維分析獨創的本質個性測驗與解說，就能找出每個人潛藏的「本質天賦」。此外，當你學會如何了舉別人的性格特質後，也就知道該怎麼和他溝通，彼此的互動自然順暢無礙。（如果有興趣，可以找〈活用你的本質力〉這本書對於全腦思維科學分析有更深入的介紹）。</p>
-<p>在全腦思維科學分析中，會將思考偏好分成四大類概念型，社交型，分析型，結構型。</p>
-<ul>
-<li>概念型<ul>
-<li>重視創造性</li>
-<li>想像力豐富</li>
-<li>喜歡挑戰新事物</li>
-</ul>
-</li>
-<li>社交型<ul>
-<li>重視他人的評價</li>
-<li>重視與他人的關係</li>
-<li>依靠直覺評斷他人</li>
-</ul>
-</li>
-<li>分析型<ul>
-<li>理論性思考</li>
-<li>重視目的，原因</li>
-<li>理性</li>
-</ul>
-</li>
-<li>結構型<ul>
-<li>重視可行性</li>
-<li>務實</li>
-<li>對新事物較謹慎</li>
-</ul>
-</li>
-</ul>
-<p>一般來說，每個人都有這四種偏好，只不過優先順序不一樣，<br>舉個例子來說向某人問: 我們週六出去玩好不好！<br>不同類型的人，考慮去不去的優先順序會不一樣</p>
-<ul>
-<li>概念型：玩什麼，好不好玩？</li>
-<li>社交型：跟誰去，還有誰啊？</li>
-<li>分析型：為什麼要去玩，為什麼找我啊？</li>
-<li>結構型：我先想想週六有沒有空？我可以去嗎？</li>
-</ul>
-<p>每個人都有自己的本質，若不能了解每個人都有不同的特質於思考偏好，那麼就容易引起生活中的溝通不良。</p>
-<p>比方說，概念型偏好約結構型的朋友要出去玩，結構型朋友的週六有事情不能去，概念型的朋友一直在跟他說那裡真得很好玩！<br>就會變成：</p>
-<blockquote>
-<p>「為什麼那個人聽不懂我說的話？」</p>
-<p>「他怎能老是愛跟我唱反調？」</p>
-</blockquote>
-<p>這些都起因於我們忘了或是忽略每個人的不同，無法採取適合對方本質的溝通方法才會如此。</p>
-<p>因此，唯有理解自己與對方各自擁有的特性，才有機會建立彼此良好的溝通模式。</p>
-<p>也就是用雙方都感到舒服的方式讓溝通更順暢無礙。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。&lt;br&gt;我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
     
   </entry>
   
