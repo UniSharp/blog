@@ -704,11 +704,11 @@ rolling_checksum = A + (2^16) * B
   </entry>
   
   <entry>
-    <title>UX 從新手開始，使用者體驗的 100堂必修課</title>
-    <link href="http://blog.unisharp.com/2016/10/02/UX%20%E5%BE%9E%E6%96%B0%E6%89%8B%E9%96%8B%E5%A7%8B/"/>
-    <id>http://blog.unisharp.com/2016/10/02/UX 從新手開始/</id>
-    <published>2016-10-01T16:00:00.000Z</published>
-    <updated>2017-05-24T04:06:34.000Z</updated>
+    <title>UX 從新手開始-使用者體驗的 100堂必修課</title>
+    <link href="http://blog.unisharp.com/2016/10/20/UX%20%E5%BE%9E%E6%96%B0%E6%89%8B%E9%96%8B%E5%A7%8B/"/>
+    <id>http://blog.unisharp.com/2016/10/20/UX 從新手開始/</id>
+    <published>2016-10-19T16:00:00.000Z</published>
+    <updated>2017-05-24T04:20:10.000Z</updated>
     
     <content type="html"><![CDATA[<p>​    今天來為大家介紹的這本「UX 從新手開始，使用者體驗的 100堂必修課」，作者完整地將 UX 設計中較容易碰到的問題與設計方法介紹給讀者，所以本書並不會像 「UX 策略」那樣的專精詳述某種特定方法，而是概略地提及讓大家有基本概念。<br><a id="more"></a><br>既然是這樣，我就再更精簡的找出對我們 PM/工程師/設計師有幫助的一些重點介紹給大家。</p>
 <p>​    一開始作者開門見山地叮嚀「UX 設計」是一種流程，裡面包含了五件事：心理學、可用性、設計、文案撰寫和分析。</p>
