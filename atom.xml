@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.unisharp.com/"/>
-  <updated>2017-05-08T02:38:17.000Z</updated>
+  <updated>2017-05-31T04:44:31.000Z</updated>
   <id>http://blog.unisharp.com/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>rsync 是如何比較檔案差異的</title>
+    <link href="http://blog.unisharp.com/2017/05/31/rsync%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%AF%94%E8%BC%83%E6%AA%94%E6%A1%88%E5%B7%AE%E7%95%B0%E7%9A%84%EF%BC%9F/"/>
+    <id>http://blog.unisharp.com/2017/05/31/rsync 是如何比較檔案差異的？/</id>
+    <published>2017-05-30T16:00:00.000Z</published>
+    <updated>2017-05-31T04:44:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br><a id="more"></a><br>如果自己想自製一個能夠比較兩份文件差異的程式，稍微想一下設計，大約還能以行爲單位來設計，找出差異。</p>
+<p>但是如果檔案並非純文字，而是像照片這般的二進位檔案，可能一整份檔案都沒有任何換行符號，一比較差異就是讓伺服器把整份檔案重新抓下來了。</p>
+<p>面對通用檔案的差異比較，其設計思路就會朝向將檔案切成一塊一塊的區塊來進行差異比較。但終究需要面對以下問題：</p>
+<ul>
+<li>不可能將每個區塊的內容下載下來讓客戶端進行比較，這樣等同下載整份檔案</li>
+<li>如果只是檔頭加了一點內容，切割區塊有機會造成每個區塊內容就不同，也等同要下載整份檔案</li>
+</ul>
+<p>面對以上問題，rsync 採用了一些不錯的解決對策</p>
+<h4 id="校驗和-Checksum"><a href="#校驗和-Checksum" class="headerlink" title="校驗和 (Checksum)"></a>校驗和 (Checksum)</h4><p>校驗和不是 rsync 獨有的東西，很早就有利用校驗和來檢查檔案是否完整的流程存在。而校驗和其原理就只是利用檔案內的資料產生一個獨特的值，讓下載方與供應方用同樣的方法生出該值，稍加比較就知道兩個檔案是否相同。</p>
+<p>舉個最簡單的校驗和的例子，假設檔案內容如下：</p>
+<pre><code>{5, 6, 7, 8}
+</code></pre><p>最簡單的校驗和可以直接全部內容相加，其校驗和爲 26 ，只要下載方的校驗和也是 26 ，檔案下載完整的 <strong>可能性</strong> 就越高。</p>
+<p>這裡的說明是用 <strong>可能性</strong> 是因為大家都知道直接相加的缺點。有太多可以產生相同校驗和的方法了。<br>例如以下內容皆有機會被視為相同檔案：</p>
+<pre><code>{3, 7, 8, 8}
+{9, 2, 5, 11}
+</code></pre><p>因此資訊界競相設計出各種校驗和的演算，例如 md4, md5 ，都宣稱高度可信，很難有不同的來源會產生相同的校驗和。但是越高度可信，所需要的計算時間越久，甚至需要產生一些質數出來輔助。</p>
+<p>總結校驗和帶來的幫助，就是無需將伺服器上的每個區塊的內容都下載下來比較，只需要比較其校驗和便能得知是否有相同內容。</p>
+<h4 id="rsync-策略概述"><a href="#rsync-策略概述" class="headerlink" title="rsync 策略概述"></a>rsync 策略概述</h4><p>rsync 接下來要面對的問題，就是如何避免檔案偏移，就造成下載整份檔案的狀況。其流程大概像下面的步驟：</p>
+<ol>
+<li>將伺服器上的檔案 B 切成不重疊的區塊。</li>
+<li>將檔案 B 的所有區塊分別算出一個<strong>弱校驗和</strong>(Rolling Checksum) 和 <strong>強校驗和</strong> (md4)</li>
+<li>客戶端將所有區塊的校驗和下載製表 (hash table)</li>
+<li>客戶端從檔案 A 的檔頭開始切區塊，先只快速算出 <strong>弱校驗和</strong>，用其查表，查看是否存在</li>
+<li>查表<ul>
+<li>若無法用弱校驗和查出檔案 B 有該區塊，則區塊往下偏移繼續切並重複步驟 4 直至檔尾。</li>
+<li>若能查表查到才用<strong>強校驗和</strong>計算並比較，若符合代表有該區塊，並紀錄該區塊存在。反之則重複步驟 4</li>
+</ul>
+</li>
+</ol>
+<p>這個策略流程很簡單，但是要突破的瓶頸就是速度。不斷地將區塊偏移並且查詢比較非常耗時，因此其核心是快速的產生校驗和，快速的得知沒有相符的區塊，以避免每個區塊都用速度較慢的強校驗和檢查。在此 rsync 設計的 Rolling Checksum 佔了非常重要的位置。</p>
+<p>而 Rolling Checksum 其速度跟前述的將所有資料相加的速度是一樣快的，但又沒有說弱到一下就產生碰撞 ，因此非常適合作初步檢驗。</p>
+<h4 id="Rolling-Checksum"><a href="#Rolling-Checksum" class="headerlink" title="Rolling Checksum"></a>Rolling Checksum</h4><p>為了說明方便， Rolling Checksum 簡化算式如下</p>
+<pre><code>i 是 block 的開始位置，j 爲結束位置
+bsize 則是一個 block 的大小
+
+A = block[i] + block[i+1] + ... + block[j] // 從頭加到尾的意思
+B = bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]
+
+rolling_checksum = A + B
+</code></pre><p>假設一個 block 的大小爲 4 個 byte ， 且 block 內容依然是</p>
+<pre><code>{5, 6, 7, 8}
+</code></pre><p>其 Rolling Checksum 爲</p>
+<pre><code>A = 5 + 6 + 7 + 8
+B = (4 * 5) + (3 * 6) + (2 * 7) + (1 * 8)
+</code></pre><p>那為什麼說其速度跟全部加起來一樣快呢？ 觀察 A 部分的全部相加，大概會這樣設計一個迴圈</p>
+<pre><code>A = 0;
+for (i = 0; i &lt; bsize; i++) {
+    A += block[i];
+}
+</code></pre><p>將迴圈的流程稍微拆解一下，觀察一下 A 的內容</p>
+<pre><code>1.) A = 5
+2.) A = 5 + 6
+3.) A = 5 + 6 + 7
+4.) A = 5 + 6 + 7 + 8
+</code></pre><p>可以發現當中的 5 出現了 4 次，6 出現了 3 次，竟然跟算式 B 的要求吻合（這當然是有設計過的呀）。<br>所以要計算 B 的值只需要在同一個迴圈累加一下 A 便能同時算出 B 的值。稍微改寫如下</p>
+<pre><code>A = 0, B = 0;
+for (i = 0; i &lt; bsize; i++) {
+    A += block[i]
+    B += A;
+}
+</code></pre><p>最後補正為了說明而簡化的部分，其實這部分就只是為了 hash table 查詢所需要的取餘數的部分</p>
+<p>完整定義：</p>
+<pre><code>A = (block[i] + block[i+1] + ... + block[j]) % M // 從頭加到尾的意思
+B = (bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]) % M
+
+rolling_checksum = A + (2^16) * B
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="後端技術" scheme="http://blog.unisharp.com/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E8%A1%93/"/>
+    
+    
+      <category term="工具小教室" scheme="http://blog.unisharp.com/tags/%E5%B7%A5%E5%85%B7%E5%B0%8F%E6%95%99%E5%AE%A4/"/>
+    
+      <category term="rsync" scheme="http://blog.unisharp.com/tags/rsync/"/>
+    
+  </entry>
   
   <entry>
     <title>設計小學堂-UI色彩實務應用篇</title>
@@ -173,52 +263,6 @@
   </entry>
   
   <entry>
-    <title>所有決議都必須留下紀錄 - 凡走過，必留下痕跡</title>
-    <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
-    <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
-    <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-04-25T08:05:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
-<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
-<h2 id="會議討論-電話溝通"><a href="#會議討論-電話溝通" class="headerlink" title="會議討論/電話溝通"></a>會議討論/電話溝通</h2><p>開完會或講完電話有共識後，一定要發一封信，說明剛剛的決議（會議記錄）。</p>
-<p>師父不喜歡很死板的會議記錄，所以他通常要我發出決議內容就好，大概可以這麼寫：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Hi Jason,</div><div class="line"></div><div class="line">根據中秋節烤肉專案的流程議題，剛剛已經在電話內跟您討論過，以下為最終的結論：</div><div class="line">1. 採買人員每次出發前往採買前，必須填寫『採購清單』，並且經由總務部主管審核通過，才可出發採買。</div><div class="line">2. 生火人員必須遵照『木炭排列SOP』之流程，排列木炭；生火場所必須在空氣流通的地方。</div><div class="line">3. .....</div><div class="line">4. .....</div><div class="line">5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line"></div><div class="line">以上五點需請相關人員遵守，若因違反上述規定，而造成食物美味不如預期，我司將不負責處理。</div><div class="line">上述之決議將於 12/04 開始實施，若您有任何疑慮，請在明天(12/03)之前跟我聯絡。</div><div class="line"></div><div class="line">謝謝您，祝您順心。</div><div class="line"></div><div class="line">Peggy 2016/12/02</div></pre></td></tr></table></figure>
-<p>記得，這封信除了寄給客戶之外，也一定要 CC 給對方的相關人員，還有自己的職務代理人（或相關人員），未來若真的需要查這個議題時，也比較好追查。</p>
-<h2 id="使用通訊軟體溝通"><a href="#使用通訊軟體溝通" class="headerlink" title="使用通訊軟體溝通"></a>使用通訊軟體溝通</h2><p>在專案執行過程中，難免會用通訊軟體（Line/Skype/Slack/ etc）跟客戶討論事情，有時候整個對話過程經過了一個小時，才有結論。</p>
-<p>若是有結論後，就直接結束了這個話題，會被師父罵。</p>
-<p>那應該怎麼作呢？我們來看一下這個情境：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Peggy：採買人員填寫完採購清單就可以去採買了嗎？</div><div class="line">Jason：是啊</div><div class="line">Peggy：但是之前你不是有說這樣子沒有人把關，怕採買人員亂買。</div><div class="line">Jason：對齁！！！</div><div class="line">Jason：不然必須讓總務部主管審核通過才可以採買</div><div class="line">Peggy：好，沒問題。</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：好的，我知道了，那先這樣囉，謝謝。</div><div class="line">Jason：881</div></pre></td></tr></table></figure>
-<p>感覺上面的對話已經有結論了，害我被師父罵的原因是什麼呢？</p>
-<blockquote>
-<p>你的結論，不一定是客戶心中的那個畫面</p>
-</blockquote>
-<p>正確的作法是這樣：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：根據我們前面說的，大致可以歸納成五點：</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Peggy：上面這樣對嗎？</div><div class="line">Jason：啊！！不是！我說錯了，應該是讓大門警衛品嚐啦，我剛頭暈講錯了</div><div class="line">Peggy：好，那我改一下：</div><div class="line">Peggy：============(這是分隔線)==============</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line">Peggy：以上五點</div><div class="line">Jason：是的，完全正確。</div><div class="line">Peggy：好的，那我會一併把上面這五點結論發一封信出來。</div><div class="line">Jason：好，辛苦你了，881</div></pre></td></tr></table></figure>
-<p>看到了嗎？連這裡都要下結論，我真的好累～你要的我都學不會～</p>
-<p>不只是這樣，最後還要發一封信給客戶，把剛剛的結論再說一次（內容就跟會議討論/電話溝通那封信一樣就好），還要把通訊軟體最後的決議畫面截圖下來，放在這封信件當附件。</p>
-<p>這張截圖一定要有這五點決議內容，與客戶回覆說『沒問題』的會談過程（大概就是從『分隔線』一直到最後的『辛苦你了，881』）。</p>
-<p>雖然上面這些步驟比較花功夫，但不可否認的，這些真的很有效。</p>
-<p>師父用這些招式，狠狠的打了許多澳洲客人的臉，讓我崇拜不已（不過，師父他到底怎麼從信件大海裡面撈出他要的這些證據啊….）。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。&lt;/p&gt;
-&lt;p&gt;因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
-    
-      <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</title>
     <link href="http://blog.unisharp.com/2017/02/14/%E4%B8%80%E5%A5%97%E4%BD%BF%E7%94%A8%20jade%20(pug)%20%E8%BD%89%E7%82%BA%20laravel%20blade%20%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/"/>
     <id>http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/</id>
@@ -262,6 +306,52 @@
     
     
       <category term="Laravel" scheme="http://blog.unisharp.com/tags/Laravel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>所有決議都必須留下紀錄 - 凡走過，必留下痕跡</title>
+    <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
+    <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
+    <published>2017-02-13T16:00:00.000Z</published>
+    <updated>2017-04-25T08:05:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
+<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
+<h2 id="會議討論-電話溝通"><a href="#會議討論-電話溝通" class="headerlink" title="會議討論/電話溝通"></a>會議討論/電話溝通</h2><p>開完會或講完電話有共識後，一定要發一封信，說明剛剛的決議（會議記錄）。</p>
+<p>師父不喜歡很死板的會議記錄，所以他通常要我發出決議內容就好，大概可以這麼寫：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Hi Jason,</div><div class="line"></div><div class="line">根據中秋節烤肉專案的流程議題，剛剛已經在電話內跟您討論過，以下為最終的結論：</div><div class="line">1. 採買人員每次出發前往採買前，必須填寫『採購清單』，並且經由總務部主管審核通過，才可出發採買。</div><div class="line">2. 生火人員必須遵照『木炭排列SOP』之流程，排列木炭；生火場所必須在空氣流通的地方。</div><div class="line">3. .....</div><div class="line">4. .....</div><div class="line">5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line"></div><div class="line">以上五點需請相關人員遵守，若因違反上述規定，而造成食物美味不如預期，我司將不負責處理。</div><div class="line">上述之決議將於 12/04 開始實施，若您有任何疑慮，請在明天(12/03)之前跟我聯絡。</div><div class="line"></div><div class="line">謝謝您，祝您順心。</div><div class="line"></div><div class="line">Peggy 2016/12/02</div></pre></td></tr></table></figure>
+<p>記得，這封信除了寄給客戶之外，也一定要 CC 給對方的相關人員，還有自己的職務代理人（或相關人員），未來若真的需要查這個議題時，也比較好追查。</p>
+<h2 id="使用通訊軟體溝通"><a href="#使用通訊軟體溝通" class="headerlink" title="使用通訊軟體溝通"></a>使用通訊軟體溝通</h2><p>在專案執行過程中，難免會用通訊軟體（Line/Skype/Slack/ etc）跟客戶討論事情，有時候整個對話過程經過了一個小時，才有結論。</p>
+<p>若是有結論後，就直接結束了這個話題，會被師父罵。</p>
+<p>那應該怎麼作呢？我們來看一下這個情境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Peggy：採買人員填寫完採購清單就可以去採買了嗎？</div><div class="line">Jason：是啊</div><div class="line">Peggy：但是之前你不是有說這樣子沒有人把關，怕採買人員亂買。</div><div class="line">Jason：對齁！！！</div><div class="line">Jason：不然必須讓總務部主管審核通過才可以採買</div><div class="line">Peggy：好，沒問題。</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：好的，我知道了，那先這樣囉，謝謝。</div><div class="line">Jason：881</div></pre></td></tr></table></figure>
+<p>感覺上面的對話已經有結論了，害我被師父罵的原因是什麼呢？</p>
+<blockquote>
+<p>你的結論，不一定是客戶心中的那個畫面</p>
+</blockquote>
+<p>正確的作法是這樣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：根據我們前面說的，大致可以歸納成五點：</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Peggy：上面這樣對嗎？</div><div class="line">Jason：啊！！不是！我說錯了，應該是讓大門警衛品嚐啦，我剛頭暈講錯了</div><div class="line">Peggy：好，那我改一下：</div><div class="line">Peggy：============(這是分隔線)==============</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line">Peggy：以上五點</div><div class="line">Jason：是的，完全正確。</div><div class="line">Peggy：好的，那我會一併把上面這五點結論發一封信出來。</div><div class="line">Jason：好，辛苦你了，881</div></pre></td></tr></table></figure>
+<p>看到了嗎？連這裡都要下結論，我真的好累～你要的我都學不會～</p>
+<p>不只是這樣，最後還要發一封信給客戶，把剛剛的結論再說一次（內容就跟會議討論/電話溝通那封信一樣就好），還要把通訊軟體最後的決議畫面截圖下來，放在這封信件當附件。</p>
+<p>這張截圖一定要有這五點決議內容，與客戶回覆說『沒問題』的會談過程（大概就是從『分隔線』一直到最後的『辛苦你了，881』）。</p>
+<p>雖然上面這些步驟比較花功夫，但不可否認的，這些真的很有效。</p>
+<p>師父用這些招式，狠狠的打了許多澳洲客人的臉，讓我崇拜不已（不過，師父他到底怎麼從信件大海裡面撈出他要的這些證據啊….）。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。&lt;/p&gt;
+&lt;p&gt;因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
+    
+      <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
     
   </entry>
   
@@ -580,96 +670,6 @@
     
     
       <category term="程式設計" scheme="http://blog.unisharp.com/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rsync 是如何比較檔案差異的</title>
-    <link href="http://blog.unisharp.com/2016/11/20/rsync%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%AF%94%E8%BC%83%E6%AA%94%E6%A1%88%E5%B7%AE%E7%95%B0%E7%9A%84%EF%BC%9F/"/>
-    <id>http://blog.unisharp.com/2016/11/20/rsync 是如何比較檔案差異的？/</id>
-    <published>2016-11-19T16:00:00.000Z</published>
-    <updated>2017-05-31T04:22:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br><a id="more"></a><br>如果自己想自製一個能夠比較兩份文件差異的程式，稍微想一下設計，大約還能以行爲單位來設計，找出差異。</p>
-<p>但是如果檔案並非純文字，而是像照片這般的二進位檔案，可能一整份檔案都沒有任何換行符號，一比較差異就是讓伺服器把整份檔案重新抓下來了。</p>
-<p>面對通用檔案的差異比較，其設計思路就會朝向將檔案切成一塊一塊的區塊來進行差異比較。但終究需要面對以下問題：</p>
-<ul>
-<li>不可能將每個區塊的內容下載下來讓客戶端進行比較，這樣等同下載整份檔案</li>
-<li>如果只是檔頭加了一點內容，切割區塊有機會造成每個區塊內容就不同，也等同要下載整份檔案</li>
-</ul>
-<p>面對以上問題，rsync 採用了一些不錯的解決對策</p>
-<h4 id="校驗和-Checksum"><a href="#校驗和-Checksum" class="headerlink" title="校驗和 (Checksum)"></a>校驗和 (Checksum)</h4><p>校驗和不是 rsync 獨有的東西，很早就有利用校驗和來檢查檔案是否完整的流程存在。而校驗和其原理就只是利用檔案內的資料產生一個獨特的值，讓下載方與供應方用同樣的方法生出該值，稍加比較就知道兩個檔案是否相同。</p>
-<p>舉個最簡單的校驗和的例子，假設檔案內容如下：</p>
-<pre><code>{5, 6, 7, 8}
-</code></pre><p>最簡單的校驗和可以直接全部內容相加，其校驗和爲 26 ，只要下載方的校驗和也是 26 ，檔案下載完整的 <strong>可能性</strong> 就越高。</p>
-<p>這裡的說明是用 <strong>可能性</strong> 是因為大家都知道直接相加的缺點。有太多可以產生相同校驗和的方法了。<br>例如以下內容皆有機會被視為相同檔案：</p>
-<pre><code>{3, 7, 8, 8}
-{9, 2, 5, 11}
-</code></pre><p>因此資訊界競相設計出各種校驗和的演算，例如 md4, md5 ，都宣稱高度可信，很難有不同的來源會產生相同的校驗和。但是越高度可信，所需要的計算時間越久，甚至需要產生一些質數出來輔助。</p>
-<p>總結校驗和帶來的幫助，就是無需將伺服器上的每個區塊的內容都下載下來比較，只需要比較其校驗和便能得知是否有相同內容。</p>
-<h4 id="rsync-策略概述"><a href="#rsync-策略概述" class="headerlink" title="rsync 策略概述"></a>rsync 策略概述</h4><p>rsync 接下來要面對的問題，就是如何避免檔案偏移，就造成下載整份檔案的狀況。其流程大概像下面的步驟：</p>
-<ol>
-<li>將伺服器上的檔案 B 切成不重疊的區塊。</li>
-<li>將檔案 B 的所有區塊分別算出一個<strong>弱校驗和</strong>(Rolling Checksum) 和 <strong>強校驗和</strong> (md4)</li>
-<li>客戶端將所有區塊的校驗和下載製表 (hash table)</li>
-<li>客戶端從檔案 A 的檔頭開始切區塊，先只快速算出 <strong>弱校驗和</strong>，用其查表，查看是否存在</li>
-<li>查表<ul>
-<li>若無法用弱校驗和查出檔案 B 有該區塊，則區塊往下偏移繼續切並重複步驟 4 直至檔尾。</li>
-<li>若能查表查到才用<strong>強校驗和</strong>計算並比較，若符合代表有該區塊，並紀錄該區塊存在。反之則重複步驟 4</li>
-</ul>
-</li>
-</ol>
-<p>這個策略流程很簡單，但是要突破的瓶頸就是速度。不斷地將區塊偏移並且查詢比較非常耗時，因此其核心是快速的產生校驗和，快速的得知沒有相符的區塊，以避免每個區塊都用速度較慢的強校驗和檢查。在此 rsync 設計的 Rolling Checksum 佔了非常重要的位置。</p>
-<p>而 Rolling Checksum 其速度跟前述的將所有資料相加的速度是一樣快的，但又沒有說弱到一下就產生碰撞 ，因此非常適合作初步檢驗。</p>
-<h4 id="Rolling-Checksum"><a href="#Rolling-Checksum" class="headerlink" title="Rolling Checksum"></a>Rolling Checksum</h4><p>為了說明方便， Rolling Checksum 簡化算式如下</p>
-<pre><code>i 是 block 的開始位置，j 爲結束位置
-bsize 則是一個 block 的大小
-
-A = block[i] + block[i+1] + ... + block[j] // 從頭加到尾的意思
-B = bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]
-
-rolling_checksum = A + B
-</code></pre><p>假設一個 block 的大小爲 4 個 byte ， 且 block 內容依然是</p>
-<pre><code>{5, 6, 7, 8}
-</code></pre><p>其 Rolling Checksum 爲</p>
-<pre><code>A = 5 + 6 + 7 + 8
-B = (4 * 5) + (3 * 6) + (2 * 7) + (1 * 8)
-</code></pre><p>那為什麼說其速度跟全部加起來一樣快呢？ 觀察 A 部分的全部相加，大概會這樣設計一個迴圈</p>
-<pre><code>A = 0;
-for (i = 0; i &lt; bsize; i++) {
-    A += block[i];
-}
-</code></pre><p>將迴圈的流程稍微拆解一下，觀察一下 A 的內容</p>
-<pre><code>1.) A = 5
-2.) A = 5 + 6
-3.) A = 5 + 6 + 7
-4.) A = 5 + 6 + 7 + 8
-</code></pre><p>可以發現當中的 5 出現了 4 次，6 出現了 3 次，竟然跟算式 B 的要求吻合（這當然是有設計過的呀）。<br>所以要計算 B 的值只需要在同一個迴圈累加一下 A 便能同時算出 B 的值。稍微改寫如下</p>
-<pre><code>A = 0, B = 0;
-for (i = 0; i &lt; bsize; i++) {
-    A += block[i]
-    B += A;
-}
-</code></pre><p>最後補正為了說明而簡化的部分，其實這部分就只是為了 hash table 查詢所需要的取餘數的部分</p>
-<p>完整定義：</p>
-<pre><code>A = (block[i] + block[i+1] + ... + block[j]) % M // 從頭加到尾的意思
-B = (bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]) % M
-
-rolling_checksum = A + (2^16) * B
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="後端技術" scheme="http://blog.unisharp.com/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E8%A1%93/"/>
-    
-    
-      <category term="工具小教室" scheme="http://blog.unisharp.com/tags/%E5%B7%A5%E5%85%B7%E5%B0%8F%E6%95%99%E5%AE%A4/"/>
-    
-      <category term="rsync" scheme="http://blog.unisharp.com/tags/rsync/"/>
     
   </entry>
   
