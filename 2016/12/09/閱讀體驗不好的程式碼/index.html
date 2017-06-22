@@ -18,17 +18,17 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。如果專案中重複的 code 一大堆">
+    <meta name="description" content="談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。">
 <meta name="keywords" content="程式設計">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="閱讀體驗不好的程式碼">
 <meta property="og:url" content="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/index.html">
 <meta property="og:site_name" content="UniSharp blog">
-<meta property="og:description" content="談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。如果專案中重複的 code 一大堆">
-<meta property="og:updated_time" content="2017-04-25T08:05:50.000Z">
+<meta property="og:description" content="談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。">
+<meta property="og:updated_time" content="2017-06-22T02:44:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="閱讀體驗不好的程式碼">
-<meta name="twitter:description" content="談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。如果專案中重複的 code 一大堆">
+<meta name="twitter:description" content="談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。">
     
     
         
@@ -247,35 +247,32 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。如果專案中重複的 code 一大堆<br><a id="more"></a><br>，又或者 function 命名模稜兩可，又看不到任何的註解，想必會讓日後接著維護的人（99% 都是幾個禮拜後的自己）難以下手，為了修改一個小小的功能卻花的很多不必要的時間。</p>
+            <p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。<br><a id="more"></a><br>如果專案中重複的 code 一大堆，又或者 function 命名模稜兩可，又看不到任何的註解，想必會讓日後接著維護的人（99% 都是幾個禮拜後的自己）難以下手，為了修改一個小小的功能卻花的很多不必要的時間。</p>
 <h2 id="發生閱讀問題的情境"><a href="#發生閱讀問題的情境" class="headerlink" title="發生閱讀問題的情境"></a>發生閱讀問題的情境</h2><p>以下是可能發生在開發中的一些現象或是操作行為，逐項列出了造成閱讀體驗不好的原因：</p>
 <h4 id="一直滾動滑鼠滾輪"><a href="#一直滾動滑鼠滾輪" class="headerlink" title="一直滾動滑鼠滾輪"></a>一直滾動滑鼠滾輪</h4><ul>
 <li>原因：function 過長</li>
 </ul>
 <h4 id="一直全域搜尋"><a href="#一直全域搜尋" class="headerlink" title="一直全域搜尋"></a>一直全域搜尋</h4><ul>
-<li>原因：function 過長</li>
+<li>原因：function 過長，導致不容易回到 function 的開頭，於是不斷使用搜尋</li>
 </ul>
-<h4 id="一直查看同一個-function-內的-code"><a href="#一直查看同一個-function-內的-code" class="headerlink" title="一直查看同一個 function 內的 code"></a>一直查看同一個 function 內的 code</h4><ul>
+<h4 id="同一個-function，每一次都必須查看裡面的-code-才能明白-function-含義"><a href="#同一個-function，每一次都必須查看裡面的-code-才能明白-function-含義" class="headerlink" title="同一個 function，每一次都必須查看裡面的 code 才能明白 function 含義"></a>同一個 function，每一次都必須查看裡面的 code 才能明白 function 含義</h4><ul>
 <li>原因： function 命名不當，無法表達其含義</li>
 </ul>
 <h4 id="不斷的向上追朔原始碼"><a href="#不斷的向上追朔原始碼" class="headerlink" title="不斷的向上追朔原始碼"></a>不斷的向上追朔原始碼</h4><ul>
 <li>原因：呼叫的層數太多</li>
 <li>例子：Laravel 原始碼</li>
 </ul>
-<h4 id="反覆查看全域常數的值"><a href="#反覆查看全域常數的值" class="headerlink" title="反覆查看全域常數的值"></a>反覆查看全域常數的值</h4><ul>
+<h4 id="每一次都必須查看全域常數的值，才知道變數含義"><a href="#每一次都必須查看全域常數的值，才知道變數含義" class="headerlink" title="每一次都必須查看全域常數的值，才知道變數含義"></a>每一次都必須查看全域常數的值，才知道變數含義</h4><ul>
 <li>原因：常數命名不當，無法表達其含義</li>
 </ul>
 <h4 id="幫程式碼畫流程圖"><a href="#幫程式碼畫流程圖" class="headerlink" title="幫程式碼畫流程圖"></a>幫程式碼畫流程圖</h4><ul>
 <li>原因：巢狀太深</li>
 <li>例子：Laravel File Manager 原始碼（v1.0 以前的版本）</li>
 </ul>
-<p>在開發的時候可以稍微留意自己的操作（甚至可以錄影起來），觀察看看有沒有與以上事項相符</p>
-<h2 id="閱讀問題的五大分類"><a href="#閱讀問題的五大分類" class="headerlink" title="閱讀問題的五大分類"></a>閱讀問題的五大分類</h2><ol>
-<li>命名類的問題<ul>
+<p>在開發的時候可以稍微留意自己的操作（甚至可以錄影起來），觀察看看有沒有與以上事項相符。<br>在我閱讀《我的程式碼會說話》之後，才發覺寫程式的小細節，所以我決定來跟大家分享，分享以上情境被歸類在的命名問題。</p>
+<h2 id="閱讀問題的五大分類-之-命名類的問題"><a href="#閱讀問題的五大分類-之-命名類的問題" class="headerlink" title="閱讀問題的五大分類 之 命名類的問題"></a>閱讀問題的五大分類 之 命名類的問題</h2><ul>
 <li>沒有考慮呼叫時的情況</li>
 </ul>
-</li>
-</ol>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 例子：從班級（Grade）中取得學生的數量</div><div class="line">grade.getStudentsCount() // get 有點多餘</div><div class="line">grade.countStudents()    // 名稱聽起來像個動作，不知道到底會回傳什麼</div><div class="line">grade.students.size()    // 書寫容易，但 students 須為 public</div><div class="line">grade.size()             // 到底是什麼的大小？教室大小嗎？</div><div class="line">grade.studentsCount()    // 最精簡且語意清晰</div></pre></td></tr></table></figure>
 </code></pre><ul>
 <li>使用英文以外的語言命名<ul>
@@ -611,7 +608,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。如果專案中重複的 code 一大堆<br></div>
+                        <div class="media-content hide-xs font-merryweather"><p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -776,7 +773,7 @@
                 data-message-zero="沒有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 14 篇文章
+                找到 15 篇文章
             </p>
         </div>
     </div>
