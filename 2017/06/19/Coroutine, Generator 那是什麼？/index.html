@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="UniSharp blog">
+    <title>Coroutine, Generator 那是什麼？ - UniSharp blog</title>
+    <meta name="author" content="Mr.UniSharp">
+    
+    
+        <meta property="og:image" content="http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/programming.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/programming.jpg" />
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="在談到 coroutine 之前，先來暸解一下緣起好了 首先，我們來談談什麼是異步？">
+<meta name="keywords" content="程式設計">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Coroutine, Generator 那是什麼？">
+<meta property="og:url" content="http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/index.html">
+<meta property="og:site_name" content="UniSharp blog">
+<meta property="og:description" content="在談到 coroutine 之前，先來暸解一下緣起好了 首先，我們來談談什麼是異步？">
+<meta property="og:updated_time" content="2017-07-25T06:00:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coroutine, Generator 那是什麼？">
+<meta name="twitter:description" content="在談到 coroutine 之前，先來暸解一下緣起好了 首先，我們來談談什麼是異步？">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.unisharp.com/assets/images/logo-02.png"/>
+    
+    
+        <meta property="og:image" content="http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/programming.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/programming.jpg" />
+    
+    
+    
+        <link rel="icon" href="http://i.imgur.com/0hUX6N5.png">
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-26arix3kvkknexdkqjqbxllhuvwcj1uiiulz34ajdzgl6wgeelp6rz0v8bpf.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92410814-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">UniSharp blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+                </a>
+                <h4 class="sidebar-profile-name">Mr.UniSharp</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>work smart, smart work</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">首頁</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">分類</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">標籤</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">所有文章</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">搜尋</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+                        <span class="sidebar-button-desc">關於</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">Atom</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-center
+                    post-header-cover--partial"
+             style="background-image:url('/2017/06/19/Coroutine, Generator 那是什麼？/programming.jpg');"
+             data-behavior="4">
+            
+        </div>
+
+            <div id="main" data-behavior="4"
+                 class="hasCover
+                        hasCoverMetaOut
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title" itemprop="headline">
+            Coroutine, Generator 那是什麼？
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-06-19T00:00:00+08:00">
+	
+		    6月 19, 2017
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/後端技術/">後端技術</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>在談到 coroutine 之前，先來暸解一下緣起好了</p>
+<p>首先，我們來談談什麼是異步？</p>
+<a id="more"></a>
+<p>在現在的程式語言中，一直都有想做到異步、平行的需求，以減少 CPU 停下來等 IO 的時間。</p>
+<p>目前有的解決方案，如 javascript 是直接對於會遇到 io 的程式碼直接跳過不執行，等到程式有空去執行 IO 的部分才會去處理。</p>
+<p>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line">fs.readFile(<span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'world'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div></pre></td></tr></table></figure></p>
+<p>以上述的例子來說，當中的 <code>readFile</code> 是一個異步的函數，當下不會執行，只會將你寫的 callback 函數註冊起來，等到有空的時候再去呼叫你寫的 callback</p>
+<p>因此上述 console.log 的順序會是 ‘hello’, ‘world’</p>
+<p>雖然執行順序跟閱讀的順序不一樣，但確實可以節省 CPU 等待 IO 的時間。這麼方便的東西，一般開發者其實無法寫出異步的函數，只能用系統提供的異步函數。</p>
+<h2 id="Coroutine-是什麼？"><a href="#Coroutine-是什麼？" class="headerlink" title="Coroutine 是什麼？"></a>Coroutine 是什麼？</h2><p>前面  readFile 的例子，幾乎就只有系統提供的函數能變成異步的，要是使用者也想寫出這樣的東西在以往幾乎是不可行。而 php, python 等語言借鑒了其他語言中 coroutine 的概念，逐步實現了使用者自行撰寫異步函數的功能。</p>
+<p>先列出要實現異步功能的需求：</p>
+<ol>
+<li>讓出函數的執行權</li>
+<li>繼續執行未完成的部分</li>
+</ol>
+<p>而在其他有實現 coroutine 功能的語言裡面，多半以 <code>yield</code> 這樣的語法來讓出函數的執行權</p>
+<p>例如 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function 自我感覺IO很吃重的函數($callback) &#123;</div><div class="line">     yield; // 這裡先讓出執行權，之後的程式碼等有空再執行</div><div class="line">     print(&quot;start to read data&quot;);</div><div class="line">     $data = do_somthing_io(); // 很吃重的工作</div><div class="line">     $callback($data); // 取得資料後送給你註冊的 callback</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述的程式碼在第一次呼叫的時候什麼事都不會發生，因為 yield 這行就讓出執行權了。</p>
+<p>但是 yield 跟 return 最大的不同點在於 yield 會紀錄函數執行到一半的狀態，你可以用某些語法繼續執行，以下以 resume 函數當作繼續執行的功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var $執行到一半的函數 = 自我感覺IO很吃重的函數();</div><div class="line">print(&quot;hello&quot;);</div><div class="line">resume($執行到一半的函數)</div></pre></td></tr></table></figure>
+<p>以上的範例是說明 自我感覺IO很吃重的函數() 會回傳一個執行到 yield 的紀錄，讓你可以用 consume 函數繼續執行它。</p>
+<p>而上面的例子就是認為在 <code>print(“hello”)</code>  才有空去執行剩餘 IO 吃重的部分。</p>
+<p>如果有螢幕的話，在螢幕上顯示文字的順序大概會是這樣 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hello</div><div class="line">start to read data</div></pre></td></tr></table></figure>
+<p>基本所謂的 coroutine 大概是這樣，與前面 js 的 readFile 的差異在於繼續執行的時間點是由自己呼叫 consume() 去控制，而非系統自己找時間點去執行</p>
+<p>附帶一提，這裡說明的 coroutine 還差了那麼一點點，真正的 coroutine 是可以指定 yield 之後可以跳到哪裡。但為了說明方便，這裡假定會跳回呼叫者處。</p>
+<h2 id="Generator-又是什麼"><a href="#Generator-又是什麼" class="headerlink" title="Generator 又是什麼"></a>Generator 又是什麼</h2><p>提到 php, python 實作 coroutine 的時候一定又會提及 Generator</p>
+<p>其實 Generator 是融合了 iterator 跟 coroutine 兩種特性的東西，在 php 裡面實作了 Iterator 介面，便能夠讓物件被 <code>foreach</code> 語法拿來迭代，類似這樣的物件便可以被稱作 iterator 迭代器。</p>
+<p>在 php 裡面也是可以使用 yield 的，如果我們對一個函數 yield 去 var_dump 觀察一下可以發現會得到一個名為 Generator 的物件。</p>
+<p>這個 Generator 其實也是前面提到的 <code>執行到一半的函式</code> 可以讓我們透過某種方法繼續執行下去。</p>
+<p>而 php 的 Generator 是以實作了 Iterator 的作法，讓我們使用裡面的 next() 方法去執行下一步。</p>
+<p>這樣融合迭代器的作法，又額外了多解決了一些記憶體消耗的情境。</p>
+<p>以產生 1000 個奇數為例，會試做以下的函數 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function odds()</div><div class="line">&#123;</div><div class="line">    $odds = [];</div><div class="line">    for ($odd = 0; count($odds) &lt; 1000; $odd++) &#123;</div><div class="line">        if ($odd % 2 == 1)</div><div class="line">            $odds[] = $odd;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return $odds;</div></pre></td></tr></table></figure>
+<p>在這裡會生成塞 1000 個奇數的陣列，當這個陣列小的時候還不會覺得有多大的問題。但是數量一多，然後可能要做的事情只是 print 出數字，整個記憶體就浪費了。</p>
+<p>我們可以將上面例子稍微改寫一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function odds()</div><div class="line">&#123;</div><div class="line">    for ($i = 0;; $i++) &#123;</div><div class="line">        if ($i % 2 == 1) &#123;</div><div class="line">            yield $i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">foreach (odds() as $i =&gt; $value) &#123;</div><div class="line">    if ($i == 1000) break;</div><div class="line">    echo $value . &quot;\n&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>這裡的 odds()  是用個無窮迴圈來產出所有奇數，但是根本不用怕會被無窮迴圈卡在這個函數裡，因為每產出一個奇數，便會讓出執行權。</p>
+<p>而這裡有個小小的不同，就是在 yield 的後方可以加上類似回傳值的東西。在 Generator 裏可以利用 current() 方法把這個回傳值給取出來。</p>
+<p>如果是跑在 foreach 迴圈裡也不用想太多，迴圈會自己幫忙帶進來。</p>
+<p>以這個改寫的例子來說，所佔用的記憶體只有一個變數 $i ，然後利用 coroutine 會記住上次執行狀態的特性，就能夠減少其他的記憶體消耗了。</p>
+<p>最後稍微提一下，在 php 裡是不能夠自己去 new 一個 Generator 的唷，因為這個特殊的迭代器要記住當下的執行狀態，所以都是以 C 去寫成的，所以目前只能靠 yield 去產生 Generator 。</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">標籤</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/程式設計/">程式設計</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/18/用 CSS 打造 UniSharp Logo/"  data-tooltip="用 CSS 打造 UniSharp Logo">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/19/ES6極簡摘要/" data-tooltip="ES6 極簡摘要">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Mr.UniSharp. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/18/用 CSS 打造 UniSharp Logo/"  data-tooltip="用 CSS 打造 UniSharp Logo">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/19/ES6極簡摘要/" data-tooltip="ES6 極簡摘要">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+        
+            <h4 id="about-card-name">Mr.UniSharp</h4>
+        
+            <div id="about-card-bio"><p>work smart, smart work</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>客製網路產品</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Taipei
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">沒有找到文章</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/07/31/rsync是如何比較檔案差異的/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/07/31/rsync是如何比較檔案差異的/terminal.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/07/31/rsync是如何比較檔案差異的/">
+                            <h3 class="media-heading">rsync是如何比較檔案差異的</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年7月31日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/10/11/UX從新手開始-使用者體驗的100堂必修課/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/10/11/UX從新手開始-使用者體驗的100堂必修課/people-woman-coffee-meeting.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/10/11/UX從新手開始-使用者體驗的100堂必修課/">
+                            <h3 class="media-heading">UX 從新手開始-使用者體驗的 100堂必修課</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年10月11日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>​    今天來為大家介紹的這本「UX 從新手開始，使用者體驗的 100堂必修課」，作者完整地將 UX 設計中較容易碰到的問題與設計方法介紹給讀者，所以本書並不會像 「UX 策略」那樣的專精詳述某種特定方法，而是概略地提及讓大家有基本概念。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/11/20/PM在團隊中扮演協調與溝通的角色/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/11/20/PM在團隊中扮演協調與溝通的角色/snail.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/11/20/PM在團隊中扮演協調與溝通的角色/">
+                            <h3 class="media-heading">PM在團隊中扮演協調與溝通的角色</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年11月20日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。<br>怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/cover.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/">
+                            <h3 class="media-heading">閱讀體驗不好的程式碼</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月9日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/brain.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/">
+                            <h3 class="media-heading">溝通-活用本質力</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年1月6日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/17/凱特的花蓮觀遊集錦/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/01/17/凱特的花蓮觀遊集錦/travel.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/17/凱特的花蓮觀遊集錦/">
+                            <h3 class="media-heading">凱特的花蓮觀遊集錦</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年1月17日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>自從蘇花開通後，東部像是多了一道門，越來越多親朋好友你鄰居不遠千里來到東部踏踏青，離門口最近的宜蘭被開發地早，後來花蓮也相繼有蓬勃的發展。<br>小編當年看著一個學校簡介，被迷惑地不要不要的，就這麼來到了花蓮<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/img_20170213_01.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/">
+                            <h3 class="media-heading">觀察實體世界中的「使用者體驗」</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月13日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/pexels-photo.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
+                            <h3 class="media-heading">所有決議都必須留下紀錄 - 凡走過，必留下痕跡</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
+<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/pexels-photo-260606.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/">
+                            <h3 class="media-heading">有效率會議的五大原則</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月20日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>每次跟師父開會，都會有一種很迅速就結束會議的錯覺，我心裡常會這樣想：『怎麼這麼快就會有結論了？』。</p>
+<p>本篇偷偷列了一下最近觀察到的秘訣（無論是面對面的會議或是電話會議，都適用）：<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="沒有找到文章"
+                data-message-one="找到 1 篇文章"
+                data-message-other="找到 {n} 篇文章">
+                找到 22 篇文章
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-bcfprtnqxplca4amwihuo6j3j6tg3bbsmz2fbh4p0cif8igxohnoi5hwvdn2.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('8HBQR55HM1', 'fbffe5f54c07a5bf96acc9539f10e55c');
+        var algoliaIndex = algoliaClient.initIndex('unisharp-blog');
+    </script>
+
+
+    </body>
+</html>

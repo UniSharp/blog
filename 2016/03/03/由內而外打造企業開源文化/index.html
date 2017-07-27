@@ -1,0 +1,818 @@
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="UniSharp blog">
+    <title>由內而外打造企業開源文化 - UniSharp blog</title>
+    <meta name="author" content="Mr.UniSharp">
+    
+    
+        <meta property="og:image" content="http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/xxx.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/xxx.png" />
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="由內而外打造企業開源文化 isacl 部落格How We Work 系列之一  tags: how-we-work緣起筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。很幸運地，我曾經受前公司的老闆賦予這樣的任務：「替公司創造一個開源產品，並以社群方式經營它」，雖然最終沒有太大的成果，但卻是一個很難得的經驗呢。">
+<meta name="keywords" content="how-we-work">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="由內而外打造企業開源文化">
+<meta property="og:url" content="http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/index.html">
+<meta property="og:site_name" content="UniSharp blog">
+<meta property="og:description" content="由內而外打造企業開源文化 isacl 部落格How We Work 系列之一  tags: how-we-work緣起筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。很幸運地，我曾經受前公司的老闆賦予這樣的任務：「替公司創造一個開源產品，並以社群方式經營它」，雖然最終沒有太大的成果，但卻是一個很難得的經驗呢。">
+<meta property="og:updated_time" content="2017-07-24T09:52:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="由內而外打造企業開源文化">
+<meta name="twitter:description" content="由內而外打造企業開源文化 isacl 部落格How We Work 系列之一  tags: how-we-work緣起筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。很幸運地，我曾經受前公司的老闆賦予這樣的任務：「替公司創造一個開源產品，並以社群方式經營它」，雖然最終沒有太大的成果，但卻是一個很難得的經驗呢。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.unisharp.com/assets/images/logo-02.png"/>
+    
+    
+        <meta property="og:image" content="http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/xxx.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/xxx.png" />
+    
+    
+    
+        <link rel="icon" href="http://i.imgur.com/0hUX6N5.png">
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-26arix3kvkknexdkqjqbxllhuvwcj1uiiulz34ajdzgl6wgeelp6rz0v8bpf.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92410814-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">UniSharp blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+                </a>
+                <h4 class="sidebar-profile-name">Mr.UniSharp</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>work smart, smart work</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">首頁</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">分類</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">標籤</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">所有文章</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">搜尋</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+                        <span class="sidebar-button-desc">關於</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">Atom</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-center
+                    post-header-cover--full"
+             style="background-image:url('/2016/03/03/由內而外打造企業開源文化/xxx.png');"
+             data-behavior="4">
+            
+                <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title" itemprop="headline">
+            由內而外打造企業開源文化
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-03-03T00:00:00+08:00">
+	
+		    3月 03, 2016
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/專案管理/">專案管理</a>
+
+
+    
+</div>
+
+</div>
+            
+        </div>
+
+            <div id="main" data-behavior="4"
+                 class="hasCover
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h1 id="由內而外打造企業開源文化"><a href="#由內而外打造企業開源文化" class="headerlink" title="由內而外打造企業開源文化"></a>由內而外打造企業開源文化</h1><blockquote>
+<p>isacl 部落格<br>How We Work 系列之一</p>
+</blockquote>
+<h6 id="tags-how-we-work"><a href="#tags-how-we-work" class="headerlink" title="tags: how-we-work"></a>tags: <code>how-we-work</code></h6><h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。很幸運地，我曾經受前公司的老闆賦予這樣的任務：「替公司創造一個開源產品，並以社群方式經營它」，雖然最終沒有太大的成果，但卻是一個很難得的經驗呢。</p>
+<a id="more"></a>
+<p>事實上，有許多的企業都在做一樣的事情 - 選擇性地將工作產出開源，甚至有許多的企業能做到 100% 以開源的方式進行開發。</p>
+<p>不知道你是否也有這樣的經驗呢？因為工作需要而使用了某一個 Open Source 軟體，發現了一些問題，你 trace 了很久，最終將它修正了。你很想把這個修正回饋回上游。</p>
+<p>但是你遲疑了。<br>「公司允許我這樣做嗎？」<br>「我發 patch（或 PR）時要用公司的 email 嗎？」</p>
+<p>有沒有一個工作環境是可以讓我安心地玩社群、掛 IRC、不用區分我的產出是在工作時間內還是私人時間呢？</p>
+<p>事隔多年，我在悠夏爾遇到了一群開源同好，我們經過一番淬煉，逐步讓開源文化在公司內成形。</p>
+<p>這些年來，因為開放的內部文化，使得我們的溝通更順暢、工作也更愉快了。我們留下了越來越多的程式元件、文件、設計稿、讀書會影片。每個人都樂於分享、樂於向他人學習。我們也不斷成長，勇於打破不適合的規則。我們對於自己的貢獻會「持續保持開放」感到安心。</p>
+<p>更進一步地，因為這樣的開源文化，使得大家勇於將產出對外開源。雖然受限於對客戶的合約與責任，我們還無法成為 100% 將工作產出開源的公司，但這是一個好的開始，對吧 ;)</p>
+<p>我認為，塑造開源文化應該「由內而外」、「內外兼顧」才是自然。對許多人來說，長久以來習慣是：部門內的員工只能看到自己部門的文件、只能存取自己負責的 Git Repo，這時，如果他們得到公司的指示：「我們鼓勵您將心血開源，給公司外的人無限制地使用」，雖然員工會受到一時的衝擊，但是相信員工更樂於在開放的環境下工作，這是值得鼓勵的政策！</p>
+<p>這些年為了促成悠夏爾的開源文化，我與公司夥伴們列出了一些開源工作原則，以下我們就來逐一介紹這些原則。<br>雖然還沒有做得很好，但我們會朝這個方向繼續努力的。</p>
+<h2 id="內部持續開放原則"><a href="#內部持續開放原則" class="headerlink" title="內部持續開放原則"></a>內部持續開放原則</h2><blockquote>
+<p>在公司內就放心學習、無限制地分享吧！</p>
+</blockquote>
+<p>「內部持續開放原則」是指：「<strong>無論公司如何成長，所有內部成員享有學習及改良任何公司技術、設計及專案文件的自由，不會改變</strong>」</p>
+<p>舉例來說，以下這些是開放的：</p>
+<ol>
+<li>所有的 Git Repository 永遠開放給每一位公司成員讀寫。無須取得授權，無須問過「我可不可以這樣改？」</li>
+<li>所有工作規則、工作筆記、專案需求等文件以及設計原始檔，永遠開放給每一位成員閱讀、使用和修改。同上，做任何修改是不需要問過他人的，即便這篇文件是主管擬定的工作規則。（反正有歷史記錄在啊）</li>
+<li>所有成員均可自由地於內部聊天頻道暢所欲言（目前是使用 slack）</li>
+<li>所有成員均可放心地指出目前工作流程或工作習慣中的不良處，提出改善方式。</li>
+<li>想學習公司所知的任何技術，都可以在稱為「許願池」的地方提出，公司馬上會安排人分享。</li>
+</ol>
+<p>公司內部就像是一個小型的開源社群，所有人因相同的願景而聚在一起，互相學習、成長。我們盡可能地共享資源，將公司內部變成一個知識寶庫。</p>
+<p>有朝一日，公司也許會有更多人、有更多不同的部門。我能否自由學習其他部門中感興趣的項目呢？我能否對它們貢獻所長？或是會被拒於門外？</p>
+<p>我相信團隊人數增加後，我們會有更多的顧慮。但我們會努力捍衛這個原則的。</p>
+<h2 id="可重用原則"><a href="#可重用原則" class="headerlink" title="可重用原則"></a>可重用原則</h2><blockquote>
+<p>擁有自由之後，提升分享的品質吧！</p>
+</blockquote>
+<p>「可重用原則」用意在於提升開源品質，白話一點的解釋是：「<strong>所有的文件、設計、程式與流程，需致力於讓他人方便使用。</strong>」</p>
+<p>依「內部持續開放原則」，所有的內部分享、伺服器管理紀錄、檢討報告、專案日誌、程式產出等，均是對內開放的。當數量越來越多、越來越雜，有許多東西漸漸沒人看得懂了。我們需要致力於改善它的可重用性，讓下一次需要這些項目的人得以快速地使用它。</p>
+<p>舉例來說，某一些程式在開發初期可能是寫死的，只有某一個專案可以使用。但因為可重用原則，我們會提醒自己致力於將這個程式元件化，即便會多花一點時間。</p>
+<p>另外舉一個文件的例子：<br>當我們對產品做了一個重要決策，如果它的會議紀錄只是一個 「2017-05-05 會議記錄：經過投票，結論是使用 A 方案」這樣的描述，對於想從各方角度了解會議的其他人幫助不大。我們採取共筆方式完成，相關與會人員會補上：「選擇 A 方案的人的人的理由是什麼？」、「反對它的人的理由是什麼？」、「其他的選項是什麼？」，讓往後他人可以快速查找並進入當下的情境。這樣子使得這份記錄被review的機會增加，它的價值提升了。</p>
+<p>這個原則幫助我們時常思考要怎麼讓產出被他人持續使用，而不只是淪為自己一個人看得懂得東西。在軟體上，它同等於致力於優良的設計模式。在文件上，它代表著以文字或圖像精準表達出自己的思維。</p>
+<p>為了更有效地提升品質，目前我們我們採用的做法是：「程式使用 TDD 開發」、「文件以 Executable Spec 為最終目標」。限於篇幅，先不繼續討論它，下回我們會分享我們努力朝這個方向前進的心路歷程，請繼續支持我們的 How We Work 系列文章囉。</p>
+<h2 id="開放優先原則"><a href="#開放優先原則" class="headerlink" title="開放優先原則"></a>開放優先原則</h2><blockquote>
+<p>自在分享</p>
+</blockquote>
+<p>當「內部持續開放原則」與「可重用原則」進行了好一陣子後，我們有越來越多的內部私有產出。</p>
+<p>這些私有產出中不乏我們認為對外部也有價值的軟體元件或文件，我們很想將它開放，然而，我們時常顧慮著：「這裡面會不會很多 typo 啊？」、「這邊程式寫得很醜會丟臉耶」、「網路上已經有別人做得更好了」、「這開放出去被學走好嗎」等。</p>
+<p>因為這些顧慮，使得這些項目隱藏了許多的「開源門檻」，阻擋我們將它們真正開源到 GitHub 或部落格上，這些隱藏門檻有：</p>
+<ol>
+<li>不違法、不違背合約</li>
+<li>夠獨立、夠泛用</li>
+<li>真的對他人有幫助</li>
+<li>文件充足，用得人看得懂</li>
+<li>不造成公司損失</li>
+<li>得到技術主管同意並且 review 過</li>
+<li>… 可能還有很多很多</li>
+</ol>
+<p>但仔細想來，只有第 1 點是必須遵守的條件。</p>
+<p>為了鼓勵開源，我們新列了一項原則，稱為「開放優先原則」，它的意思是：</p>
+<p><strong>在不違法、不違反合約的前提下，優先以開源的方式開發所有的元件。例如在 GitHub 上開源開發元件，再引入私有專案使用。不需要取得公司同意。</strong></p>
+<p>有了這個原則，我們來回應一下一開始的兩個疑問吧！</p>
+<p>「公司允許我這樣做嗎？」 =&gt; 當然，公司直接鼓勵我這樣做！</p>
+<p>「我發 patch（或 PR）時要用公司的 email 嗎？」 =&gt; 看喜歡用哪個就用哪個囉！</p>
+<p>當然我們更喜歡同事把公司開源項目放在 GitHub 中的 UniSharp 群組內，畢竟這樣比較好找。而且因為群組內同仁都有寫入權，因此要修改時不需要發 PR 會更方便，會更符合第一個「內部持續開放原則」的！</p>
+<p>同時我們也鼓勵同事經營自己個人帳號下的開源項目。無論是與公司業務有關或無關的。</p>
+<p>這樣的原則下，使我們近年在 GitHub 上的開源項目大爆發。雖然因為不擅行銷，我們時常沒有留下什麼好文件。然而本著 Release Early, Release Often 的精神，及早開放就是及早得以討論與分享。我們很開心也自豪地會繼續這樣做。</p>
+<h1 id="寫在最後"><a href="#寫在最後" class="headerlink" title="寫在最後"></a>寫在最後</h1><p>人類的生命及專注力是有限的資源，必須珍惜。希望某一天，在地球的某一處，有人因為我們的分享而無痛完成一項工作，得以有時間回家幫小孩過生日，或是用這些時間把自己擅長的事情分享給其他人，讓這樣的分享持續下去。</p>
+<p>感謝各開源社群帶給我們的幫助，無論我們做得好不好，都希望能將這份精神傳遞出去。</p>
+<p>特別謝謝唐鳳精彩的「<a href="https://www.slideshare.net/autang/open-source-enlightenment" target="_blank" rel="external">開源之道</a>」演說，每當我對「工作的意義」甚至「人生的目標」感到迷惘時，這份簡報總是幫助我撥雲見日、找到方向。</p>
+<p>開源不神聖，它僅自然的、快樂的。請加入我們吧！</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">標籤</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/how-we-work/">how-we-work</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/07/31/rsync是如何比較檔案差異的/" data-tooltip="rsync是如何比較檔案差異的">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Mr.UniSharp. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/07/31/rsync是如何比較檔案差異的/" data-tooltip="rsync是如何比較檔案差異的">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/logo-02.png" alt="作者的圖片"/>
+        
+            <h4 id="about-card-name">Mr.UniSharp</h4>
+        
+            <div id="about-card-bio"><p>work smart, smart work</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>客製網路產品</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Taipei
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">沒有找到文章</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/xxx.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/03/03/由內而外打造企業開源文化/">
+                            <h3 class="media-heading">由內而外打造企業開源文化</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年3月3日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><h1 id="由內而外打造企業開源文化"><a href="#由內而外打造企業開源文化" class="headerlink" title="由內而外打造企業開源文化"></a>由內而外打造企業開源文化</h1><blockquote>
+<p>isacl 部落格<br>How We Work 系列之一</p>
+</blockquote>
+<h6 id="tags-how-we-work"><a href="#tags-how-we-work" class="headerlink" title="tags: how-we-work"></a>tags: <code>how-we-work</code></h6><h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。很幸運地，我曾經受前公司的老闆賦予這樣的任務：「替公司創造一個開源產品，並以社群方式經營它」，雖然最終沒有太大的成果，但卻是一個很難得的經驗呢。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/07/31/rsync是如何比較檔案差異的/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/07/31/rsync是如何比較檔案差異的/terminal.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/07/31/rsync是如何比較檔案差異的/">
+                            <h3 class="media-heading">rsync是如何比較檔案差異的</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年7月31日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/10/11/UX從新手開始-使用者體驗的100堂必修課/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/10/11/UX從新手開始-使用者體驗的100堂必修課/people-woman-coffee-meeting.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/10/11/UX從新手開始-使用者體驗的100堂必修課/">
+                            <h3 class="media-heading">UX 從新手開始-使用者體驗的 100堂必修課</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年10月11日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>​    今天來為大家介紹的這本「UX 從新手開始，使用者體驗的 100堂必修課」，作者完整地將 UX 設計中較容易碰到的問題與設計方法介紹給讀者，所以本書並不會像 「UX 策略」那樣的專精詳述某種特定方法，而是概略地提及讓大家有基本概念。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/11/20/PM在團隊中扮演協調與溝通的角色/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/11/20/PM在團隊中扮演協調與溝通的角色/snail.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/11/20/PM在團隊中扮演協調與溝通的角色/">
+                            <h3 class="media-heading">PM在團隊中扮演協調與溝通的角色</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年11月20日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。<br>怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/">
+                            <img class="media-image" src="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/cover.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/">
+                            <h3 class="media-heading">閱讀體驗不好的程式碼</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月9日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/brain.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/06/溝通-活用本質力/">
+                            <h3 class="media-heading">溝通-活用本質力</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年1月6日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/17/凱特的花蓮觀遊集錦/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/01/17/凱特的花蓮觀遊集錦/travel.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/01/17/凱特的花蓮觀遊集錦/">
+                            <h3 class="media-heading">凱特的花蓮觀遊集錦</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年1月17日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>自從蘇花開通後，東部像是多了一道門，越來越多親朋好友你鄰居不遠千里來到東部踏踏青，離門口最近的宜蘭被開發地早，後來花蓮也相繼有蓬勃的發展。<br>小編當年看著一個學校簡介，被迷惑地不要不要的，就這麼來到了花蓮<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/img_20170213_01.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/13/觀察實體世界中的「使用者體驗」/">
+                            <h3 class="media-heading">觀察實體世界中的「使用者體驗」</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月13日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>網路產業近幾年來出現許多如「User Experience」、「Big Data」等被視為趨勢的名詞，衍伸的職務「使用者經驗設計師」、「數據分析師」也是網路圈中的熱門話題，相關的交流和講座一直都相當熱絡，各種分析數據、使用者的工具<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
+                            <img class="media-image" src="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/pexels-photo.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
+                            <h3 class="media-heading">所有決議都必須留下紀錄 - 凡走過，必留下痕跡</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
+<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="沒有找到文章"
+                data-message-one="找到 1 篇文章"
+                data-message-other="找到 {n} 篇文章">
+                找到 21 篇文章
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-bcfprtnqxplca4amwihuo6j3j6tg3bbsmz2fbh4p0cif8igxohnoi5hwvdn2.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('8HBQR55HM1', 'fbffe5f54c07a5bf96acc9539f10e55c');
+        var algoliaIndex = algoliaClient.initIndex('unisharp-blog');
+    </script>
+
+
+    </body>
+</html>

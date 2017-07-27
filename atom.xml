@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.unisharp.com/"/>
-  <updated>2017-06-22T02:44:01.000Z</updated>
+  <updated>2017-07-27T03:17:37.000Z</updated>
   <id>http://blog.unisharp.com/</id>
   
   <author>
@@ -16,13 +16,246 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ES6極簡摘要</title>
+    <title>用 Vue.js 打造 Binary Clock</title>
+    <link href="http://blog.unisharp.com/2017/07/12/%E7%94%A8%20Vue.js%20%E6%89%93%E9%80%A0%20Binary%20Clock/"/>
+    <id>http://blog.unisharp.com/2017/07/12/用 Vue.js 打造 Binary Clock/</id>
+    <published>2017-07-11T16:00:00.000Z</published>
+    <updated>2017-07-27T03:17:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>數字時鐘是不是很膩了？第一次看到 Binary Clock 是不是有一種好想擁有的感覺？</p>
+<p>現在，我們就來瞭解 &amp; 用 vue.js 動手做做看吧！</p>
+<a id="more"></a>
+<p><strong>什麼是 Binary ? 什麼又是 Binary Clock ?</strong> 來說說吧：</p>
+<p>Binary 中文是二進位。平常我們看數字 5 其實是十進位，轉成二進位要看成 0101</p>
+<p>假設現在是 19:56:16，轉成二進位是 0001 1001 : 0101 0110 : 0001 0110</p>
+<p>那麼 Binary Clock 會對應二進位 1 燈亮、 0 燈不亮。</p>
+<iframe width="100%" height="500" src="https://clock.sasaya.me/" frameborder="0"></iframe>
+
+<h2 id="Pre-requirements"><a href="#Pre-requirements" class="headerlink" title="Pre requirements"></a>Pre requirements</h2><p>開始之前，我們有些前置作業要完成，要把環境架起來</p>
+<p>Required:</p>
+<ul>
+<li>Node.js (&gt;=4.x, 6.x preferred)</li>
+<li>npm version 3+</li>
+<li>Git.</li>
+</ul>
+<p>Installation:</p>
+<p>安裝 vue-cli <a href="https://github.com/vuejs/vue-cli" target="_blank" rel="external">可參考</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g vue-cli</div></pre></td></tr></table></figure>
+<p>建立專案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$ vue init webpack &lt;project-name&gt;</div><div class="line"></div><div class="line">  ? Project name &lt;project-name&gt;</div><div class="line">  ? Project description &lt;description&gt;</div><div class="line">  ? Author &lt;auther&gt;</div><div class="line">  ? Vue build standalone</div><div class="line">  ? Install vue-router? No</div><div class="line">  ? Use ESLint to lint your code? No</div><div class="line">  ? Setup unit tests with Karma + Mocha? No</div><div class="line">  ? Setup e2e tests with Nightwatch? No</div><div class="line"></div><div class="line">   vue-cli · Generated &quot;&lt;project-name&gt;&quot;.</div><div class="line"></div><div class="line">   To get started:</div><div class="line">     // 進入專案</div><div class="line">     cd &lt;project-name&gt;</div><div class="line">     // 初始專案</div><div class="line">     npm install</div><div class="line">     // 啟動專案</div><div class="line">     npm run dev</div><div class="line"></div><div class="line">   Documentation can be found at https://vuejs-templates.github.io/webpack</div></pre></td></tr></table></figure>
+<p>前往 <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a> 看到大大的 V 就表示成功了</p>
+<h2 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h2><p>首先建立<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 拉出一個燈，並且給予 on 的參數</div><div class="line"></div><div class="line">```htmlmixed</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;light&quot; :class=&quot;&#123; on: on &#125;&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>透過 props 屬性從父元件傳入 0/1 布林值進來</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  export default &#123;</div><div class="line">    props: &#123;</div><div class="line">      on: &#123;</div><div class="line">        type: Boolean,</div><div class="line">        required: true</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>設定樣式（發揮你的設計天份吧）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;</div><div class="line">  $size: 70px;</div><div class="line">  $margin: 8px;</div><div class="line">  .light &#123;</div><div class="line">    background-color: #9da0a4;</div><div class="line">    width: $size;</div><div class="line">    height: $size;</div><div class="line">    margin-top: $margin;</div><div class="line">    margin-bottom: $margin;</div><div class="line">    margin-left: $margin;</div><div class="line">    border-radius: 5px;</div><div class="line">  &#125;</div><div class="line">  .light.on &#123;</div><div class="line">    background-color: #333;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<p>接著建立 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 拉出兩位數的元件，每位數是由是四個 Light 元件組成，四顆燈分別表示二進位的四個 bit</div><div class="line"></div><div class="line">```htmlmixed</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;binary-digit&quot;&gt;</div><div class="line">    &lt;div class=&quot;digit&quot;&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 8)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 4)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 2)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 1)&quot;&gt;&lt;/light&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;digit&quot;&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 8)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 4)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 2)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 1)&quot;&gt;&lt;/light&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>同樣透過 props 屬性從父元件傳入兩位數進來，並且切成十位數字和個位數字，每位數字轉成二進位交給 Light 元件顯示</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  import Light from &apos;./Light&apos;</div><div class="line"></div><div class="line">  export default &#123;</div><div class="line">    props: &#123;</div><div class="line">      digit: &#123;</div><div class="line">        type: Number,</div><div class="line">        required: true</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    components: &#123;</div><div class="line">      Light</div><div class="line">    &#125;,</div><div class="line">    computed: &#123;</div><div class="line">      tens () &#123;</div><div class="line">        return Math.floor(this.digit / 10)</div><div class="line">      &#125;,</div><div class="line">      ones () &#123;</div><div class="line">        return this.digit % 10</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>樣式設定（發揮你的設計天份吧）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  .binary-digit &#123;</div><div class="line">    display: flex;</div><div class="line">    flex-direction: row;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<p>最後在 <figure class="highlight plain"><figcaption><span>Binary Clock</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 拉出時/分/秒的元件，是由三個 Digit 元件組成</div><div class="line"></div><div class="line">```htmlmixed</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;div class=&quot;binary-clock&quot;&gt;</div><div class="line">      &lt;digit :digit=&quot;hours&quot;&gt;&lt;/digit&gt;</div><div class="line">      &lt;digit :digit=&quot;minutes&quot;&gt;&lt;/digit&gt;</div><div class="line">      &lt;digit :digit=&quot;seconds&quot;&gt;&lt;/digit&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>利用 window.setInterval 每秒讀取一次時間，更新 hours, minutes, seconds 的值，交給 Digit 元件處理</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  import Digit from &apos;./components/Digit&apos;</div><div class="line"></div><div class="line">  export default &#123;</div><div class="line">    name: &apos;app&apos;,</div><div class="line">    components: &#123;</div><div class="line">      Digit</div><div class="line">    &#125;,</div><div class="line">    data () &#123;</div><div class="line">      return &#123;</div><div class="line">        hours: 0,</div><div class="line">        minutes: 0,</div><div class="line">        seconds: 0,</div><div class="line">        now: new Date()</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    mounted () &#123;</div><div class="line">      window.setInterval(() =&gt; &#123;</div><div class="line">        var now = new Date()</div><div class="line">        this.hours = now.getHours()</div><div class="line">        this.minutes = now.getMinutes()</div><div class="line">        this.seconds = now.getSeconds()</div><div class="line">      &#125;, 1000)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>樣式設定（發揮你的設計天份吧）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">body &#123;</div><div class="line">  background-color: gray;</div><div class="line">&#125;</div><div class="line">#app &#123;</div><div class="line">  margin: 1em;</div><div class="line">&#125;</div><div class="line">.binary-clock &#123;</div><div class="line">  display: flex;</div><div class="line">  flex-direction: row;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p>結果會像這樣</p>
+<p><img src="binary-clock.gif" alt=""></p>
+<h1 id="作者時間"><a href="#作者時間" class="headerlink" title="作者時間"></a>作者時間</h1><p><a href="https://github.com/storyn26383/binary-clock" target="_blank" rel="external">想看完整原始碼</a> 在這裡在這裡 <a href="https://github.com/storyn26383/binary-clock" target="_blank" rel="external">toryn26383/binary-clock</a></p>
+<p>因為習慣使用 pug &amp; sass 所以原始碼跟這裡的程式碼會有不一樣喔，這裡是為了簡化學習複雜度，使用 html &amp; css 教學</p>
+<p>最後，歡迎大家按下底部的社群按鈕，貼上你的成果，把這一次的收穫分享出去喔（微笑）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;數字時鐘是不是很膩了？第一次看到 Binary Clock 是不是有一種好想擁有的感覺？&lt;/p&gt;
+&lt;p&gt;現在，我們就來瞭解 &amp;amp; 用 vue.js 動手做做看吧！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="開源分享" scheme="http://blog.unisharp.com/categories/%E9%96%8B%E6%BA%90%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="前端設計" scheme="http://blog.unisharp.com/categories/%E9%96%8B%E6%BA%90%E5%88%86%E4%BA%AB/%E5%89%8D%E7%AB%AF%E8%A8%AD%E8%A8%88/"/>
+    
+    
+      <category term="Vuejs" scheme="http://blog.unisharp.com/tags/Vuejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>軟體開發的阿波羅13</title>
+    <link href="http://blog.unisharp.com/2017/07/10/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E7%9A%84%E9%98%BF%E6%B3%A2%E7%BE%8513/"/>
+    <id>http://blog.unisharp.com/2017/07/10/軟體開發的阿波羅13/</id>
+    <published>2017-07-10T00:00:00.000Z</published>
+    <updated>2017-07-25T06:03:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>偶然間，小 PM 聽到工程師葛格們正在討論一個很奇怪的名詞『code name』。在好奇心的驅使下，我這位小菜鳥也加入他們的討論，才知道他們正在為某個新的專案/產品取名字。<br><a id="more"></a><br>小 PM 一直覺得，專案/產品的名字不就依照用途來取嗎？像是我們自家公司的網站，不就應該叫做『UniSharp Website』之類的嗎？</p>
+<p>經過小 PM 抽絲剝繭、認真學習與研究之後才發現，原來我認知的這個名字，是叫做產品名稱，或是專案的對外名稱；一般在開發這個專案/產品時，公司內部通常會為它取一個 code name，這個 code name 可能跟產品或是這個專案的目的、用途<strong>完全沒有關係</strong>。所以『UniSharp Website』的 code name 可能叫做『bigbang』 :P。</p>
+<h2 id="為什麼要取-code-name-呢？"><a href="#為什麼要取-code-name-呢？" class="headerlink" title="為什麼要取 code name 呢？"></a>為什麼要取 code name 呢？</h2><h3 id="每個行業都有常用的專有名詞或術語，取一個該領域外的-code-name-可以讓專案更有辨識度。"><a href="#每個行業都有常用的專有名詞或術語，取一個該領域外的-code-name-可以讓專案更有辨識度。" class="headerlink" title="每個行業都有常用的專有名詞或術語，取一個該領域外的 code name 可以讓專案更有辨識度。"></a>每個行業都有常用的專有名詞或術語，取一個該領域外的 code name 可以讓專案更有辨識度。</h3><p>以我們的行業來舉例，若有個專案叫做『悠夏爾公告系統』，當我們在內部溝通，講到『公告』這個詞的時候，就會讓人混淆：到底是在講『悠夏爾公告系統』，還是一般的公告功能？<br>若把『悠夏爾公告系統』的 code name 取作 bigbang，我們提到『bigbang』，就很清楚的知道是在講某個專案/產品。</p>
+<h3 id="維護專案的秘密，以混淆競爭對手"><a href="#維護專案的秘密，以混淆競爭對手" class="headerlink" title="維護專案的秘密，以混淆競爭對手"></a>維護專案的秘密，以混淆競爭對手</h3><p>當內部資料外流，而讓競爭對手看到『bigbang』這個詞的時候，他會不清楚這是什麼專案。<br>甚至有些情況會時常調整同一個專案的 code name，會更讓競爭對手摸不著頭緒。但必須小心服用此帖，別讓自己人也搞混了。</p>
+<h3 id="讓產品名稱與開發時的名稱脫勾"><a href="#讓產品名稱與開發時的名稱脫勾" class="headerlink" title="讓產品名稱與開發時的名稱脫勾"></a>讓產品名稱與開發時的名稱脫勾</h3><p>開發人員可以專注在開發議題上，不需因為產品名稱的變動，而必須修改程式內的專案名稱來傷腦筋。<br>在開發過程中，可能因為 Pivot 而導致整個方向都變了，若一開始的方向是 ERP，code name 可能叫做 『UniSharp ERP』，但因為 Pivot的緣故，方向變成了交友平台（這也差太遠了吧….），這個時候專案代號若還是使用『UniSharp ERP』，就會變得很怪了。</p>
+<h2 id="該怎麼取-code-name？"><a href="#該怎麼取-code-name？" class="headerlink" title="該怎麼取 code name？"></a>該怎麼取 code name？</h2><ul>
+<li>易念（要好發音）、好拼，別太難。</li>
+<li>簡短不要長，四、五個音就太長了。</li>
+<li>最好要有一系列的相關名字</li>
+<li>不要有諧音或不好的聯想</li>
+</ul>
+<h2 id="著名的-code-name"><a href="#著名的-code-name" class="headerlink" title="著名的 code name"></a>著名的 code name</h2><blockquote>
+<p>Android 的甜點系列<br><a href="https://zh.wikipedia.org/wiki/Android歷史版本" target="_blank" rel="external">https://zh.wikipedia.org/wiki/Android歷史版本</a> (<a href="https://zh.wikipedia.org/wiki/Android%E6%AD%B7%E5%8F%B2%E7%89%88%E6%9C%AC" target="_blank" rel="external">https://zh.wikipedia.org/wiki/Android%E6%AD%B7%E5%8F%B2%E7%89%88%E6%9C%AC</a>)</p>
+<p>Debian 的玩具總動員系列<br><a href="https://zh.wikipedia.org/wiki/Debian#.E5.8F.91.E8.A1.8C.E7.89.88.E6.9C.AC" target="_blank" rel="external">https://zh.wikipedia.org/wiki/Debian#.E5.8F.91.E8.A1.8C.E7.89.88.E6.9C.AC</a></p>
+<p>Microsoft 的一大堆 code name<br><a href="https://en.wikipedia.org/wiki/List_of_Microsoft_codenames" target="_blank" rel="external">https://en.wikipedia.org/wiki/List_of_Microsoft_codenames</a></p>
+</blockquote>
+<h2 id="總結："><a href="#總結：" class="headerlink" title="總結："></a>總結：</h2><p>取 code name 真的是一門學問，但在命名的同時，也讓苦悶的程式開發增添了一些有趣的元素進來 !?。<br>取一個屬於自己的 code name，有時候也是工程師大哥獨特的浪漫吧～～</p>
+<p>如果是我取，可能會用一系列的名牌當 code name：</p>
+<blockquote>
+<p>Prada、Hermes、LV、Coach、Bally、Burberry、Chanel…</p>
+</blockquote>
+<p>最後才想到還沒講到標題提到的阿波羅13（Apollo 13），其實阿波羅13就是一個 code name 啊！我們常在戰爭電影裡面看到的什麼黑鷹計畫、藍象行動、綠狗任務，這都是他們的 code name 喔！（一整個亂取…XD）</p>
+<h3 id="參考文獻："><a href="#參考文獻：" class="headerlink" title="參考文獻："></a>參考文獻：</h3><blockquote>
+<p>維基百科 Code name<br><a href="https://en.wikipedia.org/wiki/Code_name" target="_blank" rel="external">https://en.wikipedia.org/wiki/Code_name</a><br><a href="https://zh.wikipedia.org/wiki/代号" target="_blank" rel="external">https://zh.wikipedia.org/wiki/代号</a></p>
+<p>Project Code Name<br><a href="https://ingramchen.io/blog/2014/03/project-code-name.html" target="_blank" rel="external">https://ingramchen.io/blog/2014/03/project-code-name.html</a></p>
+<p>怎麼幫專案取名字呢? - 喲哪桑 Speaking 之專案工作日誌<br><a href="http://jonathanspeaking.blogspot.tw/2013/04/blog-post.html" target="_blank" rel="external">http://jonathanspeaking.blogspot.tw/2013/04/blog-post.html</a></p>
+<p>翻譯：專案之名有什麼意涵？(What’s in a Project Name?) by Jeff Atwood - 葉難<br><a href="http://yehnan.blogspot.tw/2010/08/whats-in-project-name-by-jeff-atwood.html" target="_blank" rel="external">http://yehnan.blogspot.tw/2010/08/whats-in-project-name-by-jeff-atwood.html</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;偶然間，小 PM 聽到工程師葛格們正在討論一個很奇怪的名詞『code name』。在好奇心的驅使下，我這位小菜鳥也加入他們的討論，才知道他們正在為某個新的專案/產品取名字。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="思維邏輯" scheme="http://blog.unisharp.com/tags/%E6%80%9D%E7%B6%AD%E9%82%8F%E8%BC%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>暢銷的原理</title>
+    <link href="http://blog.unisharp.com/2017/06/26/%E6%9A%A2%E9%8A%B7%E7%9A%84%E5%8E%9F%E7%90%86/"/>
+    <id>http://blog.unisharp.com/2017/06/26/暢銷的原理/</id>
+    <published>2017-06-25T16:00:00.000Z</published>
+    <updated>2017-07-25T06:09:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>有沒有想過為什麼超商以前沒有賣的咖啡現在卻會熱賣？</p>
+<p>有沒有想過為什麼超商現在很少販售份量較大的微波熟食 / 甜點？進而改販售越來越小份的熟食 / 甜點？</p>
+<a id="more"></a>
+<p>今天想介紹大家一本書，除了說明以上的原因外，作者更想讓讀者創造出「暢銷」的產品！</p>
+<p>當閱讀完第一章節作者對以上社會實際案例的解釋說明後，便可以知道暢銷商品的共同點就在於「潮流」和「隱藏需求」，未來若想要讓推出的新商品、服務熱銷，甚至是順利讓客戶採納提案、訂定公司目標計畫…等，關鍵就在於找出那些「潮流」和「隱藏需求」！</p>
+<h3 id="至於如何尋找「潮流」和「隱藏需求」呢？"><a href="#至於如何尋找「潮流」和「隱藏需求」呢？" class="headerlink" title="至於如何尋找「潮流」和「隱藏需求」呢？"></a>至於如何尋找「潮流」和「隱藏需求」呢？</h3><p>作者在書中介紹了三個觀點「觀察」、「體會」、「注意」，希望讀者們能夠用心體現，找出平常生活中的各種「亮點」，並將它們用自己習慣的方式紀錄起來，以便未來方便取得使用。<br><br><br>在此小編偷偷透露內文中大家要找的應該是哪些「亮點」？<br><br>平常生活中有哪些是出現次數「較多的事物」？<br><br>有哪些是惱人的「麻煩事物」？<br><br>有哪些是超出我們認知範圍「比較怪的事物」？<br><br><br>書中舉了許多例子，其中包含作者觀察到生活裡多出了「自助烏龍麵」、「自助加油站」…等暢銷的自助商品服務造成了「自助潮流」!<br><br>越來越多「電子票證」、「電子錢包」讓我們幾乎不需要再擔心忘記帶現金的「無現金潮流」!</p>
+<p>這些都是在我們日常生活中漸漸出現的「亮點」，而這些「亮點」是怎麼出現的呢？<br>作者進一步說明這些「亮點」基本上不出很重要的兩種「需求」：「巨觀」、「微觀」需求！</p>
+<p><br></p>
+<blockquote>
+<p><strong>巨觀需求：</strong> 其實就是白話中的「潮流」，作者對潮流的定義就是「消費者的需求隨著社會變化而改變，因此傾向追求具備某種特色的商品與服務」，也就是整個社會追求的需求，反映出社會的主要變化。</p>
+<p><strong>微觀需求：</strong> 相反於巨觀需求，微觀需求就是指每一個人的具體需求，通常是從觀察顧客行為，聽取顧客意見、貼近顧客進而得知。</p>
+</blockquote>
+<p><br></p>
+<p>以上兩種需求作者統稱為「需求資訊」，在此作者也請我們注意顧客需求中常有的陷阱，若掉入的陷阱會有按照顧客需求開發新產品卻完全賣不出去的可能性！</p>
+<p>作者舉了非常好的例子說明通常顧客需求的形式都是「我想要什麼」，但問題是究竟有「多少人」有這個需求？</p>
+<p>所以我們需要憑藉潮流（巨觀需求）來判讀顧客的「微觀需求」，雖然聽起來很容易，卻很多企業都是掉入這樣的陷阱之中。</p>
+<h3 id="用心「觀察」、「體會」、「注意」並找出巨觀-微觀需求就夠了嗎？"><a href="#用心「觀察」、「體會」、「注意」並找出巨觀-微觀需求就夠了嗎？" class="headerlink" title="用心「觀察」、「體會」、「注意」並找出巨觀 / 微觀需求就夠了嗎？"></a>用心「觀察」、「體會」、「注意」並找出巨觀 / 微觀需求就夠了嗎？</h3><p>除了找到以上的兩種需求後就可以創造出「暢銷」的產品與服務嗎？</p>
+<p>作者更進一步介紹了兩個能讓我們精準打中顧客 / 客戶「痛點」並發想出新產品、新服務的方法：</p>
+<p><br></p>
+<blockquote>
+<p><strong>「深入挖掘」 &amp; 「橫向連鎖」</strong></p>
+</blockquote>
+<p><br></p>
+<p>其實說白了「深入挖掘」就是希望當我們了解顧客 / 客戶需求後別囫圇吞棗的直接開發產品、專案，而是抱持著「打破砂鍋問到底」的精忱，去挖掘更深入的需求資訊。</p>
+<p>在此小編想到最有名的一個例子就是汽車大王亨利福特所說過的話：「如果問顧客他們想要什麼？他們肯定只會說需要一匹更快的馬。」</p>
+<p>如果在汽車出現之前的時代企業家們沒有更「深入挖掘」顧客們的需求，或許大家只會去研究如何培育出跑更快的馬，而非了解顧客其實是需要「更快地到達某地」並創造出了汽車造福全世界！</p>
+<p>至於「橫向連鎖」則是希望我們透過「深入挖掘」後找到滿足「痛點」的價值，找出也對此「價值」有著需求卻還尚未被滿足的市場，如此一來就會少了許多紅海競爭，進而開發出屬於自己的藍海！又或者說你可以為產品 / 服務擴大推廣範圍 / 目標族群，進而達成商業目標！</p>
+<p>作者將「深入挖掘」&amp;「橫向連鎖」結合起來稱作「縱橫展開」，當然這方法除了可以達成商業目標外，更是讓我們培養「從主觀轉為客觀」的習慣。</p>
+<p>我們常常發現一些難以暢銷的產品 / 服務，亦或是企業內部無法獲得批准的企劃，大多都是因為太過主觀而造成旁人難以理解並拒絕的原因。</p>
+<p><br></p>
+<blockquote>
+<p><strong>「所以我們要「客觀化」，將需求資訊從衡展開，看得更深更遠，計畫才會更加客觀。而計劃愈客觀，成功機率就愈高。」-內文</strong></p>
+</blockquote>
+<p><br><br>以上就是整本書作者最想告訴讀者們的主軸，看到這邊或許會認為平常這些早就明白，亦會覺得這些都是很淺的知識？</p>
+<p>但小編覺得學到最多的其實是從書中作者所舉的每一個實際案例，除了了解如何應用上述的方法 / 技巧外，在不同案例的情境下作者也教了許多深藏其中的 Know-How，期望讀著們能在自己所處的環境 / 挑戰下打造出傑出的產品 / 計畫，為公司 / 自己創造更多的價值！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有沒有想過為什麼超商以前沒有賣的咖啡現在卻會熱賣？&lt;/p&gt;
+&lt;p&gt;有沒有想過為什麼超商現在很少販售份量較大的微波熟食 / 甜點？進而改販售越來越小份的熟食 / 甜點？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="思維邏輯" scheme="http://blog.unisharp.com/tags/%E6%80%9D%E7%B6%AD%E9%82%8F%E8%BC%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>好書推薦 - 簡單思考</title>
+    <link href="http://blog.unisharp.com/2017/06/26/%E5%A5%BD%E6%9B%B8%E6%8E%A8%E8%96%A6%20-%20%E7%B0%A1%E5%96%AE%E6%80%9D%E8%80%83/"/>
+    <id>http://blog.unisharp.com/2017/06/26/好書推薦 - 簡單思考/</id>
+    <published>2017-06-25T16:00:00.000Z</published>
+    <updated>2017-07-24T10:26:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>多閱讀商場上各式各樣的產品開發經驗，並從中瞭解其成功與失敗背後的原因，思考成功產品為什麼會成功？失敗產品又會什麼無法被市場所接受呢？<a id="more"></a>對於規劃產品的PM來說，是很重要的一環。</p>
+<p>今日要推薦的好書 - 簡單思考。「簡單思考」在講一個人人幾乎皆有使用、甚至工作和生活都離不開的「LINE」，是如何被打造出來的？為什麼 LINE 可以獲得巨大的成功？其背後的團隊究竟是如何創造出的呢？其公司的前任 CEO 森川亮，分享 LINE 從無到有的心路歷程與成功秘辛。</p>
+<h3 id="認清商業本質"><a href="#認清商業本質" class="headerlink" title="認清商業本質"></a>認清商業本質</h3><blockquote>
+<p>比起在競賽中勝出，更應該單純的為使用者著想，全心全意創造出真正滿足使用者的事物，最後自然會獲勝。</p>
+<p>-節錄書中片段</p>
+</blockquote>
+<p>書中最先提出的便是商業的本質，有趣的是，這幾乎是商業人士皆知的理論 - 供需法則。作者認為，為寒冷的冬天提供溫暖的衣服、為無聊閒得發慌的人設計遊戲，最重要的事情正是因為瞭解人們真正的需求，並且愛護人們的心情。</p>
+<p>普遍認為公司就是不斷推出熱門的產品並且從中獲得利益，但是將「錢」視為最終目標卻是非常危險的作法，因為使用者會馬上察覺並且離開，產品也終將走向沒落一路，因此，若想變成長銷產品，最重要的事情是滿足需求與看重使用者滿意度。</p>
+<h3 id="以「人」為本"><a href="#以「人」為本" class="headerlink" title="以「人」為本"></a>以「人」為本</h3><blockquote>
+<p>徵才戰略的基礎，就是打造一個讓員工可以盡情發揮能力的環境。<br>只要讓他們輕鬆愉快的工作，自然會產生聚集優秀人才的生態系統。</p>
+</blockquote>
+<p>想要打造成功的產品，團隊成員是關鍵中的關鍵，甚至已經決定了產品的成敗走向，因此，慎選人才並愛用人，才是公司挑選成員應遵循的原則。作者打破了位階制度做越久領越多的做法，有能力的人就該給予相對應的報酬，相對的，只因年資高卻毫無貢獻的職員，在考核時也給予相對應的調整，打造一家「鼓勵員工創造成績的公司」。</p>
+<p>正因貫徹「以人為本」的理念，在公司中大家不需要察言觀色，有話直說的工作環境，讓開會時可以、也必須誠實地表達出自己的想法，若認為提案有需要改善的部分，皆可當面提出質疑，而背後的原因更呼了「應認清商業的本質」，因為比起得罪同事，成員更害怕得罪使用者。</p>
+<h3 id="觀察並洞悉需求"><a href="#觀察並洞悉需求" class="headerlink" title="觀察並洞悉需求"></a>觀察並洞悉需求</h3><p>LINE 的成立剛好是在日本 311 大地震的時期，公司規劃推出適合智慧型手機的服務軟體，並成立了專案團隊。與此同時，雖然有市調結果，卻一直尚未決定方向。</p>
+<p>在地震過後，許多人第一時間想盡方式聯繫親朋好友，想要報平安，卻苦無辦法，而出現眾人在公用電話亭前大排長龍的景象。（這景象也成為日後產品命名的靈感 - LINE）</p>
+<p>看見這些畫面的成員，認為當下最迫切需要的功能，就是封閉式通訊，於是，團隊有了方向，秉持著最簡開發，在最短的速度內，將產品完成並推廣出去。</p>
+<p>正因為察覺了使用者最需要的功能並且專注完成，LINE 才可以在最短的時間內被推出，並且成功打入市場。</p>
+<h3 id="讓優秀的設計師主導產品"><a href="#讓優秀的設計師主導產品" class="headerlink" title="讓優秀的設計師主導產品"></a>讓優秀的設計師主導產品</h3><blockquote>
+<p>真正優秀的設計師會排除自己的喜好，徹底追求如何讓使用者方便使用。</p>
+</blockquote>
+<p>作者認為產品讓優秀的設計師主導較好的原因在於，工程師主導的產品容易偏離使用者的思維，常以技術的角度規劃，反而增加了許多不必要、非重點的功能。</p>
+<p>作者提出不同以往的觀點是，他認為優秀的設計並不是將產品設計地別出心裁，而是站在使用者的立場規劃出最適合使用者的功能與介面，所以，他們擅長將功能化簡至只留最重要的功能。</p>
+<p>作者讓我發現 LINE 公司裡「由設計主導服務開發」的產品非常多，他們不在於追求差異化與創新，更著重在提供使用者最需要的功能。</p>
+<p>正因為<strong>使用者永遠不會告訴你答案</strong>，即便做了市調研究，有時結論卻仍然不一定是真實的結論，最重要的還是觀察與察覺使用者的需求，並且提供其最貼近自身的價值，作者相信利益會由此伴隨而來，產品也將會成為真正符合商業本質的長銷產品。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;多閱讀商場上各式各樣的產品開發經驗，並從中瞭解其成功與失敗背後的原因，思考成功產品為什麼會成功？失敗產品又會什麼無法被市場所接受呢？
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="思維邏輯" scheme="http://blog.unisharp.com/tags/%E6%80%9D%E7%B6%AD%E9%82%8F%E8%BC%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6 極簡摘要</title>
     <link href="http://blog.unisharp.com/2017/06/19/ES6%E6%A5%B5%E7%B0%A1%E6%91%98%E8%A6%81/"/>
     <id>http://blog.unisharp.com/2017/06/19/ES6極簡摘要/</id>
     <published>2017-06-19T00:00:00.000Z</published>
-    <updated>2017-06-22T02:44:01.000Z</updated>
+    <updated>2017-07-24T09:52:34.000Z</updated>
     
-    <content type="html"><![CDATA[<p>覺得官方文件的說明太冗長了嗎？<br>這裡是用小編的理解來說明 ES6 到底新增了哪些方便好用的功能<br>以這篇文章當作前言，再搭配官方的文件，效果會更好喔！<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>覺得官方文件的說明太冗長了嗎？<br>這裡是用小編的理解來說明 ES6 到底新增了哪些方便好用的功能，<br>以這篇文章當作前導，再搭配官方的文件，效果會更好喔！<br><a id="more"></a></p>
 <p>新舊語法比較：<a href="http://es6-features.org/" target="_blank" rel="external">http://es6-features.org/</a></p>
 <h1 id="Constant-常數"><a href="#Constant-常數" class="headerlink" title="Constant - 常數"></a>Constant - 常數</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> PI = <span class="number">3.141593</span></div></pre></td></tr></table></figure>
 <h1 id="Block-scoped-variable-用-let-宣告變數"><a href="#Block-scoped-variable-用-let-宣告變數" class="headerlink" title="Block-scoped variable - 用 let 宣告變數"></a>Block-scoped variable - 用 let 宣告變數</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">1</span>; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(i); <span class="comment">// 0</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(i); <span class="comment">// i is not defined</span></div></pre></td></tr></table></figure>
@@ -33,9 +266,9 @@
 </ul>
 <p>★ const 就是不能改值的 let ★</p>
 <h1 id="Block-scoped-function"><a href="#Block-scoped-function" class="headerlink" title="Block-scoped function"></a>Block-scoped function</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// codes here</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<p>以前要用下面的 code 把要執行的程式包起來，現在只需要大括號</p>
+<p>以前要用上面的 code 把要執行的程式包起來，現在只需要大括號</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span> &#125;</div><div class="line">    foo() === <span class="number">1</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span> &#125;</div><div class="line">        foo() === <span class="number">2</span></div><div class="line">    &#125;</div><div class="line">    foo() === <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Arrow-functions-用箭頭簡化匿名函數"><a href="#Arrow-functions-用箭頭簡化匿名函數" class="headerlink" title="Arrow functions - 用箭頭簡化匿名函數"></a>Arrow functions - 用箭頭簡化匿名函數</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plus_numbers = numbers.map(<span class="function"><span class="params">v</span> =&gt;</span> v + <span class="number">1</span>);</div></pre></td></tr></table></figure>
+<h1 id="Arrow-functions-用箭頭簡化匿名函式"><a href="#Arrow-functions-用箭頭簡化匿名函式" class="headerlink" title="Arrow functions - 用箭頭簡化匿名函式"></a>Arrow functions - 用箭頭簡化匿名函式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plus_numbers = numbers.map(<span class="function"><span class="params">v</span> =&gt;</span> v + <span class="number">1</span>);</div></pre></td></tr></table></figure>
 <p>以前要這樣寫</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plus_numbers = numbers.map( <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> v + <span class="number">1</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h3 id="且可以使用-this-來取得當前的-object"><a href="#且可以使用-this-來取得當前的-object" class="headerlink" title="且可以使用 this 來取得當前的 object"></a>且可以使用 this 來取得當前的 object</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.nums.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>)</div><div class="line">        <span class="keyword">this</span>.fives.push(v)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
@@ -89,7 +322,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;覺得官方文件的說明太冗長了嗎？&lt;br&gt;這裡是用小編的理解來說明 ES6 到底新增了哪些方便好用的功能&lt;br&gt;以這篇文章當作前言，再搭配官方的文件，效果會更好喔！&lt;br&gt;
+      &lt;p&gt;覺得官方文件的說明太冗長了嗎？&lt;br&gt;這裡是用小編的理解來說明 ES6 到底新增了哪些方便好用的功能，&lt;br&gt;以這篇文章當作前導，再搭配官方的文件，效果會更好喔！&lt;br&gt;
     
     </summary>
     
@@ -99,6 +332,115 @@
     
     
       <category term="javascript" scheme="http://blog.unisharp.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Coroutine, Generator 那是什麼？</title>
+    <link href="http://blog.unisharp.com/2017/06/19/Coroutine,%20Generator%20%E9%82%A3%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/"/>
+    <id>http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/</id>
+    <published>2017-06-18T16:00:00.000Z</published>
+    <updated>2017-07-25T06:00:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在談到 coroutine 之前，先來暸解一下緣起好了</p>
+<p>首先，我們來談談什麼是異步？</p>
+<a id="more"></a>
+<p>在現在的程式語言中，一直都有想做到異步、平行的需求，以減少 CPU 停下來等 IO 的時間。</p>
+<p>目前有的解決方案，如 javascript 是直接對於會遇到 io 的程式碼直接跳過不執行，等到程式有空去執行 IO 的部分才會去處理。</p>
+<p>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line">fs.readFile(<span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'world'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div></pre></td></tr></table></figure></p>
+<p>以上述的例子來說，當中的 <code>readFile</code> 是一個異步的函數，當下不會執行，只會將你寫的 callback 函數註冊起來，等到有空的時候再去呼叫你寫的 callback</p>
+<p>因此上述 console.log 的順序會是 ‘hello’, ‘world’</p>
+<p>雖然執行順序跟閱讀的順序不一樣，但確實可以節省 CPU 等待 IO 的時間。這麼方便的東西，一般開發者其實無法寫出異步的函數，只能用系統提供的異步函數。</p>
+<h2 id="Coroutine-是什麼？"><a href="#Coroutine-是什麼？" class="headerlink" title="Coroutine 是什麼？"></a>Coroutine 是什麼？</h2><p>前面  readFile 的例子，幾乎就只有系統提供的函數能變成異步的，要是使用者也想寫出這樣的東西在以往幾乎是不可行。而 php, python 等語言借鑒了其他語言中 coroutine 的概念，逐步實現了使用者自行撰寫異步函數的功能。</p>
+<p>先列出要實現異步功能的需求：</p>
+<ol>
+<li>讓出函數的執行權</li>
+<li>繼續執行未完成的部分</li>
+</ol>
+<p>而在其他有實現 coroutine 功能的語言裡面，多半以 <code>yield</code> 這樣的語法來讓出函數的執行權</p>
+<p>例如 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function 自我感覺IO很吃重的函數($callback) &#123;</div><div class="line">     yield; // 這裡先讓出執行權，之後的程式碼等有空再執行</div><div class="line">     print(&quot;start to read data&quot;);</div><div class="line">     $data = do_somthing_io(); // 很吃重的工作</div><div class="line">     $callback($data); // 取得資料後送給你註冊的 callback</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述的程式碼在第一次呼叫的時候什麼事都不會發生，因為 yield 這行就讓出執行權了。</p>
+<p>但是 yield 跟 return 最大的不同點在於 yield 會紀錄函數執行到一半的狀態，你可以用某些語法繼續執行，以下以 resume 函數當作繼續執行的功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var $執行到一半的函數 = 自我感覺IO很吃重的函數();</div><div class="line">print(&quot;hello&quot;);</div><div class="line">resume($執行到一半的函數)</div></pre></td></tr></table></figure>
+<p>以上的範例是說明 自我感覺IO很吃重的函數() 會回傳一個執行到 yield 的紀錄，讓你可以用 consume 函數繼續執行它。</p>
+<p>而上面的例子就是認為在 <code>print(“hello”)</code>  才有空去執行剩餘 IO 吃重的部分。</p>
+<p>如果有螢幕的話，在螢幕上顯示文字的順序大概會是這樣 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hello</div><div class="line">start to read data</div></pre></td></tr></table></figure>
+<p>基本所謂的 coroutine 大概是這樣，與前面 js 的 readFile 的差異在於繼續執行的時間點是由自己呼叫 consume() 去控制，而非系統自己找時間點去執行</p>
+<p>附帶一提，這裡說明的 coroutine 還差了那麼一點點，真正的 coroutine 是可以指定 yield 之後可以跳到哪裡。但為了說明方便，這裡假定會跳回呼叫者處。</p>
+<h2 id="Generator-又是什麼"><a href="#Generator-又是什麼" class="headerlink" title="Generator 又是什麼"></a>Generator 又是什麼</h2><p>提到 php, python 實作 coroutine 的時候一定又會提及 Generator</p>
+<p>其實 Generator 是融合了 iterator 跟 coroutine 兩種特性的東西，在 php 裡面實作了 Iterator 介面，便能夠讓物件被 <code>foreach</code> 語法拿來迭代，類似這樣的物件便可以被稱作 iterator 迭代器。</p>
+<p>在 php 裡面也是可以使用 yield 的，如果我們對一個函數 yield 去 var_dump 觀察一下可以發現會得到一個名為 Generator 的物件。</p>
+<p>這個 Generator 其實也是前面提到的 <code>執行到一半的函式</code> 可以讓我們透過某種方法繼續執行下去。</p>
+<p>而 php 的 Generator 是以實作了 Iterator 的作法，讓我們使用裡面的 next() 方法去執行下一步。</p>
+<p>這樣融合迭代器的作法，又額外了多解決了一些記憶體消耗的情境。</p>
+<p>以產生 1000 個奇數為例，會試做以下的函數 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function odds()</div><div class="line">&#123;</div><div class="line">    $odds = [];</div><div class="line">    for ($odd = 0; count($odds) &lt; 1000; $odd++) &#123;</div><div class="line">        if ($odd % 2 == 1)</div><div class="line">            $odds[] = $odd;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return $odds;</div></pre></td></tr></table></figure>
+<p>在這裡會生成塞 1000 個奇數的陣列，當這個陣列小的時候還不會覺得有多大的問題。但是數量一多，然後可能要做的事情只是 print 出數字，整個記憶體就浪費了。</p>
+<p>我們可以將上面例子稍微改寫一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function odds()</div><div class="line">&#123;</div><div class="line">    for ($i = 0;; $i++) &#123;</div><div class="line">        if ($i % 2 == 1) &#123;</div><div class="line">            yield $i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">foreach (odds() as $i =&gt; $value) &#123;</div><div class="line">    if ($i == 1000) break;</div><div class="line">    echo $value . &quot;\n&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>這裡的 odds()  是用個無窮迴圈來產出所有奇數，但是根本不用怕會被無窮迴圈卡在這個函數裡，因為每產出一個奇數，便會讓出執行權。</p>
+<p>而這裡有個小小的不同，就是在 yield 的後方可以加上類似回傳值的東西。在 Generator 裏可以利用 current() 方法把這個回傳值給取出來。</p>
+<p>如果是跑在 foreach 迴圈裡也不用想太多，迴圈會自己幫忙帶進來。</p>
+<p>以這個改寫的例子來說，所佔用的記憶體只有一個變數 $i ，然後利用 coroutine 會記住上次執行狀態的特性，就能夠減少其他的記憶體消耗了。</p>
+<p>最後稍微提一下，在 php 裡是不能夠自己去 new 一個 Generator 的唷，因為這個特殊的迭代器要記住當下的執行狀態，所以都是以 C 去寫成的，所以目前只能靠 yield 去產生 Generator 。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在談到 coroutine 之前，先來暸解一下緣起好了&lt;/p&gt;
+&lt;p&gt;首先，我們來談談什麼是異步？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="後端技術" scheme="http://blog.unisharp.com/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E8%A1%93/"/>
+    
+    
+      <category term="程式設計" scheme="http://blog.unisharp.com/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 CSS 打造 UniSharp Logo</title>
+    <link href="http://blog.unisharp.com/2017/06/18/%E7%94%A8%20CSS%20%E6%89%93%E9%80%A0%20UniSharp%20Logo/"/>
+    <id>http://blog.unisharp.com/2017/06/18/用 CSS 打造 UniSharp Logo/</id>
+    <published>2017-06-17T16:00:00.000Z</published>
+    <updated>2017-07-25T06:40:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天我們要帶大家用 CSS 來畫 UniSharp 的 LOGO</p>
+<a id="more"></a>
+<p>首先我們先分析 LOGO，可以分成兩組，每組是一個字母 <code>U</code> 加一個 Bar</p>
+<p>分析完了之後，就可以把 HTML 設計出來了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.logo</div><div class="line">  .wrapper</div><div class="line">    .u.left</div><div class="line">      .bar</div><div class="line">    .u.right</div><div class="line">      .bar</div></pre></td></tr></table></figure>
+<p>再來就是今天的重頭戲，要來用 CSS 畫畫了！</p>
+<p>先畫出字母 <code>U</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.u &#123;</div><div class="line">  height: 100px;</div><div class="line">  border-width: 0 47px;</div><div class="line"></div><div class="line">  &amp;, &amp;:before &#123;</div><div class="line">    width: 172px;</div><div class="line">    border-style: solid;</div><div class="line">    border-color: white;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  &amp;:before &#123;</div><div class="line">    content: '';</div><div class="line">    position: absolute;</div><div class="line">    height: 117px;</div><div class="line">    border-width: 47px;</div><div class="line">    border-top-width: 0;</div><div class="line">    left: -47px;</div><div class="line">    bottom: -115px;</div><div class="line">    border-radius: 0 0 100px 100px;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/7kxgESN.png" alt=""></p>
+<p>再把兩個 <code>U</code> 轉一下並組合起來，歐～已經有個樣子了唷！</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">.wrapper &#123;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.u &#123;</div><div class="line">  &amp;.left &#123;</div><div class="line">    transform: rotate(45deg);</div><div class="line">    left: 60px;</div><div class="line">    top: 40px;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  &amp;.right &#123;</div><div class="line">    transform: rotate(-135deg);</div><div class="line">    left: 167px;</div><div class="line">    top: 10px;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/ItsYpp7.png" alt=""></p>
+<p>然後把兩個 bar 放上去</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.bar</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">48px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">93px</span>;</div><div class="line">  <span class="attribute">background-color</span>: white;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(90deg) <span class="built_in">skewX</span>(10deg);</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: -<span class="number">31px</span>;</div><div class="line">  <span class="attribute">left</span>: -<span class="number">24px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/GDSi6SS.png" alt=""></p>
+<p>再微調一下角度，大功告成</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.logo</span> &#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-7deg) <span class="built_in">skewX</span>(-1deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/RAn2y2j.png" alt=""></p>
+<p><a href="https://github.com/UniSharp/logo" target="_blank" rel="external">完整的程式碼請點我</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天我們要帶大家用 CSS 來畫 UniSharp 的 LOGO&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="開源分享" scheme="http://blog.unisharp.com/categories/%E9%96%8B%E6%BA%90%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="前端設計" scheme="http://blog.unisharp.com/categories/%E9%96%8B%E6%BA%90%E5%88%86%E4%BA%AB/%E5%89%8D%E7%AB%AF%E8%A8%AD%E8%A8%88/"/>
+    
+    
+      <category term="css" scheme="http://blog.unisharp.com/tags/css/"/>
     
   </entry>
   
@@ -200,6 +542,90 @@
       <category term="UI" scheme="http://blog.unisharp.com/tags/UI/"/>
     
       <category term="Sketch" scheme="http://blog.unisharp.com/tags/Sketch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>由內而外打造企業開源文化</title>
+    <link href="http://blog.unisharp.com/2017/06/05/%E7%94%B1%E5%85%A7%E8%80%8C%E5%A4%96%E6%89%93%E9%80%A0%E4%BC%81%E6%A5%AD%E9%96%8B%E6%BA%90%E6%96%87%E5%8C%96/"/>
+    <id>http://blog.unisharp.com/2017/06/05/由內而外打造企業開源文化/</id>
+    <published>2017-06-04T16:00:00.000Z</published>
+    <updated>2017-07-27T03:22:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。<br><a id="more"></a>很幸運地，我曾經受前公司的老闆賦予這樣的任務：「替公司創造一個開源產品，並以社群方式經營它」，雖然最終沒有太大的成果，但卻是一個很難得的經驗呢。</p>
+<p>事實上，有許多的企業都在做一樣的事情 - 選擇性地將工作產出開源，甚至有許多的企業能做到 100% 以開源的方式進行開發。</p>
+<p>不知道你是否也有這樣的經驗呢？因為工作需要而使用了某一個 Open Source 軟體，發現了一些問題，你 trace 了很久，最終將它修正了。你很想把這個修正回饋回上游。</p>
+<p>但是你遲疑了。<br>「公司允許我這樣做嗎？」<br>「我發 patch（或 PR）時要用公司的 email 嗎？」</p>
+<p>有沒有一個工作環境是可以讓我安心地玩社群、掛 IRC、不用區分我的產出是在工作時間內還是私人時間呢？</p>
+<p>事隔多年，我在悠夏爾遇到了一群開源同好，我們經過一番淬煉，逐步讓開源文化在公司內成形。</p>
+<p>這些年來，因為開放的內部文化，使得我們的溝通更順暢、工作也更愉快了。我們留下了越來越多的程式元件、文件、設計稿、讀書會影片。每個人都樂於分享、樂於向他人學習。我們也不斷成長，勇於打破不適合的規則。我們對於自己的貢獻會「持續保持開放」感到安心。</p>
+<p>更進一步地，因為這樣的開源文化，使得大家勇於將產出對外開源。雖然受限於對客戶的合約與責任，我們還無法成為 100% 將工作產出開源的公司，但這是一個好的開始，對吧 ;)</p>
+<p>我認為，塑造開源文化應該「由內而外」、「內外兼顧」才是自然。對許多人來說，長久以來習慣是：部門內的員工只能看到自己部門的文件、只能存取自己負責的 Git Repo，這時，如果他們得到公司的指示：「我們鼓勵您將心血開源，給公司外的人無限制地使用」，雖然員工會受到一時的衝擊，但是相信員工更樂於在開放的環境下工作，這是值得鼓勵的政策！</p>
+<p>這些年為了促成悠夏爾的開源文化，我與公司夥伴們列出了一些開源工作原則，以下我們就來逐一介紹這些原則。<br>雖然還沒有做得很好，但我們會朝這個方向繼續努力的。</p>
+<h2 id="內部持續開放原則"><a href="#內部持續開放原則" class="headerlink" title="內部持續開放原則"></a>內部持續開放原則</h2><blockquote>
+<p>在公司內就放心學習、無限制地分享吧！</p>
+</blockquote>
+<p>「內部持續開放原則」是指：「<strong>無論公司如何成長，所有內部成員享有學習及改良任何公司技術、設計及專案文件的自由，不會改變</strong>」</p>
+<p>舉例來說，以下這些是開放的：</p>
+<ol>
+<li>所有的 Git Repository 永遠開放給每一位公司成員讀寫。無須取得授權，無須問過「我可不可以這樣改？」</li>
+<li>所有工作規則、工作筆記、專案需求等文件以及設計原始檔，永遠開放給每一位成員閱讀、使用和修改。同上，做任何修改是不需要問過他人的，即便這篇文件是主管擬定的工作規則。（反正有歷史記錄在啊）</li>
+<li>所有成員均可自由地於內部聊天頻道暢所欲言（目前是使用 slack）</li>
+<li>所有成員均可放心地指出目前工作流程或工作習慣中的不良處，提出改善方式。</li>
+<li>想學習公司所知的任何技術，都可以在稱為「許願池」的地方提出，公司馬上會安排人分享。</li>
+</ol>
+<p>公司內部就像是一個小型的開源社群，所有人因相同的願景而聚在一起，互相學習、成長。我們盡可能地共享資源，將公司內部變成一個知識寶庫。</p>
+<p>有朝一日，公司也許會有更多人、有更多不同的部門。我能否自由學習其他部門中感興趣的項目呢？我能否對它們貢獻所長？或是會被拒於門外？</p>
+<p>我相信團隊人數增加後，我們會有更多的顧慮。但我們會努力捍衛這個原則的。</p>
+<h2 id="可重用原則"><a href="#可重用原則" class="headerlink" title="可重用原則"></a>可重用原則</h2><blockquote>
+<p>擁有自由之後，提升分享的品質吧！</p>
+</blockquote>
+<p>「可重用原則」用意在於提升開源品質，白話一點的解釋是：「<strong>所有的文件、設計、程式與流程，需致力於讓他人方便使用。</strong>」</p>
+<p>依「內部持續開放原則」，所有的內部分享、伺服器管理紀錄、檢討報告、專案日誌、程式產出等，均是對內開放的。當數量越來越多、越來越雜，有許多東西漸漸沒人看得懂了。我們需要致力於改善它的可重用性，讓下一次需要這些項目的人得以快速地使用它。</p>
+<p>舉例來說，某一些程式在開發初期可能是寫死的，只有某一個專案可以使用。但因為可重用原則，我們會提醒自己致力於將這個程式元件化，即便會多花一點時間。</p>
+<p>另外舉一個文件的例子：<br>當我們對產品做了一個重要決策，如果它的會議紀錄只是一個 「2017-05-05 會議記錄：經過投票，結論是使用 A 方案」這樣的描述，對於想從各方角度了解會議的其他人幫助不大。我們採取共筆方式完成，相關與會人員會補上：「選擇 A 方案的人的人的理由是什麼？」、「反對它的人的理由是什麼？」、「其他的選項是什麼？」，讓往後他人可以快速查找並進入當下的情境。這樣子使得這份記錄被review的機會增加，它的價值提升了。</p>
+<p>這個原則幫助我們時常思考要怎麼讓產出被他人持續使用，而不只是淪為自己一個人看得懂得東西。在軟體上，它同等於致力於優良的設計模式。在文件上，它代表著以文字或圖像精準表達出自己的思維。</p>
+<p>為了更有效地提升品質，目前我們我們採用的做法是：「程式使用 TDD 開發」、「文件以 Executable Spec 為最終目標」。限於篇幅，先不繼續討論它，下回我們會分享我們努力朝這個方向前進的心路歷程，請繼續支持我們的 How We Work 系列文章囉。</p>
+<h2 id="開放優先原則"><a href="#開放優先原則" class="headerlink" title="開放優先原則"></a>開放優先原則</h2><blockquote>
+<p>自在分享</p>
+</blockquote>
+<p>當「內部持續開放原則」與「可重用原則」進行了好一陣子後，我們有越來越多的內部私有產出。</p>
+<p>這些私有產出中不乏我們認為對外部也有價值的軟體元件或文件，我們很想將它開放，然而，我們時常顧慮著：「這裡面會不會很多 typo 啊？」、「這邊程式寫得很醜會丟臉耶」、「網路上已經有別人做得更好了」、「這開放出去被學走好嗎」等。</p>
+<p>因為這些顧慮，使得這些項目隱藏了許多的「開源門檻」，阻擋我們將它們真正開源到 GitHub 或部落格上，這些隱藏門檻有：</p>
+<ol>
+<li>不違法、不違背合約</li>
+<li>夠獨立、夠泛用</li>
+<li>真的對他人有幫助</li>
+<li>文件充足，用得人看得懂</li>
+<li>不造成公司損失</li>
+<li>得到技術主管同意並且 review 過</li>
+<li>… 可能還有很多很多</li>
+</ol>
+<p>但仔細想來，只有第 1 點是必須遵守的條件。</p>
+<p>為了鼓勵開源，我們新列了一項原則，稱為「開放優先原則」，它的意思是：</p>
+<p><strong>在不違法、不違反合約的前提下，優先以開源的方式開發所有的元件。例如在 GitHub 上開源開發元件，再引入私有專案使用。不需要取得公司同意。</strong></p>
+<p>有了這個原則，我們來回應一下一開始的兩個疑問吧！</p>
+<p>「公司允許我這樣做嗎？」 =&gt; 當然，公司直接鼓勵我這樣做！</p>
+<p>「我發 patch（或 PR）時要用公司的 email 嗎？」 =&gt; 看喜歡用哪個就用哪個囉！</p>
+<p>當然我們更喜歡同事把公司開源項目放在 GitHub 中的 UniSharp 群組內，畢竟這樣比較好找。而且因為群組內同仁都有寫入權，因此要修改時不需要發 PR 會更方便，會更符合第一個「內部持續開放原則」的！</p>
+<p>同時我們也鼓勵同事經營自己個人帳號下的開源項目。無論是與公司業務有關或無關的。</p>
+<p>這樣的原則下，使我們近年在 GitHub 上的開源項目大爆發。雖然因為不擅行銷，我們時常沒有留下什麼好文件。然而本著 Release Early, Release Often 的精神，及早開放就是及早得以討論與分享。我們很開心也自豪地會繼續這樣做。</p>
+<h1 id="寫在最後"><a href="#寫在最後" class="headerlink" title="寫在最後"></a>寫在最後</h1><p>人類的生命及專注力是有限的資源，必須珍惜。希望某一天，在地球的某一處，有人因為我們的分享而無痛完成一項工作，得以有時間回家幫小孩過生日，或是用這些時間把自己擅長的事情分享給其他人，讓這樣的分享持續下去。</p>
+<p>感謝各開源社群帶給我們的幫助，無論我們做得好不好，都希望能將這份精神傳遞出去。</p>
+<p>特別謝謝唐鳳精彩的「<a href="https://www.slideshare.net/autang/open-source-enlightenment" target="_blank" rel="external">開源之道</a>」演說，每當我對「工作的意義」甚至「人生的目標」感到迷惘時，這份簡報總是幫助我撥雲見日、找到方向。</p>
+<p>開源不神聖，它僅自然的、快樂的。請加入我們吧！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;緣起&quot;&gt;&lt;a href=&quot;#緣起&quot; class=&quot;headerlink&quot; title=&quot;緣起&quot;&gt;&lt;/a&gt;緣起&lt;/h2&gt;&lt;p&gt;筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="how-we-work" scheme="http://blog.unisharp.com/tags/how-we-work/"/>
     
   </entry>
   
@@ -795,126 +1221,6 @@
       <category term="團隊合作" scheme="http://blog.unisharp.com/tags/%E5%9C%98%E9%9A%8A%E5%90%88%E4%BD%9C/"/>
     
       <category term="說話技巧" scheme="http://blog.unisharp.com/tags/%E8%AA%AA%E8%A9%B1%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UX 從新手開始-使用者體驗的 100堂必修課</title>
-    <link href="http://blog.unisharp.com/2016/10/11/UX%E5%BE%9E%E6%96%B0%E6%89%8B%E9%96%8B%E5%A7%8B-%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E7%9A%84100%E5%A0%82%E5%BF%85%E4%BF%AE%E8%AA%B2/"/>
-    <id>http://blog.unisharp.com/2016/10/11/UX從新手開始-使用者體驗的100堂必修課/</id>
-    <published>2016-10-10T16:00:00.000Z</published>
-    <updated>2017-05-24T05:42:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>​    今天來為大家介紹的這本「UX 從新手開始，使用者體驗的 100堂必修課」，作者完整地將 UX 設計中較容易碰到的問題與設計方法介紹給讀者，所以本書並不會像 「UX 策略」那樣的專精詳述某種特定方法，而是概略地提及讓大家有基本概念。<br><a id="more"></a><br>既然是這樣，我就再更精簡的找出對我們 PM/工程師/設計師有幫助的一些重點介紹給大家。</p>
-<p>​    一開始作者開門見山地叮嚀「UX 設計」是一種流程，裡面包含了五件事：心理學、可用性、設計、文案撰寫和分析。</p>
-<p>​    「心理學」是最先考量的要素，探討使用者一開始的感覺、行為會如何養成習慣、點擊某個按鈕時會有什麼期待、對於生活的需求…等，這也算是流程裡最複雜的一部分，因為設計者必須忽略自己的心理感受、直覺，才不會設計出一個屬於自己而非使用者需要的產品，放下自己的心裡感受是一件相當困難的事。</p>
-<p>​    「可用性」，用一句話簡單地講就是：盡可能地減少使用上的困難並讓用戶直覺地完成目標。這部分也必須放下設計者自身的見解，進而用數據回饋、用戶研究的方式找出用戶在使用過程中不順並干擾他達成目標的問題點進而一步步修改和解決。就像 PM QA 找到 bug 後開 issue 給工程師fix一樣。</p>
-<p>​    「設計」並非一般我們印象中那種美感的設計，在 UX 領域中你是否「喜歡它」並不要緊，這邊設計關乎的是如何運作、並且是能夠證明的東西; 它不是風格或樣式的問題。這邊有點抽象，我來舉個例子: 同樣需要用到「可用性」裡提到的數據回饋、用戶研究，而設計師需要被問到的問題如：你的設計如何能將使用者的眼光引導到正確的地方？怎麼知道？。你可能用 A/B Testing、眼動儀來追蹤受測的的行為與注意力，進而驗證並媒合客戶需求與用戶行為。</p>
-<p>​    UX 流程中「文案撰寫」也跟我們所認知的品牌文案非常不同，品牌文案大多支持公司的形象與價值，但 UX 文案盡可能直接且簡單地將操作體驗描述清楚，同樣是為了輔助用戶更快速容易地達成目標。</p>
-<p>​    「分析」是大多數設計者的弱點，而區分 UX 設計與一般設計主要的因素就是分析。真正有價值的都是那些你如何用資料證明你的觀點是對的、或去了解使用行為的真相？還是是你去解讀他們的做法？你看的是絕對的數字，還是相對的改善？如何用此次的分析正確地解決問題進行改善？這部分非常不容易，但也是為什麼現在數據分析師會是最夯職位的原因，所有的價值都藏在使用者所提供的數據之中。</p>
-<p>以上五個流程觀點是我們必須先體認了解的，看完後發現UX設計根本與我們的想像天差地遠啊… Orz</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;​    今天來為大家介紹的這本「UX 從新手開始，使用者體驗的 100堂必修課」，作者完整地將 UX 設計中較容易碰到的問題與設計方法介紹給讀者，所以本書並不會像 「UX 策略」那樣的專精詳述某種特定方法，而是概略地提及讓大家有基本概念。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="UX" scheme="http://blog.unisharp.com/tags/UX/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rsync是如何比較檔案差異的</title>
-    <link href="http://blog.unisharp.com/2016/07/31/rsync%E6%98%AF%E5%A6%82%E4%BD%95%E6%AF%94%E8%BC%83%E6%AA%94%E6%A1%88%E5%B7%AE%E7%95%B0%E7%9A%84/"/>
-    <id>http://blog.unisharp.com/2016/07/31/rsync是如何比較檔案差異的/</id>
-    <published>2016-07-30T16:00:00.000Z</published>
-    <updated>2017-05-31T07:37:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。<br><a id="more"></a><br>如果自己想自製一個能夠比較兩份文件差異的程式，稍微想一下設計，大約還能以行爲單位來設計，找出差異。</p>
-<p>但是如果檔案並非純文字，而是像照片這般的二進位檔案，可能一整份檔案都沒有任何換行符號，一比較差異就是讓伺服器把整份檔案重新抓下來了。</p>
-<p>面對通用檔案的差異比較，其設計思路就會朝向將檔案切成一塊一塊的區塊來進行差異比較。但終究需要面對以下問題：</p>
-<ul>
-<li>不可能將每個區塊的內容下載下來讓客戶端進行比較，這樣等同下載整份檔案</li>
-<li>如果只是檔頭加了一點內容，切割區塊有機會造成每個區塊內容就不同，也等同要下載整份檔案</li>
-</ul>
-<p>面對以上問題，rsync 採用了一些不錯的解決對策</p>
-<h4 id="校驗和-Checksum"><a href="#校驗和-Checksum" class="headerlink" title="校驗和 (Checksum)"></a>校驗和 (Checksum)</h4><p>校驗和不是 rsync 獨有的東西，很早就有利用校驗和來檢查檔案是否完整的流程存在。而校驗和其原理就只是利用檔案內的資料產生一個獨特的值，讓下載方與供應方用同樣的方法生出該值，稍加比較就知道兩個檔案是否相同。</p>
-<p>舉個最簡單的校驗和的例子，假設檔案內容如下：</p>
-<pre><code>{5, 6, 7, 8}
-</code></pre><p>最簡單的校驗和可以直接全部內容相加，其校驗和爲 26 ，只要下載方的校驗和也是 26 ，檔案下載完整的 <strong>可能性</strong> 就越高。</p>
-<p>這裡的說明是用 <strong>可能性</strong> 是因為大家都知道直接相加的缺點。有太多可以產生相同校驗和的方法了。<br>例如以下內容皆有機會被視為相同檔案：</p>
-<pre><code>{3, 7, 8, 8}
-{9, 2, 5, 11}
-</code></pre><p>因此資訊界競相設計出各種校驗和的演算，例如 md4, md5 ，都宣稱高度可信，很難有不同的來源會產生相同的校驗和。但是越高度可信，所需要的計算時間越久，甚至需要產生一些質數出來輔助。</p>
-<p>總結校驗和帶來的幫助，就是無需將伺服器上的每個區塊的內容都下載下來比較，只需要比較其校驗和便能得知是否有相同內容。</p>
-<h4 id="rsync-策略概述"><a href="#rsync-策略概述" class="headerlink" title="rsync 策略概述"></a>rsync 策略概述</h4><p>rsync 接下來要面對的問題，就是如何避免檔案偏移，就造成下載整份檔案的狀況。其流程大概像下面的步驟：</p>
-<ol>
-<li>將伺服器上的檔案 B 切成不重疊的區塊。</li>
-<li>將檔案 B 的所有區塊分別算出一個<strong>弱校驗和</strong>(Rolling Checksum) 和 <strong>強校驗和</strong> (md4)</li>
-<li>客戶端將所有區塊的校驗和下載製表 (hash table)</li>
-<li>客戶端從檔案 A 的檔頭開始切區塊，先只快速算出 <strong>弱校驗和</strong>，用其查表，查看是否存在</li>
-<li>查表<ul>
-<li>若無法用弱校驗和查出檔案 B 有該區塊，則區塊往下偏移繼續切並重複步驟 4 直至檔尾。</li>
-<li>若能查表查到才用<strong>強校驗和</strong>計算並比較，若符合代表有該區塊，並紀錄該區塊存在。反之則重複步驟 4</li>
-</ul>
-</li>
-</ol>
-<p>這個策略流程很簡單，但是要突破的瓶頸就是速度。不斷地將區塊偏移並且查詢比較非常耗時，因此其核心是快速的產生校驗和，快速的得知沒有相符的區塊，以避免每個區塊都用速度較慢的強校驗和檢查。在此 rsync 設計的 Rolling Checksum 佔了非常重要的位置。</p>
-<p>而 Rolling Checksum 其速度跟前述的將所有資料相加的速度是一樣快的，但又沒有說弱到一下就產生碰撞 ，因此非常適合作初步檢驗。</p>
-<h4 id="Rolling-Checksum"><a href="#Rolling-Checksum" class="headerlink" title="Rolling Checksum"></a>Rolling Checksum</h4><p>為了說明方便， Rolling Checksum 簡化算式如下</p>
-<pre><code>i 是 block 的開始位置，j 爲結束位置
-bsize 則是一個 block 的大小
-
-A = block[i] + block[i+1] + ... + block[j] // 從頭加到尾的意思
-B = bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]
-
-rolling_checksum = A + B
-</code></pre><p>假設一個 block 的大小爲 4 個 byte ， 且 block 內容依然是</p>
-<pre><code>{5, 6, 7, 8}
-</code></pre><p>其 Rolling Checksum 爲</p>
-<pre><code>A = 5 + 6 + 7 + 8
-B = (4 * 5) + (3 * 6) + (2 * 7) + (1 * 8)
-</code></pre><p>那為什麼說其速度跟全部加起來一樣快呢？ 觀察 A 部分的全部相加，大概會這樣設計一個迴圈</p>
-<pre><code>A = 0;
-for (i = 0; i &lt; bsize; i++) {
-    A += block[i];
-}
-</code></pre><p>將迴圈的流程稍微拆解一下，觀察一下 A 的內容</p>
-<pre><code>1.) A = 5
-2.) A = 5 + 6
-3.) A = 5 + 6 + 7
-4.) A = 5 + 6 + 7 + 8
-</code></pre><p>可以發現當中的 5 出現了 4 次，6 出現了 3 次，竟然跟算式 B 的要求吻合（這當然是有設計過的呀）。<br>所以要計算 B 的值只需要在同一個迴圈累加一下 A 便能同時算出 B 的值。稍微改寫如下</p>
-<pre><code>A = 0, B = 0;
-for (i = 0; i &lt; bsize; i++) {
-    A += block[i]
-    B += A;
-}
-</code></pre><p>最後補正為了說明而簡化的部分，其實這部分就只是為了 hash table 查詢所需要的取餘數的部分</p>
-<p>完整定義：</p>
-<pre><code>A = (block[i] + block[i+1] + ... + block[j]) % M // 從頭加到尾的意思
-B = (bsize * block[i] + (bsize - 1) * block[i+1] + ... + 1 * block[j]) % M
-
-rolling_checksum = A + (2^16) * B
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;rsync 是 unix 上常常被用來同步兩臺主機資料的指令。而 rsync 令人稱道同步能力，不僅僅是把檔案抓下來到本機，而是厲害到可以只下載一個檔案中的差異部分，而非整份檔案抓下來。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="後端技術" scheme="http://blog.unisharp.com/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E8%A1%93/"/>
-    
-    
-      <category term="工具小教室" scheme="http://blog.unisharp.com/tags/%E5%B7%A5%E5%85%B7%E5%B0%8F%E6%95%99%E5%AE%A4/"/>
-    
-      <category term="rsync" scheme="http://blog.unisharp.com/tags/rsync/"/>
     
   </entry>
   
