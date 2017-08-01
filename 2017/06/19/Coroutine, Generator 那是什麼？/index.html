@@ -23,7 +23,7 @@
 <meta property="og:url" content="http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/index.html">
 <meta property="og:site_name" content="UniSharp blog">
 <meta property="og:description" content="在談到 coroutine 之前，先來暸解一下緣起好了 首先，我們來談談什麼是異步？">
-<meta property="og:updated_time" content="2017-07-25T06:00:58.000Z">
+<meta property="og:updated_time" content="2017-08-01T06:43:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coroutine, Generator 那是什麼？">
 <meta name="twitter:description" content="在談到 coroutine 之前，先來暸解一下緣起好了 首先，我們來談談什麼是異步？">
@@ -262,10 +262,10 @@
 </ol>
 <p>而在其他有實現 coroutine 功能的語言裡面，多半以 <code>yield</code> 這樣的語法來讓出函數的執行權</p>
 <p>例如 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function 自我感覺IO很吃重的函數($callback) &#123;</div><div class="line">     yield; // 這裡先讓出執行權，之後的程式碼等有空再執行</div><div class="line">     print(&quot;start to read data&quot;);</div><div class="line">     $data = do_somthing_io(); // 很吃重的工作</div><div class="line">     $callback($data); // 取得資料後送給你註冊的 callback</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> 自我感覺<span class="title">IO</span>很吃重的函數<span class="params">($callback)</span> </span>&#123;</div><div class="line">     <span class="keyword">yield</span>; <span class="comment">// 這裡先讓出執行權，之後的程式碼等有空再執行</span></div><div class="line">     <span class="keyword">print</span>(<span class="string">"start to read data"</span>);</div><div class="line">     $data = do_somthing_io(); <span class="comment">// 很吃重的工作</span></div><div class="line">     $callback($data); <span class="comment">// 取得資料後送給你註冊的 callback</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上述的程式碼在第一次呼叫的時候什麼事都不會發生，因為 yield 這行就讓出執行權了。</p>
 <p>但是 yield 跟 return 最大的不同點在於 yield 會紀錄函數執行到一半的狀態，你可以用某些語法繼續執行，以下以 resume 函數當作繼續執行的功能</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var $執行到一半的函數 = 自我感覺IO很吃重的函數();</div><div class="line">print(&quot;hello&quot;);</div><div class="line">resume($執行到一半的函數)</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $執行到一半的函數 = 自我感覺IO很吃重的函數();</div><div class="line"><span class="keyword">print</span>(<span class="string">"hello"</span>);</div><div class="line">resume($執行到一半的函數)</div></pre></td></tr></table></figure>
 <p>以上的範例是說明 自我感覺IO很吃重的函數() 會回傳一個執行到 yield 的紀錄，讓你可以用 consume 函數繼續執行它。</p>
 <p>而上面的例子就是認為在 <code>print(“hello”)</code>  才有空去執行剩餘 IO 吃重的部分。</p>
 <p>如果有螢幕的話，在螢幕上顯示文字的順序大概會是這樣 :</p>
@@ -279,10 +279,10 @@
 <p>而 php 的 Generator 是以實作了 Iterator 的作法，讓我們使用裡面的 next() 方法去執行下一步。</p>
 <p>這樣融合迭代器的作法，又額外了多解決了一些記憶體消耗的情境。</p>
 <p>以產生 1000 個奇數為例，會試做以下的函數 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function odds()</div><div class="line">&#123;</div><div class="line">    $odds = [];</div><div class="line">    for ($odd = 0; count($odds) &lt; 1000; $odd++) &#123;</div><div class="line">        if ($odd % 2 == 1)</div><div class="line">            $odds[] = $odd;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return $odds;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">odds</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    $odds = [];</div><div class="line">    <span class="keyword">for</span> ($odd = <span class="number">0</span>; count($odds) &lt; <span class="number">1000</span>; $odd++) &#123;</div><div class="line">        <span class="keyword">if</span> ($odd % <span class="number">2</span> == <span class="number">1</span>)</div><div class="line">            $odds[] = $odd;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> $odds;</div></pre></td></tr></table></figure>
 <p>在這裡會生成塞 1000 個奇數的陣列，當這個陣列小的時候還不會覺得有多大的問題。但是數量一多，然後可能要做的事情只是 print 出數字，整個記憶體就浪費了。</p>
 <p>我們可以將上面例子稍微改寫一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function odds()</div><div class="line">&#123;</div><div class="line">    for ($i = 0;; $i++) &#123;</div><div class="line">        if ($i % 2 == 1) &#123;</div><div class="line">            yield $i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">foreach (odds() as $i =&gt; $value) &#123;</div><div class="line">    if ($i == 1000) break;</div><div class="line">    echo $value . &quot;\n&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">odds</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>;; $i++) &#123;</div><div class="line">        <span class="keyword">if</span> ($i % <span class="number">2</span> == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">yield</span> $i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">foreach</span> (odds() <span class="keyword">as</span> $i =&gt; $value) &#123;</div><div class="line">    <span class="keyword">if</span> ($i == <span class="number">1000</span>) <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">echo</span> $value . <span class="string">"\n"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>這裡的 odds()  是用個無窮迴圈來產出所有奇數，但是根本不用怕會被無窮迴圈卡在這個函數裡，因為每產出一個奇數，便會讓出執行權。</p>
 <p>而這裡有個小小的不同，就是在 yield 的後方可以加上類似回傳值的東西。在 Generator 裏可以利用 current() 方法把這個回傳值給取出來。</p>
 <p>如果是跑在 foreach 迴圈裡也不用想太多，迴圈會自己幫忙帶進來。</p>
@@ -685,6 +685,31 @@
                 <div class="media">
                     
                     <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
                         <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
                             <img class="media-image" src="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/pexels-photo.jpg" width="90" height="90"/>
                         </a>
@@ -703,31 +728,6 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
 <p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-left">
-                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
-                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
-                        </a>
-                    </div>
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
-                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2017年2月14日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>

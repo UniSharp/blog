@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="UniSharp blog">
 <meta property="og:description" content="數字時鐘是不是很膩了？第一次看到 Binary Clock 是不是有一種好想擁有的感覺？ 現在，我們就來瞭解 &amp;amp; 用 vue.js 動手做做看吧！">
 <meta property="og:image" content="http://blog.unisharp.com/2017/07/12/用%20Vue.js%20打造%20Binary%20Clock/binary-clock.gif">
-<meta property="og:updated_time" content="2017-07-27T03:17:37.000Z">
+<meta property="og:updated_time" content="2017-08-01T06:43:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用 Vue.js 打造 Binary Clock">
 <meta name="twitter:description" content="數字時鐘是不是很膩了？第一次看到 Binary Clock 是不是有一種好想擁有的感覺？ 現在，我們就來瞭解 &amp;amp; 用 vue.js 動手做做看吧！">
@@ -269,7 +269,11 @@
 <p>建立專案</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$ vue init webpack &lt;project-name&gt;</div><div class="line"></div><div class="line">  ? Project name &lt;project-name&gt;</div><div class="line">  ? Project description &lt;description&gt;</div><div class="line">  ? Author &lt;auther&gt;</div><div class="line">  ? Vue build standalone</div><div class="line">  ? Install vue-router? No</div><div class="line">  ? Use ESLint to lint your code? No</div><div class="line">  ? Setup unit tests with Karma + Mocha? No</div><div class="line">  ? Setup e2e tests with Nightwatch? No</div><div class="line"></div><div class="line">   vue-cli · Generated &quot;&lt;project-name&gt;&quot;.</div><div class="line"></div><div class="line">   To get started:</div><div class="line">     // 進入專案</div><div class="line">     cd &lt;project-name&gt;</div><div class="line">     // 初始專案</div><div class="line">     npm install</div><div class="line">     // 啟動專案</div><div class="line">     npm run dev</div><div class="line"></div><div class="line">   Documentation can be found at https://vuejs-templates.github.io/webpack</div></pre></td></tr></table></figure>
 <p>前往 <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a> 看到大大的 V 就表示成功了</p>
-<h2 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h2><p>首先建立<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 拉出一個燈，並且給予 on 的參數</div><div class="line"></div><div class="line">```htmlmixed</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;light&quot; :class=&quot;&#123; on: on &#125;&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h2><p>首先，建立 /src/components/Light.vue。我們需要一顆燈的元件，它的行為只有亮或暗，而且我們要從外部給予亮或暗的指令。</p>
+<ul>
+<li>拉出一個燈，並且給予 on 的參數</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;light&quot; :class=&quot;&#123; on: on &#125;&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>透過 props 屬性從父元件傳入 0/1 布林值進來</li>
 </ul>
@@ -278,7 +282,11 @@
 <li>設定樣式（發揮你的設計天份吧）</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;</div><div class="line">  $size: 70px;</div><div class="line">  $margin: 8px;</div><div class="line">  .light &#123;</div><div class="line">    background-color: #9da0a4;</div><div class="line">    width: $size;</div><div class="line">    height: $size;</div><div class="line">    margin-top: $margin;</div><div class="line">    margin-bottom: $margin;</div><div class="line">    margin-left: $margin;</div><div class="line">    border-radius: 5px;</div><div class="line">  &#125;</div><div class="line">  .light.on &#123;</div><div class="line">    background-color: #333;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
-<p>接著建立 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 拉出兩位數的元件，每位數是由是四個 Light 元件組成，四顆燈分別表示二進位的四個 bit</div><div class="line"></div><div class="line">```htmlmixed</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;binary-digit&quot;&gt;</div><div class="line">    &lt;div class=&quot;digit&quot;&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 8)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 4)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 2)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 1)&quot;&gt;&lt;/light&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;digit&quot;&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 8)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 4)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 2)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 1)&quot;&gt;&lt;/light&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
+<p>接著，建立 /src/components/Digit.vue。我們以四顆燈為一組，需要兩組形成兩位數的元件</p>
+<ul>
+<li>拉出兩位數的元件，每位數是由是四個 Light 元件組成，四顆燈分別表示二進位的四個 bit</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class=&quot;binary-digit&quot;&gt;</div><div class="line">    &lt;div class=&quot;digit&quot;&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 8)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 4)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 2)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(tens &amp; 1)&quot;&gt;&lt;/light&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;digit&quot;&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 8)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 4)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 2)&quot;&gt;&lt;/light&gt;</div><div class="line">      &lt;light :on=&quot;!!(ones &amp; 1)&quot;&gt;&lt;/light&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>同樣透過 props 屬性從父元件傳入兩位數進來，並且切成十位數字和個位數字，每位數字轉成二進位交給 Light 元件顯示</li>
 </ul>
@@ -287,9 +295,13 @@
 <li>樣式設定（發揮你的設計天份吧）</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  .binary-digit &#123;</div><div class="line">    display: flex;</div><div class="line">    flex-direction: row;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
-<p>最後在 <figure class="highlight plain"><figcaption><span>Binary Clock</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 拉出時/分/秒的元件，是由三個 Digit 元件組成</div><div class="line"></div><div class="line">```htmlmixed</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;div class=&quot;binary-clock&quot;&gt;</div><div class="line">      &lt;digit :digit=&quot;hours&quot;&gt;&lt;/digit&gt;</div><div class="line">      &lt;digit :digit=&quot;minutes&quot;&gt;&lt;/digit&gt;</div><div class="line">      &lt;digit :digit=&quot;seconds&quot;&gt;&lt;/digit&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
+<p>最後，修改 /src/components/App.vue 。我們要把時/分/秒的元件組成時鐘，並且每秒更動一次，完成 Binary Clock</p>
 <ul>
-<li>利用 window.setInterval 每秒讀取一次時間，更新 hours, minutes, seconds 的值，交給 Digit 元件處理</li>
+<li>拉出時/分/秒的元件，是由三個 Digit 元件組成</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;div class=&quot;binary-clock&quot;&gt;</div><div class="line">      &lt;digit :digit=&quot;hours&quot;&gt;&lt;/digit&gt;</div><div class="line">      &lt;digit :digit=&quot;minutes&quot;&gt;&lt;/digit&gt;</div><div class="line">      &lt;digit :digit=&quot;seconds&quot;&gt;&lt;/digit&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>利用 window.setInterval 每秒讀取一次時間，更新 hours（時）, minutes（分）, seconds（秒） 的值，交給 Digit 元件處理</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  import Digit from &apos;./components/Digit&apos;</div><div class="line"></div><div class="line">  export default &#123;</div><div class="line">    name: &apos;app&apos;,</div><div class="line">    components: &#123;</div><div class="line">      Digit</div><div class="line">    &#125;,</div><div class="line">    data () &#123;</div><div class="line">      return &#123;</div><div class="line">        hours: 0,</div><div class="line">        minutes: 0,</div><div class="line">        seconds: 0,</div><div class="line">        now: new Date()</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    mounted () &#123;</div><div class="line">      window.setInterval(() =&gt; &#123;</div><div class="line">        var now = new Date()</div><div class="line">        this.hours = now.getHours()</div><div class="line">        this.minutes = now.getMinutes()</div><div class="line">        this.seconds = now.getSeconds()</div><div class="line">      &#125;, 1000)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <ul>
@@ -300,7 +312,7 @@
 <p><img src="binary-clock.gif" alt=""></p>
 <h1 id="作者時間"><a href="#作者時間" class="headerlink" title="作者時間"></a>作者時間</h1><p><a href="https://github.com/storyn26383/binary-clock" target="_blank" rel="external">想看完整原始碼</a> 在這裡在這裡 <a href="https://github.com/storyn26383/binary-clock" target="_blank" rel="external">toryn26383/binary-clock</a></p>
 <p>因為習慣使用 pug &amp; sass 所以原始碼跟這裡的程式碼會有不一樣喔，這裡是為了簡化學習複雜度，使用 html &amp; css 教學</p>
-<p>最後，歡迎大家按下底部的社群按鈕，貼上你的成果，把這一次的收穫分享出去喔（微笑）</p>
+<p>最後，歡迎大家按右下方的社群按鈕，貼上你的成果，把這一次的收穫分享出去喔（微笑）</p>
 
             
         </div>
@@ -698,6 +710,31 @@
                 <div class="media">
                     
                     <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
                         <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/">
                             <img class="media-image" src="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/pexels-photo.jpg" width="90" height="90"/>
                         </a>
@@ -716,31 +753,6 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
 <p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-left">
-                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
-                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
-                        </a>
-                    </div>
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
-                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2017年2月14日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
