@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.unisharp.com/"/>
-  <updated>2017-08-01T06:43:05.000Z</updated>
+  <updated>2017-08-17T07:25:58.000Z</updated>
   <id>http://blog.unisharp.com/</id>
   
   <author>
@@ -16,11 +16,163 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖</title>
+    <link href="http://blog.unisharp.com/2018/01/08/%E8%A8%AD%E8%A8%88%E5%B0%88%E6%AC%84%EF%BC%9A%E9%83%BD%E5%B8%82%E4%B8%8A%E7%8F%AD%E6%97%8F%E9%A4%8A%E7%8B%97%E6%94%BB%E7%95%A5%EF%BC%8C%E5%B0%88%E5%B1%AC%E5%AE%85%E6%AF%9B%E5%AD%A9%E6%95%A3%E6%AD%A5%20APP%20%E6%A6%82%E5%BF%B5%E5%9C%96/"/>
+    <id>http://blog.unisharp.com/2018/01/08/設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖/</id>
+    <published>2018-01-07T16:00:00.000Z</published>
+    <updated>2017-08-17T07:25:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>這次的設計主題是關於都市中的毛孩(寵物)因飼主工作繁忙、生活節奏快速而忽略照顧散步，所以創作了幾個概念性的介面，解決宅毛孩運動不足、憂鬱等問題。</p>
+<a id="more"></a>
+<h3 id="設計靈感來源："><a href="#設計靈感來源：" class="headerlink" title="設計靈感來源："></a>設計靈感來源：</h3><p>根據日本寵物食品協會預估，現在寵物的數量竟然比 14 歲以下孩童多出 400 萬，反映寵物逐漸被當成家人的現象。</p>
+<p>但在台灣養寵物大部分都是上班族，經常工作繁忙，除了用自動餵食器滿足生理需求之外，毛孩的心理需求、渴望的關懷如何兼顧？想到毛孩在空蕩的房子等待，不經會感到悲從中來的孤寂感。</p>
+<p>你，忍心讓毛孩獨自一人獨守空閨嗎？ＸＤ特別是愛犬更是不忍牠關在空間裡</p>
+<p>如果有一種遛寵物的 app，搜尋附近有空閒能遛寵物的人，稱之「遛寵人 ( Pet Walker )」，在指定的公園遛，飼主除了能看到即時散步路線圖，還能透過視訊，觀察毛孩與 Pet Walker 的一舉一動，app 也提供了公園的即時天氣概況及壅擠程度，選擇最適合的散步路線，不僅能讓毛孩身心健康也能抵抗憂鬱。</p>
+<h3 id="介面成果圖："><a href="#介面成果圖：" class="headerlink" title="介面成果圖："></a>介面成果圖：</h3><p><img src="http://i.imgur.com/EE7Gwwg.png" alt="毛孩散步 APP"></p>
+<h3 id="設計理念："><a href="#設計理念：" class="headerlink" title="設計理念："></a>設計理念：</h3><p>採用暖色調為基底，搭配不規則的曲線，詮釋出愛毛孩的柔軟及溫柔</p>
+<h3 id="設計過程："><a href="#設計過程：" class="headerlink" title="設計過程："></a>設計過程：</h3><p>原先採用電繪方式呈現主人與毛孩的互動，但效果並沒有讓人感受到 “真實”的情感，如果整個風格使用電繪，雖然可愛，但就像是回到以前養番薯寶寶的時代，玩久了，會膩。</p>
+<p><img src="http://i.imgur.com/WPab5hd.png =300x" alt="毛孩散步 APP"></p>
+<p>幾番思考後，挑選了幾張足以傳達情緒和情感的照片，以真實人與毛孩相處的圖片取代，也提升了整體介面的真實一致性。</p>
+<h3 id="介面設計圖"><a href="#介面設計圖" class="headerlink" title="介面設計圖"></a>介面設計圖</h3><h4 id="搜尋介面"><a href="#搜尋介面" class="headerlink" title="搜尋介面"></a>搜尋介面</h4><p><img src="http://i.imgur.com/nOtfptX.jpg =300x" alt="毛孩散步 APP 搜尋"></p>
+<p><img style="float: right;" src="whatever.jpg"></p>
+<p>介面一開始輸入毛孩當前地址，找尋附近是否有 Pet Walker。上方的 range input 區間線，是可選擇預期的價格區間，顏色從淺色到深色代表價格由低到高。移標採用狗腳掌為亮點。</p>
+<p>點擊地圖中價格可即時預覽 Pet Walker 介紹，Pet Walker 以真實影像取代電繪更具真實感。且用狗骨頭呈現評價，取代常見的星星，符合整體寵物設計概念。</p>
+<h4 id="搜尋遛狗地點即時概況"><a href="#搜尋遛狗地點即時概況" class="headerlink" title="搜尋遛狗地點即時概況"></a>搜尋遛狗地點即時概況</h4><p><img src="http://i.imgur.com/xFxz3az.jpg =300x" alt="毛孩散步 APP 搜尋公園"></p>
+<p>除了搜尋 Pet Walker 之外，也可搜尋遛狗地點，並且顯示即時天氣動態、結合 Google Map 的擁擠程度預測，以及當下多少隻貓狗在該地區活動，不管是活潑或是孤僻的毛孩，都可以透過該資訊，選對毛孩最好的地點。</p>
+<h4 id="查看-Pet-Walker-詳細資訊"><a href="#查看-Pet-Walker-詳細資訊" class="headerlink" title="查看 Pet Walker 詳細資訊"></a>查看 Pet Walker 詳細資訊</h4><p><img src="http://i.imgur.com/VcwCjOz.png =300x" alt="毛孩散步 APP walker 詳細資訊"></p>
+<p>查看 Pet Walker 詳細資訊，上方地圖為提供的遛狗路線，所花費時間，以及提供娛樂設備（球、飛盤）等。</p>
+<h4 id="查看毛孩散步即時動態"><a href="#查看毛孩散步即時動態" class="headerlink" title="查看毛孩散步即時動態"></a>查看毛孩散步即時動態</h4><p><img src="http://i.imgur.com/1eWDoxS.png =300x" alt="毛孩散步 APP 散步即時動態"></p>
+<p>當 Pet Walker 開始遛毛孩，畫面就會開始顯示毛孩當前位置，下方顯示所經過詳細路徑，也可透過視訊即時通話，及時給予毛孩互動。</p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>以上是本月設計專欄的遛寵物的 App 介面概念圖。寵物需求一多，商機就會出現，一個一個創意想法都漸漸付諸實行在日常生活之中。在國外已經有類似概念的產品出現，或許台灣也可以做，但需配合當地規範產生一整個系統的配套措施，如果你有任何其他的想法或是更棒的解決方案，歡迎在下方留言喔 ^.&lt;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;這次的設計主題是關於都市中的毛孩(寵物)因飼主工作繁忙、生活節奏快速而忽略照顧散步，所以創作了幾個概念性的介面，解決宅毛孩運動不足、憂鬱等問題。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端設計" scheme="http://blog.unisharp.com/categories/%E5%89%8D%E7%AB%AF%E8%A8%AD%E8%A8%88/"/>
+    
+    
+      <category term="設計專欄" scheme="http://blog.unisharp.com/tags/%E8%A8%AD%E8%A8%88%E5%B0%88%E6%AC%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx 學習筆記（一）</title>
+    <link href="http://blog.unisharp.com/2017/07/31/Nginx%20%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://blog.unisharp.com/2017/07/31/Nginx 學習筆記（一）/</id>
+    <published>2017-07-30T16:00:00.000Z</published>
+    <updated>2017-08-17T06:21:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文章會介紹 Nginx 的基本概念以及如何在 Max 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到</p>
+<ul>
+<li>如何在 Mac 安裝 Nginx</li>
+<li>Nginx 的基本概念</li>
+<li>如何設定 virtual host (多個 domain name 對到同一個 IP)</li>
+</ul>
+<p>本文章主要是參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀</p>
+<a id="more"></a>
+<h2 id="Nginx-安裝"><a href="#Nginx-安裝" class="headerlink" title="Nginx 安裝"></a>Nginx 安裝</h2><h3 id="安裝-Homebrew"><a href="#安裝-Homebrew" class="headerlink" title="安裝 Homebrew"></a>安裝 Homebrew</h3><p>Homebrew 是 Mac 上的套件管理工具，以下的軟體都會透過 Homebrew 來安裝<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xcode-select --install</div><div class="line">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</div></pre></td></tr></table></figure></p>
+<p>將 Homebrew 安裝 tool 的路徑加入環境變數<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>#</div><div class="line"><span class="meta">#</span> ~/.bash_profile</div><div class="line"><span class="meta">#</span>#</div><div class="line">export PATH="/usr/local/bin:$PATH"</div><div class="line">export PATH="/usr/local/sbin:$PATH"</div><div class="line"><span class="meta"></span></div><div class="line">##</div><div class="line"><span class="meta">#</span> ~/.zshrc</div><div class="line"><span class="meta">#</span>#</div><div class="line">export PATH="/usr/local/bin:$PATH"</div><div class="line">export PATH="/usr/local/sbin:$PATH"</div></pre></td></tr></table></figure></p>
+<h3 id="安裝-Nginx"><a href="#安裝-Nginx" class="headerlink" title="安裝 Nginx"></a>安裝 Nginx</h3><p>透過 Homebrew 安裝 Nginx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install nginx</div></pre></td></tr></table></figure></p>
+<p>預設開機啟動 Nginx，將 plist 檔複製至 Launch Daemon/Agent<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 開機後，以一般使用者身份啟動 Nginx</div><div class="line">cp /usr/local/opt/nginx/homebrew.mxcl.nginx.plist ~/Library/LaunchAgents/</div><div class="line"><span class="meta"></span></div><div class="line"># 開機後，要以 root 身份啟動 Nginx</div><div class="line">sudo cp /usr/local/opt/nginx/homebrew.mxcl.nginx.plist /Library/LaunchDaemons/</div></pre></td></tr></table></figure></p>
+<p>啟動 Nginx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 啟動 Nginx</div><div class="line">nginx </div><div class="line"><span class="meta"></span></div><div class="line"># 如果設定檔牽涉 root 權限，就要以 root 啟動 nginx</div><div class="line">sudo nginx</div></pre></td></tr></table></figure></p>
+<p>一旦 Nginx 啟動後，需要透過 <code>-s</code> 參數執行動作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -s signal</div></pre></td></tr></table></figure></p>
+<p>signal 必須是以下幾種</p>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stop</td>
+<td>直接停止 Nginx</td>
+</tr>
+<tr>
+<td>quit</td>
+<td>等目前正在服務的 worker process 結束後，停止 Nginx</td>
+</tr>
+<tr>
+<td>reload</td>
+<td>重新載入設定檔，Nginx 依照新的設定產生新的 worker process，既有的 woker process 會在服務完既有的連線後停止，在重啟前可以用 <code>nginx -t</code> 檢驗語法是否正確</td>
+</tr>
+<tr>
+<td>reopen</td>
+<td>重新開啟 log 檔案</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Nginx-基本概念"><a href="#Nginx-基本概念" class="headerlink" title="Nginx 基本概念"></a>Nginx 基本概念</h2><p>Nginx 是由一個主線程 (main process) 及多個工作線程 (worker processes)，主線成主要的功能是讀取及執行設定檔、維護工作線程，工作線程則是處理請求 (request)，Nginx 是事件驅動 (event-based) 和 OS-dependent，藉此達到有效的處理請求</p>
+<h3 id="設定檔結構"><a href="#設定檔結構" class="headerlink" title="設定檔結構"></a>設定檔結構</h3><p>Nginx 組成的模組是由設定檔內的 directives 所控制，directives 可以分成 simple directives、block directives</p>
+<ul>
+<li>simple directives : 由名稱及參數組合而成，中間由空白鍵分割，分號結尾</li>
+<li>block directives  : 由大括號<code>{}</code>表示起始跟結尾，中間可以包含其他 directives，被包含的 directives 被稱為內容 (context)</li>
+</ul>
+<p>設定檔中不屬於任何 block directives 的 directives 稱為 main context，<code>event</code> 和 <code>http</code> 是 main context，<code>server</code> 包含在 <code>http</code>，<code>location</code> 包含在 <code>server</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">worker_processes  1;  # main context, simple directive</div><div class="line"></div><div class="line">http &#123;                # block context</div><div class="line">    access_log /var/logs/access.log;    # context, simple directive</div><div class="line">    server &#123;</div><div class="line">        location &#123;</div><div class="line">            ...</div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="靜態檔案"><a href="#靜態檔案" class="headerlink" title="靜態檔案"></a>靜態檔案</h3><p>Nginx 可以根據 <code>location block</code> 將請求分別導向不同資料夾下的檔案，範例中的 <code>location / { ... }</code> 的 <code>/</code> 會去比對請求的 <code>URI</code>，若比對符合就會將 <code>URI</code> 加在 <code>root</code> 所定義的路徑後，回傳請求的檔案，而 <code>location /images/ {...}</code> 則會去比對 <code>/images/</code> 開頭的 <code>URI</code>，比對符合後，一樣會將 <code>URI</code> 加在 <code>root</code> 所定義的路徑</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /usr/local/etc/nginx.conf</div><div class="line">worker_processes  1;</div><div class="line"></div><div class="line">events &#123;</div><div class="line">    worker_connections  1024;</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;</div><div class="line">    include       mime.types;</div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">    sendfile        on;</div><div class="line">    keepalive_timeout  65;</div><div class="line">    </div><div class="line">    access_log  /usr/local/etc/nginx/logs/access.log;</div><div class="line">    error_log   /usr/local/etc/nginx/logs/error.log;</div><div class="line"></div><div class="line">    server &#123;</div><div class="line">        listen       80;</div><div class="line">        server_name  localhost;</div><div class="line"></div><div class="line">        location / &#123;</div><div class="line">            root   /data/www;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        location /images/ &#123;</div><div class="line">            root   /data;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述設定黨範例: </p>
+<ul>
+<li><a href="http://localhost/test.html" target="_blank" rel="external">http://localhost/test.html</a> 對應 /data/www/test.html</li>
+<li><a href="http://localhost/images/sample.jpg" target="_blank" rel="external">http://localhost/images/sample.jpg</a> 對應 /data/images/sample.jpg</li>
+</ul>
+<p>設定檔更新後，要重新載入設定檔<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nginx -s reload</div></pre></td></tr></table></figure></p>
+<p>範例中的 <code>http://localhost/images/sample.jpg</code> 同時符合 <code>location / {...}</code>、<code>location /images/ {...}</code>，當請求的 <code>URI</code> 符合兩個以上的 <code>location directive</code> 時，會優先選取比對條件較長的 (<code>/images/</code> 比 <code>/</code> 長)，所以一般會將越長的比對條件寫在下面，以方便閱讀，如果都找不到符合的檔案時，Nginx 會回傳 404</p>
+<p>:::info<br>當 Nginx 的行為不符合預期時，可以多檢視<code>access_log</code>、<code>error_log</code>定義的 log 檔案<br>:::</p>
+<h2 id="如何設定-virtual-host"><a href="#如何設定-virtual-host" class="headerlink" title="如何設定 virtual host"></a>如何設定 virtual host</h2><p>virtual host 是將多個 domain name 指向同一個 IP (即同一台伺服器)，Nginx 會依據<code>server block</code>的<code>port</code>、<code>server_name</code>決定該<code>server block</code>處理那個種類 (domain name) 的請求</p>
+<h3 id="建立各專案的根目錄"><a href="#建立各專案的根目錄" class="headerlink" title="建立各專案的根目錄"></a>建立各專案的根目錄</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir -p /your/project/name1/html</div><div class="line">mkdir -p /your/project/name2/html</div></pre></td></tr></table></figure>
+<p>:::info<br>如果是在 Linux 系統下，可能會要使用<code>chown</code>,<code>chmod</code>對檔案做權限設定，允許<code>www-data</code>使用者具有<code>rwx</code>的權限<br>:::</p>
+<h3 id="建立範例檔案"><a href="#建立範例檔案" class="headerlink" title="建立範例檔案"></a>建立範例檔案</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># /your/project/name1/html/index.html</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;h1&gt;Welcome name1 !&lt;/h1&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># /your/project/name2/html/index.html</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;h1&gt;Welcome name2 !&lt;/h1&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="對每個-domain-建立-server-block"><a href="#對每個-domain-建立-server-block" class="headerlink" title="對每個 domain 建立 server block"></a>對每個 domain 建立 <code>server block</code></h3><p>將每個 <code>server block</code> 設定檔儲存在 <code>/usr/local/etc/nginx/servers</code>，<code>nginx.conf</code> 預設會將 <code>servers</code> 資料夾下的檔案載入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /usr/local/etc/nginx/servers/project_name1</div><div class="line">server &#123;</div><div class="line">    # 監聽的 port</div><div class="line">    listen 80;        </div><div class="line">    listen [::]:80;</div><div class="line"></div><div class="line">    # 起始資料夾位置</div><div class="line">    root /your/project/name1/html;    </div><div class="line"></div><div class="line">    # 當找不到符合的檔案後，會加入 index.html，再比對一次</div><div class="line">    index index.html;                 </div><div class="line"></div><div class="line">    # client 端輸入的 domain name</div><div class="line">    server_name project_name1.com;    </div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        # 驗證檔案 $uri、資料夾 $uri/ 是否存在，都不存在則回傳 404</div><div class="line">        try_files $uri $uri/ =404;    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /usr/local/etc/nginx/servers/project_name2</div><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    listen [::]:80;</div><div class="line"></div><div class="line">    root /your/project/name2/html;</div><div class="line"></div><div class="line">    index index.html;</div><div class="line"></div><div class="line">    server_name project_name2.com;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        try_files $uri $uri/ =404;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>:::info<br>Mac 的 *.conf 設定檔慣例上是放在 servers 資料夾下，如果是 Ubuntu 會建立 sites-available 及 sites-enable 兩個資料夾，將設定檔放在 sites-available 資料夾下，然後將要載入的設定檔以連結 (<code>ln -s</code>) 的方式連結至 sites-enable 資料夾<br>:::</p>
+<h3 id="設定本機端的-DNS"><a href="#設定本機端的-DNS" class="headerlink" title="設定本機端的 DNS"></a>設定本機端的 DNS</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /etc/hosts</div><div class="line">127.0.0.1       project_name1.com</div><div class="line">127.0.0.1       project_name2.com</div></pre></td></tr></table></figure>
+<p>設定完成後，重啟 Nginx，在網頁上輸入 <a href="http://project_name1.com" target="_blank" rel="external">http://project_name1.com</a> 即可看到建立好的範例頁了</p>
+<p>:::info<br>這邊先將測試的 Domain Name 導向 127.0.0.1，實際情況會由 DNS 導向實際對外開放的 Nginx server<br>:::</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://nginx.org/en/docs/beginners_guide.html" target="_blank" rel="external">Beginner’s Guide</a></li>
+<li><a href="https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b" target="_blank" rel="external">Install NGINX with PHP7-FPM on Mac OS X with Homebrew</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-14-04-lts" target="_blank" rel="external">How To Set Up Nginx Server Blocks (Virtual Hosts) on Ubuntu 14.04 LTS</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文章會介紹 Nginx 的基本概念以及如何在 Max 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何在 Mac 安裝 Nginx&lt;/li&gt;
+&lt;li&gt;Nginx 的基本概念&lt;/li&gt;
+&lt;li&gt;如何設定 virtual host (多個 domain name 對到同一個 IP)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文章主要是參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="後端技術" scheme="http://blog.unisharp.com/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E8%A1%93/"/>
+    
+    
+      <category term="server" scheme="http://blog.unisharp.com/tags/server/"/>
+    
+      <category term="nginx" scheme="http://blog.unisharp.com/tags/nginx/"/>
+    
+      <category term="筆記隨筆" scheme="http://blog.unisharp.com/tags/%E7%AD%86%E8%A8%98%E9%9A%A8%E7%AD%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用 Vue.js 打造 Binary Clock</title>
     <link href="http://blog.unisharp.com/2017/07/12/%E7%94%A8%20Vue.js%20%E6%89%93%E9%80%A0%20Binary%20Clock/"/>
     <id>http://blog.unisharp.com/2017/07/12/用 Vue.js 打造 Binary Clock/</id>
     <published>2017-07-11T16:00:00.000Z</published>
-    <updated>2017-08-01T06:43:05.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>數字時鐘是不是很膩了？第一次看到 Binary Clock 是不是有一種好想擁有的感覺？</p>
 <p>現在，我們就來瞭解 &amp; 用 vue.js 動手做做看吧！</p>
@@ -56,7 +208,7 @@
 <ul>
 <li>設定樣式（發揮你的設計天份吧）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;</div><div class="line">  $size: 70px;</div><div class="line">  $margin: 8px;</div><div class="line">  .light &#123;</div><div class="line">    background-color: #9da0a4;</div><div class="line">    width: $size;</div><div class="line">    height: $size;</div><div class="line">    margin-top: $margin;</div><div class="line">    margin-bottom: $margin;</div><div class="line">    margin-left: $margin;</div><div class="line">    border-radius: 5px;</div><div class="line">  &#125;</div><div class="line">  .light.on &#123;</div><div class="line">    background-color: #333;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;</div><div class="line">  .light &#123;</div><div class="line">    background-color: #9da0a4;</div><div class="line">    width: 70px;</div><div class="line">    height: 70px;</div><div class="line">    margin-top: 8px;</div><div class="line">    margin-bottom: 8px;</div><div class="line">    margin-left: 8px;</div><div class="line">    border-radius: 5px;</div><div class="line">  &#125;</div><div class="line">  .light.on &#123;</div><div class="line">    background-color: #333;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
 <p>接著，建立 /src/components/Digit.vue。我們以四顆燈為一組，需要兩組形成兩位數的元件</p>
 <ul>
 <li>拉出兩位數的元件，每位數是由是四個 Light 元件組成，四顆燈分別表示二進位的四個 bit</li>
@@ -69,8 +221,8 @@
 <ul>
 <li>樣式設定（發揮你的設計天份吧）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  .binary-digit &#123;</div><div class="line">    display: flex;</div><div class="line">    flex-direction: row;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
-<p>最後，修改 /src/components/App.vue 。我們要把時/分/秒的元件組成時鐘，並且每秒更動一次，完成 Binary Clock</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;</div><div class="line">  .binary-digit &#123;</div><div class="line">    display: flex;</div><div class="line">    flex-direction: row;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<p>最後，修改 /src/App.vue 。我們要把時/分/秒的元件組成時鐘，並且每秒更動一次，完成 Binary Clock</p>
 <ul>
 <li>拉出時/分/秒的元件，是由三個 Digit 元件組成</li>
 </ul>
@@ -82,7 +234,7 @@
 <ul>
 <li>樣式設定（發揮你的設計天份吧）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">body &#123;</div><div class="line">  background-color: gray;</div><div class="line">&#125;</div><div class="line">#app &#123;</div><div class="line">  margin: 1em;</div><div class="line">&#125;</div><div class="line">.binary-clock &#123;</div><div class="line">  display: flex;</div><div class="line">  flex-direction: row;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;</div><div class="line">body &#123;</div><div class="line">  background-color: gray;</div><div class="line">&#125;</div><div class="line">#app &#123;</div><div class="line">  margin: 1em;</div><div class="line">&#125;</div><div class="line">.binary-clock &#123;</div><div class="line">  display: flex;</div><div class="line">  flex-direction: row;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
 <h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p>結果會像這樣</p>
 <p><img src="binary-clock.gif" alt=""></p>
 <h1 id="作者時間"><a href="#作者時間" class="headerlink" title="作者時間"></a>作者時間</h1><p><a href="https://github.com/storyn26383/binary-clock" target="_blank" rel="external">想看完整原始碼</a> 在這裡在這裡 <a href="https://github.com/storyn26383/binary-clock" target="_blank" rel="external">toryn26383/binary-clock</a></p>
@@ -161,7 +313,7 @@
     <link href="http://blog.unisharp.com/2017/06/26/%E6%9A%A2%E9%8A%B7%E7%9A%84%E5%8E%9F%E7%90%86/"/>
     <id>http://blog.unisharp.com/2017/06/26/暢銷的原理/</id>
     <published>2017-06-25T16:00:00.000Z</published>
-    <updated>2017-07-25T06:09:24.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>有沒有想過為什麼超商以前沒有賣的咖啡現在卻會熱賣？</p>
 <p>有沒有想過為什麼超商現在很少販售份量較大的微波熟食 / 甜點？進而改販售越來越小份的熟食 / 甜點？</p>
@@ -219,7 +371,7 @@
     <link href="http://blog.unisharp.com/2017/06/26/%E5%A5%BD%E6%9B%B8%E6%8E%A8%E8%96%A6%20-%20%E7%B0%A1%E5%96%AE%E6%80%9D%E8%80%83/"/>
     <id>http://blog.unisharp.com/2017/06/26/好書推薦 - 簡單思考/</id>
     <published>2017-06-25T16:00:00.000Z</published>
-    <updated>2017-07-24T10:26:02.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>多閱讀商場上各式各樣的產品開發經驗，並從中瞭解其成功與失敗背後的原因，思考成功產品為什麼會成功？失敗產品又會什麼無法被市場所接受呢？<a id="more"></a>對於規劃產品的PM來說，是很重要的一環。</p>
 <p>今日要推薦的好書 - 簡單思考。「簡單思考」在講一個人人幾乎皆有使用、甚至工作和生活都離不開的「LINE」，是如何被打造出來的？為什麼 LINE 可以獲得巨大的成功？其背後的團隊究竟是如何創造出的呢？其公司的前任 CEO 森川亮，分享 LINE 從無到有的心路歷程與成功秘辛。</p>
@@ -261,98 +413,11 @@
   </entry>
   
   <entry>
-    <title>ES6 極簡摘要</title>
-    <link href="http://blog.unisharp.com/2017/06/19/ES6%E6%A5%B5%E7%B0%A1%E6%91%98%E8%A6%81/"/>
-    <id>http://blog.unisharp.com/2017/06/19/ES6極簡摘要/</id>
-    <published>2017-06-19T00:00:00.000Z</published>
-    <updated>2017-07-24T09:52:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>覺得官方文件的說明太冗長了嗎？<br>這裡是用小編的理解來說明 ES6 到底新增了哪些方便好用的功能，<br>以這篇文章當作前導，再搭配官方的文件，效果會更好喔！<br><a id="more"></a></p>
-<p>新舊語法比較：<a href="http://es6-features.org/" target="_blank" rel="external">http://es6-features.org/</a></p>
-<h1 id="Constant-常數"><a href="#Constant-常數" class="headerlink" title="Constant - 常數"></a>Constant - 常數</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> PI = <span class="number">3.141593</span></div></pre></td></tr></table></figure>
-<h1 id="Block-scoped-variable-用-let-宣告變數"><a href="#Block-scoped-variable-用-let-宣告變數" class="headerlink" title="Block-scoped variable - 用 let 宣告變數"></a>Block-scoped variable - 用 let 宣告變數</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">1</span>; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(i); <span class="comment">// 0</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(i); <span class="comment">// i is not defined</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">1</span>; j++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(j); <span class="comment">// 0</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(j); <span class="comment">// 1</span></div></pre></td></tr></table></figure>
-<h3 id="const-amp-let-的共通點"><a href="#const-amp-let-的共通點" class="headerlink" title="const &amp; let 的共通點"></a>const &amp; let 的共通點</h3><ul>
-<li>要在使用前宣告</li>
-<li>不能重複宣告</li>
-</ul>
-<p>★ const 就是不能改值的 let ★</p>
-<h1 id="Block-scoped-function"><a href="#Block-scoped-function" class="headerlink" title="Block-scoped function"></a>Block-scoped function</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// codes here</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<p>以前要用上面的 code 把要執行的程式包起來，現在只需要大括號</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span> &#125;</div><div class="line">    foo() === <span class="number">1</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span> &#125;</div><div class="line">        foo() === <span class="number">2</span></div><div class="line">    &#125;</div><div class="line">    foo() === <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Arrow-functions-用箭頭簡化匿名函式"><a href="#Arrow-functions-用箭頭簡化匿名函式" class="headerlink" title="Arrow functions - 用箭頭簡化匿名函式"></a>Arrow functions - 用箭頭簡化匿名函式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plus_numbers = numbers.map(<span class="function"><span class="params">v</span> =&gt;</span> v + <span class="number">1</span>);</div></pre></td></tr></table></figure>
-<p>以前要這樣寫</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plus_numbers = numbers.map( <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> v + <span class="number">1</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="且可以使用-this-來取得當前的-object"><a href="#且可以使用-this-來取得當前的-object" class="headerlink" title="且可以使用 this 來取得當前的 object"></a>且可以使用 this 來取得當前的 object</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.nums.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>)</div><div class="line">        <span class="keyword">this</span>.fives.push(v)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<hr>
-<h1 id="參數現在可以用預設值了！！！"><a href="#參數現在可以用預設值了！！！" class="headerlink" title="參數現在可以用預設值了！！！"></a>參數現在可以用預設值了！！！</h1><hr>
-<h1 id="新的運算子：”…”"><a href="#新的運算子：”…”" class="headerlink" title="新的運算子：”…”"></a>新的運算子：”…”</h1><h3 id="功能一：Rest-Parameter，取剩下的參數"><a href="#功能一：Rest-Parameter，取剩下的參數" class="headerlink" title="功能一：Rest Parameter，取剩下的參數"></a>功能一：Rest Parameter，取剩下的參數</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">remove_first</span>(<span class="params">first, ...arr_others</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> arr_others;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result = remove_first(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</div><div class="line">result === [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div></pre></td></tr></table></figure>
-<h3 id="功能二：Spread-Operator，將陣列或字串打散"><a href="#功能二：Spread-Operator，將陣列或字串打散" class="headerlink" title="功能二：Spread Operator，將陣列或字串打散"></a>功能二：Spread Operator，將陣列或字串打散</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> params = [ <span class="string">"hello"</span>, <span class="literal">true</span>, <span class="number">7</span> ];</div><div class="line"><span class="keyword">let</span> other = [ <span class="number">1</span>, <span class="number">2</span>, ...params ]; <span class="comment">// [ 1, 2, "hello", true, 7 ]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> str = <span class="string">"foo"</span></div><div class="line"><span class="keyword">let</span> chars = [ ...str ] <span class="comment">// [ "f", "o", "o" ]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">let</span> copyed_array = [...numbers]; <span class="comment">// 也可用於複製 array</span></div></pre></td></tr></table></figure>
-<h1 id="Template-字串中帶入變數（必須使用-）"><a href="#Template-字串中帶入變數（必須使用-）" class="headerlink" title="Template - 字串中帶入變數（必須使用`）"></a>Template - 字串中帶入變數（必須使用`）</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> username = <span class="string">'Stream'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;username&#125;</span>.`</span>); <span class="comment">// Hello Stream.</span></div></pre></td></tr></table></figure>
-<h1 id="轉換二進位與八進位的數字"><a href="#轉換二進位與八進位的數字" class="headerlink" title="轉換二進位與八進位的數字"></a>轉換二進位與八進位的數字</h1><p>在開頭使用 0b 或 0o<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">0b111110111</span> === <span class="number">503</span></div><div class="line"><span class="number">0o767</span> === <span class="number">503</span></div></pre></td></tr></table></figure></p>
-<h1 id="正規式"><a href="#正規式" class="headerlink" title="正規式"></a>正規式</h1><h3 id="新增-y-選項（類似-g，但會從剩下的字串的第一個字開始比對）"><a href="#新增-y-選項（類似-g，但會從剩下的字串的第一個字開始比對）" class="headerlink" title="新增 y 選項（類似 g，但會從剩下的字串的第一個字開始比對）"></a>新增 y 選項（類似 g，但會從剩下的字串的第一個字開始比對）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> s = <span class="string">'aaa_aa_a'</span>;</div><div class="line"><span class="keyword">let</span> r1 = <span class="regexp">/a+/g</span>;</div><div class="line"><span class="keyword">let</span> r2 = <span class="regexp">/a+/y</span>;</div><div class="line"></div><div class="line">r1.exec(s) <span class="comment">// ["aaa"]</span></div><div class="line">r2.exec(s) <span class="comment">// ["aaa"]</span></div><div class="line"></div><div class="line">r1.exec(s) <span class="comment">// ["aa"]</span></div><div class="line">r2.exec(s) <span class="comment">// null，因剩下的字串為'_aa_a'，第一個字就不符合了</span></div></pre></td></tr></table></figure>
-<h1 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h1><p>###簡化 assign value 的方式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> x = <span class="number">1</span>;</div><div class="line"><span class="keyword">let</span> y = <span class="number">2</span>;</div><div class="line"><span class="keyword">let</span> obj = &#123;x, y&#125;; <span class="comment">// &#123;x:1, y:2&#125;</span></div></pre></td></tr></table></figure></p>
-<h3 id="object-的-key-可以是運算式"><a href="#object-的-key-可以是運算式" class="headerlink" title="object 的 key 可以是運算式"></a>object 的 key 可以是運算式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">    <span class="attr">foo</span>: <span class="string">"bar"</span>,</div><div class="line">    [ <span class="string">"baz"</span> + quux() ]: <span class="number">42</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="簡化-object-內-function-的宣告"><a href="#簡化-object-內-function-的宣告" class="headerlink" title="簡化 object 內 function 的宣告"></a>簡化 object 內 function 的宣告</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">obj = &#123;</div><div class="line">    foo (a, b) &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>舊的寫法如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">obj = &#123;</div><div class="line">    <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h1 id="Destructing-Assignment-解構賦值"><a href="#Destructing-Assignment-解構賦值" class="headerlink" title="Destructing Assignment - 解構賦值"></a>Destructing Assignment - 解構賦值</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> list = [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ];</div><div class="line"><span class="keyword">let</span> [ a, , b ] = list; <span class="comment">// a === 1, b === 3</span></div><div class="line">[ b, a ] = [ a, b ]; <span class="comment">// 交換 a 和 b 的值</span></div></pre></td></tr></table></figure>
-<h1 id="Module-import-amp-export"><a href="#Module-import-amp-export" class="headerlink" title="Module - import &amp; export"></a>Module - import &amp; export</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  lib/math.js</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y &#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">var</span> pi = <span class="number">3.141593</span></div><div class="line"></div><div class="line"><span class="comment">//  someApp.js</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> math <span class="keyword">from</span> <span class="string">"lib/math"</span> <span class="comment">// import 進來是個 object，並取名為 math</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"2π = "</span> + math.sum(math.pi, math.pi))</div><div class="line"></div><div class="line"><span class="comment">//  otherApp.js</span></div><div class="line"><span class="keyword">import</span> &#123; sum, pi &#125; <span class="keyword">from</span> <span class="string">"lib/math"</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"2π = "</span> + sum(pi, pi))</div><div class="line"></div><div class="line"><span class="comment">//  lib/mathplusplus.js</span></div><div class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">"lib/math"</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">var</span> e = <span class="number">2.71828182846</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> (x) =&gt; <span class="built_in">Math</span>.exp(x) <span class="comment">// 可以 export 一個帶有 default 字眼的函數或變數</span></div><div class="line"></div><div class="line"><span class="comment">//  someApp.js</span></div><div class="line"><span class="keyword">import</span> exp, &#123; pi, e &#125; <span class="keyword">from</span> <span class="string">"lib/mathplusplus"</span></div><div class="line"><span class="comment">// exp 不在&#123;&#125;內，被 assign 成上面 export default 的函數或變數（此例為一個匿名函數）</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"e^&#123;π&#125; = "</span> + exp(pi))</div></pre></td></tr></table></figure>
-<h1 id="Class-類別"><a href="#Class-類別" class="headerlink" title="Class - 類別"></a>Class - 類別</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span> (id, x, y) &#123;&#125;</div><div class="line">    move (x, y) &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="還可以-extend"><a href="#還可以-extend" class="headerlink" title="還可以 extend"></a>還可以 extend</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span> (id, x, y, radius) &#123;</div><div class="line">        <span class="keyword">super</span>(id, x, y)     <span class="comment">// 呼叫父類別的建構元</span></div><div class="line">        <span class="keyword">this</span>.radius = radius</div><div class="line">        <span class="keyword">super</span>.move()        <span class="comment">// 取得父類別的函數或變數</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="類別可以設定-static-成員"><a href="#類別可以設定-static-成員" class="headerlink" title="類別可以設定 static 成員"></a>類別可以設定 static 成員</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> whoami () &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'I am Circle'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Circle.whoami() <span class="comment">// I am Circle</span></div></pre></td></tr></table></figure>
-<h3 id="可以自定義-getter-amp-setter"><a href="#可以自定義-getter-amp-setter" class="headerlink" title="可以自定義 getter &amp; setter"></a>可以自定義 getter &amp; setter</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span> (radius) &#123;</div><div class="line">        <span class="keyword">this</span>._radius  = radius</div><div class="line">    &#125;</div><div class="line">    set radius   (radius) &#123; <span class="keyword">this</span>._radius  = radius  &#125;</div><div class="line">    get radius   ()       &#123; <span class="keyword">return</span> <span class="keyword">this</span>._radius     &#125;</div><div class="line">    get diameter ()       &#123; <span class="keyword">return</span> <span class="number">2</span> * <span class="keyword">this</span>._radius &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> Circle(<span class="number">50</span>) <span class="comment">// 使用 new 來取得實體</span></div><div class="line">c.diameter === <span class="number">100</span></div></pre></td></tr></table></figure>
-<h1 id="Set-amp-Map-兩個新的資料集合"><a href="#Set-amp-Map-兩個新的資料集合" class="headerlink" title="Set &amp; Map - 兩個新的資料集合"></a>Set &amp; Map - 兩個新的資料集合</h1><h3 id="set-可以把它當成資料不會重複的-array"><a href="#set-可以把它當成資料不會重複的-array" class="headerlink" title="set - 可以把它當成資料不會重複的 array"></a>set - 可以把它當成資料不會重複的 array</h3><p>操作方法：add(), delete(), has(), clear()</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>()</div><div class="line">s.add(<span class="string">"hello"</span>).add(<span class="string">"goodbye"</span>).add(<span class="string">"hello"</span>)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> s.values()) <span class="comment">// insertion order</span></div><div class="line">    <span class="built_in">console</span>.log(key) <span class="comment">// output : hello, goodbye</span></div></pre></td></tr></table></figure>
-<h3 id="map-可以把它當成-object，但-key-可以使用字串以外的型別"><a href="#map-可以把它當成-object，但-key-可以使用字串以外的型別" class="headerlink" title="map - 可以把它當成 object，但 key 可以使用字串以外的型別"></a>map - 可以把它當成 object，但 key 可以使用字串以外的型別</h3><p>操作方法：set(), get(), delete, has(), clear()</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>()</div><div class="line"><span class="keyword">let</span> s = <span class="number">1</span></div><div class="line">m.set(<span class="string">"hello"</span>, <span class="number">42</span>)</div><div class="line">m.set(s, <span class="number">34</span>)</div><div class="line">m.get(s) === <span class="number">34</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [ key, val ] <span class="keyword">of</span> m.entries())</div><div class="line">    <span class="built_in">console</span>.log(key + <span class="string">" = "</span> + val) <span class="comment">// output : hello = 42, 1 = 34</span></div></pre></td></tr></table></figure>
-<p>列舉方法：set &amp; map 都可以使用 keys(), values(), entries(), forEach()，且都有 size 屬性</p>
-<h3 id="weak-set-amp-weak-map-弱引用"><a href="#weak-set-amp-weak-map-弱引用" class="headerlink" title="weak set &amp; weak map - 弱引用"></a>weak set &amp; weak map - 弱引用</h3><p>共通點：</p>
-<ul>
-<li>適合存放 DOM 節點，因為當其中的 object 不再被引用的時候，記憶體會被回收，減少 memory leak</li>
-<li>成員只能是 object，其他的值不可用</li>
-<li>無法列舉，因此列舉方法與 size 屬性都不能用</li>
-<li>可以使用各自對應的操作方法，但少了 clear()，因為無法列舉</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> isMarked     = <span class="keyword">new</span> <span class="built_in">WeakSet</span>()</div><div class="line"><span class="keyword">let</span> attachedData = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</div></pre></td></tr></table></figure>
-<h1 id="Symbol-一個新的型別，代表獨一無二的值"><a href="#Symbol-一個新的型別，代表獨一無二的值" class="headerlink" title="Symbol - 一個新的型別，代表獨一無二的值"></a>Symbol - 一個新的型別，代表獨一無二的值</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Symbol</span>(<span class="string">"foo"</span>) !== <span class="built_in">Symbol</span>(<span class="string">"foo"</span>)</div><div class="line"></div><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Symbol</span>()</div><div class="line"><span class="keyword">typeof</span> foo === <span class="string">"symbol"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = &#123;&#125;</div><div class="line">obj[foo] = <span class="string">"foo"</span> <span class="comment">// 為一個物件加入 symbol 值必須使用 []</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(obj) <span class="comment">// []</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertySymbols(obj) <span class="comment">// [ foo ]</span></div></pre></td></tr></table></figure>
-<h3 id="可以使用-Symbol-for-設定全域的-Symbol，此時會以-key-決定是否相等"><a href="#可以使用-Symbol-for-設定全域的-Symbol，此時會以-key-決定是否相等" class="headerlink" title="可以使用 Symbol.for() 設定全域的 Symbol，此時會以 key 決定是否相等"></a>可以使用 Symbol.for() 設定全域的 Symbol，此時會以 key 決定是否相等</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Symbol</span>.for(<span class="string">"app.foo"</span>) === <span class="built_in">Symbol</span>.for(<span class="string">"app.foo"</span>)</div></pre></td></tr></table></figure>
-<h1 id="Iterator-使用-for…of-前必須宣告的函數"><a href="#Iterator-使用-for…of-前必須宣告的函數" class="headerlink" title="Iterator - 使用 for…of 前必須宣告的函數"></a>Iterator - 使用 for…of 前必須宣告的函數</h1><p>for…of 一種可以列舉 object, array, map, set 的方式，前提是要先宣告 iterator</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fibonacci = &#123;</div><div class="line">    [<span class="built_in">Symbol</span>.iterator]() &#123;</div><div class="line">        <span class="keyword">let</span> pre = <span class="number">0</span>, cur = <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">           next () &#123;</div><div class="line">               [ pre, cur ] = [ cur, pre + cur ]</div><div class="line">               <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: cur &#125;</div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> n <span class="keyword">of</span> fibonacci) &#123;</div><div class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1000</span>)</div><div class="line">        <span class="keyword">break</span></div><div class="line">    <span class="built_in">console</span>.log(n)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Generator-可以分段執行迴圈的函數"><a href="#Generator-可以分段執行迴圈的函數" class="headerlink" title="Generator  - 可以分段執行迴圈的函數"></a>Generator  - 可以分段執行迴圈的函數</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">range</span> (<span class="params">start, end, step</span>) </span>&#123; <span class="comment">// function 後面，函數名稱前面一定有個星號</span></div><div class="line">    <span class="keyword">while</span> (start &lt; end) &#123;</div><div class="line">        <span class="keyword">yield</span> start  <span class="comment">// 使用 yield 表示中斷，並回傳一個值</span></div><div class="line">        start += step</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> range(<span class="number">0</span>, <span class="number">10</span>, <span class="number">2</span>)) &#123;</div><div class="line">    <span class="built_in">console</span>.log(i) <span class="comment">// 0, 2, 4, 6, 8</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="成員-Ganerator-表示法"><a href="#成員-Ganerator-表示法" class="headerlink" title="成員 Ganerator 表示法"></a>成員 Ganerator 表示法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clz</span> </span>&#123;</div><div class="line">    * bar () &#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> Obj = &#123;</div><div class="line">    * foo () &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Promise-確保異步操作結束"><a href="#Promise-確保異步操作結束" class="headerlink" title="Promise - 確保異步操作結束"></a>Promise - 確保異步操作結束</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Promise'</span>);</div><div class="line">  resolve();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Resolved.'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Hi!'</span>);</div><div class="line"></div><div class="line"><span class="comment">// Promise</span></div><div class="line"><span class="comment">// Hi!</span></div><div class="line"><span class="comment">// Resolved</span></div></pre></td></tr></table></figure>
-<h3 id="promise-all"><a href="#promise-all" class="headerlink" title="promise all"></a>promise all</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="built_in">Promise</span>.all([p1, p2, p3]).then(success, fail);</div></pre></td></tr></table></figure>
-<ol>
-<li>p1, p2, p3 全部完成才執行 success</li>
-<li>p1, p2, p3 任一個失敗就執行 fail</li>
-</ol>
-<h1 id="Proxy-存取-object-之前的過濾器"><a href="#Proxy-存取-object-之前的過濾器" class="headerlink" title="Proxy - 存取 object 之前的過濾器"></a>Proxy - 存取 object 之前的過濾器</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> target = &#123;</div><div class="line">    <span class="attr">foo</span>: <span class="string">"Welcome, foo"</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, &#123;</div><div class="line">    get (receiver, name) &#123;</div><div class="line">        <span class="keyword">return</span> name <span class="keyword">in</span> receiver ? receiver[name] : <span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>`</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">proxy.foo   === <span class="string">"Welcome, foo"</span></div><div class="line">proxy.world === <span class="string">"Hello, world"</span></div></pre></td></tr></table></figure>
-<p>可用的過濾有：get, set, has, deleteProperty, ……</p>
-<h1 id="Reflection-改了舊的功能，但不可以直接蓋掉-object-原本的功能，所以只好放這裡"><a href="#Reflection-改了舊的功能，但不可以直接蓋掉-object-原本的功能，所以只好放這裡" class="headerlink" title="Reflection - 改了舊的功能，但不可以直接蓋掉 object 原本的功能，所以只好放這裡"></a>Reflection - 改了舊的功能，但不可以直接蓋掉 object 原本的功能，所以只好放這裡</h1><p>ES5 沒有 symbol ，所以舊的函數已不夠用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">"b"</span>, &#123; <span class="attr">value</span>: <span class="number">2</span> &#125;)</div><div class="line">obj[<span class="built_in">Symbol</span>(<span class="string">"c"</span>)] = <span class="number">3</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(obj); <span class="comment">// [ "a", "b" ]</span></div><div class="line"><span class="built_in">Reflect</span>.ownKeys(obj) <span class="comment">// [ "a", "b", Symbol(c) ]</span></div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;覺得官方文件的說明太冗長了嗎？&lt;br&gt;這裡是用小編的理解來說明 ES6 到底新增了哪些方便好用的功能，&lt;br&gt;以這篇文章當作前導，再搭配官方的文件，效果會更好喔！&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://blog.unisharp.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="後端" scheme="http://blog.unisharp.com/categories/%E5%89%8D%E7%AB%AF/%E5%BE%8C%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://blog.unisharp.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Coroutine, Generator 那是什麼？</title>
     <link href="http://blog.unisharp.com/2017/06/19/Coroutine,%20Generator%20%E9%82%A3%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/"/>
     <id>http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/</id>
     <published>2017-06-18T16:00:00.000Z</published>
-    <updated>2017-08-01T06:43:05.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>在談到 coroutine 之前，先來暸解一下緣起好了</p>
 <p>首先，我們來談談什麼是異步？</p>
@@ -418,7 +483,7 @@
     <link href="http://blog.unisharp.com/2017/06/18/%E7%94%A8%20CSS%20%E6%89%93%E9%80%A0%20UniSharp%20Logo/"/>
     <id>http://blog.unisharp.com/2017/06/18/用 CSS 打造 UniSharp Logo/</id>
     <published>2017-06-17T16:00:00.000Z</published>
-    <updated>2017-07-25T06:40:14.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天我們要帶大家用 CSS 來畫 UniSharp 的 LOGO</p>
 <a id="more"></a>
@@ -461,7 +526,7 @@
     <link href="http://blog.unisharp.com/2017/06/14/%E5%95%8F%E9%A1%8C%E8%83%8C%E5%BE%8C%E7%9A%84%E5%95%8F%E9%A1%8C/"/>
     <id>http://blog.unisharp.com/2017/06/14/問題背後的問題/</id>
     <published>2017-06-14T00:00:00.000Z</published>
-    <updated>2017-06-11T03:00:06.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>在我還是小菜鳥初進職場時，當時的前輩跟小菜鳥們分享了這本書 - 問題背後的問題。工作幾年後，再回頭讀了一遍，對照當時的懞懂，此刻，對於書中的文字感觸良多。<br><a id="more"></a><br>這次，不單是再次謹惕自己，對任何事都要更加積極，也想在接下來跟大家分享這本好書。</p>
 <pre><code>本書作者：約翰・米勒。
@@ -562,17 +627,17 @@
     <link href="http://blog.unisharp.com/2017/06/05/%E7%94%B1%E5%85%A7%E8%80%8C%E5%A4%96%E6%89%93%E9%80%A0%E4%BC%81%E6%A5%AD%E9%96%8B%E6%BA%90%E6%96%87%E5%8C%96/"/>
     <id>http://blog.unisharp.com/2017/06/05/由內而外打造企業開源文化/</id>
     <published>2017-06-04T16:00:00.000Z</published>
-    <updated>2017-07-27T03:22:45.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。<br><a id="more"></a>很幸運地，我曾經受前公司的老闆賦予這樣的任務：「替公司創造一個開源產品，並以社群方式經營它」，雖然最終沒有太大的成果，但卻是一個很難得的經驗呢。</p>
 <p>事實上，有許多的企業都在做一樣的事情 - 選擇性地將工作產出開源，甚至有許多的企業能做到 100% 以開源的方式進行開發。</p>
-<p>不知道你是否也有這樣的經驗呢？因為工作需要而使用了某一個 Open Source 軟體，發現了一些問題，你 trace 了很久，最終將它修正了。你很想把這個修正回饋回上游。</p>
-<p>但是你遲疑了。<br>「公司允許我這樣做嗎？」<br>「我發 patch（或 PR）時要用公司的 email 嗎？」</p>
+<p>不知道你是否也有這樣的經驗呢？因為工作需要而使用了某一個 Open Source 軟體，發現了一些問題，你 trace 了很久，最終將它修正了，很想把這個修正回饋回上游。</p>
+<p>但是你遲疑了。<br>「公司允許我這樣做嗎？」<br>「我發 Patch（或 Pull Request）時要用公司的 Email 嗎？」</p>
 <p>有沒有一個工作環境是可以讓我安心地玩社群、掛 IRC、不用區分我的產出是在工作時間內還是私人時間呢？</p>
-<p>事隔多年，我在悠夏爾遇到了一群開源同好，我們經過一番淬煉，逐步讓開源文化在公司內成形。</p>
+<p>事隔多年，我在悠夏爾遇到了一群開源同好，我們經過一番努力，我們逐步讓開源文化在公司內成形。</p>
 <p>這些年來，因為開放的內部文化，使得我們的溝通更順暢、工作也更愉快了。我們留下了越來越多的程式元件、文件、設計稿、讀書會影片。每個人都樂於分享、樂於向他人學習。我們也不斷成長，勇於打破不適合的規則。我們對於自己的貢獻會「持續保持開放」感到安心。</p>
 <p>更進一步地，因為這樣的開源文化，使得大家勇於將產出對外開源。雖然受限於對客戶的合約與責任，我們還無法成為 100% 將工作產出開源的公司，但這是一個好的開始，對吧 ;)</p>
-<p>我認為，塑造開源文化應該「由內而外」、「內外兼顧」才是自然。對許多人來說，長久以來習慣是：部門內的員工只能看到自己部門的文件、只能存取自己負責的 Git Repo，這時，如果他們得到公司的指示：「我們鼓勵您將心血開源，給公司外的人無限制地使用」，雖然員工會受到一時的衝擊，但是相信員工更樂於在開放的環境下工作，這是值得鼓勵的政策！</p>
+<p>我認為，塑造開源文化應該「由內而外」、「內外兼顧」才是自然。對許多人來說，長久以來習慣是：部門內的員工只能看到自己部門的文件、只能存取自己負責的 Git Repo，這時，如果他們得到公司的指示：「我們鼓勵您將心血開源，給公司外的人無限制地使用」，是很刻意的。</p>
 <p>這些年為了促成悠夏爾的開源文化，我與公司夥伴們列出了一些開源工作原則，以下我們就來逐一介紹這些原則。<br>雖然還沒有做得很好，但我們會朝這個方向繼續努力的。</p>
 <h2 id="內部持續開放原則"><a href="#內部持續開放原則" class="headerlink" title="內部持續開放原則"></a>內部持續開放原則</h2><blockquote>
 <p>在公司內就放心學習、無限制地分享吧！</p>
@@ -580,7 +645,7 @@
 <p>「內部持續開放原則」是指：「<strong>無論公司如何成長，所有內部成員享有學習及改良任何公司技術、設計及專案文件的自由，不會改變</strong>」</p>
 <p>舉例來說，以下這些是開放的：</p>
 <ol>
-<li>所有的 Git Repository 永遠開放給每一位公司成員讀寫。無須取得授權，無須問過「我可不可以這樣改？」</li>
+<li>所有的 Git Repositories 永遠開放給每一位公司成員讀寫。無須取得授權，無須問過「我可不可以這樣改？」</li>
 <li>所有工作規則、工作筆記、專案需求等文件以及設計原始檔，永遠開放給每一位成員閱讀、使用和修改。同上，做任何修改是不需要問過他人的，即便這篇文件是主管擬定的工作規則。（反正有歷史記錄在啊）</li>
 <li>所有成員均可自由地於內部聊天頻道暢所欲言（目前是使用 slack）</li>
 <li>所有成員均可放心地指出目前工作流程或工作習慣中的不良處，提出改善方式。</li>
@@ -615,16 +680,16 @@
 </ol>
 <p>但仔細想來，只有第 1 點是必須遵守的條件。</p>
 <p>為了鼓勵開源，我們新列了一項原則，稱為「開放優先原則」，它的意思是：</p>
-<p><strong>在不違法、不違反合約的前提下，優先以開源的方式開發所有的元件。例如在 GitHub 上開源開發元件，再引入私有專案使用。不需要取得公司同意。</strong></p>
+<p><strong>在不違法、不違反合約的前提下，優先以開源的方式開發所有的元件及文件。例如在 GitHub 上開源開發元件，再引入私有專案使用。不需要取得公司同意。</strong></p>
 <p>有了這個原則，我們來回應一下一開始的兩個疑問吧！</p>
 <p>「公司允許我這樣做嗎？」 =&gt; 當然，公司直接鼓勵我這樣做！</p>
 <p>「我發 patch（或 PR）時要用公司的 email 嗎？」 =&gt; 看喜歡用哪個就用哪個囉！</p>
 <p>當然我們更喜歡同事把公司開源項目放在 GitHub 中的 UniSharp 群組內，畢竟這樣比較好找。而且因為群組內同仁都有寫入權，因此要修改時不需要發 PR 會更方便，會更符合第一個「內部持續開放原則」的！</p>
 <p>同時我們也鼓勵同事經營自己個人帳號下的開源項目。無論是與公司業務有關或無關的。</p>
-<p>這樣的原則下，使我們近年在 GitHub 上的開源項目大爆發。雖然因為不擅行銷，我們時常沒有留下什麼好文件。然而本著 Release Early, Release Often 的精神，及早開放就是及早得以討論與分享。我們很開心也自豪地會繼續這樣做。</p>
-<h1 id="寫在最後"><a href="#寫在最後" class="headerlink" title="寫在最後"></a>寫在最後</h1><p>人類的生命及專注力是有限的資源，必須珍惜。希望某一天，在地球的某一處，有人因為我們的分享而無痛完成一項工作，得以有時間回家幫小孩過生日，或是用這些時間把自己擅長的事情分享給其他人，讓這樣的分享持續下去。</p>
+<p>這樣的原則下，使我們近年在 GitHub 上的開源項目大爆發。雖然因為不刻意行銷，也時常是工程師的神來一筆，沒有留下什麼好文件，不一定有很多關注。然而本著 Release Early, Release Often 的精神，及早開放就是及早得以討論與分享。我們很開心也自豪地會繼續這樣做。</p>
+<h1 id="最後，也是開始"><a href="#最後，也是開始" class="headerlink" title="最後，也是開始"></a>最後，也是開始</h1><p>人類的生命及專注力是有限的資源，必須珍惜。希望某一天，在地球的某一處，有人因為我們的分享而無痛完成一項工作，得以有時間回家幫小孩過生日，或是用這些時間把自己擅長的事情分享給其他人，讓這樣的分享持續下去。</p>
 <p>感謝各開源社群帶給我們的幫助，無論我們做得好不好，都希望能將這份精神傳遞出去。</p>
-<p>特別謝謝唐鳳精彩的「<a href="https://www.slideshare.net/autang/open-source-enlightenment" target="_blank" rel="external">開源之道</a>」演說，每當我對「工作的意義」甚至「人生的目標」感到迷惘時，這份簡報總是幫助我撥雲見日、找到方向。</p>
+<p>特別謝謝 <strong>Allison Randal</strong> 的 <a href="https://allisonrandal.com/2012/04/15/open-source-enlightenment/" target="_blank" rel="external">Open Source Enlightenment</a> 與 <strong>唐鳳</strong> 精彩的「<a href="https://www.slideshare.net/autang/open-source-enlightenment" target="_blank" rel="external">開源之道</a>」分享，每當我對「工作的意義」甚至「人生的目標」感到迷惘時，這份簡報總是幫助我撥雲見日、找到方向。</p>
 <p>開源不神聖，它僅自然的、快樂的。請加入我們吧！</p>
 ]]></content>
     
@@ -710,7 +775,7 @@
     <link href="http://blog.unisharp.com/2017/04/16/%E4%B8%8A%E7%8F%AD%E5%8E%9F%E4%BE%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%83%8F%E6%98%AF%E5%9B%9E%E5%88%B0%E5%AE%B6/"/>
     <id>http://blog.unisharp.com/2017/04/16/上班原來也可以像是回到家/</id>
     <published>2017-04-15T16:00:00.000Z</published>
-    <updated>2017-05-24T06:59:39.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>好的工作環境，能激發無限創意、能刺激分享、能夠孕育出一群同甘共苦的夥伴，我們共享、共創、共樂，把這樣的理念在辦公室每一隅都堅持實現。</p>
 <a id="more"></a>
@@ -754,7 +819,7 @@
     <link href="http://blog.unisharp.com/2017/02/20/%E6%9C%89%E6%95%88%E7%8E%87%E6%9C%83%E8%AD%B0%E7%9A%84%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%89%87/"/>
     <id>http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/</id>
     <published>2017-02-19T16:00:00.000Z</published>
-    <updated>2017-04-25T08:06:20.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>每次跟師父開會，都會有一種很迅速就結束會議的錯覺，我心裡常會這樣想：『怎麼這麼快就會有結論了？』。</p>
 <p>本篇偷偷列了一下最近觀察到的秘訣（無論是面對面的會議或是電話會議，都適用）：<br><a id="more"></a></p>
@@ -803,7 +868,7 @@
     <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
     <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
     <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-04-25T08:05:32.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
 <p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
@@ -849,7 +914,7 @@
     <link href="http://blog.unisharp.com/2017/02/14/%E4%B8%80%E5%A5%97%E4%BD%BF%E7%94%A8%20jade%20(pug)%20%E8%BD%89%E7%82%BA%20laravel%20blade%20%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/"/>
     <id>http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/</id>
     <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-04-25T08:05:22.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p>
 <a id="more"></a>
@@ -931,10 +996,10 @@
     <link href="http://blog.unisharp.com/2017/01/17/%E5%87%B1%E7%89%B9%E7%9A%84%E8%8A%B1%E8%93%AE%E8%A7%80%E9%81%8A%E9%9B%86%E9%8C%A6/"/>
     <id>http://blog.unisharp.com/2017/01/17/凱特的花蓮觀遊集錦/</id>
     <published>2017-01-16T16:00:00.000Z</published>
-    <updated>2017-05-22T09:00:15.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
-    <content type="html"><![CDATA[<p>自從蘇花開通後，東部像是多了一道門，越來越多親朋好友你鄰居不遠千里來到東部踏踏青，離門口最近的宜蘭被開發地早，後來花蓮也相繼有蓬勃的發展。<br>小編當年看著一個學校簡介，被迷惑地不要不要的，就這麼來到了花蓮<br><a id="more"></a><br>，一待就是五年，從原始（ㄏ ㄨ ㄤ ㄌ ㄧ ㄤˊ）的景色到改建後的繁華景象，<br>真心覺得這一趟旅程像是在時空中穿梭般令我難忘，是一個此生必遊一次的好地方，所以小編特別整理出小部分（跋山涉水就不收錄了）的景點，也都是小編直到現在仍然一訪再訪的景點。</p>
-<h1 id="花蓮景點"><a href="#花蓮景點" class="headerlink" title="花蓮景點"></a>花蓮景點</h1><h4 id="知卡宣公園"><a href="#知卡宣公園" class="headerlink" title="知卡宣公園"></a>知卡宣公園</h4><ul>
+    <content type="html"><![CDATA[<p>自從蘇花開通後，東部像是多了一道門，越來越多親朋好友、你鄰居、我厝邊、他涅波虎，不遠千里來到東部踏踏青，離門口最近的宜蘭被開發地早，後來花蓮也相繼有蓬勃的發展。<br>小編當年看著一個學校簡介，被迷惑地不要不要的，就這麼來到了花蓮<br><a id="more"></a><br>，一待就是五年，從原始（ㄏ ㄨ ㄤ ㄌ ㄧ ㄤˊ）的景色到改建後的繁華景象，<br>真心覺得這一趟旅程，像是在時空中穿梭般，令我難忘！是一個此生必遊一次的好地方，所以小編特別整理出一小部分（跋山涉水就不收錄了）的景點，也都是小編直到現在仍然一訪再訪的景點。</p>
+<h1 id="花蓮景點"><a href="#花蓮景點" class="headerlink" title="花蓮景點"></a>花蓮景點</h1><h3 id="知卡宣公園"><a href="#知卡宣公園" class="headerlink" title="知卡宣公園"></a>知卡宣公園</h3><ul>
 <li>地址：花蓮縣吉安鄉中正路二段299號 (花蓮監理站對面)</li>
 <li>開放時間：8:00~18:00 (戲水區僅暑期開放)</li>
 <li>門票：免費</li>
@@ -943,22 +1008,22 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="台肥海洋深層水園區"><a href="#台肥海洋深層水園區" class="headerlink" title="台肥海洋深層水園區"></a>台肥海洋深層水園區</h4><ul>
+<h3 id="台肥海洋深層水園區"><a href="#台肥海洋深層水園區" class="headerlink" title="台肥海洋深層水園區"></a><del>台肥海洋深層水園區</del></h3><ul>
 <li>參考文： <a href="http://ppt.cc/XWm14" target="_blank" rel="external">http://ppt.cc/XWm14</a><blockquote>
 <p>小編大驚！！台肥海洋深層水園區全面設備檢修公告， 最後營業日為2016年11月28日。</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="花蓮太平洋公園（原南濱公園）-北濱公園-北濱外環道-和平公園鏈狀行程"><a href="#花蓮太平洋公園（原南濱公園）-北濱公園-北濱外環道-和平公園鏈狀行程" class="headerlink" title="花蓮太平洋公園（原南濱公園）+ 北濱公園 + 北濱外環道+和平公園鏈狀行程"></a>花蓮太平洋公園（原南濱公園）+ 北濱公園 + 北濱外環道+和平公園鏈狀行程</h4><ul>
-<li>地址：<br>南濱公園大門口位在『台11線』『和平路』路口。<br>北濱公園汽車入口位在『北濱街』『海濱街』交接，直行5公尺，位在正右方（很容易錯過呦）。<br>和平公園在北濱公園往北過去一點，很明顯(找不到不要揍小編，要去配新眼鏡XD)。<br><img src="北濱外環道.png" alt="北濱外環道"></li>
+<h3 id="花蓮太平洋公園（原南濱公園）-北濱公園-北濱外環道-和平公園鏈狀行程"><a href="#花蓮太平洋公園（原南濱公園）-北濱公園-北濱外環道-和平公園鏈狀行程" class="headerlink" title="花蓮太平洋公園（原南濱公園）+ 北濱公園 + 北濱外環道+和平公園鏈狀行程"></a>花蓮太平洋公園（原南濱公園）+ 北濱公園 + 北濱外環道+和平公園鏈狀行程</h3><ul>
+<li>地址：<br>南濱公園大門口位在『台11線』『和平路』路口。<br>北濱公園汽車入口位在『北濱街』『海濱街』交接處，直行5公尺後右前方就是了（很容易錯過呦）。<br>和平公園在北濱公園往北過去一點，很明顯(找不到不要揍小編，要去配新眼鏡喔XD)。<br><img src="北濱外環道.png" alt="北濱外環道"></li>
 <li>開放時間：24hr</li>
 <li>門票：免費</li>
 <li>參考文：<br>[太平洋公園] <a href="http://ppt.cc/IOSAM" target="_blank" rel="external">http://ppt.cc/IOSAM</a><br>[北濱公園] <a href="http://ppt.cc/rqWNN" target="_blank" rel="external">http://ppt.cc/rqWNN</a><br>[和平公園] <a href="http://ppt.cc/NJmBf" target="_blank" rel="external">http://ppt.cc/NJmBf</a><blockquote>
-<p>小編推薦：太平洋公園是個適合拍照、看海的景點，可是小編找不到有關「觀音大佛涼亭」和另一側高台的旅遊文（愁眉），部落客怎麼會不知道上面可以眺望太平洋呢！！！<br>建議您可以沿著自行車步道，一路漫遊、愜意地與太平洋交換心情，向北行，可一路通往北濱公園。<br>這裡，小編提醒徒步的遊客，準備好跑半馬的精神，或者，轉而開車、騎車沿著海濱街一路向北（千萬不要回頭，因為濱海街是單向道XD由北向南行請改走隔壁的北濱街）<br><img src="南濱北濱大門.png" alt="南濱北濱大門"><br>晚上整條自行車道會打燈，當然這裡的光廊還稱不上五光十色，對於在外當遊子的小編來說，卻也有它單純的投射、簡單的浪漫。只是，提醒大家，這裡晚上人不多請注意安全。<br>接著，北濱公園相較之下，就比較小一點，除了幾個藝術裝置可以拍拍照之外，同樣能欣賞太平洋，不小心在廣場還會偶遇表演團體（很少）。<br>對小編來說，這裡最美的回憶是沙灘排球，所以不要問我是不是「好山好水好無聊」XD 有心，哪兒都是最美的風景呀，您說是吧～？<br>最後，和平公園是一個翻新後的小公園，新設了一個『和平鐘』，聽說敲敲鐘可以許願（搞得像是神社，不過要記得還願喔XD）。<br>偷偷說，小編曾在半夜兩點多，夜遊去!!敲鐘!!，當時我許一個世界和平（笑，暫時不用還願），因為自覺有點白目，還探了個頭，確定應該沒有人來投訴（拍謝）<br>其實住宅區離公園還有一段，大家可以安心敲鐘喔！</p>
+<p>小編推薦：太平洋公園是個適合拍照、看海的景點，可是小編找不到有關「觀音大佛涼亭」和另一側高台的旅遊文（愁眉），部落客怎麼會不知道上面可以眺望太平洋呢！！！<br>建議您可以沿著自行車步道，一路漫遊、愜意地與太平洋交換心情，向北行，可一路通往北濱公園。<br>這裡，小編提醒徒步的遊客，準備好跑半馬的精神，或者，轉而開車、騎車沿著海濱街一路向北（千萬不要回頭，因為濱海街是單向道XD由北向南行請改走隔壁的北濱街）<br><img src="南濱北濱大門.png" alt="南濱北濱大門"><br>晚上整條自行車道會打燈，當然這裡的光廊還稱不上五光十色，對於在外當遊子的小編來說，卻也有它單純的投射、簡單的浪漫。只是，提醒大家，這裡晚上人不多請注意安全。<br>接著，北濱公園相較之下，就比較小一點，除了幾個藝術裝置可以拍拍照之外，同樣能欣賞太平洋，不小心在廣場還會偶遇表演團體（很少）。<br>對小編來說，這裡最美的回憶是沙灘排球，所以不要問我是不是「好山好水好無聊」XD 有心，哪兒都是最美的風景呀，您說是吧～？<br>最後，和平公園是一個翻新後的小公園，新設了一個『和平鐘』，聽說敲敲鐘可以許願（搞得像是神社，不過要記得還願喔XD）。<br>偷偷說，小編曾在半夜兩點多，夜遊去!!敲鐘!!，當時我許一個世界和平（笑，暫時還不用還願）。因為自覺有點白目，還探了個頭，確定應該沒有人來投訴吧（拍謝啦）</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="吉安慶修院"><a href="#吉安慶修院" class="headerlink" title="吉安慶修院"></a>吉安慶修院</h4><ul>
+<h3 id="吉安慶修院"><a href="#吉安慶修院" class="headerlink" title="吉安慶修院"></a>吉安慶修院</h3><ul>
 <li>地址：973花蓮縣吉安鄉吉安村中興路345-1號</li>
 <li>開放時間：08:30~17:00</li>
 <li>門票：全票 30 半票 15</li>
@@ -967,21 +1032,21 @@
 </blockquote>
 </li>
 </ul>
-<h1 id="花蓮美食"><a href="#花蓮美食" class="headerlink" title="花蓮美食"></a>花蓮美食</h1><h4 id="東大門"><a href="#東大門" class="headerlink" title="東大門"></a>東大門</h4><ul>
+<h1 id="花蓮美食"><a href="#花蓮美食" class="headerlink" title="花蓮美食"></a>花蓮美食</h1><h3 id="東大門"><a href="#東大門" class="headerlink" title="東大門"></a>東大門</h3><ul>
 <li>炸螃蟹 <a href="http://ppt.cc/5rNgz" target="_blank" rel="external">http://ppt.cc/5rNgz</a><blockquote>
 <p>小編推薦：小編覺得當零食、配啤酒都不錯！</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="蒲公英歐風甜點"><a href="#蒲公英歐風甜點" class="headerlink" title="蒲公英歐風甜點"></a>蒲公英歐風甜點</h4><ul>
+<h3 id="蒲公英歐風甜點"><a href="#蒲公英歐風甜點" class="headerlink" title="蒲公英歐風甜點"></a>蒲公英歐風甜點</h3><ul>
 <li>地址：花蓮市忠義二街12號</li>
 <li>營業時間：13:00~19:00 (週三、四公休)</li>
 <li>參考文：<a href="http://ppt.cc/GDJHr" target="_blank" rel="external">http://ppt.cc/GDJHr</a><blockquote>
-<p>小編推薦：當年花蓮第一家正港洋果子「法式邊境」入駐，小編也是愛到一個不要不要的，沒有它的出現，小編可能會一直屈就於…喔！<br>小編是說其他『百艾』、『蒨魔法』、『花漾洋菓子』、『棉花甜』、『喜品家』、『弘宇蛋糕』…等等的蛋糕也是很好吃呢（滴口水），小編有機會再推薦他們，<br>這裡只是要表達後來一堆人，爭先恐後地到法式邊境一嚐「藍帶來著的洋果子」，就這麼反骨地，小編發現第二家藍帶回來的點心店，個人很喜歡這家的檸檬塔。<br>店內裝潢和店外的電話亭，都是老闆當年旅經英國愛上的景色。雖然價位偏高，但是不訪來坐坐吧！</p>
+<p>小編推薦：當年花蓮第一家正港洋果子「法式邊境」入駐，小編也是愛到一個不要不要的，沒有它的出現，小編可能會一直屈就於…喔！<br>小編是說還有其他『百艾』、『蒨魔法』、『花漾洋菓子』、『棉花甜』、『喜品家』、『弘宇蛋糕』…等等的蛋糕也都很好吃喔（滴口水），小編有機會再推薦它們囉。<br>這裡只是要表達後來一堆人，爭先恐後地到法式邊境一嚐「藍帶來著的洋果子」，就這麼反骨地，小編發現第二家藍帶回來的點心店，個人很喜歡這家的檸檬塔。<br>店內裝潢和店外的電話亭，都是老闆當年旅經英國愛上的景色。雖然價位偏高，但是不訪來坐坐吧！</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="一碗小"><a href="#一碗小" class="headerlink" title="一碗小"></a>一碗小</h4><ul>
+<h3 id="一碗小"><a href="#一碗小" class="headerlink" title="一碗小"></a>一碗小</h3><ul>
 <li>地址：花蓮市明禮路14巷1號</li>
 <li>營業時間：週一～週日 11:00~14:00 17:00~20:00 (週三公休)</li>
 <li>參考文：<a href="http://ppt.cc/ceUvK" target="_blank" rel="external">http://ppt.cc/ceUvK</a><blockquote>
@@ -989,7 +1054,7 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="源寶屋咖哩麵包"><a href="#源寶屋咖哩麵包" class="headerlink" title="源寶屋咖哩麵包"></a>源寶屋咖哩麵包</h4><ul>
+<h3 id="源寶屋咖哩麵包"><a href="#源寶屋咖哩麵包" class="headerlink" title="源寶屋咖哩麵包"></a>源寶屋咖哩麵包</h3><ul>
 <li>地址：花蓮縣花蓮市仁愛街77號</li>
 <li>營業時間：11:30~賣完為止</li>
 <li>參考文： <a href="http://ppt.cc/UL3rT" target="_blank" rel="external">http://ppt.cc/UL3rT</a><blockquote>
@@ -997,14 +1062,14 @@
 </blockquote>
 </li>
 </ul>
-<h1 id="小編景點"><a href="#小編景點" class="headerlink" title="小編景點"></a>小編景點</h1><h4 id="翡翠谷"><a href="#翡翠谷" class="headerlink" title="翡翠谷"></a>翡翠谷</h4><ul>
+<h1 id="小編景點"><a href="#小編景點" class="headerlink" title="小編景點"></a>小編景點</h1><h3 id="翡翠谷"><a href="#翡翠谷" class="headerlink" title="翡翠谷"></a>翡翠谷</h3><ul>
 <li>地址：翡翠谷（小編不是故意不告訴你 &gt; &lt; Google會告訴您走台9丙省道，在仁壽橋前轉入銅門村，從銅門橋北端附近沿木瓜溪旁山路步行而入即可到達翡翠谷『門牌』，請依牌子前進）</li>
 <li>參考文：<a href="http://ppt.cc/xhl1V" target="_blank" rel="external">http://ppt.cc/xhl1V</a><blockquote>
-<p>小編推薦：要進翡翠谷之前，記得配載『手電筒』，這很重要！因為您將穿越（大中午）伸手不見五指的蝙蝠洞，手機手電筒也僅能讓你看見前方一公尺範圍的路，是一個很難得的體驗，出洞口的剎那猶如走進桃花源之感。<br>接著，你可能需要帶上小編…的電話，依指示往上往下爬爬爬（小編實在是不知道該如何描述，容我跳過），抵達這一處翡翠谷並不是一個壯麗的瀑布，卻有著小而美的流水，傾瀉而下，再匯聚成小溪流，炎熱的夏天很適合戲水（ㄒ一ˇ ㄐ一ㄠ ˇ），是一個安全的小瀑布。<br>但是，目前仍然沒有相關單位開拓道路，行徑路間有一段陡坡與鬆動的流石，不建議帶小朋友前往。</p>
+<p>小編推薦：要進翡翠谷之前，記得配載『手電筒』，這很重要！因為您將穿越（大中午）伸手不見五指的蝙蝠洞，手機手電筒也僅能讓你看見前方一公尺範圍的路，是一個很難得的體驗，出洞口的剎那猶如走進桃花源之感。<br>接著，你可能需要帶上小編…的電話，依指示往上往下爬爬爬（小編實在是不知道該如何描述，容我跳過，想知道的話可以到<a href="https://www.facebook.com/UniSharpTech/" target="_blank" rel="external">粉絲團</a>留言喔），抵達這一處翡翠谷並不是一個壯麗的瀑布，卻有著小而美的流水，傾瀉而下，再匯聚成小溪流，炎熱的夏天很適合戲水（ㄒ一ˇ ㄐ一ㄠ ˇ），是一個安全的小瀑布。<br>但是，目前仍然沒有相關單位開拓道路，行徑路間有一段陡坡與鬆動的流石，不建議帶小朋友前往。</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="雲山水-實地走訪優養化的湖泊"><a href="#雲山水-實地走訪優養化的湖泊" class="headerlink" title="雲山水 - 實地走訪優養化的湖泊"></a>雲山水 - 實地走訪優養化的湖泊</h4><ul>
+<h3 id="雲山水-實地走訪優養化的湖泊"><a href="#雲山水-實地走訪優養化的湖泊" class="headerlink" title="雲山水 - 實地走訪優養化的湖泊"></a>雲山水 - 實地走訪優養化的湖泊</h3><ul>
 <li>地址：花蓮縣壽豐鄉豐坪路二段2巷201弄12號</li>
 <li>門票：免費</li>
 <li>開放時間：24 hr</li>
@@ -1013,16 +1078,16 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="牛山呼庭"><a href="#牛山呼庭" class="headerlink" title="牛山呼庭"></a>牛山呼庭</h4><ul>
+<h3 id="牛山呼庭"><a href="#牛山呼庭" class="headerlink" title="牛山呼庭"></a>牛山呼庭</h3><ul>
 <li>地址：花蓮縣壽豐鄉水璉村牛山39-5號（台11線約26.6公里）</li>
 <li>門票：50 元/人，可以抵消費 50 元</li>
 <li>開放時間：10:00~19:00</li>
 <li>參考文：<a href="http://ppt.cc/mvdBo" target="_blank" rel="external">http://ppt.cc/mvdBo</a><blockquote>
-<p>小編推薦：牛山呼庭一直都是私有地，所以收取門票還算合理。牛山呼庭後有一大片草地、木雕藝術作品和小木屋，前有一望無際之大海，也開放了海灘。<br>東部越來越多海灘和溪流被限制下水，而牛山呼庭仍保留了一大片海灘，實在難得，小編非常推薦晚霞時分坐一回，聆聽海浪拍打、落幕與海相輝映，<br>也可以往（面對）沙灘右方的岩洞中走（那兒浪比較平），是電影『沈默』的拍攝場景（影帝李奧納多曾造訪喔！），在岩邊攝影亦是好風光，<br>或是爬上草地最高處，依著『幸福鐘』眺望海洋也是一場浪漫。</p>
+<p>小編推薦：牛山呼庭一直都是私有地，所以收取門票還算合理。牛山呼庭後有一大片草地、木雕藝術作品和小木屋，前有一望無際之大海，也開放了海灘。<br>東部越來越多海灘和溪流被限制下水，而牛山呼庭仍保留了一大片海灘，實在難得，小編非常推薦晚霞時分坐一回，聆聽海浪拍打、落幕與海相輝映，<br>也可以往（面對）沙灘右方的岩洞中走（那兒浪比較平），那兒是電影『沈默』的拍攝場景悠，在岩邊攝影亦是好風光，<br>或是爬上草地最高處，依著『幸福鐘』眺望海洋也是一場浪漫。</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="海中天-颱風天觀浪好去處"><a href="#海中天-颱風天觀浪好去處" class="headerlink" title="海中天 - 颱風天觀浪好去處"></a>海中天 - 颱風天觀浪好去處</h4><ul>
+<h3 id="海中天-颱風天觀浪好去處"><a href="#海中天-颱風天觀浪好去處" class="headerlink" title="海中天 - 颱風天觀浪好去處"></a>海中天 - 颱風天觀浪好去處</h3><ul>
 <li>地址：詳見七七高地</li>
 <li>門票：免費，餐飲另外點餐付費</li>
 <li>開放時間： 24hr</li>
@@ -1031,20 +1096,21 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="七七高地"><a href="#七七高地" class="headerlink" title="七七高地"></a>七七高地</h4><ul>
+<h3 id="七七高地"><a href="#七七高地" class="headerlink" title="七七高地"></a>七七高地</h3><ul>
 <li>地址：過花蓮大橋（小編自作主張稱它是遠雄大橋）行經台11丙公路往台東方向，看見海中天扛棒，有兩條岔路，右邊往海中天，左邊就是往七七高地。<br><img src="七七高地地理位置.png" alt="七七高地地理位置"><br><img src="七七高地海中天入口.png" alt="七七高地海中天入口"></li>
 <li>門票：免費</li>
 <li>開放時間：24hr（但是晚上沒有燈喔！）</li>
 <li>參考文：<a href="http://ppt.cc/Up3Bb" target="_blank" rel="external">http://ppt.cc/Up3Bb</a><blockquote>
-<p>小編推薦：小編又要提到一群傻子朋友，腦子裡沒一個計畫的，盡是精血衝腦地說走就走、說轉就轉，還特別喜歡找一些『這時間去那幹嘛』的地方，沒錯，晚上八點說晚不晚，可是七七高地上沒燈啊！<br>一群傻子（包括小篇本人，遮臉）搬上烤肉架，衝去生鮮超市買些菜啊肉的，就上去烤肉看星星，那時我以為七七高地只是個看星星的好去處。<br>其實，白天可以看太平洋耶！而且遠眺花蓮大橋到七星潭一覽無遺，雖然同樣是看海，七星潭是近距離的體驗、南濱北濱那是退了幾步感受海浪的奔騰、上了山的七七高地看的是海的寧靜與遼闊，不同的高度，那感覺還是很不一樣的。<br>當然，花蓮看海的地方這裡還繁不及備載！下次走訪遠雄何不順道登山一趟吧！小編補充，有部落客不建議開車上去，但是到達丘頂其實路程不近（約），騎車上去只需要注意草滑，而開車上去會有刮底盤的必要，所以步行、騎車或開車自行斟酌囉！</p>
+<p>小編推薦：小編又要提到一群傻子朋友，腦子裡沒一個計畫的，盡是精血衝腦地說走就走、說轉就轉，還特別喜歡找一些『這時間去那幹嘛』的地方，沒錯，晚上八點說晚不晚，可是七七高地上沒燈啊！<br>一群傻子（包括小篇本人，遮臉）搬上烤肉架，衝去生鮮超市買些菜啊肉的，就上去烤肉看星星，那時我以為七七高地只是個看星星的好去處。<br>其實，白天可以看太平洋耶！而且遠眺花蓮大橋到七星潭一覽無遺，雖然同樣是看海，七星潭是近距離的體驗、南濱北濱那是退了幾步感受海浪的奔騰、上了山的七七高地看的是海的寧靜與遼闊，不同的高度，那感覺還是很不一樣的。<br>當然，花蓮看海的地方這裡還繁不及備載！下次走訪遠雄何不順道登山一趟吧！小編補充，有部落客不建議開車上去，但是到達丘頂其實路程不近（約），騎車上去只需要注意草滑，而開車上去會有刮底盤的必要，所以步行、騎車或開車自行斟酌囉！ </p>
 </blockquote>
 </li>
 </ul>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>花蓮現在可是日新月異，如果有更多新消息，拜託來<a href="https://www.facebook.com/UniSharpTech/" target="_blank" rel="external">粉絲團</a>留言跟小編分享喔！小編也會不定期發文，分享更新的旅遊資訊喔！</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;自從蘇花開通後，東部像是多了一道門，越來越多親朋好友你鄰居不遠千里來到東部踏踏青，離門口最近的宜蘭被開發地早，後來花蓮也相繼有蓬勃的發展。&lt;br&gt;小編當年看著一個學校簡介，被迷惑地不要不要的，就這麼來到了花蓮&lt;br&gt;
+      &lt;p&gt;自從蘇花開通後，東部像是多了一道門，越來越多親朋好友、你鄰居、我厝邊、他涅波虎，不遠千里來到東部踏踏青，離門口最近的宜蘭被開發地早，後來花蓮也相繼有蓬勃的發展。&lt;br&gt;小編當年看著一個學校簡介，被迷惑地不要不要的，就這麼來到了花蓮&lt;br&gt;
     
     </summary>
     
@@ -1060,7 +1126,7 @@
     <link href="http://blog.unisharp.com/2017/01/06/%E6%BA%9D%E9%80%9A-%E6%B4%BB%E7%94%A8%E6%9C%AC%E8%B3%AA%E5%8A%9B/"/>
     <id>http://blog.unisharp.com/2017/01/06/溝通-活用本質力/</id>
     <published>2017-01-05T16:00:00.000Z</published>
-    <updated>2017-04-25T08:05:42.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br><a id="more"></a></p>
 <p>在與業主打交道很常遇見！</p>
@@ -1141,7 +1207,7 @@
     <link href="http://blog.unisharp.com/2016/12/09/%E9%96%B1%E8%AE%80%E9%AB%94%E9%A9%97%E4%B8%8D%E5%A5%BD%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC/"/>
     <id>http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/</id>
     <published>2016-12-08T16:00:00.000Z</published>
-    <updated>2017-06-22T02:44:01.000Z</updated>
+    <updated>2017-08-17T02:55:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。<br><a id="more"></a><br>如果專案中重複的 code 一大堆，又或者 function 命名模稜兩可，又看不到任何的註解，想必會讓日後接著維護的人（99% 都是幾個禮拜後的自己）難以下手，為了修改一個小小的功能卻花的很多不必要的時間。</p>
 <h2 id="發生閱讀問題的情境"><a href="#發生閱讀問題的情境" class="headerlink" title="發生閱讀問題的情境"></a>發生閱讀問題的情境</h2><p>以下是可能發生在開發中的一些現象或是操作行為，逐項列出了造成閱讀體驗不好的原因：</p>
@@ -1203,36 +1269,6 @@
     
     
       <category term="程式設計" scheme="http://blog.unisharp.com/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PM在團隊中扮演協調與溝通的角色</title>
-    <link href="http://blog.unisharp.com/2016/11/20/PM%E5%9C%A8%E5%9C%98%E9%9A%8A%E4%B8%AD%E6%89%AE%E6%BC%94%E5%8D%94%E8%AA%BF%E8%88%87%E6%BA%9D%E9%80%9A%E7%9A%84%E8%A7%92%E8%89%B2/"/>
-    <id>http://blog.unisharp.com/2016/11/20/PM在團隊中扮演協調與溝通的角色/</id>
-    <published>2016-11-19T16:00:00.000Z</published>
-    <updated>2017-05-24T04:15:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。<br>怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指<br><a id="more"></a><br>「在溝通過程中，清楚地傳達了你的意思，也達到了你的目的」。</p>
-<h2 id="PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續"><a href="#PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續" class="headerlink" title="PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續"></a>PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續</h2><p>PM要像枕頭一樣，同時面對客戶以及不同部門專案成員時，作為一個緩衝的角色，吸收來自一方意見的衝擊，消化整理後再反彈到另一方，保持平穩的溝通方式。</p>
-<p>PM要當客戶與執行團隊之間堅固的橋樑，PM不應單方面的告知，告知客戶執行專案的企劃怎麼想，行銷怎麼說，若是客戶不滿意，在這情況下，又原封不動地告知團隊「客戶不滿意」，反而讓雙方的情緒影響專案。</p>
-<h2 id="隨時能夠轉換角色，同時具備同理心以及鞭策力"><a href="#隨時能夠轉換角色，同時具備同理心以及鞭策力" class="headerlink" title="隨時能夠轉換角色，同時具備同理心以及鞭策力"></a>隨時能夠轉換角色，同時具備同理心以及鞭策力</h2><p>PM 通常要能轉換角色，和客戶溝通時，要能站在客戶的立場，讓客戶知道我們是和他站在同一陣線；有時候也必須轉站公司的立場，清楚地堅守底線，以維護公司的權益；對公司內部也是如此，和跨部門成員溝通專案細節，要能站在執行面的立場，傾聽成員時而抱怨、時而置疑的聲音，假做朋友一場XD。<br>正因為PM身負「資源協調者」和「進度監督者」兩項重任，更要能夠讓每個團隊成員都了解專案進度、認同並心服地執行專案，不能有「將工作分配出去之後，都是其他人的事情」的想法，與成員和部門維持良好的互動，提供清楚的訊息，才能讓團隊效率越來越高。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。&lt;br&gt;怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指&lt;br&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
-    
-      <category term="團隊合作" scheme="http://blog.unisharp.com/tags/%E5%9C%98%E9%9A%8A%E5%90%88%E4%BD%9C/"/>
-    
-      <category term="說話技巧" scheme="http://blog.unisharp.com/tags/%E8%AA%AA%E8%A9%B1%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
