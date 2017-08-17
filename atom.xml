@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.unisharp.com/"/>
-  <updated>2017-08-17T07:25:58.000Z</updated>
+  <updated>2017-08-17T07:57:09.000Z</updated>
   <id>http://blog.unisharp.com/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="http://blog.unisharp.com/2018/01/08/%E8%A8%AD%E8%A8%88%E5%B0%88%E6%AC%84%EF%BC%9A%E9%83%BD%E5%B8%82%E4%B8%8A%E7%8F%AD%E6%97%8F%E9%A4%8A%E7%8B%97%E6%94%BB%E7%95%A5%EF%BC%8C%E5%B0%88%E5%B1%AC%E5%AE%85%E6%AF%9B%E5%AD%A9%E6%95%A3%E6%AD%A5%20APP%20%E6%A6%82%E5%BF%B5%E5%9C%96/"/>
     <id>http://blog.unisharp.com/2018/01/08/設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖/</id>
     <published>2018-01-07T16:00:00.000Z</published>
-    <updated>2017-08-17T07:25:58.000Z</updated>
+    <updated>2017-08-17T07:57:09.000Z</updated>
     
     <content type="html"><![CDATA[<p>這次的設計主題是關於都市中的毛孩(寵物)因飼主工作繁忙、生活節奏快速而忽略照顧散步，所以創作了幾個概念性的介面，解決宅毛孩運動不足、憂鬱等問題。</p>
 <a id="more"></a>
 <h3 id="設計靈感來源："><a href="#設計靈感來源：" class="headerlink" title="設計靈感來源："></a>設計靈感來源：</h3><p>根據日本寵物食品協會預估，現在寵物的數量竟然比 14 歲以下孩童多出 400 萬，反映寵物逐漸被當成家人的現象。</p>
 <p>但在台灣養寵物大部分都是上班族，經常工作繁忙，除了用自動餵食器滿足生理需求之外，毛孩的心理需求、渴望的關懷如何兼顧？想到毛孩在空蕩的房子等待，不經會感到悲從中來的孤寂感。</p>
-<p>你，忍心讓毛孩獨自一人獨守空閨嗎？ＸＤ特別是愛犬更是不忍牠關在空間裡</p>
+<p>你，忍心讓毛孩獨自一人獨守空閨嗎？ＸＤ</p>
 <p>如果有一種遛寵物的 app，搜尋附近有空閒能遛寵物的人，稱之「遛寵人 ( Pet Walker )」，在指定的公園遛，飼主除了能看到即時散步路線圖，還能透過視訊，觀察毛孩與 Pet Walker 的一舉一動，app 也提供了公園的即時天氣概況及壅擠程度，選擇最適合的散步路線，不僅能讓毛孩身心健康也能抵抗憂鬱。</p>
 <h3 id="介面成果圖："><a href="#介面成果圖：" class="headerlink" title="介面成果圖："></a>介面成果圖：</h3><p><img src="http://i.imgur.com/EE7Gwwg.png" alt="毛孩散步 APP"></p>
 <h3 id="設計理念："><a href="#設計理念：" class="headerlink" title="設計理念："></a>設計理念：</h3><p>採用暖色調為基底，搭配不規則的曲線，詮釋出愛毛孩的柔軟及溫柔</p>
@@ -64,7 +64,7 @@
     <link href="http://blog.unisharp.com/2017/07/31/Nginx%20%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://blog.unisharp.com/2017/07/31/Nginx 學習筆記（一）/</id>
     <published>2017-07-30T16:00:00.000Z</published>
-    <updated>2017-08-17T06:21:08.000Z</updated>
+    <updated>2017-08-17T07:57:11.000Z</updated>
     
     <content type="html"><![CDATA[<p>本文章會介紹 Nginx 的基本概念以及如何在 Max 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到</p>
 <ul>
@@ -172,7 +172,7 @@
     <link href="http://blog.unisharp.com/2017/07/12/%E7%94%A8%20Vue.js%20%E6%89%93%E9%80%A0%20Binary%20Clock/"/>
     <id>http://blog.unisharp.com/2017/07/12/用 Vue.js 打造 Binary Clock/</id>
     <published>2017-07-11T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:09.000Z</updated>
     
     <content type="html"><![CDATA[<p>數字時鐘是不是很膩了？第一次看到 Binary Clock 是不是有一種好想擁有的感覺？</p>
 <p>現在，我們就來瞭解 &amp; 用 vue.js 動手做做看吧！</p>
@@ -313,7 +313,7 @@
     <link href="http://blog.unisharp.com/2017/06/26/%E6%9A%A2%E9%8A%B7%E7%9A%84%E5%8E%9F%E7%90%86/"/>
     <id>http://blog.unisharp.com/2017/06/26/暢銷的原理/</id>
     <published>2017-06-25T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>有沒有想過為什麼超商以前沒有賣的咖啡現在卻會熱賣？</p>
 <p>有沒有想過為什麼超商現在很少販售份量較大的微波熟食 / 甜點？進而改販售越來越小份的熟食 / 甜點？</p>
@@ -371,7 +371,7 @@
     <link href="http://blog.unisharp.com/2017/06/26/%E5%A5%BD%E6%9B%B8%E6%8E%A8%E8%96%A6%20-%20%E7%B0%A1%E5%96%AE%E6%80%9D%E8%80%83/"/>
     <id>http://blog.unisharp.com/2017/06/26/好書推薦 - 簡單思考/</id>
     <published>2017-06-25T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>多閱讀商場上各式各樣的產品開發經驗，並從中瞭解其成功與失敗背後的原因，思考成功產品為什麼會成功？失敗產品又會什麼無法被市場所接受呢？<a id="more"></a>對於規劃產品的PM來說，是很重要的一環。</p>
 <p>今日要推薦的好書 - 簡單思考。「簡單思考」在講一個人人幾乎皆有使用、甚至工作和生活都離不開的「LINE」，是如何被打造出來的？為什麼 LINE 可以獲得巨大的成功？其背後的團隊究竟是如何創造出的呢？其公司的前任 CEO 森川亮，分享 LINE 從無到有的心路歷程與成功秘辛。</p>
@@ -417,7 +417,7 @@
     <link href="http://blog.unisharp.com/2017/06/19/Coroutine,%20Generator%20%E9%82%A3%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/"/>
     <id>http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/</id>
     <published>2017-06-18T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>在談到 coroutine 之前，先來暸解一下緣起好了</p>
 <p>首先，我們來談談什麼是異步？</p>
@@ -483,7 +483,7 @@
     <link href="http://blog.unisharp.com/2017/06/18/%E7%94%A8%20CSS%20%E6%89%93%E9%80%A0%20UniSharp%20Logo/"/>
     <id>http://blog.unisharp.com/2017/06/18/用 CSS 打造 UniSharp Logo/</id>
     <published>2017-06-17T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:16.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天我們要帶大家用 CSS 來畫 UniSharp 的 LOGO</p>
 <a id="more"></a>
@@ -526,7 +526,7 @@
     <link href="http://blog.unisharp.com/2017/06/14/%E5%95%8F%E9%A1%8C%E8%83%8C%E5%BE%8C%E7%9A%84%E5%95%8F%E9%A1%8C/"/>
     <id>http://blog.unisharp.com/2017/06/14/問題背後的問題/</id>
     <published>2017-06-14T00:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>在我還是小菜鳥初進職場時，當時的前輩跟小菜鳥們分享了這本書 - 問題背後的問題。工作幾年後，再回頭讀了一遍，對照當時的懞懂，此刻，對於書中的文字感觸良多。<br><a id="more"></a><br>這次，不單是再次謹惕自己，對任何事都要更加積極，也想在接下來跟大家分享這本好書。</p>
 <pre><code>本書作者：約翰・米勒。
@@ -627,7 +627,7 @@
     <link href="http://blog.unisharp.com/2017/06/05/%E7%94%B1%E5%85%A7%E8%80%8C%E5%A4%96%E6%89%93%E9%80%A0%E4%BC%81%E6%A5%AD%E9%96%8B%E6%BA%90%E6%96%87%E5%8C%96/"/>
     <id>http://blog.unisharp.com/2017/06/05/由內而外打造企業開源文化/</id>
     <published>2017-06-04T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:09.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>筆者自從學習資訊技術以來，一直受惠於開源文化，也嚮往著開源的工作。在幫公司開發軟體時，也同時對世界多一份貢獻，真是非常美好的事情。<br><a id="more"></a>很幸運地，我曾經受前公司的老闆賦予這樣的任務：「替公司創造一個開源產品，並以社群方式經營它」，雖然最終沒有太大的成果，但卻是一個很難得的經驗呢。</p>
 <p>事實上，有許多的企業都在做一樣的事情 - 選擇性地將工作產出開源，甚至有許多的企業能做到 100% 以開源的方式進行開發。</p>
@@ -775,7 +775,7 @@
     <link href="http://blog.unisharp.com/2017/04/16/%E4%B8%8A%E7%8F%AD%E5%8E%9F%E4%BE%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%83%8F%E6%98%AF%E5%9B%9E%E5%88%B0%E5%AE%B6/"/>
     <id>http://blog.unisharp.com/2017/04/16/上班原來也可以像是回到家/</id>
     <published>2017-04-15T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:11.000Z</updated>
     
     <content type="html"><![CDATA[<p>好的工作環境，能激發無限創意、能刺激分享、能夠孕育出一群同甘共苦的夥伴，我們共享、共創、共樂，把這樣的理念在辦公室每一隅都堅持實現。</p>
 <a id="more"></a>
@@ -819,7 +819,7 @@
     <link href="http://blog.unisharp.com/2017/02/20/%E6%9C%89%E6%95%88%E7%8E%87%E6%9C%83%E8%AD%B0%E7%9A%84%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%89%87/"/>
     <id>http://blog.unisharp.com/2017/02/20/有效率會議的五大原則/</id>
     <published>2017-02-19T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:16.000Z</updated>
     
     <content type="html"><![CDATA[<p>每次跟師父開會，都會有一種很迅速就結束會議的錯覺，我心裡常會這樣想：『怎麼這麼快就會有結論了？』。</p>
 <p>本篇偷偷列了一下最近觀察到的秘訣（無論是面對面的會議或是電話會議，都適用）：<br><a id="more"></a></p>
@@ -864,57 +864,11 @@
   </entry>
   
   <entry>
-    <title>所有決議都必須留下紀錄 - 凡走過，必留下痕跡</title>
-    <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
-    <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
-    <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
-<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
-<h2 id="會議討論-電話溝通"><a href="#會議討論-電話溝通" class="headerlink" title="會議討論/電話溝通"></a>會議討論/電話溝通</h2><p>開完會或講完電話有共識後，一定要發一封信，說明剛剛的決議（會議記錄）。</p>
-<p>師父不喜歡很死板的會議記錄，所以他通常要我發出決議內容就好，大概可以這麼寫：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Hi Jason,</div><div class="line"></div><div class="line">根據中秋節烤肉專案的流程議題，剛剛已經在電話內跟您討論過，以下為最終的結論：</div><div class="line">1. 採買人員每次出發前往採買前，必須填寫『採購清單』，並且經由總務部主管審核通過，才可出發採買。</div><div class="line">2. 生火人員必須遵照『木炭排列SOP』之流程，排列木炭；生火場所必須在空氣流通的地方。</div><div class="line">3. .....</div><div class="line">4. .....</div><div class="line">5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line"></div><div class="line">以上五點需請相關人員遵守，若因違反上述規定，而造成食物美味不如預期，我司將不負責處理。</div><div class="line">上述之決議將於 12/04 開始實施，若您有任何疑慮，請在明天(12/03)之前跟我聯絡。</div><div class="line"></div><div class="line">謝謝您，祝您順心。</div><div class="line"></div><div class="line">Peggy 2016/12/02</div></pre></td></tr></table></figure>
-<p>記得，這封信除了寄給客戶之外，也一定要 CC 給對方的相關人員，還有自己的職務代理人（或相關人員），未來若真的需要查這個議題時，也比較好追查。</p>
-<h2 id="使用通訊軟體溝通"><a href="#使用通訊軟體溝通" class="headerlink" title="使用通訊軟體溝通"></a>使用通訊軟體溝通</h2><p>在專案執行過程中，難免會用通訊軟體（Line/Skype/Slack/ etc）跟客戶討論事情，有時候整個對話過程經過了一個小時，才有結論。</p>
-<p>若是有結論後，就直接結束了這個話題，會被師父罵。</p>
-<p>那應該怎麼作呢？我們來看一下這個情境：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Peggy：採買人員填寫完採購清單就可以去採買了嗎？</div><div class="line">Jason：是啊</div><div class="line">Peggy：但是之前你不是有說這樣子沒有人把關，怕採買人員亂買。</div><div class="line">Jason：對齁！！！</div><div class="line">Jason：不然必須讓總務部主管審核通過才可以採買</div><div class="line">Peggy：好，沒問題。</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：好的，我知道了，那先這樣囉，謝謝。</div><div class="line">Jason：881</div></pre></td></tr></table></figure>
-<p>感覺上面的對話已經有結論了，害我被師父罵的原因是什麼呢？</p>
-<blockquote>
-<p>你的結論，不一定是客戶心中的那個畫面</p>
-</blockquote>
-<p>正確的作法是這樣：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：根據我們前面說的，大致可以歸納成五點：</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Peggy：上面這樣對嗎？</div><div class="line">Jason：啊！！不是！我說錯了，應該是讓大門警衛品嚐啦，我剛頭暈講錯了</div><div class="line">Peggy：好，那我改一下：</div><div class="line">Peggy：============(這是分隔線)==============</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line">Peggy：以上五點</div><div class="line">Jason：是的，完全正確。</div><div class="line">Peggy：好的，那我會一併把上面這五點結論發一封信出來。</div><div class="line">Jason：好，辛苦你了，881</div></pre></td></tr></table></figure>
-<p>看到了嗎？連這裡都要下結論，我真的好累～你要的我都學不會～</p>
-<p>不只是這樣，最後還要發一封信給客戶，把剛剛的結論再說一次（內容就跟會議討論/電話溝通那封信一樣就好），還要把通訊軟體最後的決議畫面截圖下來，放在這封信件當附件。</p>
-<p>這張截圖一定要有這五點決議內容，與客戶回覆說『沒問題』的會談過程（大概就是從『分隔線』一直到最後的『辛苦你了，881』）。</p>
-<p>雖然上面這些步驟比較花功夫，但不可否認的，這些真的很有效。</p>
-<p>師父用這些招式，狠狠的打了許多澳洲客人的臉，讓我崇拜不已（不過，師父他到底怎麼從信件大海裡面撈出他要的這些證據啊….）。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。&lt;/p&gt;
-&lt;p&gt;因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
-    
-      <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</title>
     <link href="http://blog.unisharp.com/2017/02/14/%E4%B8%80%E5%A5%97%E4%BD%BF%E7%94%A8%20jade%20(pug)%20%E8%BD%89%E7%82%BA%20laravel%20blade%20%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/"/>
     <id>http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/</id>
     <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p>
 <a id="more"></a>
@@ -953,6 +907,52 @@
     
     
       <category term="Laravel" scheme="http://blog.unisharp.com/tags/Laravel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>所有決議都必須留下紀錄 - 凡走過，必留下痕跡</title>
+    <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
+    <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
+    <published>2017-02-13T16:00:00.000Z</published>
+    <updated>2017-08-17T07:57:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
+<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
+<h2 id="會議討論-電話溝通"><a href="#會議討論-電話溝通" class="headerlink" title="會議討論/電話溝通"></a>會議討論/電話溝通</h2><p>開完會或講完電話有共識後，一定要發一封信，說明剛剛的決議（會議記錄）。</p>
+<p>師父不喜歡很死板的會議記錄，所以他通常要我發出決議內容就好，大概可以這麼寫：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Hi Jason,</div><div class="line"></div><div class="line">根據中秋節烤肉專案的流程議題，剛剛已經在電話內跟您討論過，以下為最終的結論：</div><div class="line">1. 採買人員每次出發前往採買前，必須填寫『採購清單』，並且經由總務部主管審核通過，才可出發採買。</div><div class="line">2. 生火人員必須遵照『木炭排列SOP』之流程，排列木炭；生火場所必須在空氣流通的地方。</div><div class="line">3. .....</div><div class="line">4. .....</div><div class="line">5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line"></div><div class="line">以上五點需請相關人員遵守，若因違反上述規定，而造成食物美味不如預期，我司將不負責處理。</div><div class="line">上述之決議將於 12/04 開始實施，若您有任何疑慮，請在明天(12/03)之前跟我聯絡。</div><div class="line"></div><div class="line">謝謝您，祝您順心。</div><div class="line"></div><div class="line">Peggy 2016/12/02</div></pre></td></tr></table></figure>
+<p>記得，這封信除了寄給客戶之外，也一定要 CC 給對方的相關人員，還有自己的職務代理人（或相關人員），未來若真的需要查這個議題時，也比較好追查。</p>
+<h2 id="使用通訊軟體溝通"><a href="#使用通訊軟體溝通" class="headerlink" title="使用通訊軟體溝通"></a>使用通訊軟體溝通</h2><p>在專案執行過程中，難免會用通訊軟體（Line/Skype/Slack/ etc）跟客戶討論事情，有時候整個對話過程經過了一個小時，才有結論。</p>
+<p>若是有結論後，就直接結束了這個話題，會被師父罵。</p>
+<p>那應該怎麼作呢？我們來看一下這個情境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Peggy：採買人員填寫完採購清單就可以去採買了嗎？</div><div class="line">Jason：是啊</div><div class="line">Peggy：但是之前你不是有說這樣子沒有人把關，怕採買人員亂買。</div><div class="line">Jason：對齁！！！</div><div class="line">Jason：不然必須讓總務部主管審核通過才可以採買</div><div class="line">Peggy：好，沒問題。</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：好的，我知道了，那先這樣囉，謝謝。</div><div class="line">Jason：881</div></pre></td></tr></table></figure>
+<p>感覺上面的對話已經有結論了，害我被師父罵的原因是什麼呢？</p>
+<blockquote>
+<p>你的結論，不一定是客戶心中的那個畫面</p>
+</blockquote>
+<p>正確的作法是這樣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：根據我們前面說的，大致可以歸納成五點：</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Peggy：上面這樣對嗎？</div><div class="line">Jason：啊！！不是！我說錯了，應該是讓大門警衛品嚐啦，我剛頭暈講錯了</div><div class="line">Peggy：好，那我改一下：</div><div class="line">Peggy：============(這是分隔線)==============</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line">Peggy：以上五點</div><div class="line">Jason：是的，完全正確。</div><div class="line">Peggy：好的，那我會一併把上面這五點結論發一封信出來。</div><div class="line">Jason：好，辛苦你了，881</div></pre></td></tr></table></figure>
+<p>看到了嗎？連這裡都要下結論，我真的好累～你要的我都學不會～</p>
+<p>不只是這樣，最後還要發一封信給客戶，把剛剛的結論再說一次（內容就跟會議討論/電話溝通那封信一樣就好），還要把通訊軟體最後的決議畫面截圖下來，放在這封信件當附件。</p>
+<p>這張截圖一定要有這五點決議內容，與客戶回覆說『沒問題』的會談過程（大概就是從『分隔線』一直到最後的『辛苦你了，881』）。</p>
+<p>雖然上面這些步驟比較花功夫，但不可否認的，這些真的很有效。</p>
+<p>師父用這些招式，狠狠的打了許多澳洲客人的臉，讓我崇拜不已（不過，師父他到底怎麼從信件大海裡面撈出他要的這些證據啊….）。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。&lt;/p&gt;
+&lt;p&gt;因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
+    
+      <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
     
   </entry>
   
@@ -996,7 +996,7 @@
     <link href="http://blog.unisharp.com/2017/01/17/%E5%87%B1%E7%89%B9%E7%9A%84%E8%8A%B1%E8%93%AE%E8%A7%80%E9%81%8A%E9%9B%86%E9%8C%A6/"/>
     <id>http://blog.unisharp.com/2017/01/17/凱特的花蓮觀遊集錦/</id>
     <published>2017-01-16T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>自從蘇花開通後，東部像是多了一道門，越來越多親朋好友、你鄰居、我厝邊、他涅波虎，不遠千里來到東部踏踏青，離門口最近的宜蘭被開發地早，後來花蓮也相繼有蓬勃的發展。<br>小編當年看著一個學校簡介，被迷惑地不要不要的，就這麼來到了花蓮<br><a id="more"></a><br>，一待就是五年，從原始（ㄏ ㄨ ㄤ ㄌ ㄧ ㄤˊ）的景色到改建後的繁華景象，<br>真心覺得這一趟旅程，像是在時空中穿梭般，令我難忘！是一個此生必遊一次的好地方，所以小編特別整理出一小部分（跋山涉水就不收錄了）的景點，也都是小編直到現在仍然一訪再訪的景點。</p>
 <h1 id="花蓮景點"><a href="#花蓮景點" class="headerlink" title="花蓮景點"></a>花蓮景點</h1><h3 id="知卡宣公園"><a href="#知卡宣公園" class="headerlink" title="知卡宣公園"></a>知卡宣公園</h3><ul>
@@ -1126,7 +1126,7 @@
     <link href="http://blog.unisharp.com/2017/01/06/%E6%BA%9D%E9%80%9A-%E6%B4%BB%E7%94%A8%E6%9C%AC%E8%B3%AA%E5%8A%9B/"/>
     <id>http://blog.unisharp.com/2017/01/06/溝通-活用本質力/</id>
     <published>2017-01-05T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:10.000Z</updated>
     
     <content type="html"><![CDATA[<p>人類最常進行的就是「溝通」，但很多時候都會出現「溝通不良」導致需求認知有落差。<br>我覺得，溝通的目的就是溝通，聆聽到對方在乎的部分與讓對方收到我想表達的內容，雙方認知能夠同步才是最重要的結果。<br><a id="more"></a></p>
 <p>在與業主打交道很常遇見！</p>
@@ -1207,7 +1207,7 @@
     <link href="http://blog.unisharp.com/2016/12/09/%E9%96%B1%E8%AE%80%E9%AB%94%E9%A9%97%E4%B8%8D%E5%A5%BD%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC/"/>
     <id>http://blog.unisharp.com/2016/12/09/閱讀體驗不好的程式碼/</id>
     <published>2016-12-08T16:00:00.000Z</published>
-    <updated>2017-08-17T02:55:15.000Z</updated>
+    <updated>2017-08-17T07:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>談到 UX 時，通常都是在討論介面直不直覺、漂亮與否、操作好不好上手等等。然而在開發專案時，還有一個很重要 UX，那就是程式碼的閱讀體驗。<br><a id="more"></a><br>如果專案中重複的 code 一大堆，又或者 function 命名模稜兩可，又看不到任何的註解，想必會讓日後接著維護的人（99% 都是幾個禮拜後的自己）難以下手，為了修改一個小小的功能卻花的很多不必要的時間。</p>
 <h2 id="發生閱讀問題的情境"><a href="#發生閱讀問題的情境" class="headerlink" title="發生閱讀問題的情境"></a>發生閱讀問題的情境</h2><p>以下是可能發生在開發中的一些現象或是操作行為，逐項列出了造成閱讀體驗不好的原因：</p>
