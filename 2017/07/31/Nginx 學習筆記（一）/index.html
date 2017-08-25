@@ -19,12 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="本文章會介紹 Nginx 的基本概念以及如何在 Max 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到  如何在 Mac 安裝 Nginx Nginx 的基本概念 如何設定 virtual host (多個 domain name 對到同一個 IP)  本文章主要是參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀">
-<meta name="keywords" content="server,nginx,筆記隨筆">
+<meta name="keywords" content="nginx">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Nginx 學習筆記（一）">
 <meta property="og:url" content="http://blog.unisharp.com/2017/07/31/Nginx 學習筆記（一）/index.html">
 <meta property="og:site_name" content="UniSharp blog">
 <meta property="og:description" content="本文章會介紹 Nginx 的基本概念以及如何在 Max 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到  如何在 Mac 安裝 Nginx Nginx 的基本概念 如何設定 virtual host (多個 domain name 對到同一個 IP)  本文章主要是參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2017-08-17T07:57:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx 學習筆記（一）">
@@ -256,10 +257,10 @@
 <p>本文章主要是參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀</p>
 <a id="more"></a>
 <h2 id="Nginx-安裝"><a href="#Nginx-安裝" class="headerlink" title="Nginx 安裝"></a>Nginx 安裝</h2><h3 id="安裝-Homebrew"><a href="#安裝-Homebrew" class="headerlink" title="安裝 Homebrew"></a>安裝 Homebrew</h3><p>Homebrew 是 Mac 上的套件管理工具，以下的軟體都會透過 Homebrew 來安裝<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xcode-select --install</div><div class="line">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</div></pre></td></tr></table></figure></p>
-<p>將 Homebrew 安裝 tool 的路徑加入環境變數<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>#</div><div class="line"><span class="meta">#</span> ~/.bash_profile</div><div class="line"><span class="meta">#</span>#</div><div class="line">export PATH="/usr/local/bin:$PATH"</div><div class="line">export PATH="/usr/local/sbin:$PATH"</div><div class="line"><span class="meta"></span></div><div class="line">##</div><div class="line"><span class="meta">#</span> ~/.zshrc</div><div class="line"><span class="meta">#</span>#</div><div class="line">export PATH="/usr/local/bin:$PATH"</div><div class="line">export PATH="/usr/local/sbin:$PATH"</div></pre></td></tr></table></figure></p>
+<p>將 Homebrew 安裝 tool 的路徑加入環境變數<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>#</div><div class="line"><span class="meta">#</span> ~/.bash_profile</div><div class="line"><span class="meta">#</span>#</div><div class="line">export PATH="/usr/local/bin:$PATH"</div><div class="line">export PATH="/usr/local/sbin:$PATH"</div><div class="line"></div><div class="line"><span class="meta">#</span>#</div><div class="line"><span class="meta">#</span> ~/.zshrc</div><div class="line"><span class="meta">#</span>#</div><div class="line">export PATH="/usr/local/bin:$PATH"</div><div class="line">export PATH="/usr/local/sbin:$PATH"</div></pre></td></tr></table></figure></p>
 <h3 id="安裝-Nginx"><a href="#安裝-Nginx" class="headerlink" title="安裝 Nginx"></a>安裝 Nginx</h3><p>透過 Homebrew 安裝 Nginx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install nginx</div></pre></td></tr></table></figure></p>
-<p>預設開機啟動 Nginx，將 plist 檔複製至 Launch Daemon/Agent<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 開機後，以一般使用者身份啟動 Nginx</div><div class="line">cp /usr/local/opt/nginx/homebrew.mxcl.nginx.plist ~/Library/LaunchAgents/</div><div class="line"><span class="meta"></span></div><div class="line"># 開機後，要以 root 身份啟動 Nginx</div><div class="line">sudo cp /usr/local/opt/nginx/homebrew.mxcl.nginx.plist /Library/LaunchDaemons/</div></pre></td></tr></table></figure></p>
-<p>啟動 Nginx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 啟動 Nginx</div><div class="line">nginx </div><div class="line"><span class="meta"></span></div><div class="line"># 如果設定檔牽涉 root 權限，就要以 root 啟動 nginx</div><div class="line">sudo nginx</div></pre></td></tr></table></figure></p>
+<p>預設開機啟動 Nginx，將 plist 檔複製至 Launch Daemon/Agent<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 開機後，以一般使用者身份啟動 Nginx</div><div class="line">cp /usr/local/opt/nginx/homebrew.mxcl.nginx.plist ~/Library/LaunchAgents/</div><div class="line"></div><div class="line"><span class="meta">#</span> 開機後，要以 root 身份啟動 Nginx</div><div class="line">sudo cp /usr/local/opt/nginx/homebrew.mxcl.nginx.plist /Library/LaunchDaemons/</div></pre></td></tr></table></figure></p>
+<p>啟動 Nginx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 啟動 Nginx</div><div class="line">nginx </div><div class="line"></div><div class="line"><span class="meta">#</span> 如果設定檔牽涉 root 權限，就要以 root 啟動 nginx</div><div class="line">sudo nginx</div></pre></td></tr></table></figure></p>
 <p>一旦 Nginx 啟動後，需要透過 <code>-s</code> 參數執行動作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -s signal</div></pre></td></tr></table></figure></p>
 <p>signal 必須是以下幾種</p>
 <table>
@@ -341,7 +342,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/07/12/用 Vue.js 打造 Binary Clock/"  data-tooltip="用 Vue.js 打造 Binary Clock">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/08/設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖/"  data-tooltip="設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -349,7 +350,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/08/設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖/" data-tooltip="設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/07/12/用 Vue.js 打造 Binary Clock/" data-tooltip="用 Vue.js 打造 Binary Clock">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -412,7 +413,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/07/12/用 Vue.js 打造 Binary Clock/"  data-tooltip="用 Vue.js 打造 Binary Clock">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/08/設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖/"  data-tooltip="設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -420,7 +421,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/08/設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖/" data-tooltip="設計專欄：都市上班族養狗攻略，專屬宅毛孩散步 APP 概念圖">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/07/12/用 Vue.js 打造 Binary Clock/" data-tooltip="用 Vue.js 打造 Binary Clock">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>

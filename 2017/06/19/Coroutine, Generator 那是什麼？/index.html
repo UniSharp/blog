@@ -23,6 +23,7 @@
 <meta property="og:url" content="http://blog.unisharp.com/2017/06/19/Coroutine, Generator 那是什麼？/index.html">
 <meta property="og:site_name" content="UniSharp blog">
 <meta property="og:description" content="在談到 coroutine 之前，先來暸解一下緣起好了 首先，我們來談談什麼是異步？">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2017-08-17T07:57:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coroutine, Generator 那是什麼？">
@@ -279,10 +280,10 @@
 <p>而 php 的 Generator 是以實作了 Iterator 的作法，讓我們使用裡面的 next() 方法去執行下一步。</p>
 <p>這樣融合迭代器的作法，又額外了多解決了一些記憶體消耗的情境。</p>
 <p>以產生 1000 個奇數為例，會試做以下的函數 :</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">odds</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    $odds = [];</div><div class="line">    <span class="keyword">for</span> ($odd = <span class="number">0</span>; count($odds) &lt; <span class="number">1000</span>; $odd++) &#123;</div><div class="line">        <span class="keyword">if</span> ($odd % <span class="number">2</span> == <span class="number">1</span>)</div><div class="line">            $odds[] = $odd;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> $odds;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">odds</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    $odds = [];</div><div class="line">    <span class="keyword">for</span> ($odd = <span class="number">0</span>; count($odds) &lt; <span class="number">1000</span>; $odd++) &#123;</div><div class="line">        <span class="keyword">if</span> ($odd % <span class="number">2</span> == <span class="number">1</span>)</div><div class="line">            $odds[] = $odd;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> $odds;</div></pre></td></tr></table></figure>
 <p>在這裡會生成塞 1000 個奇數的陣列，當這個陣列小的時候還不會覺得有多大的問題。但是數量一多，然後可能要做的事情只是 print 出數字，整個記憶體就浪費了。</p>
 <p>我們可以將上面例子稍微改寫一下</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">odds</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>;; $i++) &#123;</div><div class="line">        <span class="keyword">if</span> ($i % <span class="number">2</span> == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">yield</span> $i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">foreach</span> (odds() <span class="keyword">as</span> $i =&gt; $value) &#123;</div><div class="line">    <span class="keyword">if</span> ($i == <span class="number">1000</span>) <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">echo</span> $value . <span class="string">"\n"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">odds</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>;; $i++) &#123;</div><div class="line">        <span class="keyword">if</span> ($i % <span class="number">2</span> == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">yield</span> $i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">foreach</span> (odds() <span class="keyword">as</span> $i =&gt; $value) &#123;</div><div class="line">    <span class="keyword">if</span> ($i == <span class="number">1000</span>) <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">echo</span> $value . <span class="string">"\n"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>這裡的 odds()  是用個無窮迴圈來產出所有奇數，但是根本不用怕會被無窮迴圈卡在這個函數裡，因為每產出一個奇數，便會讓出執行權。</p>
 <p>而這裡有個小小的不同，就是在 yield 的後方可以加上類似回傳值的東西。在 Generator 裏可以利用 current() 方法把這個回傳值給取出來。</p>
 <p>如果是跑在 foreach 迴圈裡也不用想太多，迴圈會自己幫忙帶進來。</p>
@@ -306,7 +307,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/18/用 CSS 打造 UniSharp Logo/"  data-tooltip="用 CSS 打造 UniSharp Logo">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/26/好書推薦 - 簡單思考/"  data-tooltip="好書推薦 - 簡單思考">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -314,7 +315,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/26/好書推薦 - 簡單思考/" data-tooltip="好書推薦 - 簡單思考">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/18/用 CSS 打造 UniSharp Logo/" data-tooltip="用 CSS 打造 UniSharp Logo">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -377,7 +378,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/18/用 CSS 打造 UniSharp Logo/"  data-tooltip="用 CSS 打造 UniSharp Logo">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/26/好書推薦 - 簡單思考/"  data-tooltip="好書推薦 - 簡單思考">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -385,7 +386,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/26/好書推薦 - 簡單思考/" data-tooltip="好書推薦 - 簡單思考">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/06/18/用 CSS 打造 UniSharp Logo/" data-tooltip="用 CSS 打造 UniSharp Logo">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
