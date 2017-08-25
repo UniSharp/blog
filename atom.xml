@@ -60,114 +60,6 @@
   </entry>
   
   <entry>
-    <title>Nginx 學習筆記（一）</title>
-    <link href="http://blog.unisharp.com/2017/07/31/Nginx%20%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://blog.unisharp.com/2017/07/31/Nginx 學習筆記（一）/</id>
-    <published>2017-07-30T16:00:00.000Z</published>
-    <updated>2017-08-17T07:57:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文章會介紹 Nginx 的基本概念以及如何在 Max 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到</p>
-<ul>
-<li>如何在 Mac 安裝 Nginx</li>
-<li>Nginx 的基本概念</li>
-<li>如何設定 virtual host (多個 domain name 對到同一個 IP)</li>
-</ul>
-<p>本文章主要是參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀</p>
-<a id="more"></a>
-<h2 id="Nginx-安裝"><a href="#Nginx-安裝" class="headerlink" title="Nginx 安裝"></a>Nginx 安裝</h2><h3 id="安裝-Homebrew"><a href="#安裝-Homebrew" class="headerlink" title="安裝 Homebrew"></a>安裝 Homebrew</h3><p>Homebrew 是 Mac 上的套件管理工具，以下的軟體都會透過 Homebrew 來安裝<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xcode-select --install</div><div class="line">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</div></pre></td></tr></table></figure></p>
-<p>將 Homebrew 安裝 tool 的路徑加入環境變數<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>#</div><div class="line"><span class="meta">#</span> ~/.bash_profile</div><div class="line"><span class="meta">#</span>#</div><div class="line">export PATH="/usr/local/bin:$PATH"</div><div class="line">export PATH="/usr/local/sbin:$PATH"</div><div class="line"></div><div class="line"><span class="meta">#</span>#</div><div class="line"><span class="meta">#</span> ~/.zshrc</div><div class="line"><span class="meta">#</span>#</div><div class="line">export PATH="/usr/local/bin:$PATH"</div><div class="line">export PATH="/usr/local/sbin:$PATH"</div></pre></td></tr></table></figure></p>
-<h3 id="安裝-Nginx"><a href="#安裝-Nginx" class="headerlink" title="安裝 Nginx"></a>安裝 Nginx</h3><p>透過 Homebrew 安裝 Nginx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install nginx</div></pre></td></tr></table></figure></p>
-<p>預設開機啟動 Nginx，將 plist 檔複製至 Launch Daemon/Agent<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 開機後，以一般使用者身份啟動 Nginx</div><div class="line">cp /usr/local/opt/nginx/homebrew.mxcl.nginx.plist ~/Library/LaunchAgents/</div><div class="line"></div><div class="line"><span class="meta">#</span> 開機後，要以 root 身份啟動 Nginx</div><div class="line">sudo cp /usr/local/opt/nginx/homebrew.mxcl.nginx.plist /Library/LaunchDaemons/</div></pre></td></tr></table></figure></p>
-<p>啟動 Nginx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 啟動 Nginx</div><div class="line">nginx </div><div class="line"></div><div class="line"><span class="meta">#</span> 如果設定檔牽涉 root 權限，就要以 root 啟動 nginx</div><div class="line">sudo nginx</div></pre></td></tr></table></figure></p>
-<p>一旦 Nginx 啟動後，需要透過 <code>-s</code> 參數執行動作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -s signal</div></pre></td></tr></table></figure></p>
-<p>signal 必須是以下幾種</p>
-<table>
-<thead>
-<tr>
-<th>訊號</th>
-<th>意義</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>stop</td>
-<td>直接停止 Nginx</td>
-</tr>
-<tr>
-<td>quit</td>
-<td>等目前正在服務的 worker process 結束後，停止 Nginx</td>
-</tr>
-<tr>
-<td>reload</td>
-<td>重新載入設定檔，Nginx 依照新的設定產生新的 worker process，既有的 woker process 會在服務完既有的連線後停止，在重啟前可以用 <code>nginx -t</code> 檢驗語法是否正確</td>
-</tr>
-<tr>
-<td>reopen</td>
-<td>重新開啟 log 檔案</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Nginx-基本概念"><a href="#Nginx-基本概念" class="headerlink" title="Nginx 基本概念"></a>Nginx 基本概念</h2><p>Nginx 是由一個主線程 (main process) 及多個工作線程 (worker processes)，主線成主要的功能是讀取及執行設定檔、維護工作線程，工作線程則是處理請求 (request)，Nginx 是事件驅動 (event-based) 和 OS-dependent，藉此達到有效的處理請求</p>
-<h3 id="設定檔結構"><a href="#設定檔結構" class="headerlink" title="設定檔結構"></a>設定檔結構</h3><p>Nginx 組成的模組是由設定檔內的 directives 所控制，directives 可以分成 simple directives、block directives</p>
-<ul>
-<li>simple directives : 由名稱及參數組合而成，中間由空白鍵分割，分號結尾</li>
-<li>block directives  : 由大括號<code>{}</code>表示起始跟結尾，中間可以包含其他 directives，被包含的 directives 被稱為內容 (context)</li>
-</ul>
-<p>設定檔中不屬於任何 block directives 的 directives 稱為 main context，<code>event</code> 和 <code>http</code> 是 main context，<code>server</code> 包含在 <code>http</code>，<code>location</code> 包含在 <code>server</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">worker_processes  1;  # main context, simple directive</div><div class="line"></div><div class="line">http &#123;                # block context</div><div class="line">    access_log /var/logs/access.log;    # context, simple directive</div><div class="line">    server &#123;</div><div class="line">        location &#123;</div><div class="line">            ...</div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="靜態檔案"><a href="#靜態檔案" class="headerlink" title="靜態檔案"></a>靜態檔案</h3><p>Nginx 可以根據 <code>location block</code> 將請求分別導向不同資料夾下的檔案，範例中的 <code>location / { ... }</code> 的 <code>/</code> 會去比對請求的 <code>URI</code>，若比對符合就會將 <code>URI</code> 加在 <code>root</code> 所定義的路徑後，回傳請求的檔案，而 <code>location /images/ {...}</code> 則會去比對 <code>/images/</code> 開頭的 <code>URI</code>，比對符合後，一樣會將 <code>URI</code> 加在 <code>root</code> 所定義的路徑</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /usr/local/etc/nginx.conf</div><div class="line">worker_processes  1;</div><div class="line"></div><div class="line">events &#123;</div><div class="line">    worker_connections  1024;</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;</div><div class="line">    include       mime.types;</div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">    sendfile        on;</div><div class="line">    keepalive_timeout  65;</div><div class="line">    </div><div class="line">    access_log  /usr/local/etc/nginx/logs/access.log;</div><div class="line">    error_log   /usr/local/etc/nginx/logs/error.log;</div><div class="line"></div><div class="line">    server &#123;</div><div class="line">        listen       80;</div><div class="line">        server_name  localhost;</div><div class="line"></div><div class="line">        location / &#123;</div><div class="line">            root   /data/www;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        location /images/ &#123;</div><div class="line">            root   /data;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上述設定黨範例: </p>
-<ul>
-<li><a href="http://localhost/test.html" target="_blank" rel="external">http://localhost/test.html</a> 對應 /data/www/test.html</li>
-<li><a href="http://localhost/images/sample.jpg" target="_blank" rel="external">http://localhost/images/sample.jpg</a> 對應 /data/images/sample.jpg</li>
-</ul>
-<p>設定檔更新後，要重新載入設定檔<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nginx -s reload</div></pre></td></tr></table></figure></p>
-<p>範例中的 <code>http://localhost/images/sample.jpg</code> 同時符合 <code>location / {...}</code>、<code>location /images/ {...}</code>，當請求的 <code>URI</code> 符合兩個以上的 <code>location directive</code> 時，會優先選取比對條件較長的 (<code>/images/</code> 比 <code>/</code> 長)，所以一般會將越長的比對條件寫在下面，以方便閱讀，如果都找不到符合的檔案時，Nginx 會回傳 404</p>
-<p>:::info<br>當 Nginx 的行為不符合預期時，可以多檢視<code>access_log</code>、<code>error_log</code>定義的 log 檔案<br>:::</p>
-<h2 id="如何設定-virtual-host"><a href="#如何設定-virtual-host" class="headerlink" title="如何設定 virtual host"></a>如何設定 virtual host</h2><p>virtual host 是將多個 domain name 指向同一個 IP (即同一台伺服器)，Nginx 會依據<code>server block</code>的<code>port</code>、<code>server_name</code>決定該<code>server block</code>處理那個種類 (domain name) 的請求</p>
-<h3 id="建立各專案的根目錄"><a href="#建立各專案的根目錄" class="headerlink" title="建立各專案的根目錄"></a>建立各專案的根目錄</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir -p /your/project/name1/html</div><div class="line">mkdir -p /your/project/name2/html</div></pre></td></tr></table></figure>
-<p>:::info<br>如果是在 Linux 系統下，可能會要使用<code>chown</code>,<code>chmod</code>對檔案做權限設定，允許<code>www-data</code>使用者具有<code>rwx</code>的權限<br>:::</p>
-<h3 id="建立範例檔案"><a href="#建立範例檔案" class="headerlink" title="建立範例檔案"></a>建立範例檔案</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># /your/project/name1/html/index.html</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;h1&gt;Welcome name1 !&lt;/h1&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># /your/project/name2/html/index.html</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;h1&gt;Welcome name2 !&lt;/h1&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h3 id="對每個-domain-建立-server-block"><a href="#對每個-domain-建立-server-block" class="headerlink" title="對每個 domain 建立 server block"></a>對每個 domain 建立 <code>server block</code></h3><p>將每個 <code>server block</code> 設定檔儲存在 <code>/usr/local/etc/nginx/servers</code>，<code>nginx.conf</code> 預設會將 <code>servers</code> 資料夾下的檔案載入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /usr/local/etc/nginx/servers/project_name1</div><div class="line">server &#123;</div><div class="line">    # 監聽的 port</div><div class="line">    listen 80;        </div><div class="line">    listen [::]:80;</div><div class="line"></div><div class="line">    # 起始資料夾位置</div><div class="line">    root /your/project/name1/html;    </div><div class="line"></div><div class="line">    # 當找不到符合的檔案後，會加入 index.html，再比對一次</div><div class="line">    index index.html;                 </div><div class="line"></div><div class="line">    # client 端輸入的 domain name</div><div class="line">    server_name project_name1.com;    </div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        # 驗證檔案 $uri、資料夾 $uri/ 是否存在，都不存在則回傳 404</div><div class="line">        try_files $uri $uri/ =404;    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /usr/local/etc/nginx/servers/project_name2</div><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    listen [::]:80;</div><div class="line"></div><div class="line">    root /your/project/name2/html;</div><div class="line"></div><div class="line">    index index.html;</div><div class="line"></div><div class="line">    server_name project_name2.com;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        try_files $uri $uri/ =404;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>:::info<br>Mac 的 *.conf 設定檔慣例上是放在 servers 資料夾下，如果是 Ubuntu 會建立 sites-available 及 sites-enable 兩個資料夾，將設定檔放在 sites-available 資料夾下，然後將要載入的設定檔以連結 (<code>ln -s</code>) 的方式連結至 sites-enable 資料夾<br>:::</p>
-<h3 id="設定本機端的-DNS"><a href="#設定本機端的-DNS" class="headerlink" title="設定本機端的 DNS"></a>設定本機端的 DNS</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /etc/hosts</div><div class="line">127.0.0.1       project_name1.com</div><div class="line">127.0.0.1       project_name2.com</div></pre></td></tr></table></figure>
-<p>設定完成後，重啟 Nginx，在網頁上輸入 <a href="http://project_name1.com" target="_blank" rel="external">http://project_name1.com</a> 即可看到建立好的範例頁了</p>
-<p>:::info<br>這邊先將測試的 Domain Name 導向 127.0.0.1，實際情況會由 DNS 導向實際對外開放的 Nginx server<br>:::</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="http://nginx.org/en/docs/beginners_guide.html" target="_blank" rel="external">Beginner’s Guide</a></li>
-<li><a href="https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b" target="_blank" rel="external">Install NGINX with PHP7-FPM on Mac OS X with Homebrew</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-14-04-lts" target="_blank" rel="external">How To Set Up Nginx Server Blocks (Virtual Hosts) on Ubuntu 14.04 LTS</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文章會介紹 Nginx 的基本概念以及如何在 Max 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如何在 Mac 安裝 Nginx&lt;/li&gt;
-&lt;li&gt;Nginx 的基本概念&lt;/li&gt;
-&lt;li&gt;如何設定 virtual host (多個 domain name 對到同一個 IP)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;本文章主要是參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="後端技術" scheme="http://blog.unisharp.com/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E8%A1%93/"/>
-    
-    
-      <category term="server" scheme="http://blog.unisharp.com/tags/server/"/>
-    
-      <category term="nginx" scheme="http://blog.unisharp.com/tags/nginx/"/>
-    
-      <category term="筆記隨筆" scheme="http://blog.unisharp.com/tags/%E7%AD%86%E8%A8%98%E9%9A%A8%E7%AD%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>用 Vue.js 打造 Binary Clock</title>
     <link href="http://blog.unisharp.com/2017/07/12/%E7%94%A8%20Vue.js%20%E6%89%93%E9%80%A0%20Binary%20Clock/"/>
     <id>http://blog.unisharp.com/2017/07/12/用 Vue.js 打造 Binary Clock/</id>
@@ -309,6 +201,52 @@
   </entry>
   
   <entry>
+    <title>好書推薦 - 簡單思考</title>
+    <link href="http://blog.unisharp.com/2017/06/26/%E5%A5%BD%E6%9B%B8%E6%8E%A8%E8%96%A6%20-%20%E7%B0%A1%E5%96%AE%E6%80%9D%E8%80%83/"/>
+    <id>http://blog.unisharp.com/2017/06/26/好書推薦 - 簡單思考/</id>
+    <published>2017-06-25T16:00:00.000Z</published>
+    <updated>2017-08-25T09:45:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>多閱讀商場上各式各樣的產品開發經驗，並從中瞭解其成功與失敗背後的原因，思考成功產品為什麼會成功？失敗產品又為什麼無法被市場所接受呢？<a id="more"></a>對於規劃產品的PM來說，是很重要的一環。</p>
+<p>今日要推薦的好書 - 簡單思考。「簡單思考」在講一個人人幾乎皆有使用、甚至工作和生活都離不開的「LINE」，是如何被打造出來的？為什麼 LINE 可以獲得巨大的成功？其背後的團隊究竟是如何創造出的呢？其公司的前任 CEO 森川亮，分享 LINE 從無到有的心路歷程與成功秘辛。</p>
+<h3 id="認清商業本質"><a href="#認清商業本質" class="headerlink" title="認清商業本質"></a>認清商業本質</h3><blockquote>
+<p>比起在競賽中勝出，更應該單純的為使用者著想，全心全意創造出真正滿足使用者的事物，最後自然會獲勝。</p>
+<p>-節錄書中片段</p>
+</blockquote>
+<p>書中最先提出的便是商業的本質，有趣的是，這幾乎是商業人士皆知的理論 - 供需法則。作者認為，為寒冷的冬天提供溫暖的衣服、為無聊閒得發慌的人設計遊戲，最重要的事情正是因為瞭解人們真正的需求，並且愛護人們的心情。</p>
+<p>普遍認為公司就是不斷推出熱門的產品並且從中獲得利益，但是將「錢」視為最終目標卻是非常危險的作法，因為使用者會馬上察覺並且離開，產品也終將走向沒落一路，因此，若想變成長銷產品，最重要的事情是滿足需求與看重使用者滿意度。</p>
+<h3 id="以「人」為本"><a href="#以「人」為本" class="headerlink" title="以「人」為本"></a>以「人」為本</h3><blockquote>
+<p>徵才戰略的基礎，就是打造一個讓員工可以盡情發揮能力的環境。<br>只要讓他們輕鬆愉快的工作，自然會產生聚集優秀人才的生態系統。</p>
+</blockquote>
+<p>想要打造成功的產品，團隊成員是關鍵中的關鍵，甚至已經決定了產品的成敗走向，因此，慎選人才並愛用人，才是公司挑選成員應遵循的原則。作者打破了位階制度做越久領越多的做法，有能力的人就該給予相對應的報酬，相對的，只因年資高卻毫無貢獻的職員，在考核時也給予相對應的調整，打造一家「鼓勵員工創造成績的公司」。</p>
+<p>正因貫徹「以人為本」的理念，在公司中大家不需要察言觀色，有話直說的工作環境，讓開會時可以、也必須誠實地表達出自己的想法，若認為提案有需要改善的部分，皆可當面提出質疑，而背後的原因更呼了「應認清商業的本質」，因為比起得罪同事，成員更害怕得罪使用者。</p>
+<h3 id="觀察並洞悉需求"><a href="#觀察並洞悉需求" class="headerlink" title="觀察並洞悉需求"></a>觀察並洞悉需求</h3><p>LINE 的成立剛好是在日本 311 大地震的時期，公司規劃推出適合智慧型手機的服務軟體，並成立了專案團隊。與此同時，雖然有市調結果，卻一直尚未決定方向。</p>
+<p>在地震過後，許多人第一時間想盡方式聯繫親朋好友，想要報平安，卻苦無辦法，而出現眾人在公用電話亭前大排長龍的景象。（這景象也成為日後產品命名的靈感 - LINE）</p>
+<p>看見這些畫面的成員，認為當下最迫切需要的功能，就是封閉式通訊，於是，團隊有了方向，秉持著最簡開發，在最短的速度內，將產品完成並推廣出去。</p>
+<p>正因為察覺了使用者最需要的功能並且專注完成，LINE 才可以在最短的時間內被推出，並且成功打入市場。</p>
+<h3 id="讓優秀的設計師主導產品"><a href="#讓優秀的設計師主導產品" class="headerlink" title="讓優秀的設計師主導產品"></a>讓優秀的設計師主導產品</h3><blockquote>
+<p>真正優秀的設計師會排除自己的喜好，徹底追求如何讓使用者方便使用。</p>
+</blockquote>
+<p>作者認為產品讓優秀的設計師主導較好的原因在於，工程師主導的產品容易偏離使用者的思維，常以技術的角度規劃，反而增加了許多不必要、非重點的功能。</p>
+<p>作者提出不同以往的觀點是，他認為優秀的設計並不是將產品設計地別出心裁，而是站在使用者的立場規劃出最適合使用者的功能與介面，所以，他們擅長將功能化簡至只留最重要的功能。</p>
+<p>作者讓我發現 LINE 公司裡「由設計主導服務開發」的產品非常多，他們不在於追求差異化與創新，更著重在提供使用者最需要的功能。</p>
+<p>正因為<strong>使用者永遠不會告訴你答案</strong>，即便做了市調研究，有時結論卻仍然不一定是真實的結論，最重要的還是觀察與察覺使用者的需求，並且提供其最貼近自身的價值，作者相信利益會由此伴隨而來，產品也將會成為真正符合商業本質的長銷產品。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;多閱讀商場上各式各樣的產品開發經驗，並從中瞭解其成功與失敗背後的原因，思考成功產品為什麼會成功？失敗產品又為什麼無法被市場所接受呢？
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="思維邏輯" scheme="http://blog.unisharp.com/tags/%E6%80%9D%E7%B6%AD%E9%82%8F%E8%BC%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>暢銷的原理</title>
     <link href="http://blog.unisharp.com/2017/06/26/%E6%9A%A2%E9%8A%B7%E7%9A%84%E5%8E%9F%E7%90%86/"/>
     <id>http://blog.unisharp.com/2017/06/26/暢銷的原理/</id>
@@ -356,52 +294,6 @@
     
       &lt;p&gt;有沒有想過為什麼超商以前沒有賣的咖啡現在卻會熱賣？&lt;/p&gt;
 &lt;p&gt;有沒有想過為什麼超商現在很少販售份量較大的微波熟食 / 甜點？進而改販售越來越小份的熟食 / 甜點？&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="思維邏輯" scheme="http://blog.unisharp.com/tags/%E6%80%9D%E7%B6%AD%E9%82%8F%E8%BC%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>好書推薦 - 簡單思考</title>
-    <link href="http://blog.unisharp.com/2017/06/26/%E5%A5%BD%E6%9B%B8%E6%8E%A8%E8%96%A6%20-%20%E7%B0%A1%E5%96%AE%E6%80%9D%E8%80%83/"/>
-    <id>http://blog.unisharp.com/2017/06/26/好書推薦 - 簡單思考/</id>
-    <published>2017-06-25T16:00:00.000Z</published>
-    <updated>2017-08-25T09:28:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>多閱讀商場上各式各樣的產品開發經驗，並從中瞭解其成功與失敗背後的原因，思考成功產品為什麼會成功？失敗產品又會什麼無法被市場所接受呢？<a id="more"></a>對於規劃產品的PM來說，是很重要的一環。</p>
-<p>今日要推薦的好書 - 簡單思考。「簡單思考」在講一個人人幾乎皆有使用、甚至工作和生活都離不開的「LINE」，是如何被打造出來的？為什麼 LINE 可以獲得巨大的成功？其背後的團隊究竟是如何創造出的呢？其公司的前任 CEO 森川亮，分享 LINE 從無到有的心路歷程與成功秘辛。</p>
-<h3 id="認清商業本質"><a href="#認清商業本質" class="headerlink" title="認清商業本質"></a>認清商業本質</h3><blockquote>
-<p>比起在競賽中勝出，更應該單純的為使用者著想，全心全意創造出真正滿足使用者的事物，最後自然會獲勝。</p>
-<p>-節錄書中片段</p>
-</blockquote>
-<p>書中最先提出的便是商業的本質，有趣的是，這幾乎是商業人士皆知的理論 - 供需法則。作者認為，為寒冷的冬天提供溫暖的衣服、為無聊閒得發慌的人設計遊戲，最重要的事情正是因為瞭解人們真正的需求，並且愛護人們的心情。</p>
-<p>普遍認為公司就是不斷推出熱門的產品並且從中獲得利益，但是將「錢」視為最終目標卻是非常危險的作法，因為使用者會馬上察覺並且離開，產品也終將走向沒落一路，因此，若想變成長銷產品，最重要的事情是滿足需求與看重使用者滿意度。</p>
-<h3 id="以「人」為本"><a href="#以「人」為本" class="headerlink" title="以「人」為本"></a>以「人」為本</h3><blockquote>
-<p>徵才戰略的基礎，就是打造一個讓員工可以盡情發揮能力的環境。<br>只要讓他們輕鬆愉快的工作，自然會產生聚集優秀人才的生態系統。</p>
-</blockquote>
-<p>想要打造成功的產品，團隊成員是關鍵中的關鍵，甚至已經決定了產品的成敗走向，因此，慎選人才並愛用人，才是公司挑選成員應遵循的原則。作者打破了位階制度做越久領越多的做法，有能力的人就該給予相對應的報酬，相對的，只因年資高卻毫無貢獻的職員，在考核時也給予相對應的調整，打造一家「鼓勵員工創造成績的公司」。</p>
-<p>正因貫徹「以人為本」的理念，在公司中大家不需要察言觀色，有話直說的工作環境，讓開會時可以、也必須誠實地表達出自己的想法，若認為提案有需要改善的部分，皆可當面提出質疑，而背後的原因更呼了「應認清商業的本質」，因為比起得罪同事，成員更害怕得罪使用者。</p>
-<h3 id="觀察並洞悉需求"><a href="#觀察並洞悉需求" class="headerlink" title="觀察並洞悉需求"></a>觀察並洞悉需求</h3><p>LINE 的成立剛好是在日本 311 大地震的時期，公司規劃推出適合智慧型手機的服務軟體，並成立了專案團隊。與此同時，雖然有市調結果，卻一直尚未決定方向。</p>
-<p>在地震過後，許多人第一時間想盡方式聯繫親朋好友，想要報平安，卻苦無辦法，而出現眾人在公用電話亭前大排長龍的景象。（這景象也成為日後產品命名的靈感 - LINE）</p>
-<p>看見這些畫面的成員，認為當下最迫切需要的功能，就是封閉式通訊，於是，團隊有了方向，秉持著最簡開發，在最短的速度內，將產品完成並推廣出去。</p>
-<p>正因為察覺了使用者最需要的功能並且專注完成，LINE 才可以在最短的時間內被推出，並且成功打入市場。</p>
-<h3 id="讓優秀的設計師主導產品"><a href="#讓優秀的設計師主導產品" class="headerlink" title="讓優秀的設計師主導產品"></a>讓優秀的設計師主導產品</h3><blockquote>
-<p>真正優秀的設計師會排除自己的喜好，徹底追求如何讓使用者方便使用。</p>
-</blockquote>
-<p>作者認為產品讓優秀的設計師主導較好的原因在於，工程師主導的產品容易偏離使用者的思維，常以技術的角度規劃，反而增加了許多不必要、非重點的功能。</p>
-<p>作者提出不同以往的觀點是，他認為優秀的設計並不是將產品設計地別出心裁，而是站在使用者的立場規劃出最適合使用者的功能與介面，所以，他們擅長將功能化簡至只留最重要的功能。</p>
-<p>作者讓我發現 LINE 公司裡「由設計主導服務開發」的產品非常多，他們不在於追求差異化與創新，更著重在提供使用者最需要的功能。</p>
-<p>正因為<strong>使用者永遠不會告訴你答案</strong>，即便做了市調研究，有時結論卻仍然不一定是真實的結論，最重要的還是觀察與察覺使用者的需求，並且提供其最貼近自身的價值，作者相信利益會由此伴隨而來，產品也將會成為真正符合商業本質的長銷產品。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;多閱讀商場上各式各樣的產品開發經驗，並從中瞭解其成功與失敗背後的原因，思考成功產品為什麼會成功？失敗產品又會什麼無法被市場所接受呢？
     
     </summary>
     
@@ -864,6 +756,52 @@
   </entry>
   
   <entry>
+    <title>所有決議都必須留下紀錄 - 凡走過，必留下痕跡</title>
+    <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
+    <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
+    <published>2017-02-13T16:00:00.000Z</published>
+    <updated>2017-08-17T07:57:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
+<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
+<h2 id="會議討論-電話溝通"><a href="#會議討論-電話溝通" class="headerlink" title="會議討論/電話溝通"></a>會議討論/電話溝通</h2><p>開完會或講完電話有共識後，一定要發一封信，說明剛剛的決議（會議記錄）。</p>
+<p>師父不喜歡很死板的會議記錄，所以他通常要我發出決議內容就好，大概可以這麼寫：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Hi Jason,</div><div class="line"></div><div class="line">根據中秋節烤肉專案的流程議題，剛剛已經在電話內跟您討論過，以下為最終的結論：</div><div class="line">1. 採買人員每次出發前往採買前，必須填寫『採購清單』，並且經由總務部主管審核通過，才可出發採買。</div><div class="line">2. 生火人員必須遵照『木炭排列SOP』之流程，排列木炭；生火場所必須在空氣流通的地方。</div><div class="line">3. .....</div><div class="line">4. .....</div><div class="line">5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line"></div><div class="line">以上五點需請相關人員遵守，若因違反上述規定，而造成食物美味不如預期，我司將不負責處理。</div><div class="line">上述之決議將於 12/04 開始實施，若您有任何疑慮，請在明天(12/03)之前跟我聯絡。</div><div class="line"></div><div class="line">謝謝您，祝您順心。</div><div class="line"></div><div class="line">Peggy 2016/12/02</div></pre></td></tr></table></figure>
+<p>記得，這封信除了寄給客戶之外，也一定要 CC 給對方的相關人員，還有自己的職務代理人（或相關人員），未來若真的需要查這個議題時，也比較好追查。</p>
+<h2 id="使用通訊軟體溝通"><a href="#使用通訊軟體溝通" class="headerlink" title="使用通訊軟體溝通"></a>使用通訊軟體溝通</h2><p>在專案執行過程中，難免會用通訊軟體（Line/Skype/Slack/ etc）跟客戶討論事情，有時候整個對話過程經過了一個小時，才有結論。</p>
+<p>若是有結論後，就直接結束了這個話題，會被師父罵。</p>
+<p>那應該怎麼作呢？我們來看一下這個情境：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Peggy：採買人員填寫完採購清單就可以去採買了嗎？</div><div class="line">Jason：是啊</div><div class="line">Peggy：但是之前你不是有說這樣子沒有人把關，怕採買人員亂買。</div><div class="line">Jason：對齁！！！</div><div class="line">Jason：不然必須讓總務部主管審核通過才可以採買</div><div class="line">Peggy：好，沒問題。</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：好的，我知道了，那先這樣囉，謝謝。</div><div class="line">Jason：881</div></pre></td></tr></table></figure>
+<p>感覺上面的對話已經有結論了，害我被師父罵的原因是什麼呢？</p>
+<blockquote>
+<p>你的結論，不一定是客戶心中的那個畫面</p>
+</blockquote>
+<p>正確的作法是這樣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：根據我們前面說的，大致可以歸納成五點：</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Peggy：上面這樣對嗎？</div><div class="line">Jason：啊！！不是！我說錯了，應該是讓大門警衛品嚐啦，我剛頭暈講錯了</div><div class="line">Peggy：好，那我改一下：</div><div class="line">Peggy：============(這是分隔線)==============</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line">Peggy：以上五點</div><div class="line">Jason：是的，完全正確。</div><div class="line">Peggy：好的，那我會一併把上面這五點結論發一封信出來。</div><div class="line">Jason：好，辛苦你了，881</div></pre></td></tr></table></figure>
+<p>看到了嗎？連這裡都要下結論，我真的好累～你要的我都學不會～</p>
+<p>不只是這樣，最後還要發一封信給客戶，把剛剛的結論再說一次（內容就跟會議討論/電話溝通那封信一樣就好），還要把通訊軟體最後的決議畫面截圖下來，放在這封信件當附件。</p>
+<p>這張截圖一定要有這五點決議內容，與客戶回覆說『沒問題』的會談過程（大概就是從『分隔線』一直到最後的『辛苦你了，881』）。</p>
+<p>雖然上面這些步驟比較花功夫，但不可否認的，這些真的很有效。</p>
+<p>師父用這些招式，狠狠的打了許多澳洲客人的臉，讓我崇拜不已（不過，師父他到底怎麼從信件大海裡面撈出他要的這些證據啊….）。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。&lt;/p&gt;
+&lt;p&gt;因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
+    
+      <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</title>
     <link href="http://blog.unisharp.com/2017/02/14/%E4%B8%80%E5%A5%97%E4%BD%BF%E7%94%A8%20jade%20(pug)%20%E8%BD%89%E7%82%BA%20laravel%20blade%20%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/"/>
     <id>http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/</id>
@@ -907,52 +845,6 @@
     
     
       <category term="Laravel" scheme="http://blog.unisharp.com/tags/Laravel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>所有決議都必須留下紀錄 - 凡走過，必留下痕跡</title>
-    <link href="http://blog.unisharp.com/2017/02/14/%E6%89%80%E6%9C%89%E6%B1%BA%E8%AD%B0%E9%83%BD%E5%BF%85%E9%A0%88%E7%95%99%E4%B8%8B%E7%B4%80%E9%8C%84%20-%20%E5%87%A1%E8%B5%B0%E9%81%8E%EF%BC%8C%E5%BF%85%E7%95%99%E4%B8%8B%E7%97%95%E8%B7%A1/"/>
-    <id>http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄 - 凡走過，必留下痕跡/</id>
-    <published>2017-02-13T16:00:00.000Z</published>
-    <updated>2017-08-17T07:57:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
-<p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br><a id="more"></a><br>以下舉幾個實務的作法：</p>
-<h2 id="會議討論-電話溝通"><a href="#會議討論-電話溝通" class="headerlink" title="會議討論/電話溝通"></a>會議討論/電話溝通</h2><p>開完會或講完電話有共識後，一定要發一封信，說明剛剛的決議（會議記錄）。</p>
-<p>師父不喜歡很死板的會議記錄，所以他通常要我發出決議內容就好，大概可以這麼寫：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Hi Jason,</div><div class="line"></div><div class="line">根據中秋節烤肉專案的流程議題，剛剛已經在電話內跟您討論過，以下為最終的結論：</div><div class="line">1. 採買人員每次出發前往採買前，必須填寫『採購清單』，並且經由總務部主管審核通過，才可出發採買。</div><div class="line">2. 生火人員必須遵照『木炭排列SOP』之流程，排列木炭；生火場所必須在空氣流通的地方。</div><div class="line">3. .....</div><div class="line">4. .....</div><div class="line">5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line"></div><div class="line">以上五點需請相關人員遵守，若因違反上述規定，而造成食物美味不如預期，我司將不負責處理。</div><div class="line">上述之決議將於 12/04 開始實施，若您有任何疑慮，請在明天(12/03)之前跟我聯絡。</div><div class="line"></div><div class="line">謝謝您，祝您順心。</div><div class="line"></div><div class="line">Peggy 2016/12/02</div></pre></td></tr></table></figure>
-<p>記得，這封信除了寄給客戶之外，也一定要 CC 給對方的相關人員，還有自己的職務代理人（或相關人員），未來若真的需要查這個議題時，也比較好追查。</p>
-<h2 id="使用通訊軟體溝通"><a href="#使用通訊軟體溝通" class="headerlink" title="使用通訊軟體溝通"></a>使用通訊軟體溝通</h2><p>在專案執行過程中，難免會用通訊軟體（Line/Skype/Slack/ etc）跟客戶討論事情，有時候整個對話過程經過了一個小時，才有結論。</p>
-<p>若是有結論後，就直接結束了這個話題，會被師父罵。</p>
-<p>那應該怎麼作呢？我們來看一下這個情境：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Peggy：採買人員填寫完採購清單就可以去採買了嗎？</div><div class="line">Jason：是啊</div><div class="line">Peggy：但是之前你不是有說這樣子沒有人把關，怕採買人員亂買。</div><div class="line">Jason：對齁！！！</div><div class="line">Jason：不然必須讓總務部主管審核通過才可以採買</div><div class="line">Peggy：好，沒問題。</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：好的，我知道了，那先這樣囉，謝謝。</div><div class="line">Jason：881</div></pre></td></tr></table></figure>
-<p>感覺上面的對話已經有結論了，害我被師父罵的原因是什麼呢？</p>
-<blockquote>
-<p>你的結論，不一定是客戶心中的那個畫面</p>
-</blockquote>
-<p>正確的作法是這樣：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Peggy：Hi Jason, 你有空嗎？想要討論一下中秋節烤肉專案的流程議題。</div><div class="line">Jason：好啊，怎麼了嗎？</div><div class="line">Jason：...(下略一千字)</div><div class="line">Peggy：...(下略一千字)</div><div class="line">Peggy：所以烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Jason：沒錯。</div><div class="line">Peggy：根據我們前面說的，大致可以歸納成五點：</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門總機先品嚐。</div><div class="line">Peggy：上面這樣對嗎？</div><div class="line">Jason：啊！！不是！我說錯了，應該是讓大門警衛品嚐啦，我剛頭暈講錯了</div><div class="line">Peggy：好，那我改一下：</div><div class="line">Peggy：============(這是分隔線)==============</div><div class="line">Peggy：1. 採買人員每次出發前往採買前....</div><div class="line">Peggy：2. 生火人員必須遵照『木炭排列SOP』之流程...</div><div class="line">Peggy：3. .....</div><div class="line">Peggy：4. .....</div><div class="line">Peggy：5. 烤肉人員所烤出的第一片肉，一定要讓大門警衛先品嚐。</div><div class="line">Peggy：以上五點</div><div class="line">Jason：是的，完全正確。</div><div class="line">Peggy：好的，那我會一併把上面這五點結論發一封信出來。</div><div class="line">Jason：好，辛苦你了，881</div></pre></td></tr></table></figure>
-<p>看到了嗎？連這裡都要下結論，我真的好累～你要的我都學不會～</p>
-<p>不只是這樣，最後還要發一封信給客戶，把剛剛的結論再說一次（內容就跟會議討論/電話溝通那封信一樣就好），還要把通訊軟體最後的決議畫面截圖下來，放在這封信件當附件。</p>
-<p>這張截圖一定要有這五點決議內容，與客戶回覆說『沒問題』的會談過程（大概就是從『分隔線』一直到最後的『辛苦你了，881』）。</p>
-<p>雖然上面這些步驟比較花功夫，但不可否認的，這些真的很有效。</p>
-<p>師父用這些招式，狠狠的打了許多澳洲客人的臉，讓我崇拜不已（不過，師父他到底怎麼從信件大海裡面撈出他要的這些證據啊….）。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。&lt;/p&gt;
-&lt;p&gt;因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
-    
-      <category term="會議" scheme="http://blog.unisharp.com/tags/%E6%9C%83%E8%AD%B0/"/>
     
   </entry>
   
@@ -1269,6 +1161,36 @@
     
     
       <category term="程式設計" scheme="http://blog.unisharp.com/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PM在團隊中扮演協調與溝通的角色</title>
+    <link href="http://blog.unisharp.com/2016/11/20/PM%E5%9C%A8%E5%9C%98%E9%9A%8A%E4%B8%AD%E6%89%AE%E6%BC%94%E5%8D%94%E8%AA%BF%E8%88%87%E6%BA%9D%E9%80%9A%E7%9A%84%E8%A7%92%E8%89%B2/"/>
+    <id>http://blog.unisharp.com/2016/11/20/PM在團隊中扮演協調與溝通的角色/</id>
+    <published>2016-11-19T16:00:00.000Z</published>
+    <updated>2017-08-17T07:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。<br>怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指<br><a id="more"></a><br>「在溝通過程中，清楚地傳達了你的意思，也達到了你的目的」。</p>
+<h2 id="PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續"><a href="#PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續" class="headerlink" title="PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續"></a>PM就像枕頭，緩衝來自不同方向的情緒後，冷靜、理性的讓專案繼續</h2><p>PM要像枕頭一樣，同時面對客戶以及不同部門專案成員時，作為一個緩衝的角色，吸收來自一方意見的衝擊，消化整理後再反彈到另一方，保持平穩的溝通方式。</p>
+<p>PM要當客戶與執行團隊之間堅固的橋樑，PM不應單方面的告知，告知客戶執行專案的企劃怎麼想，行銷怎麼說，若是客戶不滿意，在這情況下，又原封不動地告知團隊「客戶不滿意」，反而讓雙方的情緒影響專案。</p>
+<h2 id="隨時能夠轉換角色，同時具備同理心以及鞭策力"><a href="#隨時能夠轉換角色，同時具備同理心以及鞭策力" class="headerlink" title="隨時能夠轉換角色，同時具備同理心以及鞭策力"></a>隨時能夠轉換角色，同時具備同理心以及鞭策力</h2><p>PM 通常要能轉換角色，和客戶溝通時，要能站在客戶的立場，讓客戶知道我們是和他站在同一陣線；有時候也必須轉站公司的立場，清楚地堅守底線，以維護公司的權益；對公司內部也是如此，和跨部門成員溝通專案細節，要能站在執行面的立場，傾聽成員時而抱怨、時而置疑的聲音，假做朋友一場XD。<br>正因為PM身負「資源協調者」和「進度監督者」兩項重任，更要能夠讓每個團隊成員都了解專案進度、認同並心服地執行專案，不能有「將工作分配出去之後，都是其他人的事情」的想法，與成員和部門維持良好的互動，提供清楚的訊息，才能讓團隊效率越來越高。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;執行專案過程中容易遇到很多部門參與，太多人有意見，但是很少有結論出來，容易使專案進度停滯沒有共識。&lt;br&gt;怎麼改善溝通增進效率是PM存在很重要的功能與意義，而其中有效溝通是指&lt;br&gt;
+    
+    </summary>
+    
+      <category term="專案管理" scheme="http://blog.unisharp.com/categories/%E5%B0%88%E6%A1%88%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="溝通" scheme="http://blog.unisharp.com/tags/%E6%BA%9D%E9%80%9A/"/>
+    
+      <category term="團隊合作" scheme="http://blog.unisharp.com/tags/%E5%9C%98%E9%9A%8A%E5%90%88%E4%BD%9C/"/>
+    
+      <category term="說話技巧" scheme="http://blog.unisharp.com/tags/%E8%AA%AA%E8%A9%B1%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
