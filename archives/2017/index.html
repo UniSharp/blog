@@ -285,7 +285,6 @@
             
                 <div class="postShorten-excerpt" itemprop="articleBody">
                     <p>在江湖走跳(?)也有一些年了，雖然還稱不上是老江湖～但這些年也陸續以設計師的身份待過遊戲公司、社群電商平台、接案公司。除了經歷 1 到 100 的產品營運外，也和團隊執行了兩次從 0 到 1 的新創產品專案。</p>
-<p>彙整一下自己目前累積的心得與想法，除了希望能夠幫助到目前正在進行從 0 到 1 的熱血傢伙們外，也期許這些經驗能成為基石，讓我往後執行的專案有美好的前途～</p>
                     
                         <a href="/2017/10/17/設計師的十點 Startup 心得（上）/" class="postShorten-excerpt_link link">
                             繼續閱讀
@@ -306,7 +305,7 @@
     </article>
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             
             <div class="postShorten-header">
@@ -334,71 +333,13 @@
 
             </div>
             
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>本文章將會介紹如何設定 Nginx 作為 FastCGI Proxying，而在此之前需要先了解什麼是 CGI、FastCGI，最後會以設定 Laravel 專案作為 Nginx Proxying 的範例</p>
-<ul>
-<li>什麼是 CGI、FastCGI、PHP-FPM</li>
-<li>如何在 Mac 上安裝 PHP</li>
-<li>如何在 Nginx 上設定 FastCGI Proxying</li>
-<li>如何在 Nginx 上設定 Laravel</li>
-</ul>
-<p>本文章主要是由參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀</p>
-<h2 id="什麼是-CGI、FastCGI、PHP-FPM"><a href="#什麼是-CGI、FastCGI、PHP-FPM" class="headerlink" title="什麼是 CGI、FastCGI、PHP-FPM"></a>什麼是 CGI、FastCGI、PHP-FPM</h2><h3 id="Comman-Gateway-Interface-CGI"><a href="#Comman-Gateway-Interface-CGI" class="headerlink" title="Comman Gateway Interface (CGI)"></a>Comman Gateway Interface (CGI)</h3><p>在計算機中，CGI 提供了標準通訊協定讓網路伺服器執行程式腳本 (scripts)，藉此產生動態的網頁，此程式稱為 CGI Script (CGIs)，而程式如何被伺服器執行的細節由伺服器決定，通常一個請求會執行一次 CGI Script，藉此產生 HTML 回傳至 Client 端 </p>
-<p>也就是說當伺服器 (Nginx, Apache) 要執行程式腳本 (PHP, Java…) 產生網頁 (HTML) 時，就要依照 CGI 規定的通訊協定傳輸資料給程式腳本，傳遞的資訊包含 POST 資料、HTML Header、URL 等等</p>
-<h3 id="FastCGI"><a href="#FastCGI" class="headerlink" title="FastCGI"></a>FastCGI</h3><p>FastCGI 是二位元的通訊協定，處理網路伺服器與程式的介面，FastCGI 是早期 CGI 的變形，其主要目的是為了減少伺服器執行 CGIs 產生過多的負載，允許伺服器同時處理多個網頁請求</p>
-<p>CGI 應用程式在每一次的請求時產生新的程序 (process)，且在請求完成後結束此程序，此方式讓 CGI 程式容易實作，卻也在大量的請求時，持續產生及結束程序的方式會導致過度負載，此外各個程序間也無法共享資源 (資料庫連線、快取等等)</p>
-<p>FastCGI 則是保有一個持續存在的程序，藉由此程序處理一系列的請求，而程序與伺服器間的連線會一直保持，並不會隨請求完成後而關閉。每一次請求來時，持續存在的程序產生一個進程，由此進程處理請求，因為所有的進程都是由同一個程序產生的，所以彼此間可以享有共同資源，另外伺服器也可以藉由一次傳送多個請求，或是保有多個連線的方式達到節省傳遞的成本</p>
-<h3 id="PHP-FPM"><a href="#PHP-FPM" class="headerlink" title="PHP-FPM"></a>PHP-FPM</h3><p>PHP-FPM (PHP FastCGI Process Manager) 其實就是實踐 FastCGI 的程序，原先是第三方的外掛套件，最後被官方合併為 PHP 核心的一部分</p>
-<h2 id="如何在-Mac-上安裝-PHP"><a href="#如何在-Mac-上安裝-PHP" class="headerlink" title="如何在 Mac 上安裝 PHP"></a>如何在 Mac 上安裝 PHP</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> brew tap homebrew/dupes</div><div class="line"><span class="meta">$</span> brew tap homebrew/versions</div><div class="line"><span class="meta">$</span> brew tap homebrew/homebrew-php</div><div class="line"></div><div class="line">// 安裝</div><div class="line"><span class="meta">$</span> brew install php72</div><div class="line"></div><div class="line">// 如果同時有多個 php 版本，可以藉由 phpswitch 切換</div><div class="line"><span class="meta">$</span> brew install brew-php-switcher</div><div class="line"></div><div class="line">// 切換為 php 5.6</div><div class="line"><span class="meta">$</span> phpswitch.sh 56</div></pre></td></tr></table></figure>
-<h2 id="如何在-Nginx-上設定-FastCGI-Proxying"><a href="#如何在-Nginx-上設定-FastCGI-Proxying" class="headerlink" title="如何在 Nginx 上設定 FastCGI Proxying"></a>如何在 Nginx 上設定 FastCGI Proxying</h2><p>Nginx 本身無法處理程式腳本 (ex: PHP, Java)，所以當客戶端有這方面的請求時，Nginx 會作為代理伺服器將請求傳送給後端的伺服器，本文章將會以 php-fpm 做為後端伺服器，說明 Nginx 如何以 FastCGI 的方式與後端伺服器溝通</p>
-<h3 id="基本設定"><a href="#基本設定" class="headerlink" title="基本設定"></a>基本設定</h3><p>以下的設定會將<code>http://localhost/info.php</code>請求傳送給後端的 php-fpm，php-fpm 會執行<code>/your/project/info.php</code>，並將結果回傳給客戶端<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">location ~ \.php$ &#123;</div><div class="line">    root /your/project;</div><div class="line">    fastcgi_param REQUEST_METHOD $request_method;</div><div class="line">    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</div><div class="line">    fastcgi_pass 127.0.0.1:9000;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li><code>location</code>會比對符合 php 結尾的請求，並執行區塊內的設定</li>
-<li><code>root</code>執行腳本的根目錄</li>
-<li><code>fastcgi_param</code>設定要傳送的 fastcgi 參數，此 directive 會是是一個矩陣，使用者可以依序設定多個 fastcgi 參數，第一個值是參數名稱，第二個值是參數內容，通常會是 <code>$</code> 開頭的 nginx 變數 <ul>
-<li><code>REQUEST_METHOD</code>: 客戶端以何種方式請求<ul>
-<li><code>$request_methog</code>: Nginx 變數，紀錄客戶端請求的方式</li>
-</ul>
-</li>
-<li><code>SCRIPT_FILE</code>: 要執行的 script file 位置，範例中由 <code>$document_rool</code>, <code>$fastcgi_script_name</code> 兩個變數組成檔案位置<ul>
-<li><code>$document_rool</code>: Nginx 變數，對應到 root 或 alias</li>
-<li><code>$fastcgi_script_name</code>: Nginx 變數，比對 URL 得到的 script file name</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>fastcgi_pass</code>將請求導向後端伺服器的位置，php-fpm 預設會監聽 9000 port，所以當 nginx 與 php-fpm 在同一台主機時，會將後端伺服器的位置設定為 127.0.0.1:9000</li>
-</ul>
-<p>以下的設定會將<code>http://localhost/scripts/</code>請求傳送給後端的 php-fpm，php-fpm 會執行<code>/your/project/scripts/index.php</code>，並將結果回傳給客戶端<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">location /scripts $ &#123;</div><div class="line">    root /your/project;</div><div class="line">    fastcgi_param REQUEST_METHOD $request_method;</div><div class="line">    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</div><div class="line">    fastcgi_index index.php;</div><div class="line">    fastcgi_pass unix:/usr/local/var/run/php71-fpm.sock;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>fastcgi_index: 若 <code>SCRIPT_FILENAME</code>組成的檔案結尾是 <code>/</code> 時，會在尾端自動加上 <code>fastcgi_index</code> 形成一個完整的檔案位子</li>
-<li>fastcgi_pass: <code>php-fpm</code>除了可以透過 network socket 溝通外，也可以透過 unix socket，基於安全性考量，建議是使用 unix socket</li>
-</ul>
-<p>在 mac 上要修改<code>php-fpm</code>的監聽方式時，要修改<code>/usr/local/etc/php/7.1/php-fpm.d/www.conf</code>的內容<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 設定監聽方式</div><div class="line">listen = /usr/local/var/run/php71-fpm.sock</div><div class="line"></div><div class="line"><span class="meta">#</span> 將檔案權限改為任何人都可讀寫，此設定警示為了在測試機方便行事，在正式環境時，請設定正確的 user, group，並把權限改為 0660</div><div class="line">listen.mode = 0666</div></pre></td></tr></table></figure></p>
-<h3 id="引入外部設定檔"><a href="#引入外部設定檔" class="headerlink" title="引入外部設定檔"></a>引入外部設定檔</h3><p>我們可以將通用的設定寫入一個檔案，然後透過 <code>indlude</code> 引入這些設定，達到設定共用的效果</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> /your/nginx/fastcgi_common</div><div class="line">fastcgi_param REQUEST_METHOD $request_method;</div><div class="line">fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</div></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">root /your/project;</div><div class="line"></div><div class="line">location ~ \.php$ &#123;</div><div class="line">    include fastcgi_common;</div><div class="line">    fastcgi_param CONTENT_TYPE $content_type;</div><div class="line">    fastcgi_param CONTENT_LENGTH $content_length;</div><div class="line">    fastcgi_pass 127.0.0.1:9000;</div><div class="line">&#125;</div><div class="line"></div><div class="line">location /scripts $ &#123;</div><div class="line">    include fastcgi_common;</div><div class="line">    fastcgi_index index.php;</div><div class="line">    fastcgi_pass unix:/usr/local/var/run/php71-fpm.sock;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="fastcgi-param-與-fastcgi-conf-檔案"><a href="#fastcgi-param-與-fastcgi-conf-檔案" class="headerlink" title="fastcgi_param 與 fastcgi.conf 檔案"></a>fastcgi_param 與 fastcgi.conf 檔案</h4><p><code>fastcgi_parm</code> 與 <code>fastcgi.conf</code> 是由 nginx 開發者們維護出的常見設定，大部分情況下只要引入這兩個設定檔的其中一個，再加入一些設定即可，<code>fastcgi_parm</code> 與 <code>fastcgi.conf</code> 最大的差異在於 <code>SCRIPT_FILENAME</code>，<code>fastcgi_parma</code> 中有設定 <code>SCRIPT_FILENAME</code>，而 <code>fastcgi.conf</code> 則沒有，此兩個設定檔位於 <code>Nginx</code> 根目錄設定檔 (<code>/usr/local/etc/nginx</code>)</p>
-<h3 id="如何在-Nginx-上設定-Laravel"><a href="#如何在-Nginx-上設定-Laravel" class="headerlink" title="如何在 Nginx 上設定 Laravel"></a>如何在 Nginx 上設定 Laravel</h3><p><code>Nginx</code> 主要目的就是將請求傳送給 <code>php-fpm</code>，且 <code>php-fpm</code> 可以正確將請求對應到正確的 scrip 檔案，在 Laravel 中，統一的執行點會是 <code>laravel_project/public/index</code>，而以下的範例 <code>Nginx</code> 會將 <code>http://server_domain_or_ip</code> 導向 <code>/your/laravel_project/public/index</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    # 監聽 80 port</div><div class="line">    listen 80;</div><div class="line">    listen [::]:80;</div><div class="line"></div><div class="line">    # script 檔案的根目錄</div><div class="line">    root /your/laravel_project/public;</div><div class="line">    </div><div class="line">    # 對應到的 domain 或 IP 才會進入此 server block</div><div class="line">    server_name server_domain_or_ip;</div><div class="line"></div><div class="line">    # 此 location directive 會將 url 轉換，目的是將 url 包含 index.php</div><div class="line">    # ex:</div><div class="line">    # http://server_domain/user ---&gt;</div><div class="line">    # http://server_domain/index.php/user</div><div class="line">    location / &#123;</div><div class="line">        try_files $uri $uri/ /index.php?$query_string;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    # 上一個 location directive 轉換完後包含 index.php，因此會符合此 location directive</div><div class="line">    # 接續上一個轉換完的 url，將請求傳遞給 php-fpm</div><div class="line">    location ~ \.php$ &#123;</div><div class="line">        try_files $uri =404;</div><div class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</div><div class="line">        fastcgi_pass unix:/usr/local/var/run/php71-fpm.sock;</div><div class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</div><div class="line">        include fastcgi_params;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://segmentfault.com/q/1010000000256516" target="_blank" rel="external">搞不清FastCgi与PHP-fpm之间是个什么样的关系</a></li>
-<li><a href="https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b" target="_blank" rel="external">Install NGINX with PHP7-FPM on Mac OS X with Homebrew</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/understanding-and-implementing-fastcgi-proxying-in-nginx" target="_blank" rel="external">Understanding and Implementing FastCGI Proxying in Nginx</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-laravel-with-an-nginx-web-server-on-ubuntu-14-04" target="_blank" rel="external">How to Install Laravel with an Nginx Web Server on Ubuntu 14.04</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-optimize-nginx-configuration" target="_blank" rel="external">How To Optimize Nginx Configuration</a></li>
-<li><a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/" target="_blank" rel="external">Inside NGINX: How We Designed for Performance &amp; Scale</a></li>
-</ul>
-
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <p>本文章將會介紹如何設定 Nginx 作為 FastCGI Proxying，而在此之前需要先了解什麼是 CGI、FastCGI，最後會以設定 Laravel 專案作為 Nginx Proxying 的範例<br>
                     
+                        <a href="/2017/10/04/Nginx 學習筆記（二）FastCGI Proxying/" class="postShorten-excerpt_link link">
+                            繼續閱讀
+                        </a>
                         
-                    
-                    
-                        <p>
-                            <a href="/2017/10/04/Nginx 學習筆記（二）FastCGI Proxying/#post-footer" class="postShorten-excerpt_link link">
-                                留言與分享
-                            </a>
-                        </p>
                     
                 </div>
             
@@ -537,13 +478,7 @@
             </div>
             
                 <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>本文章會介紹 Nginx 的基本概念以及如何在 Mac 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到</p>
-<ul>
-<li>如何在 Mac 安裝 Nginx</li>
-<li>Nginx 的基本概念</li>
-<li>如何設定 virtual host (多個 domain name 對到同一個 IP)</li>
-</ul>
-<p>本文章主要是參考資料翻譯及整理而來，如果是喜歡閱讀英文或是更完整資訊的朋友，可以依照參考資料的順序閱讀</p>
+                    <p>本文章會介紹 Nginx 的基本概念以及如何在 Mac 上安裝 Nginx，適合第一次接觸 Nginx 的讀者閱讀，將會了解到<br>
                     
                         <a href="/2017/07/31/Nginx學習筆記（一）/" class="postShorten-excerpt_link link">
                             繼續閱讀
@@ -1028,6 +963,31 @@
                 <div class="media">
                     
                     <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
                         <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄-凡走過，必留下痕跡/">
                             <img class="media-image" src="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄-凡走過，必留下痕跡/pexels-photo.jpg" width="90" height="90"/>
                         </a>
@@ -1046,31 +1006,6 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
 <p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-left">
-                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
-                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
-                        </a>
-                    </div>
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
-                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2017年2月14日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
