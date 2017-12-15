@@ -255,90 +255,6 @@
     </article>
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2017/09/11/關於 iPhone X，你需要知道的 UI 設計規範 & CSS 屬性/">
-                            關於 iPhone X，你需要知道的 UI 設計規範 &amp; CSS 屬性
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-09-11T00:00:00+08:00">
-	
-		    9月 11, 2017
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/美學設計/">美學設計</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <h1 id="For-UI-設計師"><a href="#For-UI-設計師" class="headerlink" title="For UI 設計師"></a>For UI 設計師</h1><p>Apple 官方設計規範標示出，比起 4.7 吋的 iphone，iphone x 高多了 145 pt</p>
-<p><img src="https://i.imgur.com/jcwgIrR.png" alt="Alt text"><br>source: <a href="https://developer.apple.com/ios/human-interface-guidelines/overview/iphone-x/" target="_blank" rel="external">https://developer.apple.com/ios/human-interface-guidelines/overview/iphone-x/</a></p>
-<p>畫面尺寸為 375 x 812<br>Status Bar 高度由 20pt 增長為 44pt</p>
-<p><img src="https://i.imgur.com/TPEHwuh.jpg" alt="Alt text"><br>source: <a href="https://designcode.io/ios11-iphone-x" target="_blank" rel="external">https://designcode.io/ios11-iphone-x</a></p>
-<p>扣除掉上方劉海 ( 高 44 pt )，以及下方的 home indicator ( 高 34 pt )，安全區域( Safe Area )就是 375 x 734<br>包含 Home Indicator，Tab Bar 高度由 49pt 增長為 83pt<br>鍵盤高度由 216pt 增長為 291pt</p>
-<p><img src="https://i.imgur.com/EXh7RPf.png" alt="Alt text"></p>
-<p>當橫向擺放時，Home indicator 高會變成 21 pt，左右各有 44 pt 的留白空間，安全空間會變成 724 x 354</p>
-<h2 id="Layout-Margin"><a href="#Layout-Margin" class="headerlink" title="Layout Margin"></a>Layout Margin</h2><p>不管是直橫向，除了上面提到安全區域外，通常文字&amp;按鈕等重要元件需要向內縮 15 pt 稱為 Layout Margin。</p>
-<p><img src="https://i.imgur.com/lInfRPf.png" alt="Alt text"></p>
-<h2 id="別想改-Home-indicator-顏色"><a href="#別想改-Home-indicator-顏色" class="headerlink" title="別想改 Home indicator 顏色"></a>別想改 Home indicator 顏色</h2><p>Home indicator 會依據周圍背景，決定自身要變黑或白，在撥放影片時，會將自身隱身，在設計時注意不要加進去了。</p>
-<p>做UI設計時要避免以下狀況：</p>
-<ol>
-<li>操作不要與安全區交疊</li>
-<li>滿版圖片要拉到位</li>
-</ol>
-<p><img src="https://i.imgur.com/8CKjmgg.png" alt="Alt text"></p>
-<ol>
-<li>操作不要與 Home indicator交疊</li>
-<li>底部 tab bars 背景延伸到底</li>
-</ol>
-<p><img src="https://i.imgur.com/3h2yNmn.png" alt="Alt text"></p>
-<h1 id="For-前端工程師"><a href="#For-前端工程師" class="headerlink" title="For 前端工程師"></a>For 前端工程師</h1><h2 id="Viewport-fit-cover"><a href="#Viewport-fit-cover" class="headerlink" title="Viewport-fit=cover"></a>Viewport-fit=cover</h2><p>要使用iPhone X的全螢幕顯示網頁內容的話，就將viewport設定為：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name="viewport" content="viewport-fit=cover"&gt;</div></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/zFaEzft.png" alt="Alt text"><br>就會使用到所有螢幕空間</p>
-<p><img src="https://i.imgur.com/9Ic2Jaa.png" alt="Alt text"></p>
-<p>source: <a href="http://stephenradford.me/removing-the-white-bars-in-safari-on-iphone-x/" target="_blank" rel="external">http://stephenradford.me/removing-the-white-bars-in-safari-on-iphone-x/</a></p>
-<p>但這時，因為這日系劉海( Notch ) 擋住畫面內容，不得不再多加上 safe-area-inset-*<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">constant(safe-area-inset-top)</div><div class="line">constant(safe-area-inset-right)</div><div class="line">constant(safe-area-inset-bottom)</div><div class="line">constant(safe-area-inset-left)</div></pre></td></tr></table></figure></p>
-<p>此屬性能夠讓 iphone x 自動判定在直、橫放都可以保留一定的空間。</p>
-<p><img src="https://i.imgur.com/QnK6m1c.png" alt="Alt text"></p>
-<p>Source: <a href="https://medium.com/%40onopko/iphone-x-%E3%81%AE-safari-%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B-web-%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%81%AE%E8%A1%A8%E7%A4%BA-58da5f503d0b" target="_blank" rel="external">https://medium.com/%40onopko/iphone-x-%E3%81%AE-safari-%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B-web-%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%81%AE%E8%A1%A8%E7%A4%BA-58da5f503d0b</a></p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2017/09/11/關於 iPhone X，你需要知道的 UI 設計規範 & CSS 屬性/#post-footer" class="postShorten-excerpt_link link">
-                                留言與分享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/2017/09/11/關於 iPhone X，你需要知道的 UI 設計規範 & CSS 屬性/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="https://i.imgur.com/8CKjmgg.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
     <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             
@@ -693,31 +609,6 @@
                 <div class="media">
                     
                     <div class="media-left">
-                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
-                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
-                        </a>
-                    </div>
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
-                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2017年2月14日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-left">
                         <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄-凡走過，必留下痕跡/">
                             <img class="media-image" src="http://blog.unisharp.com/2017/02/14/所有決議都必須留下紀錄-凡走過，必留下痕跡/pexels-photo.jpg" width="90" height="90"/>
                         </a>
@@ -736,6 +627,31 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>師父跟我說，不管你用什麼方式或工具跟客戶討論事情，一定要留下紀錄，這件事情非常重要，一定要徹底執行。</p>
 <p>因為人總是健忘的，不管是客戶或是我們，當下覺得理所當然的決議，可能過了一個禮拜，很多的枝微細節，一定會被遺忘，沒有例外。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <img class="media-image" src="https://images.pexels.com/photos/90807/pexels-photo-90807.jpeg?w=300" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.unisharp.com/2017/02/14/一套使用 jade (pug) 轉為 laravel blade 的前端工作流程/">
+                            <h3 class="media-heading">一套使用 jade (pug) 轉為 laravel blade 的前端工作流程</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年2月14日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>這篇文章介紹一套使用 Laravel 配合 Jade (Pug) 作為樣板引擎的工作流程，這套流程我們已經使用了近三年，解決了許多工程師與設計師在合作上的重工，希望對你們有幫助 :)</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -774,7 +690,7 @@
                 data-message-zero="沒有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 34 篇文章
+                找到 35 篇文章
             </p>
         </div>
     </div>
